@@ -1,0 +1,1183 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  font-family: 'Questrial',sans-serif;
+}
+
+div#background {
+  background-repeat: no-repeat;
+  background: white;
+  background-size: cover;
+  color: #636b6f;
+  font-weight: 300;
+  min-height: 100%;
+  line-height: 1.6;
+  font-size: 15px;
+  padding: 30px 0;
+}
+
+.error {
+  color: rgba(244, 67, 54, 0.92);
+  font-size: smaller;
+}
+
+nav#menu {
+  background: url("../images/volleyballng_heade2re.png") no-repeat center center;
+  background-size: 100% 60px;
+  border: none;
+  margin: 0;
+  top: -17px;
+  border-radius: 0px;
+  padding: 20px;
+  /* div.collapse.navbar-collapse{
+     background: $blue;
+     width: 200px;
+     position: absolute;
+     top: 0;
+     left: 0;
+     min-height: 500px;
+     box-shadow: 0px 1px 9px 0px black;
+     ul{
+       padding: 10px;
+       margin: -0.5px -18px;
+     }
+     a#close{
+       color: white;
+       margin:10px 10px ;
+       i{
+         margin-top: 10px;
+         font-size: 23px;
+       }
+     }
+   }*/
+}
+
+nav#menu div#volleymenu {
+  display: none;
+}
+
+nav#menu div#volleymenu a#close {
+  color: white;
+}
+
+nav#menu div#volleymenu a#close i {
+  margin-top: 10px;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+nav#menu div#volleymenu ul#menu-list {
+  /*display: none;*/
+  position: fixed;
+  background: #4348ca;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 40px;
+  box-shadow: 0px 1px 9px 0px black;
+  width: 200px;
+  list-style: none;
+}
+
+nav#menu div#volleymenu ul#menu-list li {
+  margin-bottom: 10px;
+}
+
+nav#menu div#volleymenu ul#menu-list li a {
+  color: white;
+  text-transform: capitalize;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+nav#menu div#volleymenu ul#menu-list img {
+  width: 125px;
+  position: absolute;
+  top: 80%;
+  right: 40px;
+}
+
+nav#menu div.navbar-brand img {
+  width: 77px;
+  position: absolute;
+  top: 25%;
+  right: 34px;
+}
+
+nav#menu button#toggle-bar {
+  margin-top: 12px;
+  background: none;
+  border: none;
+}
+
+nav#menu button#toggle-bar span {
+  background: white;
+  width: 21px;
+  height: 2px;
+  border-radius: 2px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+nav#menu button#toggle-bar:hover {
+  background: black;
+}
+
+nav#menu button#toggle-bar:focus {
+  background: black;
+}
+
+div#footer div#bar {
+  background: #E8B617;
+  height: 6px;
+  width: 100%;
+}
+
+div#footer footer {
+  background: #4449ca;
+  padding: 20px 10%;
+}
+
+div#footer footer div#sponsor-brands, div#footer footer div#social-pages {
+  /*justify-content: center;*/
+}
+
+div#footer footer div#sponsor-brands ul, div#footer footer div#social-pages ul {
+  width: 120px;
+  /*justify-content: space-around;*/
+}
+
+div#footer footer div#sponsor-brands ul li, div#footer footer div#social-pages ul li {
+  display: inline-block;
+  margin: 4px;
+}
+
+div#footer footer div#sponsor-brands ul li i, div#footer footer div#social-pages ul li i {
+  color: black;
+  font-size: 50px;
+}
+
+div#footer footer div#social-pages {
+  margin-top: 14px;
+}
+
+div#footer footer div#social-pages ul li i {
+  color: white;
+  font-size: 20px;
+}
+
+div#footer footer section {
+  /*margin-top: 40px;*/
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+div#footer footer section #footer-links ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+div#footer footer section #footer-links ul li a:hover {
+  color: black;
+}
+
+div#footer footer aside#copyright ul {
+  max-width: 500px;
+}
+
+div#footer footer aside#copyright ul li {
+  color: white;
+}
+
+header h1, header h2, header h3, header h4 {
+  color: #4449ca;
+}
+
+header h2, header h3, header h4 {
+  font-weight: 300;
+}
+
+#container, section#our-home header#tagline, section#our-home article, section#our-home div#event-preview, section#Gallery, article#event, div#access, div#bd-event div#sidebar h3, div#bd-event div#sidebar div#calender, div#league-list, section#register-team, section#viewPlayers div#players, section#viewPlayer {
+  margin: 20px  5% 20px;
+  min-width: 250px;
+}
+
+div#wrapper {
+  min-height: 100%;
+  margin: 61px  0% 10%;
+}
+
+div#wrapper div#yellow-separator {
+  height: 1px;
+  background: #4449ca;
+  margin-top: 7px;
+  margin-bottom: 25px;
+}
+
+section#content {
+  padding: 10px 0;
+}
+
+section#content header h2 {
+  color: #4449ca;
+  font-weight: 500;
+}
+
+section#content aside {
+  padding: 10px;
+  background: white;
+  color: #636b6f;
+}
+
+section#our-home header#tagline h1 {
+  font-weight: 100;
+  font-size: 36px;
+  color: #4449ca;
+}
+
+section#our-home header#tagline p {
+  text-align: center;
+}
+
+section#our-home article {
+  background: white;
+  color: #636b6f;
+  padding: 10px;
+}
+
+section#our-home div#event-preview div#preview {
+  width: auto;
+  height: 200px;
+  margin: 0 15px 20px 0;
+  position: relative;
+}
+
+section#our-home div#event-preview div#preview img {
+  width: 230px;
+  height: auto;
+}
+
+section#our-home div#event-preview div#preview p {
+  text-align: center;
+  margin-top: 5px;
+}
+
+section#our-home div#event-preview div#preview span i {
+  position: absolute;
+  top: 53%;
+  left: 75%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  background: #4449ca;
+  color: white;
+  -webkit-transition: opacity 150ms;
+  transition: opacity 150ms;
+  padding: 0px;
+  font-size: 21px;
+  border-radius: 50%;
+  border: 2px solid #4449ca;
+  /* padding: 10px calc(50% - 50px);*/
+  opacity: 0.75;
+}
+
+section#our-home div#event-preview div#preview span i:hover {
+  opacity: 1;
+}
+
+article div#media {
+  width: 100%;
+  overflow: hidden;
+}
+
+article div#media img {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+}
+
+article aside h3 {
+  color: #4449ca;
+}
+
+article aside span {
+  display: block;
+}
+
+article section#sub-links {
+  margin-top: 40px;
+}
+
+article section#sub-links ul li a.btn.btn-default {
+  background: #4449ca;
+  color: white;
+  border-radius: 20px;
+}
+
+article section#sub-links ul li a i {
+  background: #4449ca;
+  color: white;
+  padding: 7px;
+  font-size: 15px;
+  border-radius: 20px;
+}
+
+ol.breadcrumb {
+  font-size: 11px;
+}
+
+a#vb-button {
+  background: #4449ca;
+  color: white;
+  border-radius: 50px;
+}
+
+a#vb-button:hover {
+  background: white;
+  border: 2px solid #4449ca;
+  color: #4449ca;
+}
+
+section#Gallery div#media img {
+  width: 250px;
+  height: 200px;
+  margin-bottom: 40px;
+}
+
+article#tutorials {
+  background: #e6e6e6;
+  padding: 5px 15px;
+  border-radius: 5px;
+  /*display: flex;*/
+  display: -webkit-inline-box;
+  display: inline-flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+}
+
+article#tutorials div#thumbs {
+  display: -webkit-box;
+  display: flex;
+  max-width: 450px;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+article#tutorials div#thumbs div#trials {
+  width: 180px;
+  height: 170px;
+  margin-bottom: 20px;
+  margin-left: 28px;
+}
+
+article#tutorials div#thumbs div#trials img {
+  display: inline;
+  width: inherit;
+  height: auto;
+  margin: 0 20px;
+  box-shadow: 0px 1px 9px 0px black;
+}
+
+article#tutorials div#caption {
+  height: 360px;
+  width: 350px;
+  display: block;
+  margin-top: 25px;
+}
+
+article#tutorials div#caption img {
+  border-radius: 5px;
+  height: auto;
+  width: inherit;
+  box-shadow: 0px 1px 9px 0px black;
+}
+
+article#tutorials aside {
+  display: -webkit-box;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  /*justify-content: space-between;*/
+}
+
+article#tutorials aside div#preview {
+  width: 180px;
+  height: 200px;
+  margin: 0 14px 0 7px;
+  position: relative;
+}
+
+article#tutorials aside div#preview img {
+  width: inherit;
+  height: auto;
+}
+
+article#our-events header {
+  background: #e6e6e6;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+article#our-events header span {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+article#our-events header button {
+  background: white;
+  color: #4449ca;
+  border-radius: 20px;
+  border: 2px solid #4449ca;
+  padding: 0px 5px;
+}
+
+article#our-events aside#event-preview {
+  display: -webkit-box;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  /*justify-content: space-between;*/
+}
+
+article#our-events aside#event-preview div#preview {
+  width: 180px;
+  height: 200px;
+  margin: 0 15px 0 15px;
+  position: relative;
+}
+
+article#our-events aside#event-preview div#preview img {
+  width: inherit;
+  height: auto;
+}
+
+article#our-events aside#event-preview div#preview p {
+  text-align: center;
+  margin-top: 5px;
+}
+
+article#our-events aside#event-preview div#preview span i {
+  position: absolute;
+  top: 45%;
+  left: 85%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  background: #4449ca;
+  color: white;
+  -webkit-transition: opacity 150ms;
+  transition: opacity 150ms;
+  padding: 0px;
+  font-size: 21px;
+  border-radius: 50%;
+  border: 2px solid #4449ca;
+  /* padding: 10px calc(50% - 50px);*/
+  opacity: 0.75;
+}
+
+article#our-events aside#event-preview div#preview span i:hover {
+  opacity: 1;
+}
+
+div#access {
+  /* margin-left: 0;
+  margin-top: 50px;*/
+}
+
+div#access aside {
+  display: inline-block;
+}
+
+div#access li {
+  margin: 0;
+  padding: 0;
+}
+
+div#access form div.input-group {
+  width: 140px;
+}
+
+div#access form div.input-group input {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 3px solid #4449ca;
+  height: 36px;
+}
+
+div#access form div.input-group label {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: #4449ca;
+  border: 3px solid #4449ca;
+  height: 36px;
+}
+
+div#access form div.input-group label i {
+  color: white;
+}
+
+div#access div.dropdown.open button {
+  background: #4449ca;
+}
+
+div#access div.dropdown {
+  font-size: 18px;
+  color: #4449ca;
+}
+
+div#access div.dropdown button#filterDrop {
+  width: 100px;
+  border-radius: 20px;
+  border: 3px solid #4449ca;
+}
+
+div#access div.dropdown button#filterDrop i {
+  color: #4449ca;
+  float: right;
+}
+
+div#access div.dropdown ul.dropdown-menu {
+  padding: 5px;
+  left: 27%;
+  min-width: 100px;
+}
+
+div#access div.dropdown ul.dropdown-menu .divider {
+  background: #E8B617;
+}
+
+div#event-list {
+  padding: 5% 10px 10px 8%;
+}
+
+div#event-list div#event-thumb {
+  /*border: 2px solid $yellow;*/
+  min-height: 300px;
+  width: 300px;
+  padding: 0;
+  margin: 10px 5% 75px 10px;
+}
+
+div#event-list div#event-thumb h3 a {
+  color: #4449ca;
+  margin-top: 10px;
+  line-height: 2;
+  text-decoration: none;
+}
+
+div#event-list div#event-thumb h3 a:hover {
+  color: black;
+}
+
+div#event-list div#event-thumb img {
+  width: inherit;
+  /*border-top-left-radius: 15px;
+      border-top-right-radius: 15px;*/
+  max-height: 255px;
+}
+
+div#event-list div#event-thumb header {
+  box-shadow: 0px 2px 9px 0px black;
+  background: white;
+  padding: 10px;
+  height: 120px;
+  /* border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;*/
+}
+
+div#event-list div#event-thumb header p {
+  font-size: 13px;
+  color: #636b6f;
+}
+
+div#bd-event div#sidebar {
+  padding: 5% 10px 10px 6%;
+}
+
+div#bd-event div#sidebar h3 {
+  color: #4449ca;
+  border-bottom: 1px solid #4449ca;
+  margin-top: 40px;
+  max-width: 400px;
+}
+
+div#bd-event div#sidebar div#calender {
+  margin-bottom: 30px;
+  width: 336px;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box {
+  background: white;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box header {
+  background: #4449ca;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  margin: 0;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box header h4 {
+  color: white;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box header h4 span {
+  font-size: 30px;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender {
+  width: 300px;
+  /*border-left:1px solid $text-color2;
+            border-bottom: 1px solid $text-color;*/
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender ul {
+  padding: 0;
+  margin: 0;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender ul li#bd-day {
+  width: 14.28%;
+  height: 45px;
+  font-weight: bold;
+  color: #757575;
+  /*border-top: 1px solid $text-color;
+                border-right: 1px solid $text-color;*/
+  padding: 18px;
+  float: left;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender ul #bd-day.active {
+  background: #4449ca;
+  color: white;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#calender_section_top {
+  width: 300px;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#calender_section_top ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+div#bd-event div#sidebar div#calender aside div#calender-box div#calender_section_top ul li {
+  width: 14.28%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: block;
+  color: #4449ca;
+  font-weight: 600;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture {
+  background: #E8B617;
+  width: inherit;
+  text-align: center;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture li {
+  color: #4449ca;
+  font-weight: bold;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture :first-child {
+  float: left;
+  width: 20%;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture :nth-child(2) {
+  width: 31%;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture :nth-child(3) {
+  width: 10%;
+}
+
+div#bd-event div#sidebar div#calender aside ul#fixture :last-child {
+  width: 31%;
+}
+
+div#bd-event div#sidebar div#calender section {
+  background: yellow;
+}
+
+div#slides {
+  /*width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;*/
+}
+
+div#slides div.swiper-wrapper div.swiper-slide {
+  /*border: 2px solid $yellow;*/
+  height: 300px;
+  width: 300px;
+  /*!* Center slide text vertically *!
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;*/
+}
+
+div#slides div.swiper-wrapper div.swiper-slide img {
+  width: 100%;
+  max-height: 255px;
+}
+
+div#slides div.swiper-wrapper div.swiper-slide header {
+  box-shadow: 0px 2px 9px 0px black;
+  background: #E8B617;
+  padding: 10px;
+  height: 70px;
+}
+
+div#slides div.swiper-wrapper div.swiper-slide header div#bar {
+  height: 10px;
+  background: #4449ca;
+  border-radius: 5px;
+}
+
+div#slides div.swiper-wrapper div.swiper-slide header p a {
+  color: white;
+  margin-top: 10px;
+  line-height: 2;
+  text-decoration: none;
+}
+
+div#slides div.swiper-wrapper div.swiper-slide header p a:hover {
+  color: black;
+}
+
+div#league-list div.media {
+  margin-bottom: 20px;
+}
+
+div#league-list div.media img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+div#league-list div.media p {
+  line-height: 0.8;
+  margin-top: 0;
+}
+
+#well, div#bd-event div#sidebar div#calender aside div#calender-box, form.add-team {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#center-block, div#footer footer div#sponsor-brands ul, div#footer footer div#social-pages ul, div#footer footer aside#copyright ul, section#our-home div#event-preview div#preview, div#bd-event div#sidebar h3, div#bd-event div#sidebar div#calender, div#bd-event div#sidebar div#calender aside div#calender-box header, div#bd-event div#sidebar div#calender aside ul#fixture, form.add-team .form-group, ul#progressive-bar, section#Teams div#vb-teams div#vb-team img, section#viewTeam img#team-image, section#viewTeam div#staffs ul {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+div#home-banner {
+  margin-top: 28px;
+}
+
+form.add-team {
+  position: relative;
+  min-height: 250px;
+  border-radius: 2px;
+  border: 0;
+  background: white;
+  padding: 40px;
+}
+
+form.add-team h4 {
+  color: #4449ca;
+}
+
+form.add-team input.form-control {
+  max-width: 400px;
+  border: 2px solid #4449ca;
+}
+
+form.add-team label {
+  color: #4449ca;
+}
+
+form.add-team div#team-data div#added-member {
+  border: 1px solid #E8B617;
+  min-height: 204px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+form.add-team div#team-data div#team-member {
+  width: 180px;
+  height: 180px;
+  background: #8788c5;
+  border-radius: 5px;
+  margin: 20px auto;
+  position: relative;
+  cursor: pointer;
+}
+
+form.add-team div#team-data div#team-member:hover {
+  background: #696a95;
+}
+
+form.add-team div#team-data div#team-member i {
+  position: absolute;
+  font-size: 100px;
+  color: white;
+  top: 28%;
+  left: 31%;
+}
+
+form.add-team div#team-data div#team-member p {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  top: 74%;
+  left: 34%;
+}
+
+form.add-team div#agree {
+  display: inline-block;
+  color: #4449ca;
+}
+
+form.add-team div#agree button {
+  background: white;
+  color: #4449ca;
+  border: #4449ca 2px solid;
+  border-radius: 50px;
+}
+
+form.add-team div#agree input {
+  border: 2px solid #4449ca;
+}
+
+form.add-team div#yellow-separator {
+  height: 2px;
+  max-width: 400px;
+}
+
+form.add-team button[type='button'] {
+  background: #4449ca;
+  color: white;
+  border: 1px solid #4449ca;
+  border-radius: 20px;
+}
+
+form.add-team button[type='button']:hover {
+  color: white;
+  background: #8788c5;
+}
+
+ul#progressive-bar {
+  max-width: 500px;
+  min-width: 350px;
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  counter-reset: step;
+}
+
+ul#progressive-bar li {
+  list-style-type: none;
+  float: left;
+  position: relative;
+  width: 30%;
+  font-size: 9px;
+}
+
+ul#progressive-bar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: #333;
+  background: white;
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+  border: 1px solid #E8B617;
+}
+
+ul#progressive-bar li:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #E8B617;
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1;
+  /*put it behind the numbers*/
+}
+
+ul#progressive-bar li:first-child:after {
+  content: none;
+}
+
+ul#progressive-bar li.active:before, ul#progressive-bar li.active:after {
+  background: #E8B617;
+  color: white;
+}
+
+div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
+  width: 180px;
+  height: 180px;
+  display: block;
+}
+
+div#add-player #member-info div#manager-img button, div#add-player #member-info div#player-img button {
+  background: #8788c5;
+  width: 180px;
+  height: 35px;
+  position: relative;
+  border-radius: 0;
+  border: none;
+}
+
+div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
+  display: none;
+}
+
+div#add-player #member-info div#manager-img i, div#add-player #member-info div#player-img i {
+  position: absolute;
+  font-size: 150px;
+  color: blue;
+  left: 17%;
+  top: 5%;
+}
+
+div#add-player #member-info div#coach-img img#show-coach-img {
+  width: 180px;
+  height: 180px;
+  display: block;
+}
+
+div#add-player #member-info div#coach-img button {
+  background: #8788c5;
+  width: 180px;
+  height: 35px;
+  position: relative;
+  border-radius: 0;
+  border: none;
+}
+
+div#add-player #member-info div#coach-img input[type='file'] {
+  display: none;
+}
+
+div#add-player #member-info div#coach-img i {
+  position: absolute;
+  font-size: 150px;
+  color: blue;
+  left: 17%;
+  top: 5%;
+}
+
+div#add-player #member-info .form-control {
+  border: 2px solid #4449ca;
+}
+
+div#add-player #member-info label {
+  color: #4449ca;
+  font-weight: 100;
+}
+
+div#add-player #member-info button {
+  margin-top: 16px;
+  background: white;
+  color: #4449ca;
+  border-radius: 50px;
+  border: 2px solid #4449ca;
+}
+
+section#Teams div#vb-teams div#vb-team {
+  margin-bottom: 20px;
+}
+
+section#Teams div#vb-teams div#vb-team img {
+  width: 80px;
+  height: 80px;
+}
+
+section#Teams div#vb-teams div#vb-team a {
+  color: black;
+  text-decoration: none;
+}
+
+section#Teams div#vb-teams div#vb-team a:hover {
+  color: #4449ca;
+}
+
+section#viewTeam h3 {
+  color: #4449ca;
+  margin-top: 30px;
+}
+
+section#viewTeam img#team-image {
+  width: 90%;
+}
+
+section#viewTeam div#team-data {
+  margin-top: 30px;
+}
+
+section#viewTeam div#team-staff .media img {
+  width: 100px;
+}
+
+section#viewTeam div#staffs ul {
+  width: 250px;
+}
+
+section#viewTeam div#staffs ul li .role {
+  padding-right: 20px;
+}
+
+section#viewTeam div#staffs ul li .role:after {
+  content: ":";
+}
+
+section#viewTeam a.btn.btn-primary {
+  background: #4449ca;
+  color: white;
+  border-radius: 50px;
+}
+
+section#viewTeam a.btn.btn-primary:hover {
+  background: white;
+  border: 2px solid #4449ca;
+  color: #4449ca;
+}
+
+section#viewPlayers div.media {
+  margin-bottom: 50px;
+}
+
+section#viewPlayers div.media div.media-body a {
+  text-decoration: none;
+}
+
+section#viewPlayers div.media div.media-body a h4 {
+  color: #4449ca;
+  font-size: 15px;
+}
+
+section#viewPlayers div.media div.media-body ul li {
+  font-size: 12px;
+}
+
+section#viewPlayers div.media div.media-left img {
+  width: 150px;
+}
+
+section#viewPlayer aside div#player_image img {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+section#viewPlayer aside div#player_info h4 {
+  color: #4449ca;
+}
+
+@media screen and (max-width: 350px) {
+  header#tagline h1 {
+    font-size: 28px !important;
+  }
+  aside#event-preview div#preview {
+    margin: 0 !important;
+    height: 180px !important;
+  }
+  aside#event-preview div#preview img {
+    width: 200px !important;
+  }
+  div#access form div.input-group {
+    width: 105px !important;
+  }
+  div#access div.dropdown button#filterDrop {
+    width: 60px !important;
+  }
+  div#footer footer aside#copyright ul li {
+    font-size: 8px;
+  }
+  div#home-banner div#banners .swiper-slide {
+    height: 180px !important;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  aside#event-preview div#preview {
+    margin: 0 -20px 5px 0% !important;
+    height: 115px !important;
+  }
+  aside#event-preview div#preview img {
+    width: 160px !important;
+  }
+  div#home-banner div#banners .swiper-slide {
+    height: 200px !important;
+  }
+  div#access div.dropdown button#filterDrop {
+    width: 70px !important;
+  }
+  div#footer footer aside#copyright ul li {
+    font-size: 10px;
+  }
+  div#footer footer ul#footer-menu {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  aside#event-preview div#preview {
+    height: 115px !important;
+  }
+  aside#event-preview div#preview img {
+    width: 160px !important;
+  }
+  div#home-banner div#banners .swiper-slide {
+    height: 240px !important;
+  }
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+div#wrapper {
+  min-height: 90%;
+}
+
+/*# sourceMappingURL=app.css.map */

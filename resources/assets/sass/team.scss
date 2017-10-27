@@ -1,0 +1,257 @@
+html,body{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+@import"_variables";
+
+.btn-purple {
+  color: $purple;
+  background-color: transparent;
+  border: 1px solid $purple;
+  border-radius: 20px;
+  &:hover {color: white; background-color: $purple;}
+}
+.vb-button {
+  background: $purple;
+  color: white;
+  border-radius: 20px;
+  &:hover{
+    background-color: transparent;
+    border: 1px solid $purple;
+    color: $purple;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $purple;
+  &:hover{color: black;}
+}
+
+// Helper classes
+.right-10 {
+  margin-right: 10px;
+}
+.right-5 {
+  margin-right: 5px;
+}
+.top-bottom-padding-40 {
+  padding: 40px 0;
+}
+.bottom-40 {
+  margin-bottom: 40px;
+}
+.top-40 {
+  margin-top: 40px;
+}
+.bottom-20 {
+  margin-bottom: 20px;
+}
+.top-20 {
+  margin-top: 20px;
+}
+.bottom-10 {
+  margin-bottom: 10px;
+}
+.top-10 {
+  margin-top: 10px;
+}
+.float-right {
+  float: right !important;
+}
+// End of helper classes
+
+.gray-background {
+  background-color: $whitesmoke;
+}
+.gray-separator {
+  height: 1px;
+  background-color: $gray;
+}
+.purple-separator {
+  height: 1px;
+  background-color: $purple;
+}
+
+// Media queries
+@media (min-width: 320px) and (max-width: 767px) {
+  .float-right {
+    float: none !important;
+  }
+}
+// End of media queries
+
+div#wrapper{
+  height: 100%;
+}
+#well{
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+
+}
+div#separator{
+  height: 1px;
+  background: $blue;
+  margin-top: 7px;
+  margin-bottom: 25px;
+}
+#center-block{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+div#page-wrapper{
+  min-height: 100%;
+  //background: url('../images/bg1.jpg') center center fixed;
+  background-position: 100%;
+  padding: 4%;
+  background: white;
+}
+nav#team-menu{
+  background: url("../images/volleyballng_heade2re.png") no-repeat center center;
+  background-size: auto auto;
+  background-size: cover;
+  border: none;
+
+  a.navbar-brand img {
+    width: 65px;
+    position: absolute;
+    top: 10%;
+    //right: 34px;
+  }
+  ul.top-nav{
+    a.dropdown-toggle{
+      color: white;
+    }
+  }
+}
+ul#team-sidebar{
+  background: $blue;
+  li{
+    a{
+      color: white;
+    }
+
+  }
+}
+p.error{
+  color: $brand-danger;
+}
+div.alert-success{
+  background: $brand-success;
+  color: white;
+  // transition: f;
+}
+div.alert-warning{
+  background-color: $brand-warning;
+  color: white;
+}
+#vb-button{
+  background: $blue;
+  color: white;
+  border-radius: 50px;
+  &:hover{
+    background: white;
+    border: 1px solid $blue;
+    color: $blue;
+  }
+}
+div#admin-box{
+  max-width:800px;
+  @extend #well;
+  border-radius: 0px;
+  @extend #center-block;
+  header{
+    color: $blue;
+    // margin: 50px;
+  }
+}
+div#add-player{
+
+  #member-info{
+    //padding: 20px;
+
+    div#manager-img,div#player-img{
+      img#show-img,img#show-player-img{
+        width: 180px;
+        height: 180px;
+        display: block;
+      }
+      // button{
+      //   background: $light-blue;
+      //   width: 180px;
+      //   height: 35px;
+      //   position: relative;
+      //   border-radius: 0;
+      //   border: none;
+      // }
+
+      //cursor: pointer;
+      input[type='file']{
+        display: none;
+      }
+
+      i{
+        position: absolute;
+        font-size: 150px;
+        color: blue;
+        left: 17%;
+        top: 5%;
+      }
+    }
+    div#coach-img{
+      img#show-coach-img{
+        width: 180px;
+        height: 180px;
+        display: block;
+      }
+      button{
+        background: $light-blue;
+        width: 180px;
+        height: 35px;
+        position: relative;
+        border-radius: 0;
+        border: none;
+      }
+
+      //cursor: pointer;
+      input[type='file']{
+        display: none;
+      }
+
+      i{
+        position: absolute;
+        font-size: 150px;
+        color: blue;
+        left: 17%;
+        top: 5%;
+      }
+    }
+    .form-control{
+      border: 2px solid $blue;
+    }
+    label{
+      color: $blue;
+      font-weight: 100;
+    }
+
+    button{
+      // margin-top: 16px;
+      background: white;
+      color: $blue;
+      border-radius: 50px;
+      border: 1px solid $blue;
+    }
+    //member photo
+
+  }
+}
+div#tm-players{
+  img{
+    width: 250px;
+    height: 200px;
+
+  }
+}
