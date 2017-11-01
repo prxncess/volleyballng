@@ -154,7 +154,7 @@ nav#menu{
     background: none;
     border: none;
     span{
-      background: white;
+      background-color: transparent;
       width: 21px;
       height: 2px;
       border-radius: 2px;
@@ -162,12 +162,12 @@ nav#menu{
       margin-bottom: 5px;
 
     }
-    &:hover{
-      background: black;
-    }
-    &:focus{
-      background: black;
-    }
+    // &:hover{
+    //   background-color: black;
+    // }
+    // &:focus{
+    //   background: black;
+    // }
 
 
 
@@ -626,8 +626,8 @@ ol.breadcrumb{
   color: white;
   border-radius: 50px;
   &:hover{
-    background: white;
-    border: 2px solid $blue;
+    background-color: transparent;
+    border: 1px solid $blue;
     color: $blue;
   }
 }
@@ -719,11 +719,15 @@ article#our-events{
       font-size: 16px;
     }
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 20px;
-      border: 2px solid $blue;
+      border: 1px solid $blue;
       padding: 0px 5px;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
   }
   aside#event-preview{
@@ -816,7 +820,7 @@ div#access{
       input{
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-        border: 3px solid $blue;
+        // border: 3px solid $blue;
         height: 36px;
       }
       label{
@@ -842,7 +846,7 @@ div#access{
     button#filterDrop{
       width: 100px;
       border-radius: 20px;
-      border: 3px solid $blue;
+      border: 1px solid $blue;
       i{
         color: $blue;
         float: right;
@@ -922,11 +926,11 @@ section#vb-event-form{
     max-width: 550px;
     padding:2%;
     label{
-      color: $blue;
+      // color: $blue;
     }
     .form-control{
       max-width: 300px;
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     button{
       @extend #vb-button;
@@ -1320,13 +1324,13 @@ form.add-team{
     display: inline-block;
 
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
-      border: $blue 2px solid;
+      border: $blue 1px solid;
       border-radius: 50px
     }
     input{
-      border: 2px solid $blue;
+      // border: 1px solid $blue;
     }
     color: $blue;
   }
@@ -1341,7 +1345,8 @@ form.add-team{
     border-radius: 20px;
     &:hover{
       color: $purple;
-      background: white;
+      background-color: transparent;
+      border: 1px solid $purple;
     }
   }
 
@@ -1412,12 +1417,17 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background: $purple;
         width: 180px;
         height: 35px;
         position: relative;
-        border-radius: 0;
+        border-radius: 20;
         border: none;
+        &:hover {
+          background-color: transparent;
+          color: $purple;
+          border: 1px solid $purple;
+        }
       }
 
       //cursor: pointer;
@@ -1440,12 +1450,17 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background-color: transparent;
+        color: $purple;
         width: 180px;
         height: 35px;
         position: relative;
         border-radius: 0;
         border: none;
+        &:hover{
+          background-color: $purple;
+          color: white;
+        }
       }
 
       //cursor: pointer;
@@ -1462,19 +1477,23 @@ div#add-player{
       }
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     label{
-      color: $blue;
+      // color: $blue;
       font-weight: 100;
     }
 
     button{
       margin-top: 16px;
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 50px;
-      border: 2px solid $blue;
+      border: 1px solid $blue;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
     //member photo
 
@@ -1516,7 +1535,7 @@ section#team-login{
       padding: 30px;
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
       margin-bottom: 10px;
       margin-bottom: 0px;
     }
