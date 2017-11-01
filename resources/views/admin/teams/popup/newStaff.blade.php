@@ -8,6 +8,7 @@
                 <div class="res">
 
                 </div>
+                <h4>New Player</h4>
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="teamindex" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
@@ -33,11 +34,11 @@
                                     <div class="row">
 
                                         <div class="col-xs-6">
-                                            <input type="text" class="form-control" id="manager-fname" value="" name="manager-fname" placeholder=" Staff first name">
+                                            <input type="text" class="form-control text-capitalize" id="manager-fname" value="" name="manager-fname" placeholder="Ladi">
                                             <p class="error"></p>
                                         </div>
                                         <div class="col-xs-6">
-                                            <input type="text" class="form-control" id="manager-lname" name="manager-lname" placeholder=" Staff Last name">
+                                            <input type="text" class="form-control text-capitalize" id="manager-lname" name="manager-lname" placeholder="Okpere">
                                             <p class="error"></p>
                                         </div>
                                     </div>

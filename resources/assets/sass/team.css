@@ -197,7 +197,7 @@ div#separator {
   margin-top: 7px;
   margin-bottom: 25px; }
 
-#center-block, div#admin-box {
+#center-block, div#admin-box, section#team-overview div#teamInfo img {
   display: block;
   margin-right: auto;
   margin-left: auto; }
@@ -250,7 +250,43 @@ div#admin-box {
   border-radius: 0px; }
   div#admin-box header {
     color: #4449ca;
-    margin: 50px; }
+    margin-top: 50px;
+    margin-bottom: 50px; }
+
+.btn-purple {
+  color: #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
+  border-radius: 20px; }
+
+section#team-overview div#teamInfo img {
+  height: 150px;
+  width: auto; }
+section#team-overview div#teamInfo ul li {
+  line-height: 2;
+  font-size: 18px; }
+  section#team-overview div#teamInfo ul li span {
+    text-transform: capitalize;
+    color: #636b6f; }
+section#team-overview div#teamPlayers .panel-heading, section#team-overview div#teamStaff .panel-heading {
+  background: #4449ca;
+  padding: 1px 15px 15px;
+  height: 50px;
+  border-radius: 0px; }
+  section#team-overview div#teamPlayers .panel-heading a, section#team-overview div#teamStaff .panel-heading a {
+    color: white;
+    text-decoration: none; }
+  section#team-overview div#teamPlayers .panel-heading h3, section#team-overview div#teamStaff .panel-heading h3 {
+    font-size: 15px; }
+section#team-overview div#teamPlayers div.panel-body, section#team-overview div#teamStaff div.panel-body {
+  height: 320px;
+  overflow-y: scroll; }
+section#team-overview div#teamPlayers div.panel-footer, section#team-overview div#teamStaff div.panel-footer {
+  background: #dce0c8; }
+section#team-overview form#editPlayer {
+  padding: 10px; }
+  section#team-overview form#editPlayer .form-control {
+    border: 2px solid #4449ca; }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
   width: 180px;
@@ -305,5 +341,35 @@ div#add-player #member-info button {
 div#tm-players img {
   width: 250px;
   height: 200px; }
+
+.gray-separator {
+  height: 1px;
+  background-color: #e6e6e6; }
+
+.top-20 {
+  margin-top: 20px; }
+
+.bottom-20 {
+  margin-bottom: 20px; }
+
+section#upTeamInfo div#team-logo img#show-logo-img {
+  width: 180px;
+  height: 180px;
+  display: block; }
+section#upTeamInfo div#team-logo input#logo {
+  display: none; }
+section#upTeamInfo div#team-logo button {
+  margin-left: 41px;
+  margin-top: 12px;
+  padding: 5px; }
+
+div#teamInfo ul li {
+  line-height: 28px;
+  font-size: 14px; }
+
+/*
+section#team-overview div#teamPlayers .panel-heading h3, section#team-overview div#teamStaff .panel-heading h3 {
+  font-size: 15px;
+}*/
 
 /*# sourceMappingURL=team.css.map */

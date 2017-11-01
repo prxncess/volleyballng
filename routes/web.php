@@ -14,6 +14,7 @@
 Route::get('/',['as'=>'home','uses'=>'PagesController@index']);
 Route::get('/Events',['as'=>'events','uses'=>'PagesController@events']);
 Route::get('/Terms',['as'=>'terms','uses'=>'PagesController@terms']);
+
 Route::get('/EventsCalender',['as'=>'EventsCal','uses'=>'PagesController@events_calender']);
 Route::get('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@new_event']);
 Route::post('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@save_event']);
@@ -23,7 +24,7 @@ Route::get('/sendMail','EventsPagesController@basic_email');
 Route::get('/Event/{name}',['as'=>'viewEvent','uses'=>'PagesController@event']);
 
 Route::get('/gallery',['as'=>'viewGallery','uses'=>'PagesController@gallery']);
-Route::get('/teamInfo',['as'=>'TeamInfo', 'uses'=>'RegisterController@teamInfo']);
+Route::post('/teamInfo',['as'=>'TeamInfo', 'uses'=>'RegisterController@teamInfo']);
 Route::post('/coachInfo',['as'=>'CoachInfo', 'uses'=>'RegisterController@teamCoach']);
 Route::post('/managerInfo',['as'=>'ManagerInfo', 'uses'=>'RegisterController@teamManager']);
 Route::post('/PlayerInfo',['as'=>'PlayerInfo', 'uses'=>'RegisterController@player']);
@@ -89,13 +90,35 @@ Route::group(['middleware'=>'master','prefix'=>'admin'],function(){
 //Route::get('/profile',['as'=>'teamSignIn'])
 Route::get('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@teamLogin']);
 Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@teamTryLogin']);
+
  Route::group(['middleware'=>'team','prefix'=>'teamAdmin'],function(){
      Route::get('/dashboard',['as'=>'teamDashboard','uses'=>'team\pagesController@home']);
      Route::get('/Logout',['as'=>'teamSignOut','uses'=>'team\teamLoginController@logout']);
+
+
      Route::get('/players',['as'=>'teamPlayers','uses'=>'team\teamPagesController@index']);
-     Route::post('/newPlayer',['as'=>'AddPlayers','uses'=>'team\teamPagesController@store']);
+     Route::post('/newPlayer',['as'=>'newPlayers','uses'=>'team\teamPagesController@store']);
      Route::get('teamPlayer/{id}',['as'=>'showPlayer','uses'=>'team\teamPagesController@show']);
      Route::get('teamUpdatePlayer/{id}',['as'=>'updatePlayer','uses'=>'team\teamPagesController@edit']);
      Route::post('teamUpdatePlayer/{id}',['as'=>'updatePlayer','uses'=>'team\teamPagesController@update']);
      Route::get('teamDeletePlayer/{id}',['as'=>'removePlayer','uses'=>'team\teamPagesController@destroy']);
+     Route::get('teamOverview',['as'=>'overview','uses'=>'team\teamPagesController@overview']);
+
+     //
+     Route::get('editTeam',['as'=>'teamUpdate','uses'=>'team\teamPagesController@teamUpdate']);
+     Route::post('editTeam',['as'=>'teamUpdate','uses'=>'team\teamPagesController@teamEdit']);
+     //staff
+     Route::post('createStaff',['as'=>'newStaff','uses'=>'team\teamStaffPagesController@store']);
+     Route::get('updateStaff/{id}',['as'=>'upStaff','uses'=>'team\teamStaffPagesController@edit']);
+     Route::post('updateStaff/{id}',['as'=>'upStaff','uses'=>'team\teamStaffPagesController@update']);
+     Route::get('showStaff/{id}',['as'=>'viewStaff','uses'=>'team\teamStaffPagesController@show']);
+     Route::get('removeStaff/{id}',['as'=>'downStaff','uses'=>'team\teamStaffPagesController@destroy']);
+
+
+
+     //change password
+     Route::get('/updatePassword',['as'=>'changePassword','uses'=>'team\teamLoginController@editPassword']);
+     Route::post('/updatePassword',['as'=>'changePassword','uses'=>'team\teamLoginController@updatePassword']);
  });
+
+

@@ -1,23 +1,27 @@
-@extends('admin.layout')
+@extends('adminTeam.layout')
 @section('title','Team Overview:staff')
 @section('content')
 
     <section id="team-overview">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('allTeams')}}"> Teams</a></li>
-            <li class="breadcrumb-item"> <a href="{{route('viewTeam',$team->name)}}">{{$team->name}}</a> </li>
-            <li class="breadcrumb-item active">{{$staff->fname.''.$staff->lname}}</li>
+            <li class="breadcrumb-item"><a href="{{route('overview')}}"> staffs</a></li>
+            <li class="breadcrumb-item active">{{$staff->fname.' '.$staff->lname}}</li>
         </ol>
         <div id="admin-box" class="well well">
+
             <header>
-                <h2>Team Overview</h2>
+                <h2>Update {{$staff->position}} information</h2>
                 <div id="separator"></div>
                 @if(session('res') && session('res')=='updated')<div class="center-block alert alert-success">{{session('res')}}</div> @endif
                 @if(session('error'))<div class="center-block alert alert-danger">{{session('error')}}</div> @endif
                 <div class="row">
                     <div class="col-sm-5">
-                        <img src="{{asset('images/team/'.$staff->image)}}" class="img-responsive">
-                        <h4>{{$staff->fname.' '.$staff->lname}}</h4>
+                        @if($staff->image=='')
+                            <img src="{!! asset('images/user.jpg') !!}" class="img-responsive">
+                        @else
+                            <img src="{{asset('images/team/'.$staff->image)}}" class="img-responsive">
+                        @endif
+                        <h4>{{$staff->fname." "}}  {{$staff->lname}}</h4>
                         <ul class="list-unstyled">
                             <li>Position: <span>{{$staff->position}}</span></li>
                             <li><p>{{$staff->description}}</p></li>
@@ -40,11 +44,11 @@
                                 <div class="row">
 
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="staff-fname" value="{{$staff->fname}}" name="staff_firstName" placeholder="first name">
+                                        <input type="text" class="form-control text-capitalize" id="staff-fname" value="{{$staff->fname}}" name="staff_firstName" placeholder="Chris">
                                         <p class="error">@if($errors->has('staff_firstName')) @endif {{$errors->first('staff_firstName')}}</p>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="staff-lname" value="{{$staff->lname}}" name="staff_lastName" placeholder="Last name">
+                                        <input type="text" class="form-control text-capitalize" id="staff-lname" value="{{$staff->lname}}" name="staff_lastName" placeholder="Owo">
                                         <p class="error">@if($errors->has('staff_lastName')) @endif {{$errors->first('staff_lastName')}}</p>
                                     </div>
                                 </div>
@@ -83,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" id="" class="btn btn-primary register-staff">Update</button>
+                                    <button type="submit" id="" class="btn vb-button register-staff">Update</button>
                                     <input type="reset"  hidden >
                                 </div>
 
@@ -101,7 +105,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('a#removestaff').on('click',function(){
-                if(confirm('Are you sure you want to remove this staff ')==false){
+                if(confirm('Delete staff?')==false){
                     return false;
                 }
             })

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\team;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -51,5 +52,28 @@ class teamLoginController extends Controller
             return redirect()->route('teamSignIn')->with('message','Email and Password incorrect');
         }
         return redirect()->route('teamDashboard');
+    }
+    //edit password
+
+    public function editPassword(){
+        return view('adminTeam.password');
+    }
+    public function updatePassword(Request $request){
+        $logged_team=auth('team')->user();
+        try{
+            //check if logged team is user
+            $team=Team::find($logged_team->id);
+
+            Validator::make($request->all(),[
+                'password'=>'required|confirmed|min:6|max:20',
+            ])->validate();
+            $team->password=bcrypt($request->get('password')) ;
+
+            if($team->save()){
+                return redirect()->route('changePassword')->with('res','Password Updated');
+            }
+        }catch (ModelNotFoundException $e){
+
+        }
     }
 }

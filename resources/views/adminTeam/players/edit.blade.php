@@ -4,7 +4,7 @@
 
     <section id="team-overview">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('teamPlayers')}}"> Players</a></li>
+            <li class="breadcrumb-item"><a href="{{route('overview')}}"> Players</a></li>
             <li class="breadcrumb-item active">{{$player->fname.' '.$player->lname}}</li>
         </ol>
         <div id="admin-box" class="well well">
@@ -18,31 +18,31 @@
                         <h4>{{$player->fname.' '.$player->lname}}</h4>
                         <ul class="list-unstyled">
                             <li>Position: <span>{{$player->position}}</span></li>
-                            <li>Height: <span>{{$player->height}}</span></li>
+                            <li>Height: <span>{{$player->feet.' '.$player->inches}}</span></li>
                             <li>Age: <span>Not available</span></li>
                         </ul>
                     </div>
                     <div class="col-sm-7">
                         <form class="form-horizontal" id="editPlayer" method="post" action="" enctype="multipart/form-data">
                             {{csrf_field()}}
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <input type="file" name="player_image" id="player-image" class="form-control">
                                         <p class="error">@if($errors->has('player_image')) @endif {{$errors->first('player_image')}}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="form-group">
                                 <label>Name</label>
                                 <div class="row">
 
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="player-fname" value="{{$player->fname}}" name="player_firstName" placeholder="first name">
+                                        <input type="text" class="form-control text-capitalize" id="player-fname" value="{{$player->fname}}" name="player_firstName" placeholder="Amina">
                                         <p class="error">@if($errors->has('player_firstName')) @endif {{$errors->first('player_firstName')}}</p>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="player-lname" value="{{$player->lname}}" name="player_lastName" placeholder="Last name">
+                                        <input type="text" class="form-control text-capitalize" id="player-lname" value="{{$player->lname}}" name="player_lastName" placeholder="Bugaje">
                                         <p class="error">@if($errors->has('player_lastName')) @endif {{$errors->first('player_lastName')}}</p>
                                     </div>
                                 </div>
@@ -51,6 +51,11 @@
                             <div id="yellow-separator"></div>
                             <div class="form-group">
                                 <div class="row">
+                                    <div class="col-xs-6">
+                                        <label>Image</label>
+                                        <input type="file" name="player_image" id="player-image" class="form-control">
+                                        <p class="error">@if($errors->has('player_image')) @endif {{$errors->first('player_image')}}</p>
+                                    </div>
                                     <div class="col-xs-6">
                                         <label>Position</label>
 
@@ -67,17 +72,49 @@
                                         </select>
                                         <p class="error">@if($errors->has('player_position')) @endif {{$errors->first('player_position')}}</p>
                                     </div>
-                                    <div class="col-xs-6">
-                                        <label>Height</label>
-                                        <input type="text" class="form-control" id="player-height" value="{{$player->height}}" name="player_height" placeholder="height">
-                                        <p class="error">@if($errors->has('player_height')) @endif {{$errors->first('player_height')}}</p>
-                                    </div>
+
                                 </div>
                             </div>
                             <div id="yellow-separator"></div>
                             <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label>Height</label>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <select name="player_height_feet" id="player-height-feet" class="form-control">
+                                                    <option value="">(feet)</option>
+                                                    @foreach($feets as $feet)
+                                                        @if(strtolower($feet)==$player->feet)
+                                                            <option value="{{$player->feet}}" selected>{{$player->feet}}</option>
+                                                        @else
+                                                            <option value="{{$feet}}">{{$feet}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                <p class="error"></p>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="player_height_inches" id="player-height-inches" class="form-control">
+                                                    <option value="">(inches)</option>
+                                                    @foreach($inches as $inch)
+                                                        @if(strtolower($inch)==$player->inches)
+                                                            <option value="{{$player->inches}}" selected>{{$player->inches}}</option>
+                                                        @else
+                                                            <option value="{{$inch}}">{{$inch}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                <p class="error"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" id="" class="btn btn-primary register-player">Update</button>
+                                    <button type="submit" id="" class="btn vb-button register-player">Update</button>
                                     <input type="reset"  hidden >
                                 </div>
 
@@ -95,7 +132,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('a#removePlayer').on('click',function(){
-                if(confirm('Are you sure you want to remove this player ')==false){
+                if(confirm('Remove this player?')==false){
                     return false;
                 }
             })
