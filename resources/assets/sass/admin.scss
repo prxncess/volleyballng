@@ -4,13 +4,16 @@ html,body{
 body{
   height: 100%;
 }
+
 @import"_variables";
+
+
 div#wrapper{
   height: 100%;
 }
 #well{
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 
 }
 div#separator{
@@ -38,7 +41,7 @@ div#admin-box{
   border-radius: 0px;
   @extend #center-block;
   header{
-    color: $blue;
+    color: $purple;
   }
 }
 #vb-button{
@@ -47,10 +50,21 @@ div#admin-box{
   border-radius: 50px;
   &:hover{
     background: white;
-    border: 2px solid $blue;
+    border: 1px solid $blue;
     color: $blue;
   }
 }
+.vb-button {
+  background: $purple;
+  color: white;
+  border-radius: 20px;
+  &:hover{
+    background-color: transparent;
+    border: 1px solid $purple;
+    color: $purple;
+  }
+}
+
 //addEventForm
 section#addEvent{
   form#event-form{
@@ -62,11 +76,11 @@ section#addEvent{
     //max-width: 550px;
     padding:2%;
     label{
-      color: $blue;
+      // color: $blue;
     }
     .form-control{
       max-width: 300px;
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     button{
       @extend #vb-button;
@@ -80,8 +94,8 @@ div#ad-Events{
   div.media{
     div.media-bottom{
       margin-top: 18px;
-      background: $yellow;
-      padding: 5px;
+      background: $whitesmoke;
+      padding: 20px;
     }
   }
 }
@@ -143,14 +157,14 @@ form#add-team{
 
   input.form-control{
     max-width: 400px;
-    border: 2px solid $blue;
+    // border: 2px solid $blue;
 
   }
   div#separator{
     max-width: 400px;
   }
   label{
-    color: $blue;
+    // color: $blue;
   }
   div#team-data{
 
@@ -205,11 +219,11 @@ form#add-team{
     button{
       background: white;
       color: $blue;
-      border: $blue 2px solid;
-      border-radius: 50px
+      border: $blue 1px solid;
+      border-radius: 20px;
     }
     input{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     color: $blue;
   }
@@ -232,12 +246,12 @@ section#team-overview{
     img{
       height: 150px;
       width: auto;
-      @extend #center-block;
+      // @extend #center-block;
     }
     ul{
       li{
-        line-height: 2;
-        font-size: 18px;
+        line-height: 28px;
+        font-size: 14px;
         span{
           text-transform: capitalize;
           color: $text-color;
@@ -251,11 +265,11 @@ section#team-overview{
 
     div#teamPlayers{
       .panel-heading{
-        background: $blue;
+        // background: $blue;
         padding: 1px 15px 15px;
         height: 50px;
         a{
-          color: white;
+          color: $purple;
           text-decoration: none;
 
         }
@@ -267,17 +281,17 @@ section#team-overview{
 
       }
       div.panel-body{
-        height: 320px;
+        min-height: 120px;
         overflow-y: scroll;
       }
       div.panel-footer{
-        background: #dce0c8;
+        // background: #dce0c8;
       }
     }
   form#editPlayer{
     padding: 10px;
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
 
   }
@@ -297,14 +311,14 @@ div#add-player{
         height: 180px;
         display: block;
       }
-      button{
-        background: $light-blue;
-        width: 180px;
-        height: 35px;
-        position: relative;
-        border-radius: 0;
-        border: none;
-      }
+      // button{
+      //   background: $light-blue;
+      //   width: 180px;
+      //   height: 35px;
+      //   position: relative;
+      //   border-radius: 0;
+      //   border: none;
+      // }
 
       //cursor: pointer;
       input[type='file']{
@@ -348,19 +362,23 @@ div#add-player{
       }
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     label{
-      color: $blue;
-      font-weight: 100;
+      // color: $blue;
+      font-weight: 400;
     }
 
     button{
-      margin-top: 16px;
+      // margin-top: 16px;
       background: white;
       color: $blue;
-      border-radius: 50px;
-      border: 2px solid $blue;
+      border-radius: 20px;
+      border: 1px solid $blue;
+      &:hover{
+        color: $white;
+        background: $blue;
+      }
     }
     //member photo
 
@@ -370,11 +388,76 @@ section#vb-team-edit{
   form{
     padding: 10px;
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
       max-width: 450px;
     }
 
   }
 }
 
+.btn-purple {
+  color: $purple;
+  background-color: transparent;
+  border: 1px solid $purple;
+  border-radius: 20px;
+  &:hover {color: white; background-color: $purple;}
+}
 
+a {
+  text-decoration: none;
+  color: $purple;
+  &:hover{color: black;}
+}
+
+// Helper classes
+.right-10 {
+  margin-right: 10px;
+}
+.right-5 {
+  margin-right: 5px;
+}
+.top-bottom-padding-40 {
+  padding: 40px 0;
+}
+.bottom-40 {
+  margin-bottom: 40px;
+}
+.top-40 {
+  margin-top: 40px;
+}
+.bottom-20 {
+  margin-bottom: 20px;
+}
+.top-20 {
+  margin-top: 20px;
+}
+.bottom-10 {
+  margin-bottom: 10px;
+}
+.top-10 {
+  margin-top: 10px;
+}
+.float-right {
+  float: right !important;
+}
+// End of helper classes
+
+.gray-background {
+  background-color: $whitesmoke;
+}
+.gray-separator {
+  height: 1px;
+  background-color: $gray;
+}
+.purple-separator {
+  height: 1px;
+  background-color: $purple;
+}
+
+// Media queries
+@media (min-width: 320px) and (max-width: 767px) {
+  .float-right {
+    float: none !important;
+  }
+}
+// End of media queries
