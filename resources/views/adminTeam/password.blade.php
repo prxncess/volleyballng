@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label class="control-label">Password Confirm</label>
+                            <label class="control-label">Confirm password</label>
                             <input type="password" class="form-control" title="confirm password"  id="password-confirm" name="password_confirmation">
                             <p class="error">@if($errors->has('password_confirmation')) {{$errors->first('password_confirmation')}} @endif</p>
                         </div>
