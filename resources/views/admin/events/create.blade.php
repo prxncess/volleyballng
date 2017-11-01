@@ -6,7 +6,7 @@
         <div id="container">
             <div class="well well" id="admin-box">
                 <header>
-                    <h3><i class="fa fa-plus"></i> Add event</h3>
+                    <h3>New event</h3>
                     <div id="separator"></div>
                 </header>
                 <form method="post" class="form-horizontal" enctype="multipart/form-data" id="event-form">
@@ -23,7 +23,7 @@
 
                         <div class="col-sm-12">
                             <label>Event Title</label>
-                            <input type="text" class="form-control" placeholder="event title" value="{{old('event_title')}}" id="event-title" name="event_title">
+                            <input type="text" class="form-control" placeholder="e.g. Battle of the titans" value="{{old('event_title')}}" id="event-title" name="event_title">
                             <p class="error">@if($errors->has('event_title')) {{$errors->first('event_title')}} @endif</p>
                         </div>
                     </div>
@@ -67,12 +67,12 @@
                             <p class="error">@if($errors->has('event_description')) {{$errors->first('event_description')}} @endif</p>
                         </div>
                     </div>
-                    <h5><i class="fa fa-address-book-o"></i> Organizers Information</h5>
+                    <h5><i class="fa fa-address-book-o"></i> Organizer's Information</h5>
                     <div id="separator"></div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label>Organizers Name</label>
-                            <input type="text" class="form-control" placeholder="Event Organizer"  value="{{old('event_organizer')}}" id="event-organizer" name="event_organizer">
+                            <label>Organizer's Name</label>
+                            <input type="text" class="form-control" placeholder="e.g. Chi Robo"  value="{{old('event_organizer')}}" id="event-organizer" name="event_organizer">
                             <p class="error">@if($errors->has('event_organizer')) {{$errors->first('event_organizer')}} @endif</p>
                         </div>
                     </div>
@@ -80,12 +80,12 @@
 
                         <div class="col-sm-7">
                             <label>Email</label>
-                            <input type="text" class="form-control" placeholder="Email" id="event_email"  value="{{old('event_email')}}" name="event_email">
+                            <input type="text" class="form-control" placeholder="chi@volleyball.ng" id="event_email"  value="{{old('event_email')}}" name="event_email">
                             <p class="error">@if($errors->has('event_email')) {{$errors->first('event_email')}} @endif</p>
                         </div>
                         <div class="col-sm-5">
                             <label>Phone</label>
-                            <input type="text" class="form-control" placeholder="phone" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
+                            <input type="text" class="form-control" placeholder="08021234567" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
                             <p class="error">@if($errors->has('event_phone')) {{$errors->first('event_phone')}} @endif</p>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-default">Create</button>
+                            <button type="submit" class="float-right btn vb-button">Create event</button>
                         </div>
 
                     </div>
