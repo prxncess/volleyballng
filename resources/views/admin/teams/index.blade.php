@@ -6,12 +6,12 @@
         <div class="well well" id="admin-box">
             <header>
                 <h3>Teams</h3>
-                <a href="{{route('addTeam')}}" class="pull-right"><i class="fa fa-plus"></i> New team</a>
                 <div id="separator"></div>
+                <a href="{{route('addTeam')}}" class="float-right btn btn-purple top-10 bottom-10"><i class="fa fa-plus right-5"></i> New team</a>
             </header>
             @if($teams->isNotEmpty())
                 {{--display all teams--}}
-                <div class="row" id="team">
+                <div class="row top-20" id="team">
                     @foreach($teams as $team)
                         <div class="col-md-6 co-xs-12 col-lg-6 col-sm-6">
                             <a href="{{route('viewTeam',$team->name)}}">
@@ -23,7 +23,7 @@
                 </div>
                 @else
                 {{--no teams yet--}}
-                <div class="alert alert-warning alert-dismissable">There currently no teams at the moment</div>
+                <div class="alert alert-warning alert-dismissable">No teams yet - click the 'New team' button to get started</div>
             @endif
         </div>
     </section>
