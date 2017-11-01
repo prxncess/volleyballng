@@ -23,21 +23,21 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Name</label>
-                            <input type="text" class="form-control" value="{{$team->name}}" id="team-name" name="teamName" PLACEHOLDER="Team Name">
+                            <input type="text" class="form-control text-capitalize" value="{{$team->name}}" id="team-name" name="teamName" PLACEHOLDER="damaturu ballers">
                             <p class="error">@if($errors->has('teamName')) {{$errors->first('teamName')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Contact</label>
-                            <input type="text" class="form-control" value="{{$team->contact}}" id="team-contact" name="teamContact" PLACEHOLDER="Team Email">
+                            <input type="text" class="form-control" value="{{$team->contact}}" id="team-contact" name="teamContact" PLACEHOLDER="db@gmail.com">
                             <p class="error">@if($errors->has('teamContact')) {{$errors->first('teamContact')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Phone</label>
-                            <input type="text" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="team mobile Number">
+                            <input type="text" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="08021234567">
                             <p class="error">@if($errors->has('teamPhone')) {{$errors->first('teamPhone')}} @endif</p>
                         </div>
                     </div>
@@ -57,14 +57,14 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label class="control-label">Password Confirm</label>
+                            <label class="control-label">Confirm password</label>
                             <input type="password" class="form-control"  id="password-confirm" name="password_confirmation">
                             <p class="error">@if($errors->has('password_confirmation')) {{$errors->first('password_confirmation')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn vb-button">Update</button>
                         </div>
                     </div>
                 </div>
