@@ -4,13 +4,14 @@
             <button type="button" id="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <div class="modal-body">
                 <div class="row"></div>
+                <h4>New Player</h4>
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="index" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <div class="" id="player-img">
                         <img src="{!! asset('images/user.jpg') !!}" id="show-player-img">
                         <button type="button" >
-                            upload image
+                            Upload image
                         </button>
 
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
@@ -21,11 +22,11 @@
                         <div class="row">
 
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="player-fname" name="player_firstName" placeholder="first name">
+                                <input type="text" class="form-control" id="player-fname" name="player_firstName" placeholder="Chinenye">
                                 <p class="error"></p>
                             </div>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="player-lname" name="player_lastName" placeholder="Last name">
+                                <input type="text" class="form-control" id="player-lname" name="player_lastName" placeholder="Onyegbule">
                                 <p class="error"></p>
                             </div>
                         </div>
@@ -34,7 +35,7 @@
                     <div id="yellow-separator"></div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-sm-6">
                                 <label>Position</label>
                                 <select name="player_position" id="player-position" class="form-control">
                                     <option value="">select one</option>
@@ -48,7 +49,7 @@
                                 </select>
                                 <p class="error"></p>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-sm-6">
                                 <label>Height</label>
                                 <input type="text" class="form-control" id="player-height" name="player_height" placeholder="height">
                                 <p class="error"></p>
@@ -56,16 +57,19 @@
                         </div>
                     </div>
                     <div id="yellow-separator"></div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <button type="button" id="register-players" class="btn btn-primary register-player">Register Player</button>
-                            <input type="reset"  hidden >
-                        </div>
-
-                    </div>
+                    
 
 
                 </form>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                  <div class="col-sm-12">
+                      <button type="button" id="register-players" class="btn vb-button">Register Player</button>
+                      <input type="reset"  hidden >
+                  </div>
+
+              </div>
             </div>
         </div>
     </div>
