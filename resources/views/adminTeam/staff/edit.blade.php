@@ -105,7 +105,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('a#removestaff').on('click',function(){
-                if(confirm('Delete this staff?')==false){
+                if(confirm('Delete staff?')==false){
                     return false;
                 }
             })
