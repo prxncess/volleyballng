@@ -225,7 +225,7 @@ section#team-overview{
   form#editPlayer{
     padding: 10px;
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
 
   }
@@ -274,12 +274,17 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background: $purple;
+        color: white;
         width: 180px;
         height: 35px;
         position: relative;
         border-radius: 0;
         border: none;
+        &:hover {
+          background-color: transparent;
+          color: $purple;
+        }
       }
 
       //cursor: pointer;
@@ -296,10 +301,10 @@ div#add-player{
       }
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     label{
-      color: $blue;
+      // color: $blue;
       font-weight: 100;
     }
 
@@ -308,7 +313,7 @@ div#add-player{
       background: white;
       color: $blue;
       border-radius: 50px;
-      border: 2px solid $blue;
+      border: 1px solid $blue;
     }
     //member photo
 
