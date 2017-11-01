@@ -10,7 +10,7 @@
                     {{--display team image--}}
                     <img src="{{asset('images/team/group/'.$team->team_image)}}" class="img-responsive">
                     @else
-                <p>No image uploaded yet, <a href="{{route('teamUpdate')}}">click</a>  here to upload</p>
+                <p>No image uploaded yet, <a href="{{route('teamUpdate')}}">click here</a> to upload</p>
                     @endif
 
             </div>
