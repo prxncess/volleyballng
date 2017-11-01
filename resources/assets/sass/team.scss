@@ -153,7 +153,7 @@ div.alert-warning{
   color: white;
   border-radius: 50px;
   &:hover{
-    background: white;
+    background-color: transparent;
     border: 1px solid $blue;
     color: $blue;
   }
@@ -284,6 +284,7 @@ div#add-player{
         &:hover {
           background-color: transparent;
           color: $purple;
+          border: 1px solid $purple;
         }
       }
 
@@ -310,7 +311,7 @@ div#add-player{
 
     button{
       margin-top: 16px;
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 50px;
       border: 1px solid $blue;
