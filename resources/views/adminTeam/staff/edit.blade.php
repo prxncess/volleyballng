@@ -44,11 +44,11 @@
                                 <div class="row">
 
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="staff-fname" value="{{$staff->fname}}" name="staff_firstName" placeholder="first name">
+                                        <input type="text" class="form-control text-capitalize" id="staff-fname" value="{{$staff->fname}}" name="staff_firstName" placeholder="Chris">
                                         <p class="error">@if($errors->has('staff_firstName')) @endif {{$errors->first('staff_firstName')}}</p>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="staff-lname" value="{{$staff->lname}}" name="staff_lastName" placeholder="Last name">
+                                        <input type="text" class="form-control text-capitalize" id="staff-lname" value="{{$staff->lname}}" name="staff_lastName" placeholder="Owo">
                                         <p class="error">@if($errors->has('staff_lastName')) @endif {{$errors->first('staff_lastName')}}</p>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" id="" class="btn btn-primary register-staff">Update</button>
+                                    <button type="submit" id="" class="btn vb-button register-staff">Update</button>
                                     <input type="reset"  hidden >
                                 </div>
 
@@ -105,7 +105,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('a#removestaff').on('click',function(){
-                if(confirm('Are you sure you want to remove this staff ')==false){
+                if(confirm('Delete this staff?')==false){
                     return false;
                 }
             })
