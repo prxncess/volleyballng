@@ -19,22 +19,22 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label>Name</label>
-                            <input type="text" class="form-control" disabled value="{{$team->name}}" id="team-name" name="teamName" PLACEHOLDER="Team Name">
+                            <label>Team name</label>
+                            <input type="text" class="form-control text-capitalize" disabled value="{{$team->name}}" id="team-name" name="teamName" PLACEHOLDER="the uyo checkers">
 
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Contact</label>
-                            <input type="text" class="form-control" value="{{$team->contact}}" id="team-contact" name="teamContact" PLACEHOLDER="Team Email">
+                            <input type="text" class="form-control" value="{{$team->contact}}" id="team-contact" name="teamContact" PLACEHOLDER="tuc@volleyball.ng">
                             <p class="error">@if($errors->has('teamContact')) {{$errors->first('teamContact')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Phone</label>
-                            <input type="text" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="team mobile Number">
+                            <input type="text" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="08021234567">
                             <p class="error">@if($errors->has('teamPhone')) {{$errors->first('teamPhone')}} @endif</p>
                         </div>
                     </div>
