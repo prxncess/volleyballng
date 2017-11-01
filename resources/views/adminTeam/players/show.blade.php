@@ -38,7 +38,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('a#removePlayer').on('click',function(){
-                if(confirm('Are you sure you want to remove this player ')==false){
+                if(confirm('Remove this player?')==false){
                     return false;
                 }
             })
