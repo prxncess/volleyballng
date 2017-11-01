@@ -49,7 +49,7 @@ div#admin-box{
   color: white;
   border-radius: 50px;
   &:hover{
-    background: white;
+    background-color: transparent;
     border: 1px solid $blue;
     color: $blue;
   }
@@ -217,10 +217,14 @@ form#add-team{
     display: inline-block;
 
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
       border: $blue 1px solid;
       border-radius: 20px;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
     input{
       // border: 2px solid $blue;
@@ -234,8 +238,9 @@ form#add-team{
     border: 1px solid $blue;
     border-radius: 20px;
     &:hover{
-      color: white;
-      background: $light-blue;
+      color: $purple;
+      background-color: transparent;
+      border: 1px solid $purple
     }
   }
 
@@ -340,12 +345,18 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background-color: $purple;
+        color: white;
         width: 180px;
         height: 35px;
         position: relative;
-        border-radius: 0;
+        border-radius: 20;
         border: none;
+        &:hover{
+          background-color: transparent;
+          color: $purple;
+          border: 1px solid $purple
+        }
       }
 
       //cursor: pointer;
@@ -371,13 +382,13 @@ div#add-player{
 
     button{
       // margin-top: 16px;
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 20px;
       border: 1px solid $blue;
       &:hover{
         color: $white;
-        background: $blue;
+        background-color: $blue;
       }
     }
     //member photo
