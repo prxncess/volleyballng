@@ -6,7 +6,7 @@
 
     <section id="team-overview">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('teamPlayers')}}"> Players</a></li>
+            <li class="breadcrumb-item"><a href="{{route('overview')}}"> Players</a></li>
             <li class="breadcrumb-item active">{{$player->fname.' '.$player->lname}}</li>
         </ol>
         <div id="admin-box" class="well well">
@@ -21,11 +21,11 @@
                     <div class="col-sm-7">
                         <ul class="list-unstyled">
                             <li>Position: <span>{{$player->position}}</span></li>
-                            <li>Height: <span>{{$player->height}}</span></li>
+                            <li>Height: <span>{{$player->feet.' '.$player->inches}}</span></li>
                             <li>Age: <span>Not available</span></li>
                         </ul>
-                        <a href="{{route('updatePlayer',[$player->id])}}" id="editPlayer" class="btn btn-warning"><i class="fa fa-edit"></i> Edit </a>
-                        <a href="{{route('removePlayer',[$player->id])}}" id="removePlayer" class="btn btn-danger"><i class="fa fa-remove"></i> Remove</a>
+                        <a href="{{route('updatePlayer',[$player->id])}}" id="editPlayer" class="btn btn-purple bottom-20"><i class="fa fa-edit"></i> Edit </a>
+                        <a href="{{route('removePlayer',[$player->id])}}" id="removePlayer" class="btn btn-purple bottom-20"><i class="fa fa-remove"></i> Remove</a>
                     </div>
                 </div>
             </header>

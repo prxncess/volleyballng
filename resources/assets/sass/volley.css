@@ -189,9 +189,48 @@ body {
   body a {
     text-decoration: none;
     color: black; }
-  body .horizontal-right-10 {
+    body a:hover {
+      color: #4449ca;
+      text-decoration: none; }
+  body .btn-purple {
+    color: #4449ca;
+    background-color: none;
+    border: 1px solid #4449ca;
+    border-radius: 20px; }
+    body .btn-purple:hover {
+      color: white;
+      background-color: #4449ca; }
+  body .right-10 {
     margin-right: 10px; }
+  body .right-5 {
+    margin-right: 5px; }
+  body .top-bottom-padding-40 {
+    padding: 40px 0; }
+  body .bottom-40 {
+    margin-bottom: 40px; }
+  body .top-40 {
+    margin-top: 40px; }
+  body .bottom-20 {
+    margin-bottom: 20px; }
+  body .top-20 {
+    margin-top: 20px; }
+  body .float-right {
+    float: right !important; }
 
+.gray-background {
+  background-color: #fdfdfd; }
+
+.gray-separator {
+  height: 1px;
+  background-color: #e6e6e6; }
+
+.purple-separator {
+  height: 1px;
+  background-color: #4449ca; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .float-right {
+    float: none !important; } }
 div#background {
   background-repeat: no-repeat;
   background: white;
@@ -345,7 +384,7 @@ div#wrapper {
   margin: 61px  0% 10%; }
   div#wrapper div#yellow-separator {
     height: 1px;
-    background: #4449ca;
+    background: #e8b617;
     margin-top: 7px;
     margin-bottom: 25px; }
 
@@ -354,6 +393,8 @@ section#content {
   section#content header h2 {
     color: #4449ca;
     font-weight: 500; }
+    section#content header h2:hover {
+      color: #4449ca; }
   section#content aside {
     padding: 10px;
     background: white;
@@ -364,7 +405,7 @@ section#our-home span.pull-right {
 section#our-home header#tagline h1 {
   font-weight: 100;
   font-size: 36px;
-  color: #4449ca; }
+  color: #6e6e6e; }
 section#our-home header#tagline p {
   text-align: center; }
 section#our-home article {
@@ -411,7 +452,7 @@ section#our-home article#vb-home-team {
     section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide div#box {
       position: relative; }
     section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide div#more-photos, section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview article#vb-home-team div.swiper-wrapper div.swiper-slide div#more-videos {
-      background: rgba(179, 33, 22, 0.9);
+      background: rgba(68, 73, 202, 0.8);
       color: white;
       font-size: 20px;
       position: absolute;
@@ -448,21 +489,22 @@ section#our-home article#vb-home-team {
       width: 100%;
       max-height: 255px; }
     section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide header {
-      box-shadow: 0px 2px 9px 0px black;
-      background: rgba(179, 33, 22, 0.9);
+      box-shadow: 0px 2px 9px 0px #6e6e6e;
+      background: white;
       padding: 10px; }
       section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide header div#bar {
         height: 10px;
-        background: white;
+        background: #e6e6e6;
         border-radius: 5px; }
       section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide header p a {
-        color: white;
+        color: #4449ca;
         margin-top: 10px;
         line-height: 2;
         text-decoration: none;
-        font-size: 15px; }
+        font-size: 18px;
+        font-weight: 600; }
         section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide header p a:hover {
-          color: black; }
+          color: #4449ca; }
   section#our-home article#vb-home-team header {
     /*position: absolute;
     padding: 90px 50px;
@@ -499,7 +541,7 @@ section#our-home div#event-preview div#preview:hover div#more-photos, section#ou
   bottom: 0;
   transition: .5s ease; }
 section#our-home div#event-preview div#preview div#more-photos, section#our-home div#event-preview div#preview div#more-videos {
-  background: #e8b617cc;
+  background: rgba(68, 73, 202, 0.8);
   color: white;
   font-size: 20px;
   position: absolute;
@@ -525,12 +567,11 @@ section#our-home div#event-preview div#preview div#more-photos, section#our-home
 section#our-home div#event-preview div#preview div#more-videos {
   background: rgba(68, 73, 202, 0.8); }
 section#our-home div#event-preview div#preview h4 {
-  background: #e8b617;
+  background: white;
   margin-top: 0px;
-  padding: 7px;
-  color: black; }
-section#our-home div#event-preview div#preview h4.blue {
-  background: #4449ca; }
+  padding: 20px;
+  color: #6e6e6e;
+  box-shadow: 0px 2px 9px 0px #6e6e6e; }
 
 article div#media {
   width: 100%;
@@ -868,7 +909,7 @@ div#slides {
     div#slides div.swiper-wrapper div.swiper-slide div#box {
       position: relative; }
     div#slides div.swiper-wrapper div.swiper-slide div#more-photos, div#slides div.swiper-wrapper div.swiper-slide section#our-home div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview div#slides div.swiper-wrapper div.swiper-slide div#more-videos {
-      background: #e8b617cc;
+      background: rgba(68, 73, 202, 0.8);
       color: white;
       font-size: 20px;
       position: absolute;
@@ -905,21 +946,23 @@ div#slides {
       width: 100%;
       max-height: 255px; }
     div#slides div.swiper-wrapper div.swiper-slide header {
-      box-shadow: 0px 2px 9px 0px black;
-      background: #e8b617;
+      box-shadow: 0px 2px 9px 0px #6e6e6e;
+      background: white;
       padding: 10px;
       height: 70px; }
       div#slides div.swiper-wrapper div.swiper-slide header div#bar {
         height: 10px;
-        background: #4449ca;
+        background: #e8b617;
         border-radius: 5px; }
       div#slides div.swiper-wrapper div.swiper-slide header p a {
-        color: white;
+        color: #4449ca;
         margin-top: 10px;
         line-height: 2;
-        text-decoration: none; }
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600; }
         div#slides div.swiper-wrapper div.swiper-slide header p a:hover {
-          color: black; }
+          color: #4449ca; }
 
 div#events-subnav {
   padding: 0;

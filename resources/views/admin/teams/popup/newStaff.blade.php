@@ -1,9 +1,7 @@
 <div class="modal fade" role="dialog" aria-labelledby="MyModalLabel" id="add-manager" tabindex="1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
+            <button type="button" id="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <div class="modal-body">
                 <div class="res">
 
@@ -21,8 +19,8 @@
                             <div id="member-info">
                                 <div class="" id="manager-img">
                                     <img src="{!! asset('images/user.jpg') !!}" id="show-img">
-                                    <button type="button" class="btn top-20 bottom-20">
-                                        Upload image
+                                    <button type="button" >
+                                        upload image
                                     </button>
                                     {{--<l class="fa fa-plus"></l>--}}
                                     <input type="file" name="manager_photo" id="manager-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
@@ -43,7 +41,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div id="separator"></div> -->
+                                <div id="separator"></div>
                                 <div class="form-group">
                                     <label>Position</label>
                                     <div class="row">
@@ -58,7 +56,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div id="separator"></div> -->
+                                <div id="separator"></div>
                                 <div class="form-group">
                                     <label>Description</label>
                                     <div class="row">
@@ -69,23 +67,16 @@
                                     </div>
 
                                 </div>
-                                <!-- <div id="separator"></div> -->
+                                <div id="separator"></div>
 
 
                             </div>
                         </div>
+                        <input type="reset" hidden>
+                        <button type="button" value="managerInfo" id="vb-button" class="addStaff btn btn-default">save</button>
                     </fieldset>
 
                 </form>
-            </div>
-            <div class="modal-footer">
-              <div class="form-group">
-                  <div class="col-sm-12">
-                      <button type="button" value="managerInfo" id="vb-button" class="addStaff btn btn-default">Save</button>
-                      <input type="reset"  hidden >
-                  </div>
-
-              </div>
             </div>
         </div>
     </div>

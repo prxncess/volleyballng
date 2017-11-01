@@ -31,14 +31,13 @@
                         <div class="col-sm-7">{{$event->description}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Start date:</strong> {{$event->start_date}}</div>
-                        <div class="col-sm-7"><strong>End date: </strong>{{$event->end_date}}</div>
+                        <div class="col-sm-5"><strong>Starting on:</strong> {{$event->start_date}}</div>
+                        <div class="col-sm-7"><strong>To end on: </strong>{{$event->end_date}}</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-5"><strong>Location</strong></div>
-                        <div class="col-sm-7">{{$event->e_location}}</div>
+                        <div class="col-sm-7">{{$event->e_location}} state</div>
                     </div>
-                    <div class="top-40"></div>
                     <h4><i class="fa fa-user"></i> Organizer information</h4>
                     <div id="separator"></div>
                     <div class="row">
@@ -59,7 +58,7 @@
                             <form method="post" action="{{route('showEvent',$event->slug)}}">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-7">
                                         <select class="form-control" name="status">
                                             @foreach($status as $statu)
                                                 @if($statu==$event->status)
@@ -71,8 +70,8 @@
 
                                         </select>
                                     </div>
-                                    <div class="col-sm-7">
-                                        <button type="submit" class="btn vb-button">Update status</button>
+                                    <div class="col-sm-5">
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
 
@@ -81,7 +80,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple" id="delete-event"><i class="fa fa-trash right-5"></i> Delete event</a>
+                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-danger " id="delete-event">Delete</a>
                         </div>
                     </div>
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
-use App\StaffTeam;
+use App\Staff;
 use App\Team;
 use App\Player;
 use Image;
@@ -28,21 +28,56 @@ class RegisterController extends Controller
             //validate request
             //get all register teams
            // $savedTeamEmail=Team::get('contact');
+            $messages=[
+                'teamLogo.required'=>'Please upload your team logo',
+                'teamImage.required'=>'Please upload your entire team photo',
+                'teamImage.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
+                'teamLogo.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
+                'teamLogo.max'=>'file uploaded exceeds 1mb',
+                'teamImage.max'=>'file uploaded exceeds 2mb',
+            ];
             $validator=Validator::make($request->all(),[
                 'teamName'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'teamContact'=>'required|email|unique:teams,contact',
             'teamPhoneNumber'=>'required|unique:teams,phone',
+                'teamLogo'=>'required|mimes:jpeg,png,jpg|max:1024',
+                'teamImage'=>'required|mimes:jpeg,png,jpg|max:2024'
             ]);
             $errors= $validator->errors();
             if($validator->fails()){
                 return response()->json(['status'=>'error','errors'=>$errors]);
             }
+            //save logo
+            $teamLogo=$request->file('teamLogo');
+            $newImageName=time().'.'.$teamLogo->getClientOriginalExtension();
+            $teamFolder='images/team/'.$newImageName;
+            //resize and move image
+            Image::make($teamLogo)->resize(200,200,function($c){
+                $c->aspectRatio();
+                $c->upsize();
+            })->orientate()->save($teamFolder);
+
+
+            //save team group
+            //team image
+            $teamImage=$request->file('teamImage');
+            $newTeamName=time().'.'.$teamImage->getClientOriginalExtension();
+            $teamFolder='images/team/group/'.$newTeamName;
+            //resize and move image
+            Image::make($teamImage)->resize(1200,550,function($c){
+                $c->aspectRatio();
+                $c->upsize();
+            })->orientate()->save($teamFolder);
             //save detail to data base and return team_id
+            //generate password
+
            $team=Team::create([
                'name'=>$request->get('teamName'),
                'contact'=>$request->get('teamContact'),
                'active'=>0,
-               'phone'=>$request->get('teamPhoneNumber')
+               'phone'=>$request->get('teamPhoneNumber'),
+               'logo'=>$newImageName,
+               'team_image'=>$newTeamName,
            ]);
             //return response()->json(['status'=>'next']);
             if($team->save()){
@@ -63,7 +98,7 @@ class RegisterController extends Controller
             $validator=Validator::make($request->all(),[
                 'coachFirstName'=>'required|regex:/^[A-Za-z]{3,15}$/i',
                 'coachLastName'=>'required|regex:/^[A-Za-z]{3,10}$/i',
-                'coach_photo'=>'image|mimes:jpeg,png,jpg|max:1024',
+                'coach_photo'=>'image|max:1024',
             ]);
             $errors=$validator->errors();//store errors
             if($validator->fails()){
@@ -83,7 +118,7 @@ class RegisterController extends Controller
             //save details to database
             //check if team id is available
             //save info to database
-                $newStaff= StaffTeam::create([
+                $newStaff= Staff::create([
                     'fname'=>$request->get('coachFirstName'),
                     'lname'=>$request->get('coachLastName'),
                     'position'=>'coach',
@@ -92,6 +127,8 @@ class RegisterController extends Controller
 
                 ]);
                 if($newStaff->save()){
+                    $team=Team::find($request->get('team_index'));
+                    $team->staff()->attach($newStaff->id);
                     return response()->json(['status'=>'next',]);
                 }
 
@@ -116,7 +153,7 @@ class RegisterController extends Controller
 
                 'managerFirstName'=>'required|regex:/^[A-Za-z]{3,15}$/i',
                 'managerLastName'=>'required|regex:/^[A-Za-z]{3,10}$/i',
-                'managerImage'=>'image|mimes:png,jpg,jpeg,x-PNG,bmp|max:1024'
+                'managerImage'=>'image|max:1024'
             ]);
             $errors= $validator->errors();//store errors
             //if validation fails
@@ -139,7 +176,7 @@ class RegisterController extends Controller
             //check if team id is available
 
                 //save info to database
-                $newStaff= StaffTeam::create([
+                $newStaff= Staff::create([
                     'fname'=>$request->get('managerFirstName'),
                     'lname'=>$request->get('managerLastName'),
                     'position'=>'Manager',
@@ -148,6 +185,8 @@ class RegisterController extends Controller
 
                 ]);
                 if($newStaff->save()){
+                    $team=Team::find($request->get('team_index'));
+                    $team->staff()->attach($newStaff->id);
                     return response()->json(['status'=>'next']);
                 }
             return response()->json(['status'=>'systemError','error'=>'an error occurred']);
@@ -191,6 +230,8 @@ class RegisterController extends Controller
 
             if($player->save()){
                 //gets all players
+                $team=Team::find($request->get('team_id'));
+                $team->players()->attach($player->id);
                 $team_players=Player::whereTeam_id($request->get('team_id'))->get();
                 return response()->json(['status'=>'player_saved','newPlayers'=>$team_players]);
             }

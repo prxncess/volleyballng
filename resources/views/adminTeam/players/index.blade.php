@@ -4,25 +4,22 @@
     @endsection
 @section('content')
     <section>
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item-active">Players</li>
-      </ol>
         <div id="admin-box" class="well">
             <header>
                 <h2>Players</h2>
-                <div id="" class="purple-separator"></div>
+                <div id="separator"></div>
                 @if(session('res'))
                     <div class="alert alert-success">
                         {!! session('res') !!}
                     </div>
                 @endif
-                <button class="float-right btn vb-button top-20" id=""><i class="fa fa-plus"></i> Add Player</button>
-                <p class="top-20"><small><i><b>Note</b>: A maximum of 9 players are allowed for a team.</i></small></p>
+                <small><i><b>Attention</b>: A maximum of 9 players are allow for a team.</i></small>
+                <button   class="pull-right btn btn-primary add-player" id="vb-button"><i class="fa fa-plus"></i> Add Player</button>
             </header>
             <div id="tm-players">
                 @if($team->players->isEmpty())
-                    <div class="row">
-                        <div class="col-xs-12 top-20 bottom-40">No players yet - click 'Add player' to get started...</div>
+                    <div class="alert alert-warning">
+                        You currently have no players at the moment. Please Add some players
                     </div>
                 @else
                     {{--dis players--}}

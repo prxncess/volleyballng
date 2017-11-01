@@ -1263,11 +1263,11 @@ form.add-team{
 
   input.form-control{
     max-width: 400px;
-    border: 2px solid $blue;
+    // border: 2px solid $blue;
 
   }
   label{
-    color: $blue;
+    // color: $blue;
   }
   div#team-data{
 
@@ -1340,8 +1340,8 @@ form.add-team{
     border: 1px solid $blue;
     border-radius: 20px;
     &:hover{
-      color: white;
-      background: $light-blue;
+      color: $purple;
+      background: white;
     }
   }
 

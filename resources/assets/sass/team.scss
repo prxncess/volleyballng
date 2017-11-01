@@ -112,7 +112,7 @@ div#page-wrapper{
 nav#team-menu{
   background: url("../images/volleyballng_heade2re.png") no-repeat center center;
   background-size: auto auto;
-  background-size: cover;
+  background-size: 100% 60px;
   border: none;
 
   a.navbar-brand img {
@@ -165,7 +165,73 @@ div#admin-box{
   @extend #center-block;
   header{
     color: $blue;
-    // margin: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+.btn-purple {
+  color: #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
+  border-radius: 20px;
+}
+section#team-overview{
+  div#teamInfo{
+    img{
+      height: 150px;
+      width: auto;
+      @extend #center-block;
+    }
+    ul{
+      li{
+        line-height: 2;
+        font-size: 18px;
+        span{
+          text-transform: capitalize;
+          color: $text-color;
+        }
+        a{
+
+        }
+      }
+    }
+  }
+
+  div#teamPlayers{
+    .panel-heading{
+      background: $blue;
+      padding: 1px 15px 15px;
+      height: 50px;
+      a{
+        color: white;
+        text-decoration: none;
+
+      }
+      h3{
+        font-size: 15px;
+      }
+
+      border-radius: 0px;
+
+    }
+    div.panel-body{
+      height: 320px;
+      overflow-y: scroll;
+    }
+    div.panel-footer{
+      background: #dce0c8;
+    }
+  }
+  form#editPlayer{
+    padding: 10px;
+    .form-control{
+      border: 2px solid $blue;
+    }
+
+  }
+
+  div#teamStaff{
+    @extend #teamPlayers;
   }
 }
 div#add-player{
@@ -238,11 +304,11 @@ div#add-player{
     }
 
     button{
-      // margin-top: 16px;
+      margin-top: 16px;
       background: white;
       color: $blue;
       border-radius: 50px;
-      border: 1px solid $blue;
+      border: 2px solid $blue;
     }
     //member photo
 
@@ -255,3 +321,45 @@ div#tm-players{
 
   }
 }
+.gray-separator {
+  height: 1px;
+  background-color: #e6e6e6;
+}
+.top-20 {
+  margin-top: 20px;
+}
+.bottom-20 {
+  margin-bottom: 20px;
+}
+section#upTeamInfo{
+  div#team-logo{
+    img#show-logo-img{
+      width: 25%;
+      // height: 180px;
+      display: block;
+
+    }
+    input#logo{
+      display: none;
+    }
+    button{
+      margin-left: 41px;
+      margin-top: 12px;
+      padding: 5px;
+    }
+  }
+
+}
+div#teamInfo{
+  ul{
+    li{
+      line-height: 28px;
+      font-size: 14px;
+    }
+  }
+}
+
+/*
+section#team-overview div#teamPlayers .panel-heading h3, section#team-overview div#teamStaff .panel-heading h3 {
+  font-size: 15px;
+}*/

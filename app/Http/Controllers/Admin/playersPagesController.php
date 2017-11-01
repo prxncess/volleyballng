@@ -82,7 +82,7 @@ class playersPagesController extends Controller
             }
 
         }else{
-            return dd($request);
+            //return dd($request);
         }
     }
 
@@ -198,9 +198,12 @@ class playersPagesController extends Controller
         try{
             $team= Team::whereName($tea)->firstOrFail();
             $player= Player::find($id);
+            $player_image='images/team/players/'.$player->player_image;
             if($player->delete()){
                 //remove pivot
                 $team->players()->detach($player->id);
+                //delete player
+                unlink($player_image);
                 return redirect()->route('viewTeam',$team->name)->with('res','Player was successfully removed');
             }
         }catch (ModelNotFoundException $e){
