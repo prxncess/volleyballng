@@ -30,11 +30,11 @@ class RegisterController extends Controller
            // $savedTeamEmail=Team::get('contact');
             $messages=[
                 'teamLogo.required'=>'Please upload your team logo',
-                'teamImage.required'=>'Please upload your entire team photo',
-                'teamImage.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'teamLogo.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'teamLogo.max'=>'file uploaded exceeds 1mb',
-                'teamImage.max'=>'file uploaded exceeds 2mb',
+                'teamImage.required'=>'Please upload a photo of your entire team',
+                'teamImage.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
+                'teamLogo.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
+                'teamLogo.max'=>'File size should be less than 1mb',
+                'teamImage.max'=>'File size should be less than 2mb',
             ];
             $validator=Validator::make($request->all(),[
                 'teamName'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
