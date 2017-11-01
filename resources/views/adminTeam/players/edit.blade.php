@@ -38,11 +38,11 @@
                                 <div class="row">
 
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="player-fname" value="{{$player->fname}}" name="player_firstName" placeholder="first name">
+                                        <input type="text" class="form-control text-capitalize" id="player-fname" value="{{$player->fname}}" name="player_firstName" placeholder="Amina">
                                         <p class="error">@if($errors->has('player_firstName')) @endif {{$errors->first('player_firstName')}}</p>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="text" class="form-control" id="player-lname" value="{{$player->lname}}" name="player_lastName" placeholder="Last name">
+                                        <input type="text" class="form-control text-capitalize" id="player-lname" value="{{$player->lname}}" name="player_lastName" placeholder="Bugaje">
                                         <p class="error">@if($errors->has('player_lastName')) @endif {{$errors->first('player_lastName')}}</p>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" id="" class="btn btn-primary register-player">Update</button>
+                                    <button type="submit" id="" class="btn vb-button register-player">Update</button>
                                     <input type="reset"  hidden >
                                 </div>
 
