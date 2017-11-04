@@ -89,6 +89,9 @@ div#background{
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
 }
+.img#show-logo-img {
+  max-height: 180px
+}
 .error{
   color: $alert-red;
   font-size: smaller;
@@ -1294,7 +1297,7 @@ form.add-team{
 
       width: 180px;
       height: 180px;
-      background: $light-blue;
+      //background: $light-blue;
       border-radius: 5px;
       margin: 20px auto;
       position: relative;
