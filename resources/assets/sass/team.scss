@@ -363,6 +363,16 @@ div#teamInfo{
       font-size: 14px;
     }
   }
+  p.alert.alert-danger{
+    background: $alert-red;
+    font-size: 10px;
+    color: white;
+  }
+  li#teamStatus{
+    i{
+      color: $brand-success;
+    }
+  }
 }
 
 /*

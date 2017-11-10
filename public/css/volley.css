@@ -231,7 +231,7 @@ body a:hover {
 
 body .btn-purple {
   color: #4449ca;
-  background-color: none;
+  background-color: transparent;
   border: 1px solid #4449ca;
   border-radius: 20px;
 }
@@ -303,6 +303,10 @@ div#background {
   line-height: 1.6;
   font-size: 15px;
   padding: 30px 0;
+}
+
+.img#show-logo-img {
+  max-height: 180px;
 }
 
 .error {
@@ -394,13 +398,12 @@ nav#menu div.navbar-brand img {
 }
 
 nav#menu button#toggle-bar {
-  margin-top: 12px;
   background: none;
   border: none;
 }
 
 nav#menu button#toggle-bar span {
-  background: white;
+  background-color: white;
   width: 21px;
   height: 2px;
   border-radius: 2px;
@@ -409,11 +412,11 @@ nav#menu button#toggle-bar span {
 }
 
 nav#menu button#toggle-bar:hover {
-  background: black;
+  color: black;
 }
 
 nav#menu button#toggle-bar:focus {
-  background: black;
+  color: black;
 }
 
 div#footer div#bar {
@@ -596,7 +599,6 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide {
 section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-photos, section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -710,7 +712,6 @@ section#our-home div#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
-  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -727,7 +728,6 @@ section#our-home div#event-preview div#preview span i:hover {
 section#our-home div#event-preview div#preview:hover div#more-photos, section#our-home div#event-preview div#preview:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -824,8 +824,8 @@ ol.breadcrumb {
 }
 
 #vb-button:hover, section#vb-event-form form#event-form button:hover {
-  background: white;
-  border: 2px solid #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
   color: #4449ca;
 }
 
@@ -842,8 +842,9 @@ article#tutorials {
   /*display: flex;*/
   display: -webkit-inline-box;
   display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
 }
 
 article#tutorials div#thumbs {
@@ -889,8 +890,9 @@ article#tutorials div#caption img {
 article#tutorials aside {
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -918,18 +920,24 @@ article#our-events header span {
 }
 
 article#our-events header button {
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border-radius: 20px;
-  border: 2px solid #4449ca;
+  border: 1px solid #4449ca;
   padding: 0px 5px;
+}
+
+article#our-events header button:hover {
+  background-color: #4449ca;
+  color: white;
 }
 
 article#our-events aside#event-preview {
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -959,7 +967,6 @@ article#our-events aside#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
-  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -1016,7 +1023,6 @@ div#access form div.input-group {
 div#access form div.input-group input {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  border: 3px solid #4449ca;
   height: 36px;
 }
 
@@ -1044,7 +1050,7 @@ div#access div.dropdown {
 div#access div.dropdown button#filterDrop {
   width: 100px;
   border-radius: 20px;
-  border: 3px solid #4449ca;
+  border: 1px solid #4449ca;
 }
 
 div#access div.dropdown button#filterDrop i {
@@ -1120,13 +1126,8 @@ section#vb-event-form form#event-form h2, section#vb-event-form form#event-form 
   color: #4449ca;
 }
 
-section#vb-event-form form#event-form label {
-  color: #4449ca;
-}
-
 section#vb-event-form form#event-form .form-control {
   max-width: 300px;
-  border: 2px solid #4449ca;
 }
 
 div#vb-calender h3 {
@@ -1259,7 +1260,6 @@ div#slides div.swiper-wrapper div.swiper-slide {
 div#slides div.swiper-wrapper div.swiper-slide:hover div#more-photos, div#slides div.swiper-wrapper div.swiper-slide:hover section#our-home div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview div#slides div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -1411,11 +1411,6 @@ form.add-team h4 {
 
 form.add-team input.form-control {
   max-width: 400px;
-  border: 2px solid #4449ca;
-}
-
-form.add-team label {
-  color: #4449ca;
 }
 
 form.add-team div#team-data div#added-member {
@@ -1437,7 +1432,6 @@ form.add-team div#team-data div#added-member div#vb-player-preview .media .media
 form.add-team div#team-data div#team-member {
   width: 180px;
   height: 180px;
-  background: #8788c5;
   border-radius: 5px;
   margin: 20px auto;
   position: relative;
@@ -1471,14 +1465,10 @@ form.add-team div#agree {
 }
 
 form.add-team div#agree button {
-  background: white;
+  background-color: transparent;
   color: #4449ca;
-  border: #4449ca 2px solid;
+  border: #4449ca 1px solid;
   border-radius: 50px;
-}
-
-form.add-team div#agree input {
-  border: 2px solid #4449ca;
 }
 
 form.add-team div#yellow-separator {
@@ -1494,8 +1484,9 @@ form.add-team button[type='button'] {
 }
 
 form.add-team button[type='button']:hover {
-  color: white;
-  background: #8788c5;
+  color: #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
 }
 
 ul#progressive-bar {
@@ -1558,12 +1549,18 @@ div#add-player #member-info div#manager-img img#show-img, div#add-player #member
 }
 
 div#add-player #member-info div#manager-img button, div#add-player #member-info div#player-img button {
-  background: #8788c5;
+  background: #4449ca;
   width: 180px;
   height: 35px;
   position: relative;
-  border-radius: 0;
+  border-radius: 20;
   border: none;
+}
+
+div#add-player #member-info div#manager-img button:hover, div#add-player #member-info div#player-img button:hover {
+  background-color: transparent;
+  color: #4449ca;
+  border: 1px solid #4449ca;
 }
 
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
@@ -1585,12 +1582,18 @@ div#add-player #member-info div#coach-img img#show-coach-img {
 }
 
 div#add-player #member-info div#coach-img button {
-  background: #8788c5;
+  background-color: transparent;
+  color: #4449ca;
   width: 180px;
   height: 35px;
   position: relative;
   border-radius: 0;
   border: none;
+}
+
+div#add-player #member-info div#coach-img button:hover {
+  background-color: #4449ca;
+  color: white;
 }
 
 div#add-player #member-info div#coach-img input[type='file'] {
@@ -1605,21 +1608,21 @@ div#add-player #member-info div#coach-img i {
   top: 5%;
 }
 
-div#add-player #member-info .form-control {
-  border: 2px solid #4449ca;
-}
-
 div#add-player #member-info label {
-  color: #4449ca;
   font-weight: 100;
 }
 
 div#add-player #member-info button {
   margin-top: 16px;
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border-radius: 50px;
-  border: 2px solid #4449ca;
+  border: 1px solid #4449ca;
+}
+
+div#add-player #member-info button:hover {
+  background-color: #4449ca;
+  color: white;
 }
 
 section#Teams div#vb-teams div#vb-team {
@@ -1650,7 +1653,6 @@ section#team-login form#vb-team-login div.row {
 }
 
 section#team-login form#vb-team-login .form-control {
-  border: 2px solid #4449ca;
   margin-bottom: 10px;
   margin-bottom: 0px;
 }

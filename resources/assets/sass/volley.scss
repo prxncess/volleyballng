@@ -20,7 +20,7 @@ a{
 
 .btn-purple {
   color: $purple;
-  background-color: none;
+  background-color: transparent;
   border: 1px solid $purple;
   border-radius: 20px;
   &:hover {color: white; background-color: $purple}
@@ -153,11 +153,11 @@ nav#menu{
   button#toggle-bar{
     // position: absolute;
     //cursor: pointer;
-    margin-top: 12px;
+    // margin-top: 12px;
     background: none;
     border: none;
     span{
-      background-color: transparent;
+      background-color: white;
       width: 21px;
       height: 2px;
       border-radius: 2px;
@@ -165,12 +165,12 @@ nav#menu{
       margin-bottom: 5px;
 
     }
-    // &:hover{
-    //   background-color: black;
-    // }
-    // &:focus{
-    //   background: black;
-    // }
+    &:hover{
+      color: black;
+    }
+    &:focus{
+      color: black;
+    }
 
 
 
