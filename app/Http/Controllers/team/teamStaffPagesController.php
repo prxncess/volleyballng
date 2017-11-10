@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\team;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Staff;
 use App\Team;
 use Image;
-class staffPagesController extends Controller
+
+class teamStaffPagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,8 +42,9 @@ class staffPagesController extends Controller
         //
         if($request->ajax()){
             //request must be ajax
-
+            $team=auth('team')->user();
             //validate request sent
+
             $validator=Validator::make($request->all(),[
 
                 'staffFirstName'=>'required|regex:/^[A-Za-z]{3,15}$/i',
@@ -58,7 +59,7 @@ class staffPagesController extends Controller
                 return response()->json(['status'=>'error','errors'=>$errors]);
             }
             //check if team already has a coach
-            $check=Staff::whereTeam_id($request->get('team_index'))->where('position',$request->get('staffPosition'));
+            $check=Staff::whereTeam_id($team->id)->where('position',$request->get('staffPosition'));
             if($check->count()>0){
                 return  response()->json(['status'=>'error','exist'=>'You cant have more than one '.$request->get('staffPosition').' in a team. Please delete or update existing one']);
 
@@ -76,7 +77,7 @@ class staffPagesController extends Controller
                     $c->upsize();
                 })->orientate()->save($fileLocation);
             }
-             //return $request->all();
+            //return $request->all();
 
 
             //proceed to the next field
@@ -109,13 +110,14 @@ class staffPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($tea,$id)
+    public function show($id)
     {
         //
+         $team=auth('team')->user();
         try{
-            $team=Team::whereName($tea)->firstOrFail();
+            $team=Team::whereName($team->name)->firstOrFail();
             $staff=Staff::whereId($id)->where('team_id',$team->id)->firstOrFail();
-            return view('admin.teams.staff.show',compact('team','staff'));
+            return view('adminTeam.staff.show',compact('team','staff'));
         }catch (ModelNotFoundException $e){
 
         }
@@ -128,14 +130,14 @@ class staffPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($tea,$id)
+    public function edit($id)
     {
         //find the team
+        $team=auth('team')->user();
         try{
-            $team=Team::whereName($tea)->firstOrFail();
             $staff=$team->staff->find($id);
             $positions=['coach','manager'];
-           return view('admin.teams.staff.edit',compact('team','staff','positions'));
+            return view('adminTeam.staff.edit',compact('team','staff','positions'));
         }catch (ModelNotFoundException $e){
 
         }
@@ -148,8 +150,9 @@ class staffPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $tea,$id)
+    public function update(Request $request,$id)
     {
+        $team=auth('team')->user();//logged team
         //validate request
         $validator=Validator::make($request->all(),[
 
@@ -163,16 +166,15 @@ class staffPagesController extends Controller
         //check if team already has a coach
         try{
             //find team
-            $team=Team::whereName($tea)->firstOrFail();
+            $team=Team::whereName($team->name)->firstOrFail();
             $staff=$team->staff->find($id);
-
             //same staff position
             if($staff->position!=$request->get('staff_position')){
                 //allow staff to be update
                 $check=Staff::whereTeam_id($team->id)->where('position',$request->get('staff_position'))->first();
                 //check if the staff to update is the current coach
                 if($check->count()>0){
-                    return  redirect()->route('editStaff',[$team->name,$id])->with('error','You cant have more than one '.$request->get('staff_position').' in a team. Please delete or update existing one');
+                    return  redirect()->route('upStaff',[$id])->with('error','You cant have more than one '.$request->get('staff_position').' in a team. Please delete or update existing one');
 
                 }
             }
@@ -209,8 +211,8 @@ class staffPagesController extends Controller
                 if($staff->save()){
                     if(!empty($newImageName)){
                         unlink($fileLocation='images/team/'.$oldImage);
-                }
-                    return redirect()->route('editStaff',[$team->name,$staff->id])->with('res','updated');
+                    }
+                    return redirect()->route('upStaff',[$staff->id])->with('res','updated');
                 }
             }
 
@@ -227,20 +229,22 @@ class staffPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($tea,$id)
+    public function destroy($id)
     {
         //
+        $team=auth('team')->user();
         try{
             //find team
-            $team=Team::whereName($tea)->firstOrFail();
-           $staff= $team->staff->find($id);
-            $staff_image='images/team/'.$staff->image;
+            $team=Team::whereName($team->name)->firstOrFail();
+            $staff= $team->staff->find($id);
+            $staffOldImage='images/team/'.$staff->image;
+            $staff_image=$staff->image;
             if($staff->delete()){
                 //detach from pivot
                 $team->staff()->detach($staff->id);
                 //delete image
-                unlink($staff_image);
-                return redirect()->route('viewTeam',$team->name)->with('res','staff was successfully removed');
+                if($staff_image?unlink($staffOldImage):null);
+                return redirect()->route('overview')->with('res','staff was successfully removed');
             }
 
 

@@ -16,6 +16,67 @@ div#wrapper{
   -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 
 }
+//pagination
+ul.pagination{
+@extend #center-block;
+  width: 200px;
+  height: 50px;
+}
+//switch buton
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  input {display:none;}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: $brand-success;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px $brand-success;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+
+
 div#separator{
   height: 1px;
   background: $blue;
@@ -49,7 +110,7 @@ div#admin-box{
   color: white;
   border-radius: 50px;
   &:hover{
-    background: white;
+    background-color: transparent;
     border: 1px solid $blue;
     color: $blue;
   }
@@ -123,6 +184,10 @@ div.alert-warning{
 }
 //allTeams
 section#allTeams{
+  header{
+    margin-bottom: 10px;
+    clear: both;
+  }
   div#team{
     div{
       margin-bottom: 20px;
@@ -217,10 +282,14 @@ form#add-team{
     display: inline-block;
 
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
       border: $blue 1px solid;
       border-radius: 20px;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
     input{
       // border: 2px solid $blue;
@@ -234,8 +303,9 @@ form#add-team{
     border: 1px solid $blue;
     border-radius: 20px;
     &:hover{
-      color: white;
-      background: $light-blue;
+      color: $purple;
+      background-color: transparent;
+      border: 1px solid $purple
     }
   }
 
@@ -260,6 +330,12 @@ section#team-overview{
 
         }
       }
+    }
+    div#teamStatus{
+      label.active{
+        background: $blue;
+      }
+
     }
   }
 
@@ -340,12 +416,18 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background-color: $purple;
+        color: white;
         width: 180px;
         height: 35px;
         position: relative;
-        border-radius: 0;
+        border-radius: 20px;
         border: none;
+        &:hover{
+          background-color: transparent;
+          color: $purple;
+          border: 1px solid $purple
+        }
       }
 
       //cursor: pointer;
@@ -371,13 +453,13 @@ div#add-player{
 
     button{
       // margin-top: 16px;
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 20px;
       border: 1px solid $blue;
       &:hover{
         color: $white;
-        background: $blue;
+        background-color: $blue;
       }
     }
     //member photo

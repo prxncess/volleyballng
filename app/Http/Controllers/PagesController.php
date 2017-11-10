@@ -30,12 +30,6 @@ class PagesController extends Controller
         $events=Event::where('status','open')->get();
         return view('event',compact('events'));
     }
-
-    public function terms(){
-        // terms & conditions page
-        return view('terms',compact('terms'));
-    }
-
     public function register(){
         return view('createTeam');
     }
@@ -146,6 +140,7 @@ class PagesController extends Controller
 
         return view ('events.eventsCalender',compact('calender'));
     }
+
 
 
 }

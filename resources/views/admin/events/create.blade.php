@@ -104,8 +104,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-12 text-right">
-                            <button type="submit" class="btn vb-button">Create</button>
+                        <div class="col-sm-12">
+                            <button type="submit" class="float-right btn vb-button">Create event</button>
                         </div>
 
                     </div>

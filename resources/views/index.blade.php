@@ -31,8 +31,8 @@
 
                 <div id="yellow-separator"></div>
                 <div class="row">
-                  <div class = "col-xs-6"><p>Coming up next...</p></div>
-                  <div class = "col-xs-6 text-right"><a href="{{route('newEvent')}}" class="btn btn-purple"><i class="fa fa-plus right-5"></i>Create Event</a></div>
+                  <div class = "col-sm-6"><p>Coming up next...</p></div>
+                  <div class = "col-sm-6"><a href="{{route('newEvent')}}" class="float-right btn btn-purple"><i class="fa fa-plus right-5"></i>Create Event</a></div>
                 </div>
                 <!-- <p>
                     See what we have been up to.<a href="{{route('newEvent')}}"><span class="pull-right"><i class="fa fa-plus"></i>Create Event</span></a>

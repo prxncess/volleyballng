@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\team;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Team;
 use Auth;
+use Illuminate\Validation\Rule;
 use Validator;
 use App\Player;
 use Image;
+
 
 class teamPagesController extends Controller
 {
@@ -46,14 +49,18 @@ class teamPagesController extends Controller
         //
         if($request->ajax()){
             //validate
-
+            $message=[
+                'player_height_feet.required'=>'select player feet',
+                'player_height_inches.required'=>'select player inches',
+            ];
             $validator=Validator::make($request->all(),[
-                'player_image'=>'required|image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
-                'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-                'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-                'player_height'=>'required|regex:/^[0-9]{3}$/i',
+                'player_image'=>'required|image|max:1024',
+                'player_firstName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
+                'player_lastName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
+                'player_height_feet'=>'required',
+                'player_height_inches'=>'required',
                 'player_position'=>'required'
-            ]);
+            ],$message);
             $errors=$validator->errors();
             if($validator->fails()){
                 //store errors
@@ -74,7 +81,8 @@ class teamPagesController extends Controller
                 'fname'=>$request->get('player_firstName'),
                 'lname'=>$request->get('player_lastName'),
                 'position'=>$request->get('player_position'),
-                'height'=>$request->get('player_height'),
+                'feet'=>$request->get('player_height_feet'),
+                'inches'=>$request->get('player_height_inches'),
                 'player_image'=>$newImageName
             ]);
 
@@ -86,7 +94,7 @@ class teamPagesController extends Controller
             }
 
         }else{
-            return dd($request);
+            //return dd($request);
         }
     }
 
@@ -114,6 +122,7 @@ class teamPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //player edit
     public function edit($id)
     {
         //
@@ -121,7 +130,9 @@ class teamPagesController extends Controller
             $team= auth('team')->user();
             $player= Player::find($id);
             $positions=['right side mitter','outside mitter','middle block','sitter','opposite','middle block/libero'];
-            return view('adminTeam.players.edit',compact('team','player','positions'));
+            $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
+            $inches=['0 inch','1 inches','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
 
@@ -142,7 +153,8 @@ class teamPagesController extends Controller
             'player_image'=>'image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
             'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
             'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-            'player_height'=>'required|regex:/^[0-9]{3}$/i',
+            'player_height_feet'=>'required',
+            'player_height_inches'=>'required',
             'player_position'=>'required'
         ])->validate();
         //save image
@@ -173,7 +185,8 @@ class teamPagesController extends Controller
         $player->fname=$request->get('player_firstName');
         $player->lname=$request->get('player_lastName');
         $player->position=$request->get('player_position');
-        $player->height=$request->get('player_height');
+        $player->feet=$request->get('player_height_feet');
+        $player->inches=$request->get('player_height_inches');
 
 
 
@@ -203,8 +216,109 @@ class teamPagesController extends Controller
 
                 //unlink($playerImage);
                 $team->players()->detach($player->id);
-                return redirect()->route('teamPlayers',$team->name)->with('res','Player was successfully removed');
+                return redirect()->route('overview')->with('res','Player was successfully removed');
             }
+        }catch (ModelNotFoundException $e){
+
+        }
+    }
+    public function overview(){
+        $logged_team=auth('team')->user();
+        try{
+            $team=Team::whereName($logged_team->name)->firstOrFail();
+            return view('adminTeam.overview',compact('team'));
+
+        }catch (ModelNotFoundException $e){
+            return view('404');
+        }
+    }
+    //validating information collected
+    public function teamEdit(Request $request){
+        //check if the request is ajax
+        $logged_team=auth('team')->user();
+        //return $logged_team;
+            //validate request
+            $team=Team::whereId($logged_team->id)->firstOrFail();;//fetches team data from database
+            $messages=[
+
+                'team_img.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
+                'logo.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
+                'logo.max'=>'file uploaded exceeds 1mb',
+                'teamContact.email'=>'Invalid email submitted. Format:youname@ggg.com',
+                'teamContact.unique'=>'Email submitted is already in use',
+                'teamPhone.unique'=>'Phone Number already in use by another team',
+                'teamPhone.digits'=>'Phone Number must be 11 digits',
+            ];//custom messages for errors
+
+        //dd($team->name);
+          Validator::make($request->all(),[
+               'logo'=>'image|max:1024',
+               'team_image'=>'image',
+                'teamContact'=>["email",'required',
+                    Rule::unique('teams','contact')->ignore($team->id),
+                ],
+                'teamPhone'=>["digits:11",'required',
+                    Rule::unique('teams','phone')->ignore($team->id),
+                ],
+                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]{10,255}$%i",
+                //'password'=>'confirmed|min:6|max:20',
+
+            ],$messages)->validate();
+
+        //check if logo was upload
+        if($request->file('logo')){
+            //logo was uploaded
+            $teamLogo=$request->file('logo');
+            $newImageName=time().'.'.$teamLogo->getClientOriginalExtension();
+            $teamFolder='images/team/'.$newImageName;
+            //resize and move image
+            Image::make($teamLogo)->resize(200,200,function($c){
+                $c->aspectRatio();
+                $c->upsize();
+            })->orientate()->save($teamFolder);
+            //fetch old logo so as to unlink it
+            $oldLogo=$team->logo;
+            $team->logo=$newImageName;//save logo name to database
+            if($oldLogo!=''?unlink('images/team/'.$oldLogo):null);//deletes old image from database
+
+        }
+        //check if team images was uploaded
+        if($request->file('team_image')){
+            //image was uploaded
+            $teamImage=$request->file('team_image');
+            $newTeamImage=time().'.'.$teamImage->getClientOriginalExtension();
+            $teamFolder='images/team/group/'.$newTeamImage;
+            //resize and move image
+            Image::make($teamImage)->resize(1200,550,function($c){
+                $c->aspectRatio();
+                $c->upsize();
+            })->orientate()->save($teamFolder);
+            $oldTeamImage=$team->team_image;
+            $team->team_image=$newTeamImage;//save image name to database
+            if($oldTeamImage!=''?unlink('images/team/group/'.$oldTeamImage):null);//delete old image from database
+        }
+        //save received information
+
+        $team->contact=$request->get('teamContact');
+        $team->phone=$request->get('teamPhone');
+        $team->description=$request->get('teamDescription')?$request->get('teamDescription'):'';
+
+        if($team->save()){
+            //redirect  to team over view with response
+            return redirect()->route('overview',[$team])->with('res','Team information was successfully updated');
+        }
+
+
+
+
+    }
+    public function teamUpdate(){
+        $logged_team=auth('team')->user();
+        try{
+            //find team
+            $team=Team::whereName($logged_team->name)->firstOrFail();
+            return view('adminTeam.editTeam',compact('team'));
+
         }catch (ModelNotFoundException $e){
 
         }

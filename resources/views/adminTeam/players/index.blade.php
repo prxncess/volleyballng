@@ -4,9 +4,6 @@
     @endsection
 @section('content')
     <section>
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item-active">Players</li>
-      </ol>
         <div id="admin-box" class="well">
             <header>
                 <h2>Players</h2>
@@ -17,7 +14,7 @@
                     </div>
                 @endif
                 <button class="float-right btn vb-button top-20" id=""><i class="fa fa-plus"></i> Add Player</button>
-                <p class="top-20"><small><i><b>Note</b>: A maximum of 9 players are allowed for a team.</i></small></p>
+                <p class="top-20"><small><i><b>Note</b>: A maximum of 12 players are allowed on each team.</i></small></p>
             </header>
             <div id="tm-players">
                 @if($team->players->isEmpty())

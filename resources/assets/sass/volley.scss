@@ -20,7 +20,7 @@ a{
 
 .btn-purple {
   color: $purple;
-  background-color: none;
+  background-color: transparent;
   border: 1px solid $purple;
   border-radius: 20px;
   &:hover {color: white; background-color: $purple}
@@ -89,6 +89,9 @@ div#background{
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
 }
+.img#show-logo-img {
+  max-height: 180px
+}
 .error{
   color: $alert-red;
   font-size: smaller;
@@ -150,11 +153,11 @@ nav#menu{
   button#toggle-bar{
     // position: absolute;
     //cursor: pointer;
-    margin-top: 12px;
+    // margin-top: 12px;
     background: none;
     border: none;
     span{
-      background: white;
+      background-color: white;
       width: 21px;
       height: 2px;
       border-radius: 2px;
@@ -163,10 +166,10 @@ nav#menu{
 
     }
     &:hover{
-      background: black;
+      color: black;
     }
     &:focus{
-      background: black;
+      color: black;
     }
 
 
@@ -626,8 +629,8 @@ ol.breadcrumb{
   color: white;
   border-radius: 50px;
   &:hover{
-    background: white;
-    border: 2px solid $blue;
+    background-color: transparent;
+    border: 1px solid $blue;
     color: $blue;
   }
 }
@@ -719,11 +722,15 @@ article#our-events{
       font-size: 16px;
     }
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 20px;
-      border: 2px solid $blue;
+      border: 1px solid $blue;
       padding: 0px 5px;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
   }
   aside#event-preview{
@@ -816,7 +823,7 @@ div#access{
       input{
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-        border: 3px solid $blue;
+        // border: 3px solid $blue;
         height: 36px;
       }
       label{
@@ -842,7 +849,7 @@ div#access{
     button#filterDrop{
       width: 100px;
       border-radius: 20px;
-      border: 3px solid $blue;
+      border: 1px solid $blue;
       i{
         color: $blue;
         float: right;
@@ -922,11 +929,11 @@ section#vb-event-form{
     max-width: 550px;
     padding:2%;
     label{
-      color: $blue;
+      // color: $blue;
     }
     .form-control{
       max-width: 300px;
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     button{
       @extend #vb-button;
@@ -1263,11 +1270,11 @@ form.add-team{
 
   input.form-control{
     max-width: 400px;
-    border: 2px solid $blue;
+    // border: 2px solid $blue;
 
   }
   label{
-    color: $blue;
+    // color: $blue;
   }
   div#team-data{
 
@@ -1290,7 +1297,7 @@ form.add-team{
 
       width: 180px;
       height: 180px;
-      background: $light-blue;
+      //background: $light-blue;
       border-radius: 5px;
       margin: 20px auto;
       position: relative;
@@ -1320,13 +1327,13 @@ form.add-team{
     display: inline-block;
 
     button{
-      background: white;
+      background-color: transparent;
       color: $blue;
-      border: $blue 2px solid;
+      border: $blue 1px solid;
       border-radius: 50px
     }
     input{
-      border: 2px solid $blue;
+      // border: 1px solid $blue;
     }
     color: $blue;
   }
@@ -1340,8 +1347,9 @@ form.add-team{
     border: 1px solid $blue;
     border-radius: 20px;
     &:hover{
-      color: white;
-      background: $light-blue;
+      color: $purple;
+      background-color: transparent;
+      border: 1px solid $purple;
     }
   }
 
@@ -1412,12 +1420,17 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background: $purple;
         width: 180px;
         height: 35px;
         position: relative;
-        border-radius: 0;
+        border-radius: 20;
         border: none;
+        &:hover {
+          background-color: transparent;
+          color: $purple;
+          border: 1px solid $purple;
+        }
       }
 
       //cursor: pointer;
@@ -1440,12 +1453,17 @@ div#add-player{
         display: block;
       }
       button{
-        background: $light-blue;
+        background-color: transparent;
+        color: $purple;
         width: 180px;
         height: 35px;
         position: relative;
         border-radius: 0;
         border: none;
+        &:hover{
+          background-color: $purple;
+          color: white;
+        }
       }
 
       //cursor: pointer;
@@ -1462,19 +1480,23 @@ div#add-player{
       }
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
     }
     label{
-      color: $blue;
+      // color: $blue;
       font-weight: 100;
     }
 
     button{
       margin-top: 16px;
-      background: white;
+      background-color: transparent;
       color: $blue;
       border-radius: 50px;
-      border: 2px solid $blue;
+      border: 1px solid $blue;
+      &:hover {
+        background-color: $purple;
+        color: white;
+      }
     }
     //member photo
 
@@ -1516,7 +1538,7 @@ section#team-login{
       padding: 30px;
     }
     .form-control{
-      border: 2px solid $blue;
+      // border: 2px solid $blue;
       margin-bottom: 10px;
       margin-bottom: 0px;
     }

@@ -225,6 +225,65 @@ div#wrapper {
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+ul.pagination {
+  width: 200px;
+  height: 50px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #2ab27b;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #2ab27b;
+}
+
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.switch .slider.round {
+  border-radius: 34px;
+}
+
+.switch .slider.round:before {
+  border-radius: 50%;
+}
+
 div#separator {
   height: 1px;
   background: #4449ca;
@@ -232,7 +291,7 @@ div#separator {
   margin-bottom: 25px;
 }
 
-#center-block, div#admin-box, section#allTeams div#team img, form#add-team {
+#center-block, ul.pagination, div#admin-box, section#allTeams div#team img, form#add-team {
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -261,7 +320,7 @@ div#admin-box header {
 }
 
 #vb-button:hover, section#addEvent form#event-form button:hover {
-  background: white;
+  background-color: transparent;
   border: 1px solid #4449ca;
   color: #4449ca;
 }
@@ -318,6 +377,11 @@ div.alert-success {
 div.alert-warning {
   background-color: #cbb956;
   color: white;
+}
+
+section#allTeams header {
+  margin-bottom: 10px;
+  clear: both;
 }
 
 section#allTeams div#team div {
@@ -403,10 +467,15 @@ form#add-team div#agree {
 }
 
 form#add-team div#agree button {
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border: #4449ca 1px solid;
   border-radius: 20px;
+}
+
+form#add-team div#agree button:hover {
+  background-color: #4449ca;
+  color: white;
 }
 
 form#add-team button[type='button'] {
@@ -417,8 +486,9 @@ form#add-team button[type='button'] {
 }
 
 form#add-team button[type='button']:hover {
-  color: white;
-  background: #8788c5;
+  color: #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
 }
 
 section#team-overview div#teamInfo img {
@@ -434,6 +504,10 @@ section#team-overview div#teamInfo ul li {
 section#team-overview div#teamInfo ul li span {
   text-transform: capitalize;
   color: #636b6f;
+}
+
+section#team-overview div#teamInfo div#teamStatus label.active {
+  background: #4449ca;
 }
 
 section#team-overview div#teamPlayers .panel-heading, section#team-overview div#teamStaff .panel-heading {
@@ -485,12 +559,19 @@ div#add-player #member-info div#coach-img img#show-coach-img {
 }
 
 div#add-player #member-info div#coach-img button {
-  background: #8788c5;
+  background-color: #4449ca;
+  color: white;
   width: 180px;
   height: 35px;
   position: relative;
-  border-radius: 0;
+  border-radius: 20px;
   border: none;
+}
+
+div#add-player #member-info div#coach-img button:hover {
+  background-color: transparent;
+  color: #4449ca;
+  border: 1px solid #4449ca;
 }
 
 div#add-player #member-info div#coach-img input[type='file'] {
@@ -510,7 +591,7 @@ div#add-player #member-info label {
 }
 
 div#add-player #member-info button {
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border-radius: 20px;
   border: 1px solid #4449ca;
@@ -518,7 +599,7 @@ div#add-player #member-info button {
 
 div#add-player #member-info button:hover {
   color: white;
-  background: #4449ca;
+  background-color: #4449ca;
 }
 
 section#vb-team-edit form {
