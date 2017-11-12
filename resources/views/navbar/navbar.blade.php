@@ -1,7 +1,7 @@
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
         <div class="navbar-brand"> <img src="images/seu2.png"></div>
-        <button id="toggle-bar" type="button" data-target="#volleymenu" class="top-20">
+        <button id="toggle-bar" type="button" data-target="#volleymenu">
             <span class="sr-only">toggle navigation</span>
             <span class=""></span>
             <span class=""></span>

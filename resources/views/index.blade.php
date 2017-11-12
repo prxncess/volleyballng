@@ -31,8 +31,8 @@
 
                 <div id="yellow-separator"></div>
                 <div class="row">
-                  <div class = "col-sm-6"><p>Coming up next...</p></div>
-                  <div class = "col-sm-6"><a href="{{route('newEvent')}}" class="float-right btn btn-purple"><i class="fa fa-plus right-5"></i>Create Event</a></div>
+                  <div class = "col-xs-6"><p>Coming up next...</p></div>
+                  <div class = "col-xs-6 text-right"><a href="{{route('newEvent')}}" class="btn btn-purple"><i class="fa fa-plus right-5"></i>Create Event</a></div>
                 </div>
                 <!-- <p>
                     See what we have been up to.<a href="{{route('newEvent')}}"><span class="pull-right"><i class="fa fa-plus"></i>Create Event</span></a>
@@ -127,9 +127,11 @@
               <div id="team-slides" class="swiper-container swiper-container-horizontal">
 
                   <div class="swiper-wrapper">
+                      @if($teams->isEmpty())
+
                       <div class="swiper-slide swiper-slide-active" >
                           <div id="box">
-                              <a href="teams/hello">
+                              <a href="javascript:;">
                                   <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
                                   <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3> </div>
                               </a>
@@ -144,7 +146,7 @@
                       <div class="swiper-slide" >
 
                           <div id="box">
-                              <a href="teams/hello">
+                              <a href="javascript:;">
                                   <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
                                   <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
 
@@ -156,7 +158,7 @@
                       </div>
                       <div class="swiper-slide swiper-slide-active" >
                           <div id="box">
-                              <a href="teams/hello">
+                              <a href="javascript:;">
                                   <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
                                   <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div>
                               </a>
@@ -168,6 +170,29 @@
                               <p><a href=""> Shells</a></p>
                           </header>
                       </div>
+                          @else
+                          @foreach($teams as $team)
+                              <div class="swiper-slide" >
+
+                                  <div id="box">
+                                      <a href="{{route('seeTeam',$team->name)}}">
+                                          @if($team->team_image==null)
+                                              <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
+                                          @else
+                                              <img src="{{asset('images/team/group/'.$team->team_image)}}" >
+                                          @endif
+
+                                          <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
+
+                                  </div>
+                                  <header>
+                                      <div id="bar"></div>
+                                      <p><a class="text-capitalize
+                                      " href="{{route('seeTeam',$team->name)}}">{{$team->name}}</a></p>
+                                  </header>
+                              </div>
+                              @endforeach
+                      @endif
                   </div>
                   <div class="swiper-button-next swiper-button-white"></div>
                   <div class="swiper-button-prev swiper-button-white"></div>

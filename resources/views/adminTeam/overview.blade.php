@@ -31,6 +31,17 @@
                             <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
                             <a href="javascript:;" id="team_image" class="btn btn-purple bottom-20"><i class="fa fa-image right-5"></i>Team Image</a>
                         </li>
+                         <li id="teamStatus"><span>Status:</span>
+                         @if($team->active==0)
+                                 <i style="color:red" class="fa fa-question"></i> inactive
+                             <p style="font-size: 10px" class="alert alert-danger">
+                                 Only complete Teams with a minimum of 6 players, 2 management staff and an entire team photograph  would be reviewed and made active.
+                             </p>
+                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20" >Apply for a team review</a>
+                             @else
+                                 <i class="fa fa-check"></i> Active
+                             @endif
+                         </li>
                     </ul>
                 </div>
                 <div class="col-sm-8">
@@ -38,6 +49,7 @@
                         @if(session('res'))
                             <div class="alert alert-success">{{session('res')}}</div>
                         @endif
+                        <div id="response"></div>
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default" id="teamPlayers" >
                                 <div class="panel-heading" role="tab" id="headingOne">
@@ -319,6 +331,40 @@
             $('#team_image').on('click',function(){
                 $('#seeTeamImage').modal('show')
             })
+            //request for review
+            $('#reviewTeam').on('click',function(){
+                //send mail to volleyball admin requesting for a team review
+                var email=$('#reviewTeam').data('mail')
+                var name=$('#reviewTeam').data('name')
+                //make ajax request
+                $.ajax({
+                    url:"{{route('tmReview')}}",
+                    type:"GET",
+                    data:{'email':email,'name':name},
+                    success:function(data){
+                        if(data.status=='success'){
+                            $('div#response').html('<div class="alert alert-success">'+data.response+'</div>')
+                           // $('div#response').fadeOut('80000')
+
+                        }
+                    }
+
+                })
+
+
+            })
+
+            //hide notification
+         /*   $("#response").hide().first().show();
+            setTimeout(showNotifications, 5000);
+            function showNotifications(){
+                $("#response:visible").remove();
+                $("#response").first().show();
+                if($("#response").length > 0){
+                    setTimeout(showNotifications, 5000);
+                }
+            }*/
+
 
         })
 

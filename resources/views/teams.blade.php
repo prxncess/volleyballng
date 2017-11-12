@@ -29,7 +29,12 @@
                 @if(!empty($teams))
                     @foreach($teams as $team)
                     <div id="vb-team" class="col-xs-6 col-sm-4 col-md-2">
-                        <a href="{{route('seeTeam',$team->name)}}"> <img src="images/ball.png" class="">
+                        <a href="{{route('seeTeam',$team->name)}}">
+                            @if($team->logo==null)
+                                <img src="{{asset('images/ball.png')}}" class="img-responsive">
+                            @else
+                                <img src="{{asset('images/team/'.$team->logo)}}" class="img-responsive">
+                            @endif
                             <h4 class="text-center">{{$team->name}}</h4></a>
                     </div>
                     @endforeach

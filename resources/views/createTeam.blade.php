@@ -91,7 +91,16 @@
         <form method="post" id="proForm" action="{{route('teamCompleted')}}" class=" center-block add-team" enctype="multipart/form-data">
            <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="teamindex" id="teamindex" value="">
-            <fieldset>
+            <fieldset id="team-info">
+                <div class="" id="team-logo">
+                    <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
+                    <button type="button" >
+                        upload logo
+                    </button>
+                    {{--<l class="fa fa-plus"></l>--}}
+                    <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+                    <p class="error"></p>
+                </div>
                 <div class="form-group">
                     <label>Name of team</label>
                     <input type="text" class="form-control text-capitalize" name="team-name" id="team-name" placeholder="Team name">
@@ -108,6 +117,12 @@
                     <input type="text" class="form-control" name="team-phone" id="team-phone" placeholder="Phone number">
                     <p class="error"></p>
                 </div><div id="yellow-separator"></div>
+                <div class="form-group">
+                    <label>Team image</label>
+                    <i>Please upload a group image of your entire team</i>
+                    <input type="file" class="form-control" name="team_image" id="team-img" placeholder="Team image">
+                    <p class="error"></p>
+                </div><div id="yellow-separator"></div>
                 <article>
                     <header><h3>Terms & Conditions</h3></header>
                     <p>You agree that you have the right to post any team information you like, and that such content, or its use by us as contemplated by this text, does not violate this agreement, applicable law, or the intellectual property rights of others.
@@ -117,9 +132,10 @@
                     <div id="yellow-separator"></div>
                     <div id="agree">
                         <aside>
-                            <input type="checkbox" name="accept" id="terms" class="right-10" >We agree
+                            <input type="checkbox" name="accept"  id="terms" class="right-10" >We agree
+                            <p class="error"></p>
                         </aside>
-                        <p class="error"></p>
+
                     </div>
                 </article >
                 <button type="button"  value="teamInfo" class="next btn btn-default">Save & continue</button>
@@ -319,6 +335,13 @@
              $('body.modal-backdrop').on('click',function(){
              $('.modal-backdrop').remove();
              });
+            //team logo
+            $('div#team-logo button').on('click',function(){
+                $('#logo').click();
+            })
+            $('#logo').on('change',function(e){
+                showfile(this,'div#team-logo img#show-logo-img')
+            })
             //member-img
             $('div#manager-img button').on('click',function(){
                 $('#manager-photo').click();
@@ -370,10 +393,63 @@
                 var next= $(this)
                 if(next.val()=='teamInfo'){
                     //clear all display errors
+
                     $('#team-name').parent().find('p').html(' ')
                     $('#team-contact').parent().find('p').html(' ')
                     $('#team-phone').parent().find('p').html(' ')
-                    $.get('{{route("TeamInfo")}}',{
+                    $('#team-img').parent().find('p').html(' ')
+                    $('#logo').parent().find('p').html(' ')
+                    $('#terms').parent().find('p').html(' ')
+                    //get all values
+                    var teamData= new FormData();
+                    var teamLogo=$('#logo')[0].files[0];
+                    var teamImage=$('#team-img')[0].files[0];
+                    teamData.append('teamName',$('#team-name').val());
+                    teamData.append('teamContact',$('#team-contact').val());
+                    teamData.append('teamPhoneNumber',$('#team-phone').val());
+                    teamData.append('terms',$('#terms').val());
+                    teamData.append('teamLogo',teamLogo);
+                    teamData.append('teamImage',teamImage);
+                    teamData.append('_token',$('#token').val())
+                    $.ajax({
+                        url:"{{route("TeamInfo")}}",
+                        type:"POST",
+                        data:teamData,
+                        processData:false,
+                        contentType:false,
+                        success:function(data){
+                            if(data.status=='error'){
+                                // display errors
+                               var message= data.errors
+                                //display error
+                               // $(empty(message.teamName[0]))?$('#team-name').parent().find('p').html(''):$('#team-name').parent().find('p').html(''+message.teamName[0])
+                                /*$('#team-name').parent().find('p').html(''+message.teamName[0])//team name error
+                                $('#team-name').parent().find('p').html(''+message.teamName[0])//team name error*/
+
+                                if(message.teamName === undefined ? null:$('#team-name').parent().find('p').html(''+message.teamName[0]));
+                                if(message.teamContact === undefined ? null:$('#team-contact').parent().find('p').html(''+message.teamContact[0]));
+                                if(message.teamPhoneNumber === undefined ? null:$('#team-phone').parent().find('p').html(''+message.teamPhoneNumber[0]));
+                                if(message.teamLogo === undefined ? null:$('#logo').parent().find('p').html(''+message.teamLogo[0]));
+                                if(message.teamImage === undefined ? null:$('#team-img').parent().find('p').html(''+message.teamImage[0]));
+
+                                //$('#team-contact').parent().find('p').html(''+message.teamContact[0])// team contact error
+                                /*$('#team-phone').parent().find('p').html(''+message.teamPhoneNumber[0])// team phone error
+                                $('#logo').parent().find('p').html(''+message.teamLogo[0])// team phone error
+                                $('#team-img').parent().find('p').html(''+message.teamImage[0])// team phone error
+*/
+                                // console.log((message.teamName[0]))
+                            }else if(data.status=='next'){
+                                //update teamindex
+                                var alert='<div id="res" class="alert alert-success">Hi '+$('#team-name').val() +', Your team information was successfully saved. Please add your Coach details</div>';
+                                $('#teamindex').val(data.team_id)
+                                //move to next field
+
+                                nextField(fieldSet,alert)
+                            }
+                        }
+
+                    })
+                   /* $.get('',{
                         teamName:$('#team-name').val(),
                         teamContact:$('#team-contact').val(),
                         teamPhoneNumber:$('#team-phone').val()
@@ -385,7 +461,7 @@
                             $('#team-name').parent().find('p').html(''+message.teamName[0])//team name error
 
                             $('#team-contact').parent().find('p').html(''+message.teamContact[0])// team contact error
-                            $('#team-contact').parent().find('p').html(''+message.teamPhoneNumber[0])// team phone error
+                            $('#team-phone').parent().find('p').html(''+message.teamPhoneNumber[0])// team phone error
 
                             // console.log((message.teamName[0]))
                         }else if(data.status=='next'){
@@ -397,7 +473,7 @@
                             nextField(fieldSet,alert)
                         }
 
-                    })
+                    })*/
                 }else if(next.val()=='teamCoach'){
                     //clear all errors if any
 
@@ -429,11 +505,10 @@
 
                            var message= data.errors
                             //display error
-                            $('#coach-fname').parent().find('p').html(''+message.coachFirstName[0])//team name error
+                            if(message.coachFirstName === undefined ? null:$('#coach-fname').parent().find('p').html(''+message.coachFirstName[0]));
+                            if(message.coachLastName === undefined ? null:$('#coach-lname').parent().find('p').html(''+message.coachLastName[0]));
+                            if(message.coach_photo === undefined ? null:$('#coach-photo').parent().find('p').html(''+message.coach_photo[0]));
 
-                            $('#coach-lname').parent().find('p').html(''+message.coachLastName[0])// team contact error
-
-                            $('#coach-photo').parent().find('p').html(''+message.coach_photo[0])// team photo error
                         },
 
                     })
@@ -465,12 +540,18 @@
                                 $('form#member-info #index').val($('#teamindex').val())
                                 nextField(fieldSet,alert);
                             }
-                            $('#manager-fname').parent().find('p').html(''+message.managerFirstName[0])//manager first name error
+                            var message=data.errors
+
+                            if(message.managerFirstName === undefined ? null:$('#manager-fname').parent().find('p').html(''+message.managerFirstName[0]));
+                            if(message.managerLastName === undefined ? null:$('#manager-lname').parent().find('p').html(''+message.managerLastName[0]));
+                            if(message.managerImage === undefined ? null:$('#manager-photo').parent().find('p').html(''+message.managerImage[0]));
+
+/*                            $('#manager-fname').parent().find('p').html(''+message.managerFirstName[0])//manager first name error
 
                             $('#manager-lname').parent().find('p').html(''+message.managerLastName[0])// manager last name error
                             if(!empty(message.managerImage[0])){
                                 $('#manager-photo').parent().find('p').html(''+message.managerImage[0])// manager last name error
-                            }
+                            }*/
                         }
                     })
                 }
@@ -490,10 +571,10 @@
             })
             //register player
             $('.register-player').on('click',function(event){
-                $('#player_fname').parent().find('p').html(' ')
-                $('#player_lname').parent().find('p').html(' ')
+                $('#player-fname').parent().find('p').html(' ')
+                $('#player-lname').parent().find('p').html(' ')
                 $('#player-position').parent().find('p').html(' ')
-                $('#player_-height').parent().find('p').html(' ')
+                $('#player-height').parent().find('p').html(' ')
                 $('#player-photo').parent().find('p').html(' ')
 
                 var playerForm = new FormData();
@@ -514,14 +595,15 @@
                     processData:false,
                     success:function(data){
                         if(data.status=='error'){
-                            message= data.errors
-                            $('#player-fname').parent().find('p').html(''+message.player_firstName[0])
-                            $('#player-lname').parent().find('p').html(''+message.player_lastName[0])
-                            $('#player-height').parent().find('p').html(''+message.player_height[0])
-                            $('#player-position').parent().find('p').html(''+message.player_position[0])
-                            if(!empty(message.player_image)){
-                                $('#player_photo').parent().find('p').html(''+message.player_image[0])
-                            }
+                           var message= data.errors
+
+                            if(message.player_firstName === undefined ? null:$('#player-fname').parent().find('p').html(''+message.player_firstName[0]));
+                            if(message.player_lastName === undefined ? null:$('#player-lname').parent().find('p').html(''+message.player_lastName[0]));
+                            if(message.player_position === undefined ? null:$('#player-position').parent().find('p').html(''+message.player_position[0]));
+                            if(message.player_height === undefined ? null:$('#player-height').parent().find('p').html(''+message.player_height[0]));
+                            if(message.player_image === undefined ? null:$('#player-photo').parent().find('p').html(''+message.player_image[0]));
+
+
 
                         }else if(data.status=='player_saved'){
                             $('form.playerForm input[type=reset]').trigger('click');
@@ -536,12 +618,13 @@
                             $('#vb-player-preview').html('')
                             var player_preview=""
                             for( i in players){
-                                player_preview+='<div class="media" data-pid="'+players[i].team_id+'"> <div class="media-left"><img src="images/team/players/'+players[i].player_image+'" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>'+players[i].fname+' '+players[i].lname+'</span></li> <li><b>Height:</b> <span>'+players[i].height+'</span></li> <li><b>Position:</b> <span>'+players[i].position+'</span></li> <li><a href="#" >remove</a></li> </ul> </div> </div> </div>'
+                                player_preview+='<div class="media" data-pid="'+players[i].team_id+'"> <div class="media-left"><img src="images/team/players/'+players[i].player_image+'" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>'+players[i].fname+' '+players[i].lname+'</span></li> <li><b>Height:</b> <span>'+players[i].height+'</span></li> <li><b>Position:</b> <span>'+players[i].position+'</span></li> <li><a href="#"  data-uid="'+players[i].id+'">remove</a></li> </ul> </div> </div> </div>'
 
                             }
                              //add_player='<div class="media" data-pid=""> <div class="media-left"><img src="" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>John don</span></li> <li><b>Height:</b> <span>200cm</span></li> <li><b>Position:</b> <span>Middle blocker</span></li> <li><a href="#" >remove</a></li> </ul> </div> </div> </div>'
 
                             $('#vb-player-preview').html(player_preview);
+                            $('#show-player-img').attr('src','{{asset('images')}}/user.jpg')
 
                         }
                     }
@@ -549,7 +632,14 @@
 
 
             })
+            //delete player
+            $('#vb-player-preview ul li a').on('click',function(e) {
+                e.preventDefault();
+                var userId = $('#vb-player-preview ul li a').attr('data-uid');
+                console.log(userId)
+            })
 
         })
     </script>
 @endsection
+

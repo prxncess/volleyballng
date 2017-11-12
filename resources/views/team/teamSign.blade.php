@@ -24,6 +24,11 @@
                         {{session('status')}}
                     </p>
                     @endif
+                @if(session('res'))
+                    <p class=" alert alert-success text-center ">
+                        {!! session('res') !!}
+                    </p>
+                @endif
                 <div class="form-group">
                     <div class="col-sm-12">
                         <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" placeholder="Team email">

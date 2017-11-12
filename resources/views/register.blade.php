@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','Register your team')
+@section('title','Create Team')
 @section('extra-style')
     <style>
         form#proForm{
@@ -64,185 +64,101 @@
             color: white;
         }
     </style>
-    @endsection
+@endsection
 @section('content')
 
     <section id="register-team">
         <header>
             <h2>Team registration</h2>
             <div id="yellow-separator"></div>
-            <ol class="breadcrumb">
+            {{--<ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('viewTeams')}}"> Teams</a></li>
                 <li class="breadcrumb-item active">Team Registration</li>
-            </ol>
+            </ol>--}}
+            <div id="events-subnav">
+                <a href="{{route('viewTeams')}}">Teams</a>
+                <a href="{{route('register')}}" class="active">Register a team</a>
+                <a href="{{route('teamSignIn')}}">Team Login</a>
+            </div>
         </header>
-        <ul class="progressive-bar center-block">
-            <li class="active">Team info</li>
-            <li>Coach</li>
-            <li>Manager</li>
-            <li>Players</li>
 
         </ul>
-        <form method="post" id="proForm" class=" center-block add-team" enctype="multipart/form-data">
-            {{csrf_field()}}
-            <fieldset>
+        <form method="post" id="proForm"  class=" center-block add-team" enctype="multipart/form-data">
+            <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
+            <input type="hidden" name="teamindex" id="teamindex" value="">
+
+            <fieldset id="team-info">
+                <div class="" id="team-logo">
+                    <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
+                    <button type="button" >
+                        upload logo
+                    </button>
+                    {{--<l class="fa fa-plus"></l>--}}
+                    <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+                    <p class="error">@if($errors->has('logo')) {{$errors->first('logo')}} @endif</p>
+                </div>
                 <div class="form-group">
-                    <label>Team name</label>
-                    <input type="text" class="form-control text-capitalize" name="team-name" id="team-name" placeholder="Team name">
-                    <p class="error"></p>
+                    <label>Name of team</label>
+                    <input type="text" class="form-control text-capitalize" value="{{old('team-name')}}" name="team-name" id="team-name" placeholder="Team name">
+                    <p class="error">@if($errors->has('team-name')) {{$errors->first('team-name')}}@endif</p>
                 </div>
                 <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="text" class="form-control" name="team-contact" id="team-contact" placeholder="email">
-                    <p class="error"></p>
-                </div>
-
+                    <input type="text" class="form-control" name="team-contact" value="{{old('team-contact')}}" id="team-contact" placeholder="email">
+                    <p class="error">@if($errors->has('team-contact')) {{$errors->first('team-contact')}}@endif</p>
+                </div><div id="yellow-separator"></div>
+                <div class="form-group">
+                    <label>Phone number</label>
+                    <input type="text" class="form-control" name="team-phone" id="team-phone" value="{{old('team-phone')}}" placeholder="Phone number">
+                    <p class="error">@if($errors->has('team-phone')) {{$errors->first('team-phone')}}@endif</p>
+                </div><div id="yellow-separator"></div>
+                <div class="form-group">
+                    <label>Team image</label>
+                    <i>Please upload a group image of your entire team</i>
+                    <input type="file" class="form-control" name="team_image" id="team-img" placeholder="Team image">
+                    <p class="error">@if($errors->has('team_image')) {{$errors->first('team_image')}}@endif</p>
+                </div><div id="yellow-separator"></div>
                 <article>
-                    <header><h3>Terms and Conditions</h3></header>
+                    <header><h3>Terms & Conditions</h3></header>
                     <p>You agree that you have the right to post any team information you like, and that such content, or its use by us as contemplated by this text, does not violate this agreement, applicable law, or the intellectual property rights of others.
-                      Your information will not be sold or revealed to third parties, but you grant us license to use this information on or in connection with Volleyball.ng and related activities.
-                      This agreement lasts until you request the termination of your Volleyball.ng user account, except in the case of content that you have published, made public and/or shared with others.
-                      Aside from the rights specifically granted herein, you retain ownership of all rights, including intellectual property rights, in the content that you post to Volleyball.ng </p>
+                        Your information will not be sold or revealed to third parties, but you grant us license to use this information on or in connection with Volleyball.ng and related activities.
+                        This agreement lasts until you request the termination of your Volleyball.ng user account, except in the case of content that you have published, made public and/or shared with others.
+                        Aside from the rights specifically granted herein, you retain ownership of all rights, including intellectual property rights, in the content that you post to Volleyball.ng </p>
+                    <div id="yellow-separator"></div>
                     <div id="agree">
                         <aside>
-                            <input type="checkbox" name="accept" id="terms" class="right-10">We agree
+                            <input type="checkbox" name="accept"  id="terms" class="right-10" >We agree
+                            <p class="error">@if($errors->has('accept')) {{$errors->first('accept')}}@endif</p>
                         </aside>
-                        <p class="error"></p>
+
                     </div>
                 </article >
-                <button type="button"  value="teamInfo" class="next btn btn-default">Save and Continue</button>
+
             </fieldset>
 
-            <fieldset>
-                <h4>Add Coach</h4>
-                <div id="add-player">
-                    <div id="member-info">
-                        <div class="" id="coach-img">
-                            <img src="{!! asset('images/user.jpg') !!}" id="show-coach-img">
-                            <button type="button" >
-                                upload image
-                            </button>
-                            {{--<l class="fa fa-plus"></l>--}}
-                            <input type="file" name="coach-photo" id="coach-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
-                        </div>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <div class="row">
-
-                                <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="coach-fname" name="coach-fname" placeholder="First name">
-                                    <p class="error"></p>
-                                </div>
-                                <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="coach-lname" name="coach-lname" placeholder="Last name">
-                                    <p class="error"></p>
-                                </div>
-                            </div>
-
-                        </div>
-                 {{--       <div id="yellow-separator"></div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label>Position</label>
-                                    <select name="member-postion" id="coach-position" class="form-control">
-                                        <option>select one</option>
-                                        <p></p>
-                                    </select>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label>Height</label>
-                                    <input type="text" class="form-control" id="coach-height" name="member-height" placeholder="height">
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>--}}
-                        <div id="yellow-separator"></div>
-                    </div>
-                </div>
-                <button type="button" class="prev btn btn-default">Previous</button>
-                <button type="button" value="teamCoach" class="next btn btn-default">Save and Continue</button>
-            </fieldset>
-            <fieldset>
-                <h4> Add Manager</h4>
-                <div id="add-player">
-                    <div id="member-info">
-                        <div class="" id="manager-img">
-                            <img src="{!! asset('images/user.jpg') !!}" id="show-img">
-                            <button type="button" >
-                                upload image
-                            </button>
-                            {{--<l class="fa fa-plus"></l>--}}
-                            <input type="file" name="manager-photo" id="manager-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
-                        </div>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <div class="row">
-
-                                <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="manager-fname" name="manager-fname" placeholder=" Manager's first name">
-                                    <p class="error"></p>
-                                </div>
-                                <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="manager-lname" name="manager-lname" placeholder=" Manager's Last name">
-                                    <p class="error"></p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div id="yellow-separator"></div>
-                        {{--<div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label>Position</label>
-                                    <select name="member-postion" id="member-postion" class="form-control">
-                                        <option>select one</option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label>Height</label>
-                                    <input type="text" class="form-control" id="member-height" name="member-height" placeholder="height">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="yellow-separator"></div>--}}
-                    </div>
-                </div>
-                <button type="button" class="prev btn btn-default">Previous</button>
-                <button type="button" value="managerInfo" class="next btn btn-default">Save and Continue</button>
-            </fieldset>
-
-            <fieldset>
-                <h4>Add Players</h4>
-                <div id="team-data" class="row">
-
-                    <div class=" col-xs-6 col-sm-6 col-md-6"> <div id="added-member">
-                            <div class="" id="">
-                                <p>You haven't added any players.</p>
-                            </div>
-                        </div></div>
-                    <div class=" col-xs-6 col-sm-6 col-md-6"> <div id="team-member"><i id="add-more" class="fa fa-plus"></i></div></div>
-
-
-                </div>
-                <button type="button" class="prev btn btn-default">Previous</button>
-                <button type="submit" class="submit btn btn-default">Submit</button>
-            </fieldset>
+            <button type="submit"  value="teamInfo" id="vb-button" class="btn btn-default">Register</button>
         </form>
 
 
     </section>
-    @endsection
-@include('team.addTeam')
+
+    {{--modal--}}
+@endsection
+
 @section('footer-scripts')
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#add-more').on('click',function(){
+            $('#add-more').on('click',function(event){
                 $('div#add-player').modal();
+                if ($(".modal-backdrop").length > 1) {
+                    $(".modal-backdrop").not(':last').remove();
+                }
             })
+            //fade message after 10 seconds
+            $('#proForm div#res').fadeOut(10000)
             //close modal
-/*            $('.close').on('click',function(){
+            $('.close').on('click',function(){
                 $('div#add-player').modal('hide')
                 $('body').removeClass().removeAttr('style').removeAttr('class');
                 $('.modal-backdrop').remove();
@@ -250,21 +166,16 @@
             $('.modal-backdrop').on('click',function(){$('.modal-backdrop').remove()})
             $('body.modal-backdrop').on('click',function(){
                 $('.modal-backdrop').remove();
-            });*/
+            });
+            //team logo
+            $('div#team-logo button').on('click',function(){
+                $('#logo').click();
+            })
+            $('#logo').on('change',function(e){
+                showfile(this,'div#team-logo img#show-logo-img')
+            })
             //member-img
-            $('div#manager-img button').on('click',function(){
-                $('#manager-photo').click();
-            })
-            $('#manager-photo').on('change',function(e){
-                showfile(this,'div#manager-img img#show-img')
-            })
-            //coach-image
-            $('div#coach-img button').on('click',function(){
-                $('#coach-photo').click();
-            })
-            $('#coach-photo').on('change',function(e){
-                showfile(this,'div#coach-img img#show-coach-img')
-            })
+
             function showfile(fileInput,img,showName){
                 if(fileInput.files[0]){
                     var reader=new FileReader();
@@ -275,108 +186,71 @@
                     $(showName).text(fileInput.files[0].name);
                 }
             }
-            function nextField(fieldset){
+            function nextField(fieldset,alert){
                 current_fs=$(fieldset).parent();
                 next_fs=$(fieldset).parent().next()
+                //add alert to field
 
-                 //progressbar
-                 $('.progressive-bar li').eq($('fieldset').index(next_fs)).addClass('active')
-                 //display next fieldset
-                 next_fs.show();
-                 //hide current fieldset
-                 current_fs.hide();
+                next_fs.find('h4').before(alert);
+                //progressbar
+                $('.progressive-bar li').eq($('fieldset').index(next_fs)).addClass('active')
+                //display next fieldset
+                next_fs.show();
+                //hide current fieldset
+                current_fs.hide();
             }
 
-            $('.next').on('click',function(){
-               var fieldSet=$(this)
-                //add ajax function
-                var next= $(this)
-                if(next.val()=='teamInfo'){
-                    //clear all display errors
-                    $('#team-name').parent().find('p').html(' ')
-                    $('#team-contact').parent().find('p').html(' ')
-                    $.get('{{route("TeamInfo")}}',{
-                        teamName:$('#team-name').val(),
-                        teamContact:$('#team-contact').val()
-                    }, function(data){
+            /*$('form#proForm').on('submit',function(e){
+                e.preventDefault();
+                $('#team-name').parent().find('p').html(' ')
+                $('#team-contact').parent().find('p').html(' ')
+                $('#team-phone').parent().find('p').html(' ')
+                $('#team-img').parent().find('p').html(' ')
+                $('#logo').parent().find('p').html(' ')
+                $('#terms').parent().find('p').html(' ')
+                //get all values
+                var teamData= new FormData();
+                var teamLogo=$('#logo')[0].files[0];
+                var teamImage=$('#team-img')[0].files[0];
+                teamData.append('teamName',$('#team-name').val());
+                teamData.append('teamContact',$('#team-contact').val());
+                teamData.append('teamPhoneNumber',$('#team-phone').val());
+                teamData.append('terms',$('#terms').val());
+                teamData.append('teamLogo',teamLogo);
+                teamData.append('teamImage',teamImage);
+                teamData.append('_token',$('#token').val())
+                $.ajax({
+                    url:"{{route("TeamInfo")}}",
+                    type:"POST",
+                    data:teamData,
+                    processData:false,
+                    contentType:false,
+                    success:function(data){
                         if(data.status=='error'){
                             // display errors
-                            message= data.errors
+                            var message= data.errors;
                             //display error
-                            $('#team-name').parent().find('p').html(''+message.teamName[0])//team name error
 
-                            $('#team-contact').parent().find('p').html(''+message.teamContact[0])// team contact error
+                            if(message.teamName === undefined ? null:$('#team-name').parent().find('p').html(''+message.teamName[0]));
+                            if(message.teamContact === undefined ? null:$('#team-contact').parent().find('p').html(''+message.teamContact[0]));
+                            if(message.teamPhoneNumber === undefined ? null:$('#team-phone').parent().find('p').html(''+message.teamPhoneNumber[0]));
+                            if(message.teamLogo === undefined ? null:$('#logo').parent().find('p').html(''+message.teamLogo[0]));
+                            if(message.teamImage === undefined ? null:$('#team-img').parent().find('p').html(''+message.teamImage[0]));
 
-                           // console.log((message.teamName[0]))
-                        }else if(data.status=='next'){
-                            //move to next field
-                           nextField(fieldSet)
+
+                        }else if(data.status=='saved'){
+
+                            {{ redirect()->route('teamSignIn')->with('status','Congratulation Your account has being created. <p>Please Check you mailbox for your password to login</p>')}}
+
                         }
+                    }
 
-                    })
-                }else if(next.val()=='teamCoach'){
-                    //clear all errors if any
-                    $('#coach-fname').parent().find('p').html(' ')
-                    $('#coach-lname').parent().find('p').html(' ')
-                    //send ajax request
-                    $.get("{{route('CoachInfo')}}",{
-                        'coachFirstName':$('#coach-fname').val(),
-                        'coachLastName':$('#coach-lname').val(),
-                        /*'coachPhoto':$('#caoch-')*/
-                    },function(data){
-                        if(data.status=='error'){
-                            // display errors
-                            message= data.errors
-                            //display error
-                            $('#coach-fname').parent().find('p').html(''+message.coachFirstName[0])//team name error
+                })
 
-                            $('#coach-lname').parent().find('p').html(''+message.coachLastName[0])// team contact error
+            })*/
 
-                            // console.log((message.teamName[0]))
-                        }else if(data.status=='next'){
-                            //move to next field
-                            nextField(fieldSet)
-                        }
-                    })
-                }else if(next.val()=='managerInfo'){
-                    //clear all errors if any
-                    $('#manager-fname').parent().find('p').html(' ')
-                    $('#manager-lname').parent().find('p').html(' ')
-                    //send ajax request
-                    $.get("{{ route('ManagerInfo') }}",{
-                        'managerFirstName':$('#manager-fname').val(),
-                        'managerLastName':$('#manager-lname').val(),
-                        /*'managerPhoto':$('#manager-photo-')*/
-                    },function(data){
-                        if(data.status=='error'){
-                            // display errors
-                            message= data.errors
-                            //display error
-                            $('#manager-fname').parent().find('p').html(''+message.managerFirstName[0])//manager first name error
-
-                            $('#manager-lname').parent().find('p').html(''+message.managerLastName[0])// manager last name error
-
-                        }else if(data.status=='next'){
-                            //move to next field
-                            nextField(fieldSet)
-                        }
-                    })
-                }
-
-
-            })
-            $('.prev').on('click',function(){
-                current_fs=$(this).parent();
-                prev_fs=$(this).parent().prev()
-
-                //progressbar
-                $('.progressive-bar li').eq($('fieldset').index(current_fs)).removeClass('active')
-                //hide current_fs
-                current_fs.hide()
-                //show next fieldset
-                prev_fs.show();
-            })
 
         })
     </script>
-    @endsection
+@endsection
+
