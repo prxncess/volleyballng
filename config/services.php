@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'volleyball.ng', //env('MAILGUN_DOMAIN'),
+        'secret' =>'key-322209895c3583712fdb0b5100ec6fa6', //env('MAILGUN_SECRET'),
     ],
 
     'ses' => [
