@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use Validator;
 use App\Player;
 use Image;
+use Mail;
 
 
 class teamPagesController extends Controller
@@ -44,6 +45,7 @@ class teamPagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //store players
     public function store(Request $request)
     {
         //
@@ -321,6 +323,33 @@ class teamPagesController extends Controller
 
         }catch (ModelNotFoundException $e){
 
+        }
+    }
+
+    //request for team review
+    public function teamReview(Request $request){
+        //check if the request sent over by ajax
+        if($request->ajax()){
+
+            //validate $request
+           $validator= Validator::make($request->all(),[
+                'email'=>'required|email'
+            ]);
+            if($validator->fails()){
+                $errors=$validator->errors();
+                return response()->json(['errors'=>$errors,'status'=>'error']);
+            }
+
+            //send mail to admin
+            $data=['name'=>$request->get('name'),'email'=>$request->get('email')];
+           $mail= Mail::send('mails.review',$data,function($message){
+                $message->to('eorijesu@gmail.com','Efeoghene Ori-Jesu');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+                $message->subject('Team Review');
+            });
+
+            return response()->json(['status'=>'success','response'=>"Cheers!!! Your request was sent successfully and awaiting review.
+<p><b>Please don't send another request</b></p>"]);
         }
     }
 }

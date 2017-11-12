@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +11,7 @@ use App\Team;
 use Illuminate\Validation\Rule;
 use Validator;
 use Image;
+use Mail;
 class teamPagesController extends Controller
 {
     /**
@@ -21,7 +22,7 @@ class teamPagesController extends Controller
     public function index()
     {
         //
-        $teams=Team::all();
+        $teams=Team::paginate(6);
 
         return view('admin.teams.index',compact('teams'));
     }
@@ -140,14 +141,31 @@ class teamPagesController extends Controller
 
             ])->validate();
             //save the team
+            $newpassword=bcrypt($request->get('password'));//new password
+            $oldpassword=$team->password;//old password
 
             $team->name=$request->get('teamName');
             $team->contact=$request->get('teamContact');
             $team->phone=$request->get('teamPhone');
             $team->description=$request->get('teamDescription')?$request->get('teamDescription'):'';
-            $team->password=$request->get('password')?bcrypt($request->get('password')):'';
+            $team->password=$request->get('password')?$newpassword:$oldpassword;
             if($team->save()){
-                return redirect()->route('editTeam',$team->name)->with('res','Team information updated');
+
+                //send mail to team
+                $data=array(
+                    'email'=>$request->get('teamContact'),
+                    'name'=>$request->get('teamName'),
+                    'password'=>$request->get('password'),
+                    'description'=>$request->get('teamDescription'),
+                    'phone'=>$request->get('teamPhone'));
+
+                Mail::send('mails.restPassword', $data, function($message) {
+                    $message->to(Input::get('teamContact'));
+                    $message->subject('Updated Team Information');
+                    $message->from('admin@volleyball.ng','volleyball.ng');
+                });
+                return redirect()->route('editTeam',$team->name)->with('res','Team information updated. An email was also sent to the team with changes made');
+
             }
         }catch (ModelNotFoundException $e){
 
@@ -185,4 +203,42 @@ class teamPagesController extends Controller
 
         }
     }
+    //update team status
+    public function teamStatus(Request $request){
+        //check if request is ajax
+        if($request->ajax()){
+            //find the team
+            //return $request->all();
+            try{
+                $team=Team::whereId($request->get('index'))->firstOrFail();
+                //return($team);
+                if($request->get('status')=='inactive'){
+
+                    $team->active=0;
+                }else{
+
+                    $team->active=1;
+                }
+                if($team->save()){
+                    //send mail to team
+                    $data=[
+                        'team'=>$team->name,
+                        'email'=>$team->email,
+                        'active'=>$team->active
+                    ];
+                    Mail::send('mails.teamStatus', ['team'=>$team],function($message) use($team) {
+                        $message->to($team->contact,$team->name);
+                        $message->subject('Team Status');
+                        $message->from('admin@volleyball.ng','volleyball.ng');
+                    });
+                    return response()->json(['status'=>'success','response'=>'Updated','teamStatus'=>$team->active]);
+                }
+            }catch (ModelNotFoundException $e){
+
+            }
+
+
+        }
+    }
 }
+

@@ -45,7 +45,11 @@ class eventPagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $re
+     *
+     *
+     *
+     * quest
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,6 +68,7 @@ class eventPagesController extends Controller
             'event_poser.image'=>'file uploaded into an image: jpg,png,jpeg,x-png',
             'event_start.date'=>'invalid date format (please use yyyy-mm-dd)',
             'event_end.date'=>'invalid date format (please use yyyy-mm-dd)',
+
 
 
             //other messages
@@ -200,6 +205,7 @@ class eventPagesController extends Controller
                 'event_poser.image'=>'file uploaded into an image: jpg,png,jpeg,x-png',
                 'event_start.date'=>'invalid date format (please use yyyy-mm-dd)',
                 'event_end.date'=>'invalid date format (please use yyyy-mm-dd)',
+
 
 
                 //other messages
