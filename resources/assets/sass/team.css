@@ -184,12 +184,80 @@ body {
   box-shadow: 0 4px #2bb4e8;
   float: left; }
 
+.btn-purple {
+  color: #4449ca;
+  background-color: transparent;
+  border: 1px solid #4449ca;
+  border-radius: 20px; }
+  .btn-purple:hover {
+    color: white;
+    background-color: #4449ca; }
+
+.vb-button {
+  background: #4449ca;
+  color: white;
+  border-radius: 20px; }
+  .vb-button:hover {
+    background-color: transparent;
+    border: 1px solid #4449ca;
+    color: #4449ca; }
+
+a {
+  text-decoration: none;
+  color: #4449ca; }
+  a:hover {
+    color: black; }
+
+.right-10 {
+  margin-right: 10px; }
+
+.right-5 {
+  margin-right: 5px; }
+
+.top-bottom-padding-40 {
+  padding: 40px 0; }
+
+.bottom-40 {
+  margin-bottom: 40px; }
+
+.top-40 {
+  margin-top: 40px; }
+
+.bottom-20 {
+  margin-bottom: 20px; }
+
+.top-20 {
+  margin-top: 20px; }
+
+.bottom-10 {
+  margin-bottom: 10px; }
+
+.top-10 {
+  margin-top: 10px; }
+
+.float-right {
+  float: right !important; }
+
+.gray-background {
+  background-color: #fdfdfd; }
+
+.gray-separator {
+  height: 1px;
+  background-color: #e6e6e6; }
+
+.purple-separator {
+  height: 1px;
+  background-color: #4449ca; }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .float-right {
+    float: none !important; } }
 div#wrapper {
   height: 100%; }
 
 #well, div#admin-box {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 div#separator {
   height: 1px;
@@ -241,8 +309,8 @@ div.alert-warning {
   color: white;
   border-radius: 50px; }
   #vb-button:hover {
-    background: white;
-    border: 2px solid #4449ca;
+    background-color: transparent;
+    border: 1px solid #4449ca;
     color: #4449ca; }
 
 div#admin-box {
@@ -285,20 +353,11 @@ section#team-overview div#teamPlayers div.panel-footer, section#team-overview di
   background: #dce0c8; }
 section#team-overview form#editPlayer {
   padding: 10px; }
-  section#team-overview form#editPlayer .form-control {
-    border: 2px solid #4449ca; }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
   width: 180px;
   height: 180px;
   display: block; }
-div#add-player #member-info div#manager-img button, div#add-player #member-info div#player-img button {
-  background: #8788c5;
-  width: 180px;
-  height: 35px;
-  position: relative;
-  border-radius: 0;
-  border: none; }
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
   display: none; }
 div#add-player #member-info div#manager-img i, div#add-player #member-info div#player-img i {
@@ -312,12 +371,17 @@ div#add-player #member-info div#coach-img img#show-coach-img {
   height: 180px;
   display: block; }
 div#add-player #member-info div#coach-img button {
-  background: #8788c5;
+  background: #4449ca;
+  color: white;
   width: 180px;
   height: 35px;
   position: relative;
   border-radius: 0;
   border: none; }
+  div#add-player #member-info div#coach-img button:hover {
+    background-color: transparent;
+    color: #4449ca;
+    border: 1px solid #4449ca; }
 div#add-player #member-info div#coach-img input[type='file'] {
   display: none; }
 div#add-player #member-info div#coach-img i {
@@ -326,17 +390,14 @@ div#add-player #member-info div#coach-img i {
   color: blue;
   left: 17%;
   top: 5%; }
-div#add-player #member-info .form-control {
-  border: 2px solid #4449ca; }
 div#add-player #member-info label {
-  color: #4449ca;
   font-weight: 100; }
 div#add-player #member-info button {
   margin-top: 16px;
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border-radius: 50px;
-  border: 2px solid #4449ca; }
+  border: 1px solid #4449ca; }
 
 div#tm-players img {
   width: 250px;
@@ -353,8 +414,7 @@ div#tm-players img {
   margin-bottom: 20px; }
 
 section#upTeamInfo div#team-logo img#show-logo-img {
-  width: 180px;
-  height: 180px;
+  width: 25%;
   display: block; }
 section#upTeamInfo div#team-logo input#logo {
   display: none; }
@@ -366,6 +426,12 @@ section#upTeamInfo div#team-logo button {
 div#teamInfo ul li {
   line-height: 28px;
   font-size: 14px; }
+div#teamInfo p.alert.alert-danger {
+  background: rgba(244, 67, 54, 0.92);
+  font-size: 10px;
+  color: white; }
+div#teamInfo li#teamStatus i {
+  color: #2ab27b; }
 
 /*
 section#team-overview div#teamPlayers .panel-heading h3, section#team-overview div#teamStaff .panel-heading h3 {

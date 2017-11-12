@@ -20,7 +20,7 @@ a{
 
 .btn-purple {
   color: $purple;
-  background-color: transparent;
+  background-color: none;
   border: 1px solid $purple;
   border-radius: 20px;
   &:hover {color: white; background-color: $purple}
@@ -89,9 +89,6 @@ div#background{
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
 }
-.img#show-logo-img {
-  max-height: 180px
-}
 .error{
   color: $alert-red;
   font-size: smaller;
@@ -153,7 +150,7 @@ nav#menu{
   button#toggle-bar{
     // position: absolute;
     //cursor: pointer;
-    // margin-top: 12px;
+    margin-top: 12px;
     background: none;
     border: none;
     span{
@@ -165,12 +162,12 @@ nav#menu{
       margin-bottom: 5px;
 
     }
-    &:hover{
-      color: black;
-    }
-    &:focus{
-      color: black;
-    }
+    // &:hover{
+    //   background-color: black;
+    // }
+    // &:focus{
+    //   background: black;
+    // }
 
 
 
@@ -1258,7 +1255,15 @@ form.add-team{
   border: 0;
   background: white;
   //fieldset
-
+  input#logo{
+    display: none;
+  }
+  img#show-logo-img{
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin-bottom: 10px;
+  }
 
   padding: 40px;
   h4{
@@ -1297,7 +1302,7 @@ form.add-team{
 
       width: 180px;
       height: 180px;
-      //background: $light-blue;
+      background: $light-blue;
       border-radius: 5px;
       margin: 20px auto;
       position: relative;

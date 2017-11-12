@@ -316,16 +316,12 @@ nav#menu {
     background: none;
     border: none; }
     nav#menu button#toggle-bar span {
-      background: white;
+      background-color: white;
       width: 21px;
       height: 2px;
       border-radius: 2px;
       display: block;
       margin-bottom: 5px; }
-    nav#menu button#toggle-bar:hover {
-      background: black; }
-    nav#menu button#toggle-bar:focus {
-      background: black; }
 
 div#footer div#bar {
   background: #e8b617;
@@ -605,8 +601,8 @@ ol.breadcrumb {
   color: white;
   border-radius: 50px; }
   #vb-button:hover, section#vb-event-form form#event-form button:hover {
-    background: white;
-    border: 2px solid #4449ca;
+    background-color: transparent;
+    border: 1px solid #4449ca;
     color: #4449ca; }
 
 section#Gallery div#media img {
@@ -671,11 +667,14 @@ article#our-events header {
     text-transform: uppercase;
     font-size: 16px; }
   article#our-events header button {
-    background: white;
+    background-color: transparent;
     color: #4449ca;
     border-radius: 20px;
-    border: 2px solid #4449ca;
+    border: 1px solid #4449ca;
     padding: 0px 5px; }
+    article#our-events header button:hover {
+      background-color: #4449ca;
+      color: white; }
 article#our-events aside#event-preview {
   display: flex;
   flex-flow: row wrap;
@@ -739,7 +738,6 @@ div#access {
     div#access form div.input-group input {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
-      border: 3px solid #4449ca;
       height: 36px; }
     div#access form div.input-group label {
       border-top-right-radius: 20px;
@@ -757,7 +755,7 @@ div#access {
     div#access div.dropdown button#filterDrop {
       width: 100px;
       border-radius: 20px;
-      border: 3px solid #4449ca; }
+      border: 1px solid #4449ca; }
       div#access div.dropdown button#filterDrop i {
         color: #4449ca;
         float: right; }
@@ -808,11 +806,8 @@ section#vb-event-form form#event-form {
   padding: 2%; }
   section#vb-event-form form#event-form h2, section#vb-event-form form#event-form h5 {
     color: #4449ca; }
-  section#vb-event-form form#event-form label {
-    color: #4449ca; }
   section#vb-event-form form#event-form .form-control {
-    max-width: 300px;
-    border: 2px solid #4449ca; }
+    max-width: 300px; }
 
 div#vb-calender h3 {
   color: #4449ca;
@@ -1010,13 +1005,17 @@ form.add-team {
   border: 0;
   background: white;
   padding: 40px; }
+  form.add-team input#logo {
+    display: none; }
+  form.add-team img#show-logo-img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin-bottom: 10px; }
   form.add-team h4 {
     color: #4449ca; }
   form.add-team input.form-control {
-    max-width: 400px;
-    border: 2px solid #4449ca; }
-  form.add-team label {
-    color: #4449ca; }
+    max-width: 400px; }
   form.add-team div#team-data div#added-member {
     border: 1px solid #e8b617;
     height: 204px;
@@ -1054,12 +1053,10 @@ form.add-team {
     display: inline-block;
     color: #4449ca; }
     form.add-team div#agree button {
-      background: white;
+      background-color: transparent;
       color: #4449ca;
-      border: #4449ca 2px solid;
+      border: #4449ca 1px solid;
       border-radius: 50px; }
-    form.add-team div#agree input {
-      border: 2px solid #4449ca; }
   form.add-team div#yellow-separator {
     height: 2px;
     max-width: 400px; }
@@ -1069,8 +1066,9 @@ form.add-team {
     border: 1px solid #4449ca;
     border-radius: 20px; }
     form.add-team button[type='button']:hover {
-      color: white;
-      background: #8788c5; }
+      color: #4449ca;
+      background-color: transparent;
+      border: 1px solid #4449ca; }
 
 ul#progressive-bar {
   max-width: 500px;
@@ -1119,12 +1117,16 @@ div#add-player #member-info div#manager-img img#show-img, div#add-player #member
   height: 180px;
   display: block; }
 div#add-player #member-info div#manager-img button, div#add-player #member-info div#player-img button {
-  background: #8788c5;
+  background: #4449ca;
   width: 180px;
   height: 35px;
   position: relative;
-  border-radius: 0;
+  border-radius: 20;
   border: none; }
+  div#add-player #member-info div#manager-img button:hover, div#add-player #member-info div#player-img button:hover {
+    background-color: transparent;
+    color: #4449ca;
+    border: 1px solid #4449ca; }
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
   display: none; }
 div#add-player #member-info div#manager-img i, div#add-player #member-info div#player-img i {
@@ -1138,12 +1140,16 @@ div#add-player #member-info div#coach-img img#show-coach-img {
   height: 180px;
   display: block; }
 div#add-player #member-info div#coach-img button {
-  background: #8788c5;
+  background-color: transparent;
+  color: #4449ca;
   width: 180px;
   height: 35px;
   position: relative;
   border-radius: 0;
   border: none; }
+  div#add-player #member-info div#coach-img button:hover {
+    background-color: #4449ca;
+    color: white; }
 div#add-player #member-info div#coach-img input[type='file'] {
   display: none; }
 div#add-player #member-info div#coach-img i {
@@ -1152,17 +1158,17 @@ div#add-player #member-info div#coach-img i {
   color: blue;
   left: 17%;
   top: 5%; }
-div#add-player #member-info .form-control {
-  border: 2px solid #4449ca; }
 div#add-player #member-info label {
-  color: #4449ca;
   font-weight: 100; }
 div#add-player #member-info button {
   margin-top: 16px;
-  background: white;
+  background-color: transparent;
   color: #4449ca;
   border-radius: 50px;
-  border: 2px solid #4449ca; }
+  border: 1px solid #4449ca; }
+  div#add-player #member-info button:hover {
+    background-color: #4449ca;
+    color: white; }
 
 section#Teams div#vb-teams div#vb-team {
   margin-bottom: 20px; }
@@ -1181,7 +1187,6 @@ section#team-login form#vb-team-login {
   section#team-login form#vb-team-login div.row {
     padding: 30px; }
   section#team-login form#vb-team-login .form-control {
-    border: 2px solid #4449ca;
     margin-bottom: 10px;
     margin-bottom: 0px; }
   section#team-login form#vb-team-login h2 {
