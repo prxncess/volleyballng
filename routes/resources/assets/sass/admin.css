@@ -1,0 +1,418 @@
+html, body {
+  height: 100%; }
+
+body {
+  height: 100%; }
+
+.login-body {
+  background-color: #f1f2f7; }
+
+/*.login-img-body{
+
+  background: url('../img/bg-1.jpg') no-repeat center center fixed;
+
+  -webkit-background-size: cover;
+
+  -moz-background-size: cover;
+
+  -o-background-size: cover;
+
+  background-size: cover;
+
+}*/
+/*.login-img2-body{
+
+  background: url('../img/bg-1.jpg') no-repeat center center fixed;
+
+  -webkit-background-size: cover;
+
+  -moz-background-size: cover;
+
+  -o-background-size: cover;
+
+  background-size: cover;
+
+}*/
+/*.login-img3-body{
+
+  background: url('images/bg.jpg') no-repeat center center fixed;
+
+  -webkit-background-size: cover;
+
+  -moz-background-size: cover;
+
+  -o-background-size: cover;
+
+  background-size: cover;
+
+}*/
+.login-form {
+  max-width: 350px;
+  margin: 200px auto 0;
+  background: #d5d7de; }
+
+.login-img-body .login-form {
+  max-width: 350px;
+  margin: 200px auto 0;
+  background: rgba(213, 215, 222, 0.4);
+  border: 1px solid #B0B6BE; }
+
+.login-img2-body .login-form {
+  border: 1px solid #B0B6BE;
+  background: rgba(213, 215, 222, 0.7); }
+
+.login-img3-body .login-form {
+  border: 1px solid #B0B6BE;
+  background: rgba(213, 215, 222, 0.9); }
+
+.login-form a {
+  color: #688a7e !important; }
+
+.login-form h2.login-form-heading {
+  margin: 0;
+  padding: 20px 15px;
+  text-align: center;
+  background: #34aadc;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif; }
+
+.login-form .checkbox {
+  margin-bottom: 14px; }
+
+.login-form .checkbox {
+  font-weight: normal;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif; }
+
+.login-form .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.login-form .form-control:focus {
+  z-index: 2; }
+
+.login-form .login-img {
+  font-size: 50px;
+  font-weight: 300; }
+
+.login-form .input-group {
+  padding-bottom: 15px; }
+
+.login-form .input-group-addon {
+  padding: 6px 12px;
+  font-size: 16px;
+  color: #8b9199;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0; }
+
+.login-form input[type="text"], .login-form input[type="password"] {
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+  border-radius: 0; }
+
+.login-form .btn {
+  border-radius: 0; }
+
+.login-form .btn-login {
+  background: #f67a6e;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0 4px #e56b60;
+  margin-bottom: 20px; }
+
+.login-form p {
+  text-align: center;
+  color: #b6b6b6;
+  font-size: 16px;
+  font-weight: 300; }
+
+.login-img3-body .login-form p, .login-img2-body .login-form p {
+  color: #34aadc; }
+
+.login-form a {
+  color: #b6b6b6; }
+
+.login-form a:hover {
+  color: #34aadc; }
+
+.form .required {
+  font-size: 16px;
+  color: #00a0df; }
+
+.login-wrap {
+  padding: 20px; }
+
+.login-social-link {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 15px; }
+  .login-social-link a {
+    color: #fff;
+    padding: 15px 28px;
+    border-radius: 4px; }
+    .login-social-link a:hover {
+      color: #fff; }
+    .login-social-link a i {
+      font-size: 20px;
+      padding-right: 10px; }
+
+.login-social-link a.facebook {
+  background: #5193ea;
+  margin-right: 22px;
+  box-shadow: 0 4px #2775e2;
+  float: left; }
+
+.login-social-link a.twitter {
+  background: #44ccfe;
+  box-shadow: 0 4px #2bb4e8;
+  float: left; }
+
+div#wrapper {
+  height: 100%; }
+
+#well, div#admin-box {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+div#separator {
+  height: 1px;
+  background: #4449ca;
+  margin-top: 7px;
+  margin-bottom: 25px; }
+
+#center-block, div#admin-box, section#allTeams div#team img, form#add-team, section#team-overview div#teamInfo img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto; }
+
+div#page-wrapper {
+  min-height: 100%;
+  background-position: 100%;
+  padding: 5%;
+  background: white; }
+
+div#admin-box {
+  max-width: 800px;
+  border-radius: 0px; }
+  div#admin-box header {
+    color: #4449ca; }
+
+#vb-button, section#addEvent form#event-form button {
+  background: #4449ca;
+  color: white;
+  border-radius: 50px; }
+  #vb-button:hover, section#addEvent form#event-form button:hover {
+    background: white;
+    border: 2px solid #4449ca;
+    color: #4449ca; }
+
+section#addEvent form#event-form {
+  padding: 2%; }
+  section#addEvent form#event-form h2, section#addEvent form#event-form h5 {
+    color: #4449ca; }
+  section#addEvent form#event-form label {
+    color: #4449ca; }
+  section#addEvent form#event-form .form-control {
+    max-width: 300px;
+    border: 2px solid #4449ca; }
+
+div#ad-Events div.media div.media-bottom {
+  margin-top: 18px;
+  background: #e8b617;
+  padding: 5px; }
+
+div#ad-event-info div.row {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #636b6f; }
+  div#ad-event-info div.row strong {
+    color: black; }
+
+p.error {
+  color: #bf5329; }
+
+div.alert-success {
+  background: #2ab27b;
+  color: white; }
+
+div.alert-warning {
+  background-color: #cbb956;
+  color: white; }
+
+section#allTeams div#team div {
+  margin-bottom: 20px; }
+section#allTeams div#team img {
+  width: 130px;
+  height: auto; }
+
+form#add-team {
+  position: relative;
+  min-height: 250px;
+  border-radius: 2px;
+  border: 0;
+  background: white;
+  padding: 40px; }
+  form#add-team h4 {
+    color: #4449ca; }
+  form#add-team input.form-control {
+    max-width: 400px;
+    border: 2px solid #4449ca; }
+  form#add-team div#separator {
+    max-width: 400px; }
+  form#add-team label {
+    color: #4449ca; }
+  form#add-team div#team-data div#added-member {
+    border: 1px solid #e8b617;
+    height: 204px;
+    border-radius: 5px;
+    padding: 3px;
+    overflow-y: scroll; }
+    form#add-team div#team-data div#added-member div#vb-player-preview .media {
+      border-bottom: 1px solid; }
+      form#add-team div#team-data div#added-member div#vb-player-preview .media .media-body ul {
+        font-size: 9px; }
+  form#add-team div#team-data div#team-member {
+    width: 180px;
+    height: 180px;
+    background: #8788c5;
+    border-radius: 5px;
+    margin: 20px auto;
+    position: relative;
+    cursor: pointer; }
+    form#add-team div#team-data div#team-member:hover {
+      background: #696a95; }
+    form#add-team div#team-data div#team-member i {
+      position: absolute;
+      font-size: 100px;
+      color: white;
+      top: 28%;
+      left: 31%; }
+    form#add-team div#team-data div#team-member p {
+      position: absolute;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      top: 74%;
+      left: 34%; }
+  form#add-team div#agree {
+    display: inline-block;
+    color: #4449ca; }
+    form#add-team div#agree button {
+      background: white;
+      color: #4449ca;
+      border: #4449ca 2px solid;
+      border-radius: 50px; }
+    form#add-team div#agree input {
+      border: 2px solid #4449ca; }
+  form#add-team button[type='button'] {
+    background: #4449ca;
+    color: white;
+    border: 1px solid #4449ca;
+    border-radius: 20px; }
+    form#add-team button[type='button']:hover {
+      color: white;
+      background: #8788c5; }
+
+section#team-overview div#teamInfo img {
+  height: 150px;
+  width: auto; }
+section#team-overview div#teamInfo ul li {
+  line-height: 2;
+  font-size: 18px; }
+  section#team-overview div#teamInfo ul li span {
+    text-transform: capitalize;
+    color: #636b6f; }
+section#team-overview div#teamPlayers .panel-heading, section#team-overview div#teamStaff .panel-heading {
+  background: #4449ca;
+  padding: 1px 15px 15px;
+  height: 50px;
+  border-radius: 0px; }
+  section#team-overview div#teamPlayers .panel-heading a, section#team-overview div#teamStaff .panel-heading a {
+    color: white;
+    text-decoration: none; }
+  section#team-overview div#teamPlayers .panel-heading h3, section#team-overview div#teamStaff .panel-heading h3 {
+    font-size: 15px; }
+section#team-overview div#teamPlayers div.panel-body, section#team-overview div#teamStaff div.panel-body {
+  height: 320px;
+  overflow-y: scroll; }
+section#team-overview div#teamPlayers div.panel-footer, section#team-overview div#teamStaff div.panel-footer {
+  background: #dce0c8; }
+section#team-overview form#editPlayer {
+  padding: 10px; }
+  section#team-overview form#editPlayer .form-control {
+    border: 2px solid #4449ca; }
+
+div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
+  width: 180px;
+  height: 180px;
+  display: block; }
+div#add-player #member-info div#manager-img button, div#add-player #member-info div#player-img button {
+  background: #8788c5;
+  width: 180px;
+  height: 35px;
+  position: relative;
+  border-radius: 0;
+  border: none; }
+div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
+  display: none; }
+div#add-player #member-info div#manager-img i, div#add-player #member-info div#player-img i {
+  position: absolute;
+  font-size: 150px;
+  color: blue;
+  left: 17%;
+  top: 5%; }
+div#add-player #member-info div#coach-img img#show-coach-img {
+  width: 180px;
+  height: 180px;
+  display: block; }
+div#add-player #member-info div#coach-img button {
+  background: #8788c5;
+  width: 180px;
+  height: 35px;
+  position: relative;
+  border-radius: 0;
+  border: none; }
+div#add-player #member-info div#coach-img input[type='file'] {
+  display: none; }
+div#add-player #member-info div#coach-img i {
+  position: absolute;
+  font-size: 150px;
+  color: blue;
+  left: 17%;
+  top: 5%; }
+div#add-player #member-info .form-control {
+  border: 2px solid #4449ca; }
+div#add-player #member-info label {
+  color: #4449ca;
+  font-weight: 100; }
+div#add-player #member-info button {
+  margin-top: 16px;
+  background: white;
+  color: #4449ca;
+  border-radius: 50px;
+  border: 2px solid #4449ca; }
+
+section#vb-team-edit form {
+  padding: 10px; }
+  section#vb-team-edit form .form-control {
+    border: 2px solid #4449ca;
+    max-width: 450px; }
+
+/*# sourceMappingURL=admin.css.map */
