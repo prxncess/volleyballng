@@ -36,6 +36,12 @@ a{
 .top-bottom-padding-40 {
   padding: 40px 0;
 }
+.top-bottom-padding-20 {
+  padding: 20px 0;
+}
+.left-right-padding-20 {
+  padding: 0 20px;
+}
 .bottom-40 {
   margin-bottom: 40px;
 }
@@ -1195,23 +1201,23 @@ div#events-subnav{
   @extend #container;
   padding: 0;
   background: $blue;
-  height: 40px;
-  //display: block;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  height: auto;
+  // display: block;
+  // font-size: 1.6rem;
+  // line-height: 1.6rem;
   font-weight: bold;
   @extend #well;
-  margin-bottom: 80px;
-  //width: 100%;
+  // margin-bottom: 80px;
+  // width: 100%;
   a{
-    float: left;
+    // float: left;
     text-decoration: none;
     color: white;
     padding: 12px 14px;
-
+    display: block;
   }
   a.active{
-    background: white;
+    background-color: white;
     color: $blue;
   }
 }
@@ -1233,7 +1239,7 @@ div#league-list{
 }
 #well{
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 }
 #center-block{
   display: block;
@@ -1532,7 +1538,7 @@ section#team-login{
   form#vb-team-login{
     @extend #well;
     max-width: 350px;
-    margin: 120px auto 0;
+    margin: 80px auto 0;
 
     div.row{
       padding: 30px;

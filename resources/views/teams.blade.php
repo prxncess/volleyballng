@@ -10,12 +10,20 @@
             {{--<a href="{{route('register')}}" id="vb-button" class="btn btn-primary">Team Registration</a>--}}
         </header>
         <div id="events-subnav">
-            <a href="{{route('viewTeams')}}" class="active">Teams</a>
-            <a href="{{route('register')}}">Register a team</a>
-            <a href="{{route('teamSignIn')}}">Team Login</a>
+          <div class="row">
+            <div class="col-sm-4">
+              <a href="{{route('viewTeams')}}" class="active top-bottom-padding-20">Teams</a>
+            </div>
+            <div class="col-sm-4">
+              <a href="{{route('register')}}" class="top-bottom-padding-2">Register a team</a>
+            </div>
+            <div class="col-sm-4">
+              <a href="{{route('teamSignIn')}}" class="top-bottom-padding-20">Team Login</a>
+            </div>
+          </div>
         </div>
-        
-        <div id="vb-teams" class="container">
+
+        <div id="vb-teams" class="container top-40">
             <div class="row">
                 {{--@php
                 $team_name=[1=>'Sharks','Rangers','Ballers','Glaziers','Black Cats','Chiefs','Orlandos','Pirates','Black Stars','Yorks'];
