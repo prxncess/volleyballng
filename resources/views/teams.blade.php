@@ -10,11 +10,19 @@
             {{--<a href="{{route('register')}}" id="vb-button" class="btn btn-primary">Team Registration</a>--}}
         </header>
         <div id="events-subnav">
-            <a href="{{route('viewTeams')}}" class="active">Teams</a>
-            <a href="{{route('register')}}">Register a team</a>
-            <a href="{{route('teamSignIn')}}">Team Login</a>
+          <div class="row">
+              <div class="col-sm-4">
+                <a href="{{route('viewTeams')}}" class="active top-bottom-padding-20">Teams</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="{{route('register')}}" class="top-bottom-padding-20">Register a team</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="{{route('teamSignIn')}}" class="top-bottom-padding-20">Team Login</a>
+              </div>
+            </div>
         </div>
-        
+
         <div id="vb-teams" class="container">
             <div class="row">
                 {{--@php
@@ -40,7 +48,7 @@
                     @endforeach
                     @else
                     <div class="col-sm-12">
-                        <h4>Signing up in progress. Please Check back later</h4>
+                        <h4>Signing up in progress. Please check your email for login details</h4>
                     </div>
                 @endif
 

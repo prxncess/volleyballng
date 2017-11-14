@@ -36,6 +36,12 @@ a{
 .top-bottom-padding-40 {
   padding: 40px 0;
 }
+.top-bottom-padding-20 {
+  padding: 20px 0;
+}
+.left-right-padding-20 {
+  padding: 0 20px;
+}
 .bottom-40 {
   margin-bottom: 40px;
 }
@@ -48,10 +54,15 @@ a{
 .top-20 {
   margin-top: 20px;
 }
+
+// End of helper classes
+}
 .float-right {
   float: right !important;
 }
-// End of helper classes
+// Media query
+@media only screen and (max-width: 767px) {
+    float: none !important;
 }
 .gray-background {
   background-color: $whitesmoke
@@ -64,14 +75,6 @@ a{
   height: 1px;
   background-color: $purple;
 }
-
-// Media queries
-@media (min-width: 320px) and (max-width: 767px) {
-  .float-right {
-    float: none !important;
-  }
-}
-// End of media queries
 
 div#background{
   //background: url("../images/banner2.jpg") fixed center center;
@@ -1192,19 +1195,20 @@ div#events-subnav{
   @extend #container;
   padding: 0;
   background: $blue;
-  height: 40px;
+  height: auto;
   //display: block;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  // font-size: 1.6rem;
+  // line-height: 1.6rem;
   font-weight: bold;
   @extend #well;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
   //width: 100%;
   a{
-    float: left;
+    // float: left;
     text-decoration: none;
     color: white;
     padding: 12px 14px;
+    display: block;
 
   }
   a.active{
@@ -1230,7 +1234,7 @@ div#league-list{
 }
 #well{
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 }
 #center-block{
   display: block;

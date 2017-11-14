@@ -7,9 +7,17 @@
             <div id="yellow-separator"></div>
         </header>
         <div id="events-subnav">
-            <a href="{{route('viewTeams')}}" >Teams</a>
-            <a href="{{route('register')}}">Register a team</a>
-            <a href="{{route('teamSignIn')}}" class="active">Team Login</a>
+          <div class="row">
+              <div class="col-sm-4">
+                <a href="{{route('viewTeams')}}" class="top-bottom-padding-20">Teams</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="{{route('register')}}" class="top-bottom-padding-20">Register a team</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="{{route('teamSignIn')}}" class="active top-bottom-padding-20">Team Login</a>
+              </div>
+            </div>
         </div>
     <section id="team-login">
 

@@ -76,9 +76,17 @@
                 <li class="breadcrumb-item active">Team Registration</li>
             </ol>--}}
             <div id="events-subnav">
-                <a href="{{route('viewTeams')}}">Teams</a>
-                <a href="{{route('register')}}" class="active">Register a team</a>
-                <a href="{{route('teamSignIn')}}">Team Login</a>
+              <div class="row">
+                <div class="col-sm-4">
+                  <a href="{{route('viewTeams')}}" class="top-bottom-padding-20">Teams</a>
+                </div>
+                <div class="col-sm-4">
+                  <a href="{{route('register')}}" class="active top-bottom-padding-2">Register a team</a>
+                </div>
+                <div class="col-sm-4">
+                  <a href="{{route('teamSignIn')}}" class="top-bottom-padding-20">Team Login</a>
+                </div>
+              </div>
             </div>
         </header>
         <ul class="progressive-bar center-block">
@@ -95,7 +103,7 @@
                 <div class="" id="team-logo">
                     <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
                     <button type="button" >
-                        upload logo
+                        Upload logo
                     </button>
                     {{--<l class="fa fa-plus"></l>--}}
                     <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
@@ -103,26 +111,30 @@
                 </div>
                 <div class="form-group">
                     <label>Name of team</label>
-                    <input type="text" class="form-control text-capitalize" name="team-name" id="team-name" placeholder="Team name">
+                    <input type="text" class="form-control text-capitalize" name="team-name" id="team-name" placeholder="the bears">
                     <p class="error"></p>
                 </div>
                 <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="text" class="form-control" name="team-contact" id="team-contact" placeholder="email">
+                    <input type="text" class="form-control" name="team-contact" id="team-contact" placeholder="thebears@gmail.com">
                     <p class="error"></p>
                 </div><div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Phone number</label>
-                    <input type="text" class="form-control" name="team-phone" id="team-phone" placeholder="Phone number">
+                    <input type="text" class="form-control" name="team-phone" id="team-phone" placeholder="08021234567">
                     <p class="error"></p>
-                </div><div id="yellow-separator"></div>
+                </div>
+                <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Team image</label>
-                    <i>Please upload a group image of your entire team</i>
+                    <p><i class="right-5">Upload a group image of your entire team</i><a href="#" data-toggle="tooltip" data-placement="top" title="Size: less than 2mb; Accepted formats: jpg, jpeg, png"><i class="fa fa-info-circle"></i></a><p>
                     <input type="file" class="form-control" name="team_image" id="team-img" placeholder="Team image">
                     <p class="error"></p>
-                </div><div id="yellow-separator"></div>
+                    <p>Please upload a photo that clearly shows all members of your team. Your photo should have a plain background if possible. <br>
+                    Unfortunately we will have to reject your registration if your photo does not meet these standards</p>
+                </div>
+                <div id="yellow-separator"></div>
                 <article>
                     <header><h3>Terms & Conditions</h3></header>
                     <p>You agree that you have the right to post any team information you like, and that such content, or its use by us as contemplated by this text, does not violate this agreement, applicable law, or the intellectual property rights of others.
@@ -160,11 +172,11 @@
                             <div class="row">
 
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="coach-fname" name="coach-fname" placeholder="first name">
+                                    <input type="text" class="form-control" id="coach-fname" name="coach-fname" placeholder="Seun">
                                     <p class="error"></p>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="coach-lname" name="coach-lname" placeholder="Last name">
+                                    <input type="text" class="form-control" id="coach-lname" name="coach-lname" placeholder="Awoniyi">
                                     <p class="error"></p>
                                 </div>
                             </div>
@@ -198,11 +210,11 @@
                             <div class="row">
 
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="manager-fname" name="manager-fname" placeholder=" Manager's first name">
+                                    <input type="text" class="form-control" id="manager-fname" name="manager-fname" placeholder="Etim">
                                     <p class="error"></p>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input type="text" class="form-control" id="manager-lname" name="manager-lname" placeholder=" Manager's Last name">
+                                    <input type="text" class="form-control" id="manager-lname" name="manager-lname" placeholder="Ette">
                                     <p class="error"></p>
                                 </div>
                             </div>
@@ -279,13 +291,14 @@
                                 <div class="col-xs-6">
                                     <label>Position</label>
                                     <select name="player_position" id="player-position" class="form-control">
-                                        <option value="">Select one</option>
-                                        <option value="right side mitter">Rightside mitter</option>
-                                        <option value="outside mitter">Outside mitter</option>
-                                        <option value="middle block">Middle block</option>
-                                        <option value="sitter">Sitter</option>
-                                        <option value="opposite">Opposite</option>
-                                        <option value="Middle Block/Libero">Middle block/Libero</option>
+                                      <option value="">Select one</option>
+                                      <option value="right side hitter">Right side hitter</option>
+                                      <option value="outside hitter">Outside hitter</option>
+                                      <option value="middle block">Middle block</option>
+                                      <option value="sitter">Sitter</option>
+                                      <option value="opposite">Opposite</option>
+                                      <option value="libero">Libero</option>
+                                      <option value="substitute">Substitute</option>
 
                                     </select>
                                     <p class="error"></p>
@@ -642,4 +655,3 @@
         })
     </script>
 @endsection
-

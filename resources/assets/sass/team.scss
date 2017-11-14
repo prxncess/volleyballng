@@ -111,8 +111,8 @@ div#page-wrapper{
 }
 nav#team-menu{
   background: url("../images/volleyballng_heade2re.png") no-repeat center center;
-  background-size: auto auto;
-  background-size: 100% 60px;
+  // background-size: auto auto;
+  background-size: cover;
   border: none;
 
   a.navbar-brand img {
@@ -185,7 +185,7 @@ section#team-overview{
     ul{
       li{
         line-height: 2;
-        font-size: 18px;
+        // font-size: 18px;
         span{
           text-transform: capitalize;
           color: $text-color;
@@ -219,7 +219,7 @@ section#team-overview{
       overflow-y: scroll;
     }
     div.panel-footer{
-      background: #dce0c8;
+      // background: #dce0c8;
     }
   }
   form#editPlayer{
@@ -342,16 +342,16 @@ section#upTeamInfo{
     img#show-logo-img{
       width: 25%;
       // height: 180px;
-      display: block;
+      // display: block;
 
     }
     input#logo{
       display: none;
     }
     button{
-      margin-left: 41px;
-      margin-top: 12px;
-      padding: 5px;
+      // margin-left: 41px;
+      margin-top: 15px;
+      // padding: 5px;
     }
   }
 

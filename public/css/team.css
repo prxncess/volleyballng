@@ -340,8 +340,7 @@ div#page-wrapper {
 
 nav#team-menu {
   background: url("../images/volleyballng_heade2re.png") no-repeat center center;
-  background-size: auto auto;
-  background-size: 100% 60px;
+  background-size: cover;
   border: none;
 }
 
@@ -414,7 +413,6 @@ section#team-overview div#teamInfo img {
 
 section#team-overview div#teamInfo ul li {
   line-height: 2;
-  font-size: 18px;
 }
 
 section#team-overview div#teamInfo ul li span {
@@ -441,10 +439,6 @@ section#team-overview div#teamPlayers .panel-heading h3, section#team-overview d
 section#team-overview div#teamPlayers div.panel-body, section#team-overview div#teamStaff div.panel-body {
   height: 320px;
   overflow-y: scroll;
-}
-
-section#team-overview div#teamPlayers div.panel-footer, section#team-overview div#teamStaff div.panel-footer {
-  background: #dce0c8;
 }
 
 section#team-overview form#editPlayer {
@@ -535,7 +529,6 @@ div#tm-players img {
 
 section#upTeamInfo div#team-logo img#show-logo-img {
   width: 25%;
-  display: block;
 }
 
 section#upTeamInfo div#team-logo input#logo {
@@ -543,9 +536,7 @@ section#upTeamInfo div#team-logo input#logo {
 }
 
 section#upTeamInfo div#team-logo button {
-  margin-left: 41px;
-  margin-top: 12px;
-  padding: 5px;
+  margin-top: 15px;
 }
 
 div#teamInfo ul li {

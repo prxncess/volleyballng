@@ -126,6 +126,37 @@ div#admin-box{
   }
 }
 
+// Nav
+nav#admin-menu{
+  background: url("../images/volleyballng_heade2re.png") no-repeat center center;
+  background-size: cover;
+  border: none;
+
+  a.navbar-brand img {
+    width: 65px;
+    position: absolute;
+    top: 10%;
+    //right: 34px;
+  }
+
+  ul.top-nav{
+    a.dropdown-toggle{
+      color: white;
+    }
+  }
+}
+
+// Sidebar
+ul#admin-sidebar{
+  background: $purple;
+  li{
+    a{
+      color: white;
+    }
+
+  }
+}
+
 //addEventForm
 section#addEvent{
   form#event-form{
@@ -383,9 +414,9 @@ div#add-player{
 
     div#manager-img,div#player-img{
       img#show-img,img#show-player-img{
-        width: 180px;
-        height: 180px;
-        display: block;
+        width: 160px;
+        height: 160px;
+        // display: block;
       }
       // button{
       //   background: $light-blue;

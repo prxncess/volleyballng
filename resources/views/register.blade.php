@@ -76,9 +76,17 @@
                 <li class="breadcrumb-item active">Team Registration</li>
             </ol>--}}
             <div id="events-subnav">
-                <a href="{{route('viewTeams')}}">Teams</a>
-                <a href="{{route('register')}}" class="active">Register a team</a>
-                <a href="{{route('teamSignIn')}}">Team Login</a>
+              <div class="row">
+                <div class="col-sm-4">
+                  <a href="{{route('viewTeams')}}" class="top-bottom-padding-20">Teams</a>
+                </div>
+                <div class="col-sm-4">
+                  <a href="{{route('register')}}" class="active top-bottom-padding-20">Register a team</a>
+                </div>
+                <div class="col-sm-4">
+                  <a href="{{route('teamSignIn')}}" class="top-bottom-padding-20">Team Login</a>
+                </div>
+              </div>
             </div>
         </header>
 
@@ -90,35 +98,41 @@
             <fieldset id="team-info">
                 <div class="" id="team-logo">
                     <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
-                    <button type="button" >
-                        upload logo
+                    <button type="button" class="top-20">
+                        Upload logo
                     </button>
                     {{--<l class="fa fa-plus"></l>--}}
                     <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                     <p class="error">@if($errors->has('logo')) {{$errors->first('logo')}} @endif</p>
                 </div>
-                <div class="form-group">
+                <div class="form-group top-40">
                     <label>Name of team</label>
-                    <input type="text" class="form-control text-capitalize" value="{{old('team-name')}}" name="team-name" id="team-name" placeholder="Team name">
+                    <input type="text" class="form-control text-capitalize" value="{{old('team-name')}}" name="team-name" id="team-name" placeholder="the bears">
                     <p class="error">@if($errors->has('team-name')) {{$errors->first('team-name')}}@endif</p>
                 </div>
                 <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="text" class="form-control" name="team-contact" value="{{old('team-contact')}}" id="team-contact" placeholder="email">
+                    <input type="text" class="form-control" name="team-contact" value="{{old('team-contact')}}" id="team-contact" placeholder="thebears@gmail.com">
                     <p class="error">@if($errors->has('team-contact')) {{$errors->first('team-contact')}}@endif</p>
-                </div><div id="yellow-separator"></div>
+                </div>
+                <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Phone number</label>
-                    <input type="text" class="form-control" name="team-phone" id="team-phone" value="{{old('team-phone')}}" placeholder="Phone number">
+                    <input type="text" class="form-control" name="team-phone" id="team-phone" value="{{old('team-phone')}}" placeholder="08021234567">
                     <p class="error">@if($errors->has('team-phone')) {{$errors->first('team-phone')}}@endif</p>
-                </div><div id="yellow-separator"></div>
+                </div>
+                <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Team image</label>
-                    <i>Please upload a group image of your entire team</i>
+                    <p>
+                      <i class="right-5">Upload a group image of your entire team</i>
+                      <a class="fa fa-info-circle" data-toggle="tooltip" data-html="true" data-placement="top" title="<p>Size: less than 2mb;</p> <p>Accepted formats: jpg, jpeg, png;</p> <p>Tip: Your photo should clearly show all members of your team, and should have a plain background if possible.</p>"></a>
+                    <p>
                     <input type="file" class="form-control" name="team_image" id="team-img" placeholder="Team image">
                     <p class="error">@if($errors->has('team_image')) {{$errors->first('team_image')}}@endif</p>
-                </div><div id="yellow-separator"></div>
+                </div>
+                <div id="yellow-separator"></div>
                 <article>
                     <header><h3>Terms & Conditions</h3></header>
                     <p>You agree that you have the right to post any team information you like, and that such content, or its use by us as contemplated by this text, does not violate this agreement, applicable law, or the intellectual property rights of others.
@@ -146,6 +160,7 @@
     {{--modal--}}
 @endsection
 
+
 @section('footer-scripts')
     <script type="text/javascript">
         $(document).ready(function(){
@@ -155,6 +170,8 @@
                     $(".modal-backdrop").not(':last').remove();
                 }
             })
+            // tooltip
+            $('[data-toggle="tooltip"]').tooltip();
             //fade message after 10 seconds
             $('#proForm div#res').fadeOut(10000)
             //close modal
@@ -240,7 +257,7 @@
 
                         }else if(data.status=='saved'){
 
-                            {{ redirect()->route('teamSignIn')->with('status','Congratulation Your account has being created. <p>Please Check you mailbox for your password to login</p>')}}
+                            {{ redirect()->route('teamSignIn')->with('status','Your account has been created, please check your registered email for login details')}}
 
                         }
                     }
@@ -253,4 +270,3 @@
         })
     </script>
 @endsection
-

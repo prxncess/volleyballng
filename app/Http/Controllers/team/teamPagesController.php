@@ -52,8 +52,8 @@ class teamPagesController extends Controller
         if($request->ajax()){
             //validate
             $message=[
-                'player_height_feet.required'=>'select player feet',
-                'player_height_inches.required'=>'select player inches',
+                'player_height_feet.required'=>'Select player height in feet',
+                'player_height_inches.required'=>'Select player height in inches',
             ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|max:1024',
@@ -131,9 +131,9 @@ class teamPagesController extends Controller
         try{
             $team= auth('team')->user();
             $player= Player::find($id);
-            $positions=['right side mitter','outside mitter','middle block','sitter','opposite','middle block/libero'];
+            $positions=['right side hitter','outside hitter','middle block','sitter','opposite','libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inch','1 inches','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inch','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){

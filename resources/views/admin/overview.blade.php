@@ -24,7 +24,7 @@
                         <!-- <li><a href="">History</a> </li> -->
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                         <li>
-                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20"><i class="fa fa-trash right-5"></i>Delete</a>
+                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>
                             <a href="{{route('editTeam',$team->name)}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
                         </li>
 

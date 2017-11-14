@@ -253,6 +253,14 @@ body .top-bottom-padding-40 {
   padding: 40px 0;
 }
 
+body .top-bottom-padding-20 {
+  padding: 20px 0;
+}
+
+body .left-right-padding-20 {
+  padding: 0 20px;
+}
+
 body .bottom-40 {
   margin-bottom: 40px;
 }
@@ -269,8 +277,12 @@ body .top-20 {
   margin-top: 20px;
 }
 
-body .float-right {
+.float-right {
   float: right !important;
+}
+
+@media only screen and (max-width: 767px) {
+  float: none !important;
 }
 
 .gray-background {
@@ -285,12 +297,6 @@ body .float-right {
 .purple-separator {
   height: 1px;
   background-color: #4449ca;
-}
-
-@media (min-width: 320px) and (max-width: 767px) {
-  .float-right {
-    float: none !important;
-  }
 }
 
 div#background {
@@ -588,7 +594,6 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide {
 section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-photos, section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -702,7 +707,6 @@ section#our-home div#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
-  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -719,7 +723,6 @@ section#our-home div#event-preview div#preview span i:hover {
 section#our-home div#event-preview div#preview:hover div#more-photos, section#our-home div#event-preview div#preview:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -834,8 +837,9 @@ article#tutorials {
   /*display: flex;*/
   display: -webkit-inline-box;
   display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
 }
 
 article#tutorials div#thumbs {
@@ -881,8 +885,9 @@ article#tutorials div#caption img {
 article#tutorials aside {
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -925,8 +930,9 @@ article#our-events header button:hover {
 article#our-events aside#event-preview {
   display: -webkit-box;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -956,7 +962,6 @@ article#our-events aside#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
-  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -1250,7 +1255,6 @@ div#slides div.swiper-wrapper div.swiper-slide {
 div#slides div.swiper-wrapper div.swiper-slide:hover div#more-photos, div#slides div.swiper-wrapper div.swiper-slide:hover section#our-home div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview div#slides div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
-  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -1338,18 +1342,15 @@ div#slides div.swiper-wrapper div.swiper-slide header p a:hover {
 div#events-subnav {
   padding: 0;
   background: #4449ca;
-  height: 40px;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  height: auto;
   font-weight: bold;
-  margin-bottom: 80px;
 }
 
 div#events-subnav a {
-  float: left;
   text-decoration: none;
   color: white;
   padding: 12px 14px;
+  display: block;
 }
 
 div#events-subnav a.active {
@@ -1374,7 +1375,7 @@ div#league-list div.media p {
 
 #well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, form.add-team, section#team-login form#vb-team-login {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #center-block, div#footer footer div#sponsor-brands ul, div#footer footer div#social-pages ul, div#footer footer aside#copyright ul, section#vb-event-form, section#vb-event-form form#event-form, div#vb-calender h3, div#vb-calender div#calender, div#vb-calender div#calender aside div#calender-box header, form.add-team .form-group, ul#progressive-bar, section#Teams div#vb-teams div#vb-team img, section#viewTeam img#team-image, section#viewTeam div#staffs ul {

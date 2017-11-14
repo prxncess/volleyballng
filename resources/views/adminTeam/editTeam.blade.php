@@ -8,16 +8,16 @@
             <form class="form-horizontal" method="post"   enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="">
-                    <div class="" id="team-logo">
+                    <div class="text-center top-20" id="team-logo">
                         <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
-                        <button type="button" class="btn-purple" >
-                            upload logo
-                        </button>
+                        <p><button type="button" class="btn btn-purple" >
+                            Update logo
+                        </button><p>
                         {{--<l class="fa fa-plus"></l>--}}
                         <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error">@if($errors->has('logo')) {{$errors->first('logo')}} @endif</p>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group top-40">
                         <div class="col-sm-12">
                             <label>Team name</label>
                             <input type="text" class="form-control text-capitalize" disabled value="{{$team->name}}" id="team-name" name="teamName" PLACEHOLDER="the uyo checkers">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn vb-button">Update</button>
                         </div>
                     </div>
                 </div>

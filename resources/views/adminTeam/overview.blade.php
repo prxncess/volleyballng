@@ -25,19 +25,21 @@
                         <li><span>{{$team->phone}}</span></li>
                        {{-- <li><a href="#">Team Events</a></li>--}}
                         <!-- <li><a href="">History</a> </li> -->
-                        <div id="" class="top-20 bottom-20 gray-separator"></div>
+
                         <li>
 
-                            <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
-                            <a href="javascript:;" id="team_image" class="btn btn-purple bottom-20"><i class="fa fa-image right-5"></i>Team Image</a>
+                            <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple right-10"><i class="fa fa-edit right-10"></i>Edit</a>
+                            <a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a>
                         </li>
+                        <div id="" class="top-20 bottom-20 gray-separator"></div>
                          <li id="teamStatus"><span>Status:</span>
                          @if($team->active==0)
-                                 <i style="color:red" class="fa fa-question"></i> inactive
-                             <p style="font-size: 10px" class="alert alert-danger">
-                                 Only complete Teams with a minimum of 6 players, 2 management staff and an entire team photograph  would be reviewed and made active.
+                                 <i style="color:#bebebe" class="fa fa-question"></i>
+                                 <span style="color: #bebebe">Inactive</span>
+                             <p style="font-size: 10px" class="">
+                                 To be approved and activated, please add at least 6 players, 1 management staff and a team photograph to your profile.
                              </p>
-                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20" >Apply for a team review</a>
+                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20" >Activate team</a>
                              @else
                                  <i class="fa fa-check"></i> Active
                              @endif
@@ -63,7 +65,7 @@
                                         <div class=" col-xs-12"> <div id="added-member">
                                                 <div class="row" id="vb-player-preview">
                                                     @if($team->players->isEmpty())
-                                                        <p>No players yet - click 'Add player' to get started.</p>
+                                                        <p>No players yet - click 'New player' to get started.</p>
                                                     @else
                                                         @foreach($team->players as $player)
                                                             <div class="col-xs-6 col-sm-6">
@@ -79,7 +81,7 @@
                                             </div></div>
                                     </div>
                                     <div class="panel-footer">
-                                        <button id="vb-button" class="btn btn-primary vb-add-player"><i class="fa fa-plus"></i> Add player </button>
+                                        <button id="vb-button" class="btn btn-primary vb-add-player"><i class="fa fa-plus"></i> New player </button>
 
                                     </div>
                                 </div>
@@ -96,7 +98,7 @@
                                     <div class="panel-body">
                                         <div class="row" id="vb-preview-staff">
                                             @if($team->staff->isEmpty())
-                                                <div class="col-xs-12"> <p class="">No team staff yet - click 'Add staff' to get started.</p></div>
+                                                <div class="col-xs-12"> <p class="">No team staff yet - click 'New staff' to get started.</p></div>
                                             @else
                                                 @foreach($team->staff as $staff)
                                                     <div class="col-xs-6">
@@ -117,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-footer">
-                                        <button type="button"  id="vb-button" class="btn btn-primary addManager"><i class="fa fa-plus"></i> Add staff </button>
+                                        <button type="button"  id="vb-button" class="btn btn-primary addManager"><i class="fa fa-plus"></i> New staff </button>
                                     </div>
                                 </div>
 

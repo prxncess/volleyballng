@@ -33,8 +33,8 @@ class RegisterController extends Controller
             $messages=[
                 'logo.required'=>'Please upload your team logo',
                 'team_image.required'=>'Please upload a photo of your entire team',
-                'team_image.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
-                'logo.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
+                'team_image.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
+                'logo.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
                 'logo.max'=>'File size should be less than 1mb',
                 'team_image.max'=>'File size should be less than 2mb',
                 //team name
@@ -113,7 +113,7 @@ class RegisterController extends Controller
                     $message->subject('Team Registration');
                     $message->from('volleyballdotngee','volleyball.ng');
                 });
-                return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('team-name').'</b></br> Your team was successfully created.<p>An Email was just sent to you containing your password to gain access to your team area.</p>') ;
+                return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('team-name').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }
             //return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
     }
