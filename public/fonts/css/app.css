@@ -34,6 +34,7 @@ nav#menu {
   top: -17px;
   border-radius: 0px;
   padding: 20px;
+
   /* div.collapse.navbar-collapse{
      background: $blue;
      width: 200px;
@@ -54,6 +55,7 @@ nav#menu {
          font-size: 23px;
        }
      }
+
    }*/
 }
 
@@ -491,7 +493,9 @@ article#our-events aside#event-preview div#preview span i:hover {
 }
 
 div#access {
+
   /* margin-left: 0;
+
   margin-top: 50px;*/
 }
 
@@ -582,7 +586,9 @@ div#event-list div#event-thumb h3 a:hover {
 
 div#event-list div#event-thumb img {
   width: inherit;
+
   /*border-top-left-radius: 15px;
+
       border-top-right-radius: 15px;*/
   max-height: 255px;
 }
@@ -592,7 +598,9 @@ div#event-list div#event-thumb header {
   background: white;
   padding: 10px;
   height: 120px;
+
   /* border-bottom-left-radius: 20px;
+
       border-bottom-right-radius: 20px;*/
 }
 
@@ -639,7 +647,9 @@ div#bd-event div#sidebar div#calender aside div#calender-box header h4 span {
 
 div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender {
   width: 300px;
+
   /*border-left:1px solid $text-color2;
+
             border-bottom: 1px solid $text-color;*/
 }
 
@@ -653,7 +663,9 @@ div#bd-event div#sidebar div#calender aside div#calender-box div#bd-calender ul 
   height: 45px;
   font-weight: bold;
   color: #757575;
+
   /*border-top: 1px solid $text-color;
+
                 border-right: 1px solid $text-color;*/
   padding: 18px;
   float: left;
@@ -719,9 +731,11 @@ div#bd-event div#sidebar div#calender section {
 }
 
 div#slides {
+
   /*width: 100%;
   height: auto;
   margin-left: auto;
+
   margin-right: auto;*/
 }
 
@@ -729,6 +743,7 @@ div#slides div.swiper-wrapper div.swiper-slide {
   /*border: 2px solid $yellow;*/
   height: 300px;
   width: 300px;
+
   /*!* Center slide text vertically *!
       display: -webkit-box;
       display: -ms-flexbox;
@@ -741,6 +756,7 @@ div#slides div.swiper-wrapper div.swiper-slide {
       -webkit-box-align: center;
       -ms-flex-align: center;
       -webkit-align-items: center;
+
       align-items: center;*/
 }
 
