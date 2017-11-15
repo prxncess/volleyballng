@@ -24,8 +24,19 @@
                         <!-- <li><a href="">History</a> </li> -->
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                         <li>
-                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20"><i class="fa fa-trash right-5"></i>Delete</a>
+                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>
                             <a href="{{route('editTeam',$team->name)}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
+                        </li>
+
+                        <li>
+                            <div class="">
+                                <label class="switch">
+
+                                    <input id="status" value="inactive" type="checkbox" {{($team->active==1?'checked':'')}} >
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
                         </li>
                     </ul>
                 </div>
@@ -34,6 +45,7 @@
                         @if(session('res'))
                             <div class="alert alert-success">{{session('res')}}</div>
                         @endif
+                        <div id="response"></div>
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default" id="teamPlayers" >
                                 <div class="panel-heading" role="tab" id="headingOne">
@@ -281,6 +293,24 @@
                    }
                })
            })
+
+            //update team status
+            $('span.slider').on('click',function(){
+                var status=$('input#status:checked').val();
+                var index=$('input#index').val()
+                //sent request to server
+                $.ajax({
+                    url:'{{route('upStatus')}}',
+                    type:"GET",
+                    data:{'status':status,'index':index},
+                    success:function(data){
+                        if(data.status=='success'){
+                            $('div#response').html('<div class="alert alert-success">'+data.response+'</div>');
+                        }
+                    }
+                })
+
+            })
         })
 
     </script>

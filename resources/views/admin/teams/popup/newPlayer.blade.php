@@ -1,23 +1,25 @@
 <div class="modal fade" role="dialog" aria-labelledby="MyModalLabel" id="add-player" tabindex="1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" id="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-close"></span></button>
+            </div>
             <div class="modal-body">
                 <div class="row"></div>
-                <h4>New Player</h4>
+                <h4 class="text-center">New Player</h4>
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="index" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-                    <div class="" id="player-img">
-                        <img src="{!! asset('images/user.jpg') !!}" id="show-player-img">
-                        <button type="button" >
-                            Upload image
-                        </button>
+                    <div class="top-40 text-center" id="player-img">
+                        <img src="{!! asset('images/user.png') !!}" id="show-player-img">
+                        <p class="top-20">
+                          <button type="button" class="btn btn-purple">Upload image</button>
+                        </p>
 
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error"></p>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group top-40">
                         <label>Name</label>
                         <div class="row">
 
@@ -38,14 +40,14 @@
                             <div class="col-sm-6">
                                 <label>Position</label>
                                 <select name="player_position" id="player-position" class="form-control">
-                                    <option value="">select one</option>
-                                    <option value="right side mitter">Rightside mitter</option>
-                                    <option value="outside mitter">Outside mitter</option>
-                                    <option value="middle block">Middle Block</option>
-                                    <option value="sitter">sitter</option>
-                                    <option value="opposite">opposite</option>
-                                    <option value="Middle Block/Libero">Middle Block/Libero</option>
-
+                                    <option value="">Select one</option>
+                                    <option value="right side hitter">Right side hitter</option>
+                                    <option value="outside hitter">Outside hitter</option>
+                                    <option value="middle block">Middle blocker</option>
+                                    <option value="setter">Setter</option>
+                                    <option value="opposite">Opposite hitter</option>
+                                    <option value="libero">Libero</option>
+                                    <option value="substitute">Substitute</option>
                                 </select>
                                 <p class="error"></p>
                             </div>
@@ -57,7 +59,7 @@
                         </div>
                     </div>
                     <div id="yellow-separator"></div>
-                    
+
 
 
                 </form>
@@ -65,7 +67,7 @@
             <div class="modal-footer">
               <div class="form-group">
                   <div class="col-sm-12">
-                      <button type="button" id="register-players" class="btn vb-button">Register Player</button>
+                      <button type="button" id="register-players" class="btn vb-button">Save</button>
                       <input type="reset"  hidden >
                   </div>
 

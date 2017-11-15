@@ -16,7 +16,12 @@
             <h3 class="text-uppercase text-center">Team profile</h3>
             <div id="yellow-separator"></div>
             <div id="team=profile">
-                <img  id="team-image"src="images/team_logos/teamImage.jpg" class="img-responsive">
+                @if($team->team_image==null)
+                    <img  id="team-image"src="images/team_logos/teamImage.jpg" class="img-responsive " >
+                @else
+                    <img src="{{asset('images/team/group/'.$team->team_image)}}" class="img-responsive center-block">
+                @endif
+
                 <div id="team-data">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.
                         Ergo hoc quidem apparet, nos ad agendum esse natos. Quid enim de amicitia statueris utilitatis causa expetenda vides. Lorem ipsum dolor sit amet,

@@ -7,7 +7,7 @@
             <header>
                 <h3>Teams</h3>
                 <div id="separator"></div>
-                <a href="{{route('addTeam')}}" class="float-right btn btn-purple top-10 bottom-10"><i class="fa fa-plus right-5"></i> New team</a>
+                <a href="{{route('addTeam')}}" class=" btn btn-purple "><i class="fa fa-plus right-5"></i> New team</a>
             </header>
             @if($teams->isNotEmpty())
                 {{--display all teams--}}
@@ -25,6 +25,10 @@
                 {{--no teams yet--}}
                 <div class="alert alert-warning alert-dismissable">No teams yet - click the 'New team' button to get started</div>
             @endif
+            <div class="center-block">
+                {{$teams->links()}}
+
+            </div>
         </div>
     </section>
     @endsection

@@ -38,7 +38,7 @@ Route::get('/team/players/{id}',['as'=>'viewPlayer', 'uses'=>'PagesController@pl
 
 
 Route::get('/team/Register',['as'=>'register','uses'=>'PagesController@register']);
-Route::post('/team/Register',['as'=>'teamRegister','uses'=>'RegisterController@postRegister']);
+Route::post('/team/Register',['as'=>'register','uses'=>'RegisterController@teamInfo']);
 Route::post('/RegistrationComplete',['as'=>'teamCompleted','uses'=>'RegisterController@teamComplete']);
 Route::get('/RegistrationComplete',['as'=>'teamCompleted','uses'=>'RegisterController@teamComplete']);
 
@@ -84,6 +84,9 @@ Route::group(['middleware'=>'master','prefix'=>'admin'],function(){
     Route::get('/Teams/{team}/removeStaff/{name}',['as'=>'deleteStaff','uses'=>'Admin\staffPagesController@destroy']);
     Route::get('/Teams/{team}/editStaff/{name}',['as'=>'editStaff','uses'=>'Admin\staffPagesController@edit']);
     Route::post('/Teams/{team}/editStaff/{name}',['as'=>'editStaff','uses'=>'Admin\staffPagesController@update']);
+
+    //others
+    Route::get('UpdateStatus',['as'=>'upStatus','uses'=>'Admin\teamPagesController@teamStatus']);
 });
 
 //team profile routes
@@ -92,7 +95,7 @@ Route::get('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@
 Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@teamTryLogin']);
 
  Route::group(['middleware'=>'team','prefix'=>'teamAdmin'],function(){
-     Route::get('/dashboard',['as'=>'teamDashboard','uses'=>'team\pagesController@home']);
+     Route::get('/dashboard',['as'=>'teamDashboard','uses'=>'team\teamPagesController@overview']);
      Route::get('/Logout',['as'=>'teamSignOut','uses'=>'team\teamLoginController@logout']);
 
 
@@ -119,6 +122,18 @@ Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController
      //change password
      Route::get('/updatePassword',['as'=>'changePassword','uses'=>'team\teamLoginController@editPassword']);
      Route::post('/updatePassword',['as'=>'changePassword','uses'=>'team\teamLoginController@updatePassword']);
+
+     //others
+     Route::get('/teamReview',['as'=>'tmReview','uses'=>'team\teamPagesController@teamReview']);
  });
+
+Route::get('Email', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        $message->subject('Mailgun and Laravel are awesome!');
+        $message->from('volleyball.ng@no_reply', 'Website Name');
+        $message->to('kulblog66@gmail.com');
+    });
+});
 
 

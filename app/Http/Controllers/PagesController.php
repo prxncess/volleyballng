@@ -17,7 +17,8 @@ class PagesController extends Controller
         try{
             $events=Event::whereStatus('open')->get();
             //return dd($events);
-            return view('index',compact('events'));
+            $teams=Team::all()->take(6)->where('active',1);
+            return view('index',compact('events','teams'));
         }catch (ModelNotFoundException $e){
 
         }
@@ -28,10 +29,11 @@ class PagesController extends Controller
     public function events(){
         // date calender
         $events=Event::where('status','open')->get();
+
         return view('event',compact('events'));
     }
     public function register(){
-        return view('createTeam');
+        return view('register');
     }
     public function event($slug){
         //find a given event
@@ -44,7 +46,7 @@ class PagesController extends Controller
 
     }
     public function teams(){
-        $teams =Team::all();
+        $teams =Team::all()->where('active',1);
         return view('teams',compact('teams'));
     }
     //page not found

@@ -318,6 +318,7 @@ nav#menu {
   top: -17px;
   border-radius: 0px;
   padding: 20px;
+
   /* div.collapse.navbar-collapse{
      background: $blue;
      width: 200px;
@@ -561,6 +562,7 @@ section#our-home article p {
 
 section#our-home article#vb-home-team {
   position: relative;
+
   /*div#overlay{
       background-color: rgba(0,0,0,0.7);
       position: absolute;
@@ -570,7 +572,6 @@ section#our-home article#vb-home-team {
       bottom: 0;
       left: 0;
       //z-index: 11;
-
     }*/
 }
 
@@ -578,6 +579,7 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide {
   /*border: 2px solid $yellow;*/
   height: 360px;
   max-width: 430px;
+
   /*!* Center slide text vertically *!
         display: -webkit-box;
         display: -ms-flexbox;
@@ -681,6 +683,7 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide header
 }
 
 section#our-home article#vb-home-team header {
+
   /*position: absolute;
       padding: 90px 50px;
       top: 0;
@@ -992,7 +995,9 @@ article#event section#sub-links a.btn.btn-default:hover {
 }
 
 div#access {
+
   /* margin-left: 0;
+
   margin-top: 50px;*/
 }
 
@@ -1087,7 +1092,9 @@ div#event-list div#event-thumb h3 a:hover {
 
 div#event-list div#event-thumb img {
   width: inherit;
+
   /*border-top-left-radius: 15px;
+
       border-top-right-radius: 15px;*/
   max-height: 255px;
 }
@@ -1097,7 +1104,9 @@ div#event-list div#event-thumb header {
   background: white;
   padding: 10px;
   height: 120px;
+
   /* border-bottom-left-radius: 20px;
+
       border-bottom-right-radius: 20px;*/
 }
 
@@ -1163,7 +1172,9 @@ div#vb-calender div#calender aside div#calender-box header h4 span {
 
 div#vb-calender div#calender aside div#calender-box div#bd-calender {
   width: 500px;
+
   /*border-left:1px solid $text-color2;
+
           border-bottom: 1px solid $text-color;*/
 }
 
@@ -1177,7 +1188,9 @@ div#vb-calender div#calender aside div#calender-box div#bd-calender ul li#bd-day
   height: 45px;
   font-weight: bold;
   color: #757575;
+
   /*border-top: 1px solid $text-color;
+
               border-right: 1px solid $text-color;*/
   padding: 18px;
   float: left;
@@ -1231,9 +1244,11 @@ div#vb-calender div#vb-schedules div#schedule div.media div.media-body div.media
 }
 
 div#slides {
+
   /*width: 100%;
   height: auto;
   margin-left: auto;
+
   margin-right: auto;*/
 }
 
@@ -1241,6 +1256,7 @@ div#slides div.swiper-wrapper div.swiper-slide {
   /*border: 2px solid $yellow;*/
   height: 360px;
   max-width: 430px;
+
   /*!* Center slide text vertically *!
       display: -webkit-box;
       display: -ms-flexbox;

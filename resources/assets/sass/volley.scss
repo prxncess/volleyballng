@@ -20,7 +20,7 @@ a{
 
 .btn-purple {
   color: $purple;
-  background-color: transparent;
+  background-color: none;
   border: 1px solid $purple;
   border-radius: 20px;
   &:hover {color: white; background-color: $purple}
@@ -36,6 +36,12 @@ a{
 .top-bottom-padding-40 {
   padding: 40px 0;
 }
+.top-bottom-padding-20 {
+  padding: 20px 0;
+}
+.left-right-padding-20 {
+  padding: 0 20px;
+}
 .bottom-40 {
   margin-bottom: 40px;
 }
@@ -48,10 +54,15 @@ a{
 .top-20 {
   margin-top: 20px;
 }
+
+// End of helper classes
+}
 .float-right {
   float: right !important;
 }
-// End of helper classes
+// Media query
+@media only screen and (max-width: 767px) {
+    float: none !important;
 }
 .gray-background {
   background-color: $whitesmoke
@@ -64,14 +75,6 @@ a{
   height: 1px;
   background-color: $purple;
 }
-
-// Media queries
-@media (min-width: 320px) and (max-width: 767px) {
-  .float-right {
-    float: none !important;
-  }
-}
-// End of media queries
 
 div#background{
   //background: url("../images/banner2.jpg") fixed center center;
@@ -88,9 +91,6 @@ div#background{
   font-size: 15px;
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
-}
-.img#show-logo-img {
-  max-height: 180px
 }
 .error{
   color: $alert-red;
@@ -153,7 +153,7 @@ nav#menu{
   button#toggle-bar{
     // position: absolute;
     //cursor: pointer;
-    // margin-top: 12px;
+    margin-top: 12px;
     background: none;
     border: none;
     span{
@@ -165,12 +165,12 @@ nav#menu{
       margin-bottom: 5px;
 
     }
-    &:hover{
-      color: black;
-    }
-    &:focus{
-      color: black;
-    }
+    // &:hover{
+    //   background-color: black;
+    // }
+    // &:focus{
+    //   background: black;
+    // }
 
 
 
@@ -1195,19 +1195,20 @@ div#events-subnav{
   @extend #container;
   padding: 0;
   background: $blue;
-  height: 40px;
+  height: auto;
   //display: block;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  // font-size: 1.6rem;
+  // line-height: 1.6rem;
   font-weight: bold;
   @extend #well;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
   //width: 100%;
   a{
-    float: left;
+    // float: left;
     text-decoration: none;
     color: white;
     padding: 12px 14px;
+    display: block;
 
   }
   a.active{
@@ -1233,7 +1234,7 @@ div#league-list{
 }
 #well{
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 }
 #center-block{
   display: block;
@@ -1258,7 +1259,15 @@ form.add-team{
   border: 0;
   background: white;
   //fieldset
-
+  input#logo{
+    display: none;
+  }
+  img#show-logo-img{
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin-bottom: 10px;
+  }
 
   padding: 40px;
   h4{
@@ -1297,7 +1306,7 @@ form.add-team{
 
       width: 180px;
       height: 180px;
-      //background: $light-blue;
+      background: $light-blue;
       border-radius: 5px;
       margin: 20px auto;
       position: relative;

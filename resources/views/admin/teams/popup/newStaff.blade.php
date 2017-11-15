@@ -2,29 +2,26 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-close"></span></button>
             </div>
             <div class="modal-body">
                 <div class="res">
 
                 </div>
-                <h4>New Player</h4>
+                <h4 class="text-center top-40">New Staff</h4>
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="teamindex" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <fieldset>
 
-                        <h4> New Staff</h4>
-                        <div id="res"></div>
-
                         <div id="add-player">
 
                             <div id="member-info">
-                                <div class="" id="manager-img">
-                                    <img src="{!! asset('images/user.jpg') !!}" id="show-img">
-                                    <button type="button" class="btn top-20 bottom-20">
-                                        Upload image
-                                    </button>
+                                <div class="text-center" id="manager-img">
+                                    <img src="{!! asset('images/user.png') !!}" id="show-img">
+                                    <p>
+                                      <button type="button" class="btn top-20 bottom-20">Upload image</button>
+                                    </p>
                                     {{--<l class="fa fa-plus"></l>--}}
                                     <input type="file" name="manager_photo" id="manager-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                                     <p class="error"></p>

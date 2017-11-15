@@ -339,6 +339,30 @@ div#admin-box header {
   color: #4449ca;
 }
 
+nav#admin-menu {
+  background: url("../images/volleyballng_heade2re.png") no-repeat center center;
+  background-size: cover;
+  border: none;
+}
+
+nav#admin-menu a.navbar-brand img {
+  width: 65px;
+  position: absolute;
+  top: 10%;
+}
+
+nav#admin-menu ul.top-nav a.dropdown-toggle {
+  color: white;
+}
+
+ul#admin-sidebar {
+  background: #4449ca;
+}
+
+ul#admin-sidebar li a {
+  color: white;
+}
+
 section#addEvent form#event-form {
   padding: 2%;
 }
@@ -537,9 +561,8 @@ section#team-overview form#editPlayer {
 }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
-  width: 180px;
-  height: 180px;
-  display: block;
+  width: 160px;
+  height: 160px;
 }
 
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {

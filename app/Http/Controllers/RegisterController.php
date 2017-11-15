@@ -8,6 +8,8 @@ use App\Staff;
 use App\Team;
 use App\Player;
 use Image;
+use Illuminate\Support\Facades\Input;
+use Mail;
 class RegisterController extends Controller
 {
     //
@@ -24,31 +26,49 @@ class RegisterController extends Controller
 
     public function teamInfo(Request $request){
         //check if request is ajax
-        if($request->ajax()){
             //validate request
             //get all register teams
            // $savedTeamEmail=Team::get('contact');
+
             $messages=[
-                'teamLogo.required'=>'Please upload your team logo',
-                'teamImage.required'=>'Please upload a photo of your entire team',
-                'teamImage.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
-                'teamLogo.image'=>'File uploaded is not in a supported format (jpeg,png,jpg)',
-                'teamLogo.max'=>'File size should be less than 1mb',
-                'teamImage.max'=>'File size should be less than 2mb',
+                'logo.required'=>'Please upload your team logo',
+                'team_image.required'=>'Please upload a photo of your entire team',
+                'team_image.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
+                'logo.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
+                'logo.max'=>'File size should be less than 1mb',
+                'team_image.max'=>'File size should be less than 2mb',
+                //team name
+                'team-name.required'=>'A team is required',
+                'team-name.unique'=>'Name already registered',
+                'team-name.regex'=>'Please enter a valid name',
+                //team phone
+                'team-phone.required'=>'Please enter your phone number',
+                'team-phone.unique'=>'Phone number already registered',
+
+                //team email
+                'team-contact.required'=>'Please enter your email address',
+                'team-contact.email'=>'Please enter a valid email address',
+                'team-contact.unique'=>'Email address already registered',
+                //terms
+                'accept.accepted'=>'Please check we agree box'
+
             ];
-            $validator=Validator::make($request->all(),[
-                'teamName'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
-            'teamContact'=>'required|email|unique:teams,contact',
-            'teamPhoneNumber'=>'required|unique:teams,phone',
-                'teamLogo'=>'required|mimes:jpeg,png,jpg|max:1024',
-                'teamImage'=>'required|mimes:jpeg,png,jpg|max:2024'
-            ]);
-            $errors= $validator->errors();
+            Validator::make($request->all(),[
+                'team-name'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
+            'team-contact'=>'required|email|unique:teams,contact',
+            'team-phone'=>'required|unique:teams,phone',
+                'logo'=>'mimes:jpeg,png,jpg|max:1024',
+                'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',
+                'accept'=>'accepted'
+            ],$messages)->validate();
+            /*$errors= $validator->errors();
             if($validator->fails()){
                 return response()->json(['status'=>'error','errors'=>$errors]);
-            }
+            }*/
             //save logo
-            $teamLogo=$request->file('teamLogo');
+        $newImageName='';
+        if($request->file('logo')){
+            $teamLogo=$request->file('logo');
             $newImageName=time().'.'.$teamLogo->getClientOriginalExtension();
             $teamFolder='images/team/'.$newImageName;
             //resize and move image
@@ -56,11 +76,12 @@ class RegisterController extends Controller
                 $c->aspectRatio();
                 $c->upsize();
             })->orientate()->save($teamFolder);
-
+        }
 
             //save team group
             //team image
-            $teamImage=$request->file('teamImage');
+
+            $teamImage=$request->file('team_image');
             $newTeamName=time().'.'.$teamImage->getClientOriginalExtension();
             $teamFolder='images/team/group/'.$newTeamName;
             //resize and move image
@@ -70,24 +91,31 @@ class RegisterController extends Controller
             })->orientate()->save($teamFolder);
             //save detail to data base and return team_id
             //generate password
-
+            $password=str_random(15);
            $team=Team::create([
-               'name'=>$request->get('teamName'),
-               'contact'=>$request->get('teamContact'),
+               'name'=>$request->get('team-name'),
+               'contact'=>$request->get('team-contact'),
                'active'=>0,
-               'phone'=>$request->get('teamPhoneNumber'),
-               'logo'=>$newImageName,
+               'phone'=>$request->get('team-phone'),
+               'logo'=>($newImageName==null)?'':$newImageName,
                'team_image'=>$newTeamName,
+               'password'=>bcrypt($password)
            ]);
             //return response()->json(['status'=>'next']);
             if($team->save()){
                 //saved team id
                 $this->team_id=$team->id;
-                return response()->json(['status'=>'next','team_id'=>$this->team_id]);
+                //send a mail ater registeration
+                $data=array('email'=>$request->get('team-contact'),'name'=>$request->get('team-name'),'password'=>$password);
+
+                Mail::send('mails.account', $data, function($message) {
+                    $message->to(Input::get('team-contact'));
+                    $message->subject('Team Registration');
+                    $message->from('volleyballdotngee','volleyball.ng');
+                });
+                return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('team-name').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }
-            return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
-        }
-        return false;
+            //return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
     }
     //team coach
     public function teamCoach(Request $request){

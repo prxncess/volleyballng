@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use Validator;
 use App\Player;
 use Image;
+use Mail;
 
 
 class teamPagesController extends Controller
@@ -44,14 +45,15 @@ class teamPagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //store players
     public function store(Request $request)
     {
         //
         if($request->ajax()){
             //validate
             $message=[
-                'player_height_feet.required'=>'select player feet',
-                'player_height_inches.required'=>'select player inches',
+                'player_height_feet.required'=>'Select player height in feet',
+                'player_height_inches.required'=>'Select player height in inches',
             ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|max:1024',
@@ -129,9 +131,9 @@ class teamPagesController extends Controller
         try{
             $team= auth('team')->user();
             $player= Player::find($id);
-            $positions=['right side mitter','outside mitter','middle block','sitter','opposite','middle block/libero'];
+            $positions=['right side hitter','outside hitter','middle block','sitter','opposite','libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inch','1 inches','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inch','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
@@ -321,6 +323,33 @@ class teamPagesController extends Controller
 
         }catch (ModelNotFoundException $e){
 
+        }
+    }
+
+    //request for team review
+    public function teamReview(Request $request){
+        //check if the request sent over by ajax
+        if($request->ajax()){
+
+            //validate $request
+           $validator= Validator::make($request->all(),[
+                'email'=>'required|email'
+            ]);
+            if($validator->fails()){
+                $errors=$validator->errors();
+                return response()->json(['errors'=>$errors,'status'=>'error']);
+            }
+
+            //send mail to admin
+            $data=['name'=>$request->get('name'),'email'=>$request->get('email')];
+           $mail= Mail::send('mails.review',$data,function($message){
+                $message->to('eorijesu@gmail.com','Efeoghene Ori-Jesu');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+                $message->subject('Team Review');
+            });
+
+            return response()->json(['status'=>'success','response'=>"Cheers!!! Your request was sent successfully and awaiting review.
+<p><b>Please don't send another request</b></p>"]);
         }
     }
 }

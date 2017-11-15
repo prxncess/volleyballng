@@ -4,8 +4,8 @@
     <section id="team_complete">
         <div class="" id="container" >
             <header id="well"></header>
-            <h2 class="" style="color: mediumseagreen">Congratulation!! </h2>
-            <p style="color: mediumseagreen">Your your team was successfully created. We would be in touch with you soon</p>
+            <!-- <h2 class="" style="color: mediumseagreen">Congratulation!! </h2> -->
+            <p style="color: mediumseagreen">Thanks for signing up, your team was successfully created and we'll be in touch soon.</p>
         </div>
 
     </section>
