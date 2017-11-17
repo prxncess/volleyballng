@@ -21,7 +21,7 @@
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
                         <li><span>{{$team->phone}}</span></li>
                         <li><a href="3">Team Events</a></li>
-                        <!-- <li><a href="">History</a> </li> -->
+                        <li>Contact: {{$team->contact_person}}</li>
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                         <li>
                             <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>

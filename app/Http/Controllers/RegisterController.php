@@ -59,7 +59,8 @@ class RegisterController extends Controller
             'team-phone'=>'required|unique:teams,phone',
                 'logo'=>'mimes:jpeg,png,jpg|max:1024',
                 'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',
-                'accept'=>'accepted'
+                'accept'=>'accepted',
+                'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i'
             ],$messages)->validate();
             /*$errors= $validator->errors();
             if($validator->fails()){
@@ -95,6 +96,7 @@ class RegisterController extends Controller
            $team=Team::create([
                'name'=>$request->get('team-name'),
                'contact'=>$request->get('team-contact'),
+               'contact-person'=>$request->get('contact-person'),
                'active'=>0,
                'phone'=>$request->get('team-phone'),
                'logo'=>($newImageName==null)?'':$newImageName,
@@ -106,12 +108,12 @@ class RegisterController extends Controller
                 //saved team id
                 $this->team_id=$team->id;
                 //send a mail ater registeration
-                $data=array('email'=>$request->get('team-contact'),'name'=>$request->get('team-name'),'password'=>$password);
+                $data=array('email'=>$request->get('team-contact'),'name'=>$request->get('contact-person'),'password'=>$password);
 
                 Mail::send('mails.account', $data, function($message) {
                     $message->to(Input::get('team-contact'));
                     $message->subject('Team Registration');
-                    $message->from('volleyballdotngee','volleyball.ng');
+                    $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 });
                 return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('team-name').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }

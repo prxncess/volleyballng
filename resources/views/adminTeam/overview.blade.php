@@ -23,7 +23,7 @@
                         <li><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
                         <li><span>{{$team->phone}}</span></li>
-                       {{-- <li><a href="#">Team Events</a></li>--}}
+                        <li>Contact: {{$team->contact_person}}</li>
                         <!-- <li><a href="">History</a> </li> -->
 
                         <li>
