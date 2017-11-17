@@ -96,7 +96,7 @@ class RegisterController extends Controller
            $team=Team::create([
                'name'=>$request->get('team-name'),
                'contact'=>$request->get('team-contact'),
-               'contact-person'=>$request->get('contact-person'),
+               'contact_person'=>$request->get('contact-person'),
                'active'=>0,
                'phone'=>$request->get('team-phone'),
                'logo'=>($newImageName==null)?'':$newImageName,
@@ -115,7 +115,7 @@ class RegisterController extends Controller
                     $message->subject('Team Registration');
                     $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 });
-                return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('team-name').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
+                return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('contact-person').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }
             //return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
     }

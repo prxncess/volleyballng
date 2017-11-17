@@ -22,26 +22,26 @@
                     <ul class="list-unstyled">
                         <li><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
-                        <li><span>{{$team->phone}}</span></li>
-                        <li>Contact: {{$team->contact_person}}</li>
+                        <li><span><a href="tel:{{$team->phone}}">{{$team->phone}}</a></span></li>
+                        <li>Contact person: {{$team->contact_person}}</li>
                         <!-- <li><a href="">History</a> </li> -->
 
-                        <li>
-
+                        <li class="top-20">
                             <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple right-10"><i class="fa fa-edit right-10"></i>Edit</a>
                             <a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a>
                         </li>
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                          <li id="teamStatus"><span>Status:</span>
                          @if($team->active==0)
-                                 <i style="color:#bebebe" class="fa fa-question"></i>
-                                 <span style="color: #bebebe">Inactive</span>
-                             <p style="font-size: 10px" class="">
+                                 <i style="color:#bebebe" class="fa fa-circle"></i>
+                                 <span style="color: #7e7e7e">Inactive</span>
+                             <p style="font-size: 12px" class="">
                                  To be approved and activated, please add at least 6 players, 1 management staff and a team photograph to your profile.
                              </p>
-                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20" >Activate team</a>
+                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20">Request activation</a>
                              @else
-                                 <i class="fa fa-check"></i> Active
+                                 <i style="color:#009B8A"class="fa fa-check"></i>
+                                 <span style="color: #009B8A">Active</span>
                              @endif
                          </li>
                     </ul>

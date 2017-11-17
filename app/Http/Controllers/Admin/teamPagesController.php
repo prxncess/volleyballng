@@ -51,7 +51,7 @@ class teamPagesController extends Controller
             'teamName'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'teamContact'=>'required|email|unique:teams,contact',
             'teamPhoneNumber'=>'required|unique:teams,phone',
-            'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
+            'contactPerson'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
         ])->validate();
         /*$errors= $validator->errors();
         if($validator->fails()){
@@ -63,7 +63,7 @@ class teamPagesController extends Controller
             'contact'=>$request->get('teamContact'),
             'active'=>0,
             'phone'=>$request->get('teamPhoneNumber'),
-            'contact_person'=>$request->get('contact-person')
+            'contact_person'=>$request->get('contactPerson')
         ]);
         //return response()->json(['status'=>'next']);
         if($team->save()){
@@ -132,7 +132,7 @@ class teamPagesController extends Controller
                 'teamName'=>["required","regex:/^[A-Za-z-' ]{3,100}$/i",
                 Rule::unique('teams','name')->ignore($team->id),
                 ],
-                'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
+                'contactPerson'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
                 'teamContact'=>["required","email",
                     Rule::unique('teams','contact')->ignore($team->id),
                 ],
@@ -152,13 +152,14 @@ class teamPagesController extends Controller
             $team->phone=$request->get('teamPhone');
             $team->description=$request->get('teamDescription')?$request->get('teamDescription'):'';
             $team->password=$request->get('password')?$newpassword:$oldpassword;
-            $team->contact_person=$request->get('contact-person');
+            $team->contact_person=$request->get('contactPerson');
             if($team->save()){
 
                 //send mail to team
                 $data=array(
                     'email'=>$request->get('teamContact'),
-                    'name'=>$request->get('teamName'),
+                    'name'=>$request->get('contactPerson'),
+                    'team'=>$request->get('teamName'),
                     'password'=>$request->get('password'),
                     'description'=>$request->get('teamDescription'),
                     'phone'=>$request->get('teamPhone'));
@@ -245,4 +246,3 @@ class teamPagesController extends Controller
         }
     }
 }
-

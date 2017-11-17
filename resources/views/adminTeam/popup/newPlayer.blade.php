@@ -41,13 +41,13 @@
                                 <label>Position</label>
                                 <select name="player_position" id="player-position" class="form-control">
                                     <option value="">Select one</option>
-                                    <option value="right side mitter">Rightside mitter</option>
-                                    <option value="outside mitter">Outside mitter</option>
+                                    <option value="right side hitter">Right side hitter</option>
+                                    <option value="outside hitter">Outside mitter</option>
                                     <option value="middle block">Middle blocker</option>
-                                    <option value="sitter">Sitter</option>
-                                    <option value="opposite">Opposite</option>
-                                    <option value="Middle Block/Libero">Middle Block/Libero</option>
-
+                                    <option value="setter">Setter</option>
+                                    <option value="opposite">Opposite hitter</option>
+                                    <option value="Libero">Libero</option>
+                                    <option value="substitute">Substitute</option>
                                 </select>
                                 <p class="error"></p>
                             </div>

@@ -256,7 +256,7 @@ class teamPagesController extends Controller
           Validator::make($request->all(),[
                'logo'=>'image|max:1024',
                'team_image'=>'image',
-              'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
+              'contactPerson'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
                 'teamContact'=>["email",'required',
                     Rule::unique('teams','contact')->ignore($team->id),
                 ],
@@ -305,7 +305,7 @@ class teamPagesController extends Controller
         $team->contact=$request->get('teamContact');
         $team->phone=$request->get('teamPhone');
         $team->description=$request->get('teamDescription')?$request->get('teamDescription'):'';
-        $team->conact_person=$request->get('contact-person');
+        $team->contact_person=$request->get('contactPerson');
 
         if($team->save()){
             //redirect  to team over view with response

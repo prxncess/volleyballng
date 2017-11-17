@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label>Contact</label>
+                            <label>Email address</label>
                             <input type="text" class="form-control" value="{{$team->contact}}" id="team-contact" name="teamContact" PLACEHOLDER="db@gmail.com">
                             <p class="error">@if($errors->has('teamContact')) {{$errors->first('teamContact')}} @endif</p>
                         </div>
@@ -37,9 +37,16 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Phone</label>
-                            <input type="text" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="08021234567">
+                            <input type="number" class="form-control" value="{{$team->phone}}" id="team-phone" name="teamPhone" PLACEHOLDER="08021234567">
                             <p class="error">@if($errors->has('teamPhone')) {{$errors->first('teamPhone')}} @endif</p>
                         </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <label>Contact person</label>
+                        <input type="text" class="form-control" name="contactPerson" id="contact-person" value="{{$team->contact_person}}" placeholder="Ahmad">
+                        <p class="error">@if($errors->has('contactPerson')) {{$errors->first('contactPerson')}}@endif</p>
+                      </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
