@@ -1,63 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
+<!-- <!DOCTYPE html>
+<html lang="en"> -->
+@extends('layout')
+@section('title','Admin Login')
+@section('content')
 
-    <title>Volleyball.ng Admin</title>
+<!-- <body class="login-img3-body"> -->
 
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <!--external css-->
-    <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles -->
-    <link href="{{asset('css/admin.css')}}" rel="stylesheet" type="text/css">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+<div class="container" id="background">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body class="login-img3-body">
-
-<div class="container">
-
-    <form class="login-form" action="{{route('MasterLogin')}}" method="post">
-        {{csrf_field()}}
-        <div class="login-wrap">
-            <p class="login-img"><i class="icon_lock_alt"></i></p>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon_profile"></i></span>
-                <input type="text" class="form-control" name="user_name" placeholder="Username" autofocus>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" name="passkey" placeholder="Password">
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                {{--<span class="pull-right"> <a href="#"> Forgot Password?</a></span>--}}
-            </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-        </div>
-    </form>
-    <div class="text-right">
+    <section id="team-login">
+      <form id="vb-team-login" class="form-horizontal" action="{{route('MasterLogin')}}" method="post">
+          <header><h2 class="text-center"><i class="fa fa-lock"></i></h2> </header>
+          {{csrf_field()}}
+          <div class="row">
+              <div class="col-xs-12 bottom-20 text-center error">
+                  <input type="text" class="form-control" name="user_name" placeholder="Username" autofocus>
+              </div>
+              <div class="col-xs-12 bottom-20 text-center error">
+                  <input type="password" class="form-control" name="passkey" placeholder="Password">
+              </div>
+              <!-- <div class="col-xs-12 form-group">
+                  <input type="checkbox" class="right-5" value="remember-me"> Remember me
+                  <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+              </div> -->
+              <div class="col-xs-12 bottom-20">
+                <button id="vb-button" class="btn btn-primary" type="submit">Login</button>
+              </div>
+          </div>
+      </form>
+    </section>
+    <!-- <div class="text-right">
         <div class="credits">
            </div>
-    </div>
+    </div> -->
 </div>
 
 
-</body>
-</html>
+<!-- </body>
+</html> -->

@@ -74,6 +74,10 @@ a {
   height: 1px;
   background-color: $purple;
 }
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
+}
 
 // Media queries
 @media (min-width: 320px) and (max-width: 767px) {
@@ -327,10 +331,10 @@ div#tm-players{
 
   }
 }
-.gray-separator {
-  height: 1px;
-  background-color: #e6e6e6;
-}
+// .gray-separator {
+//   height: 1px;
+//   background-color: #e6e6e6;
+// }
 .top-20 {
   margin-top: 20px;
 }

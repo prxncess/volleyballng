@@ -249,7 +249,6 @@ ul.pagination {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -261,7 +260,6 @@ ul.pagination {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -703,11 +701,18 @@ a:hover {
 .gray-separator {
   height: 1px;
   background-color: #e6e6e6;
+  max-width: 600px;
 }
 
 .purple-separator {
   height: 1px;
   background-color: #4449ca;
+}
+
+.yellow-separator {
+  height: 1px;
+  background-color: #e8b617;
+  max-width: 600px;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

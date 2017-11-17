@@ -303,6 +303,11 @@ a:hover {
   background-color: #4449ca;
 }
 
+.yellow-separator {
+  height: 1px;
+  background-color: #e8b617;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .float-right {
     float: none !important;
@@ -512,11 +517,6 @@ div#add-player #member-info button {
 div#tm-players img {
   width: 250px;
   height: 200px;
-}
-
-.gray-separator {
-  height: 1px;
-  background-color: #e6e6e6;
 }
 
 .top-20 {

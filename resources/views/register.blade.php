@@ -119,8 +119,14 @@
                 <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Phone number</label>
-                    <input type="text" class="form-control" name="team-phone" id="team-phone" value="{{old('team-phone')}}" placeholder="08021234567">
+                    <input type="number" class="form-control" name="team-phone" id="team-phone" value="{{old('team-phone')}}" placeholder="08021234567">
                     <p class="error">@if($errors->has('team-phone')) {{$errors->first('team-phone')}}@endif</p>
+                </div>
+                <div id="yellow-separator"></div>
+                <div class="form-group">
+                    <label>Contact person</label>
+                    <input type="text" class="form-control" name="contact-person" id="contact-person" value="{{old('contact-person')}}" placeholder="Clara">
+                    <p class="error">@if($errors->has('contact-person')) {{$errors->first('contact-person')}}@endif</p>
                 </div>
                 <div id="yellow-separator"></div>
                 <div class="form-group">

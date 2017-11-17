@@ -561,10 +561,16 @@ a {
 .gray-separator {
   height: 1px;
   background-color: $gray;
+  max-width: 600px;
 }
 .purple-separator {
   height: 1px;
   background-color: $purple;
+}
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
+  max-width: 600px;
 }
 
 // Media queries

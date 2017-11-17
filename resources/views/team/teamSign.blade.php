@@ -2,23 +2,25 @@
 @section('title','Team Login')
 @section('content')
 
-        <header id="container">
-            <h2>Team sign-in</h2>
-            <div id="yellow-separator"></div>
-        </header>
-        <div id="events-subnav">
-          <div class="row">
-              <div class="col-sm-4">
-                <a href="{{route('viewTeams')}}" class="top-bottom-padding-20">Teams</a>
-              </div>
-              <div class="col-sm-4">
-                <a href="{{route('register')}}" class="top-bottom-padding-20">Register a team</a>
-              </div>
-              <div class="col-sm-4">
-                <a href="{{route('teamSignIn')}}" class="active top-bottom-padding-20">Team Login</a>
-              </div>
-            </div>
+    <header id="container">
+        <h2>Team sign-in</h2>
+        <div id="yellow-separator"></div>
+    </header>
+
+    <div id="events-subnav">
+      <div class="row">
+          <div class="col-sm-4">
+            <a href="{{route('viewTeams')}}" class="top-bottom-padding-20">Teams</a>
+          </div>
+          <div class="col-sm-4">
+            <a href="{{route('register')}}" class="top-bottom-padding-20">Register a team</a>
+          </div>
+          <div class="col-sm-4">
+            <a href="{{route('teamSignIn')}}" class="active top-bottom-padding-20">Team Login</a>
+          </div>
         </div>
+    </div>
+    
     <section id="team-login">
 
         <form id="vb-team-login" method="post" action="{{route('teamSignIn')}}" class="form-horizontal">
