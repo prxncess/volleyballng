@@ -84,7 +84,7 @@ class eventPagesController extends Controller
             'event_start'=>'required|date',
             'event_end'=>'required|date',
             'event_poster'=>'required|image|mimes:jpg,jpeg,png,x-png',
-            'event_organizer'=>'required|regex:/^[\w., ]{10,80}$/i',
+            'event_organizer'=>'required|regex:/^[\w., ]{3,80}$/i',
             'event_email'=>'required|email',
             'event_phone'=>'required|regex:/^[0-9]{11}/i',
             'event_status'=>'required'

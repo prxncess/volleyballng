@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('css/volley.css') !!}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('extra-style')
-    <base href="http://localhost/volleyball/public/">
+    <base href="http://volleyball.ng">
     <title>@yield('title')</title>
 
 </head>

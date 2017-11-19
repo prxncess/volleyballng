@@ -27,7 +27,7 @@
                                 <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
                                 <ul class="list-unstyled">
                                     <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
-                                    <li><span class="role">Height: </span> <strong>{{$player->height}}</strong> </li>
+                                    <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
 
                                 </ul>
 
@@ -38,6 +38,7 @@
 
                     @else
                 @endif
+                {{$players->links()}}
 
             </div>
 
