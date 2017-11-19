@@ -51,7 +51,7 @@
 
                         <div class="col-sm-6">
                             <label>Start date</label>
-                            <input type="date" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}}  value="{{old('event_start')}}" id="event-start" name="event_start">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}}  value="{{old('event_start')}}" id="event-start" name="event_start">
                             <p class="error">@if($errors->has('event_start')) {{$errors->first('event_start')}} @endif</p>
                         </div>
                         <div class="col-sm-6">

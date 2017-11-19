@@ -22,11 +22,13 @@
                         <li><span>{{$team->phone}}</span></li>
                         <li><a href="3">Team Events</a></li>
                         <li>Contact: {{$team->contact_person}}</li>
+                        <li><a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a></li>
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                         <li>
                             <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>
                             <a href="{{route('editTeam',$team->name)}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
                         </li>
+
 
                         <li>
                             <div class="">
@@ -126,6 +128,7 @@
         </div>
         @include('admin.teams.popup.newPlayer')
         @include('admin.teams.popup.newStaff')
+        @include('admin.teams.popup.teamImage')
     </section>
     @endsection
 @section('footer-scripts')
@@ -293,6 +296,10 @@
                    }
                })
            })
+            //manage team
+            $('#team_image').on('click',function(){
+                $('#seeTeamImage').modal('show')
+            })
 
             //update team status
             $('span.slider').on('click',function(){

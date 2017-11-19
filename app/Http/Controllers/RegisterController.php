@@ -115,6 +115,12 @@ class RegisterController extends Controller
                     $message->subject('Team Registration');
                     $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 });
+                //send mail to admin about new team sign up
+                Mail::send('mails.newteam', ['team'=>$team], function($message) use ($team) {
+                    $message->to('efe@volleyball.ng');
+                    $message->subject('New Signup');
+                    $message->from('volleyballsmpt@gmail.com','volleyball.ng');
+                });
                 return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('contact-person').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }
             //return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
