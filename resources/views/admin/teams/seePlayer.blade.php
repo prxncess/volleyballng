@@ -20,7 +20,7 @@
                     <div class="col-sm-7">
                         <ul class="list-unstyled">
                             <li>Position: <span>{{$player->position}}</span></li>
-                            <li>Height: <span>{{$player->height}}</span></li>
+                            <li>Height: <span>{{$player->feet.' '.$player->inches}}</span></li>
                             <li>Age: <span>Not available</span></li>
                         </ul>
                         <a href="{{route('editPlayer',[$team->name,$player->id])}}" id="editPlayer" class="btn btn-warning"><i class="fa fa-edit"></i> Edit </a>
