@@ -17,7 +17,7 @@ class PagesController extends Controller
         try{
             $events=Event::whereStatus('open')->get();
             //return dd($events);
-            $teams=Team::all()->take(6)->where('active',1);
+            $teams=Team::all()->where('active',1)->take(6);
             return view('index',compact('events','teams'));
         }catch (ModelNotFoundException $e){
 

@@ -1739,6 +1739,7 @@ section#viewPlayers div.media div.media-body ul li {
 
 section#viewPlayers div.media div.media-left img {
   width: 150px;
+  height: 200px;
 }
 
 section#viewPlayer aside div#player_image img {

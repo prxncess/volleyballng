@@ -14,7 +14,13 @@
             </header>
             <div class="row">
                 <div class="col-sm-4" id="teamInfo">
-                    <div class="text-left"><img src="{{asset('images/ball.png')}}" class="img-responsive"></div>
+                    <div class="text-left">
+                        @if($team->logo ==null)
+                            <img src="{{asset('images/ball.png')}}" class="img-responsive"></div>
+                        @else
+                            <img src="{{asset('images/team/'.$team->logo)}}" class="img-responsive">
+                        @endif
+
                     <div id="" class="top-20 bottom-20 gray-separator"></div>
                     <ul class="list-unstyled">
                         <li><span>{{$team->name}}</span></li>
