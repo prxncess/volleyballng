@@ -20,7 +20,7 @@
                         @else
                             <img src="{{asset('images/team/'.$team->logo)}}" class="img-responsive">
                         @endif
-
+                    </div>
                     <div id="" class="top-20 bottom-20 gray-separator"></div>
                     <ul class="list-unstyled">
                         <li><span>{{$team->name}}</span></li>
