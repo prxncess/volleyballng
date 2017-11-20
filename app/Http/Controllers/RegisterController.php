@@ -97,6 +97,7 @@ class RegisterController extends Controller
                'name'=>$request->get('team-name'),
                'contact'=>$request->get('team-contact'),
                'contact_person'=>$request->get('contact-person'),
+               'description'=>$request->get('team-description'),
                'active'=>0,
                'phone'=>$request->get('team-phone'),
                'logo'=>($newImageName==null)?'':$newImageName,

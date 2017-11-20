@@ -191,7 +191,7 @@ section#team-overview{
         line-height: 2;
         // font-size: 18px;
         span{
-          text-transform: capitalize;
+          // text-transform: capitalize;
           color: $text-color;
         }
         a{
@@ -245,9 +245,9 @@ div#add-player{
 
     div#manager-img,div#player-img{
       img#show-img,img#show-player-img{
-        width: 180px;
-        height: 180px;
-        display: block;
+        width: 150px;
+        height: 150px;
+        // display: block;
       }
       // button{
       //   background: $light-blue;
@@ -309,8 +309,8 @@ div#add-player{
       // border: 2px solid $blue;
     }
     label{
-      // color: $blue;
-      font-weight: 100;
+      color: $dark-gray;
+      // font-weight: 100;
     }
 
     button{

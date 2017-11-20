@@ -421,7 +421,6 @@ section#team-overview div#teamInfo ul li {
 }
 
 section#team-overview div#teamInfo ul li span {
-  text-transform: capitalize;
   color: #636b6f;
 }
 
@@ -451,9 +450,8 @@ section#team-overview form#editPlayer {
 }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
-  width: 180px;
-  height: 180px;
-  display: block;
+  width: 150px;
+  height: 150px;
 }
 
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
@@ -503,7 +501,7 @@ div#add-player #member-info div#coach-img i {
 }
 
 div#add-player #member-info label {
-  font-weight: 100;
+  color: #6e6e6e;
 }
 
 div#add-player #member-info button {
