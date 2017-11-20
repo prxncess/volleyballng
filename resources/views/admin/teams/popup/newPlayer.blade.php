@@ -34,7 +34,31 @@
                         </div>
 
                     </div>
-                    <div id="yellow-separator"></div>
+
+                    <!-- <div class="gray-separator top-20 bottom-20"></div> -->
+
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div><label>Gender</label></div>
+                          <div class="radio-inline">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                              Female
+                            </label>
+                          </div>
+                          <div class="radio-inline">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                              Male
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="gray-separator top-20 bottom-20"></div> -->
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">

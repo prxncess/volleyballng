@@ -31,17 +31,17 @@ class EventsPagesController extends Controller
 
         $message =[
             'event_title.required'=>"Please enter the title of the event",
-            'event_description.required'=>'The description of this event is very important',
+            'event_description.required'=>'Please write at least 30 words to describe this event',
             'event_location.required'=>'Select the location of your event',
-            'event_start.required'=>'When would the event be starting',
-            'event_end.required'=>'When would  the event be ending',
-            'event_organizer.required'=>'Organizers name is required',
+            'event_start.required'=>'When will the event start?',
+            'event_end.required'=>'When will the event end?',
+            'event_organizer.required'=>'Who is the organizer?',
             'event_email.required'=>'Email is required',
             'event_phone.required'=>'Phone number is required',
             'event_terms.accepted'=>'You have to accept our terms and conditions',
-            'event_poser.image'=>'file uploaded in to an image:jpg,png,jpeg,x-png',
-            'event_poser.image'=>'invalid date submitted format(yyyy-mm-dd)',
-            'event_poser.image'=>'invalid date submitted format(yyyy-mm-dd)',
+            'event_poser.image'=>'File uploaded into an image:jpg,png,jpeg,x-png',
+            'event_poser.image'=>'Invalid date format (yyyy-mm-dd)',
+            'event_poser.image'=>'invalid date format (yyyy-mm-dd)',
 
 
             //other messages

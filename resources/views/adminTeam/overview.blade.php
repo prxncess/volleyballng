@@ -23,8 +23,9 @@
                         <li><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
                         <li><span><a href="tel:{{$team->phone}}">{{$team->phone}}</a></span></li>
-                        <li>Contact person: {{$team->contact_person}}</li>
-                        <!-- <li><a href="">History</a> </li> -->
+                        <li><p><span><b>Contact person</b>: {{$team->contact_person}}</span></p></li>
+                        <!-- <div id="" class="top-20 bottom-20 gray-separator"></div> -->
+                        <li><span><b>Team description</b>: {{$team->description}}</span></li>
 
                         <li class="top-20">
                             <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple right-10"><i class="fa fa-edit right-10"></i>Edit</a>
@@ -71,7 +72,7 @@
                                                             <div class="col-xs-6 col-sm-6">
                                                                 <a href="{{route('showPlayer',[$player->id])}}">
                                                                     <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
-                                                                    <h5 class="text-center text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
+                                                                    <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
                                                                 </a>
 
                                                             </div>

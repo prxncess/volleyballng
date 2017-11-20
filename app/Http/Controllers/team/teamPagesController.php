@@ -133,7 +133,7 @@ class teamPagesController extends Controller
             $player= Player::find($id);
             $positions=['right side hitter','outside hitter','middle block','sitter','opposite','libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inch','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
@@ -243,13 +243,13 @@ class teamPagesController extends Controller
             $team=Team::whereId($logged_team->id)->firstOrFail();;//fetches team data from database
             $messages=[
 
-                'team_img.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'logo.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'logo.max'=>'file uploaded exceeds 1mb',
-                'teamContact.email'=>'Invalid email submitted. Format:youname@ggg.com',
+                'team_img.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.max'=>'File uploaded exceeds 1mb',
+                'teamContact.email'=>'Invalid email submitted. Format: youname@ggg.com',
                 'teamContact.unique'=>'Email submitted is already in use',
-                'teamPhone.unique'=>'Phone Number already in use by another team',
-                'teamPhone.digits'=>'Phone Number must be 11 digits',
+                'teamPhone.unique'=>'Phone number already in use by another team',
+                'teamPhone.digits'=>'Phone number must be 11 digits',
             ];//custom messages for errors
 
         //dd($team->name);

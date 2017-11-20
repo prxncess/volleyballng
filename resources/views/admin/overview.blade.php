@@ -12,124 +12,137 @@
                 <h2>Team Overview</h2>
                 <div id="separator"></div>
             </header>
+
             <div class="row">
                 <div class="col-sm-4" id="teamInfo">
-                    <div class="text-left">
+                    <div class="">
                         @if($team->logo ==null)
-                            <img src="{{asset('images/ball.png')}}" class="img-responsive"></div>
+                            <img src="{{asset('images/ball.png')}}" class="img-responsive">
                         @else
                             <img src="{{asset('images/team/'.$team->logo)}}" class="img-responsive">
                         @endif
                     </div>
-                    <div id="" class="top-20 bottom-20 gray-separator"></div>
-                    <ul class="list-unstyled">
+
+                    <ul class="list-unstyled top-40">
                         <li><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
                         <li><span>{{$team->phone}}</span></li>
                         <li><a href="3">Team Events</a></li>
-                        <li>Contact: {{$team->contact_person}}</li>
-                        <li><a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a></li>
-                        <div id="" class="top-20 bottom-20 gray-separator"></div>
-                        <li>
-                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>
-                            <a href="{{route('editTeam',$team->name)}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
-                        </li>
+                        <li><p><span><b>Contact person</b>: {{$team->contact_person}}</span></p></li>
+                        <li><span><b>Team description</b>: {{$team->description}}</span></li>
+                        <li class="top-20"><a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a></li>
 
+                        <div lass="top-20 bottom-20 gray-separator"></div>
 
                         <li>
-                            <div class="">
+                            <div class="top-40">
                                 <label class="switch">
 
                                     <input id="status" value="inactive" type="checkbox" {{($team->active==1?'checked':'')}} >
                                     <span class="slider round"></span>
                                 </label>
+                                <p><i>Toggle switch to approve and activate team</i></p>
                             </div>
 
                         </li>
+
+                        <div lass="top-20 bottom-20 gray-separator"></div>
+
+                        <li class="top-20">
+                            <a href="{{route('deleteTeam',$team->name)}}" id="deleteTeam" class="btn btn-purple bottom-20 right-10"><i class="fa fa-trash right-5"></i>Delete</a>
+                            <a href="{{route('editTeam',$team->name)}}" id="editTeam" class="btn btn-purple bottom-20"><i class="fa fa-edit right-5"></i>Edit</a>
+                        </li>
+
                     </ul>
+                  </div>
+
+                  <!-- <div id="" class="top-20 bottom-20 gray-separator"></div> -->
+
+                  <div class="col-sm-8">
+                      <div class="row">
+                          @if(session('res'))
+                              <div class="alert alert-success">{{session('res')}}</div>
+                          @endif
+                          <div id="response"></div>
+                          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default" id="teamPlayers" >
+                                  <div class="panel-heading" role="tab" id="headingOne">
+                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          <h3>Players</h3>
+                                      </a>
+
+                                  </div>
+                                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                      <div class="panel-body">
+                                          <div class=" col-xs-12"> <div id="added-member">
+                                                  <div class="row" id="vb-player-preview">
+                                                      @if($team->players->isEmpty())
+                                                      <p>No players yet - click 'Add player' to get started.</p>
+                                                          @else
+                                                          @foreach($team->players as $player)
+                                                              <div class="col-xs-6 col-sm-6">
+                                                                  <a href="{{route('seePlayer',[$team->name,$player->id])}}">
+                                                                      <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
+                                                                      <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
+                                                                  </a>
+
+                                                              </div>
+                                                              @endforeach
+                                                      @endif
+                                                  </div>
+                                              </div></div>
+                                      </div>
+                                      <div class="panel-footer">
+                                          <button id="vb-button" class="btn btn-primary vb-add-player"><i class="fa fa-plus"></i> Add player </button>
+
+                                      </div>
+                                  </div>
+
+                              </div>
+                              <div class="panel panel-default" id="teamStaff">
+                                  <div class="panel-heading" role="tab" id="headingTwo">
+                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                          <h3>Staff</h3>
+                                      </a>
+
+                                  </div>
+                                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                      <div class="panel-body">
+                                          <div class="row" id="vb-preview-staff">
+                                              @if($team->staff->isEmpty())
+                                                  <div class="col-xs-12"> <p class="">No team staff yet - click 'Add staff' to get started.</p></div>
+                                                  @else
+                                                  @foreach($team->staff as $staff)
+                                                      <div class="col-xs-6">
+                                                          @if($staff->image=='')
+                                                              <img src="{!! asset('images/user.jpg') !!}" class="img-responsive">
+                                                              @else
+                                                              <img src="{{asset('images/team/'.$staff->image)}}" class="img-responsive">
+                                                              @endif
+
+                                                          <ul class="list-unstyled">
+                                                              <li>Position: <span>{{$staff->position}}</span></li>
+                                                              <li><span><a href="{{route('seeStaff',[$team->name,$staff->id])}}"> {{$staff->fname.' '.$staff->lname}}</a></span></li>
+                                                          </ul>
+                                                      </div>
+
+                                                  @endforeach
+                                              @endif
+                                          </div>
+                                      </div>
+                                      <div class="panel-footer">
+                                          <button type="button"  id="vb-button" class="btn btn-primary addManager"><i class="fa fa-plus"></i> Add staff </button>
+                                      </div>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
                 </div>
-                <div class="col-sm-8">
-                    <div class="row">
-                        @if(session('res'))
-                            <div class="alert alert-success">{{session('res')}}</div>
-                        @endif
-                        <div id="response"></div>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default" id="teamPlayers" >
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <h3>Players</h3>
-                                    </a>
 
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <div class=" col-xs-12"> <div id="added-member">
-                                                <div class="row" id="vb-player-preview">
-                                                    @if($team->players->isEmpty())
-                                                    <p>No players yet - click 'Add player' to get started.</p>
-                                                        @else
-                                                        @foreach($team->players as $player)
-                                                            <div class="col-xs-6 col-sm-6">
-                                                                <a href="{{route('seePlayer',[$team->name,$player->id])}}">
-                                                                    <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
-                                                                    <h5 class="text-center text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
-                                                                </a>
-
-                                                            </div>
-                                                            @endforeach
-                                                    @endif
-                                                </div>
-                                            </div></div>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <button id="vb-button" class="btn btn-primary vb-add-player"><i class="fa fa-plus"></i> Add player </button>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="panel panel-default" id="teamStaff">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-                                        <h3>Staff</h3>
-                                    </a>
-
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <div class="row" id="vb-preview-staff">
-                                            @if($team->staff->isEmpty())
-                                                <div class="col-xs-12"> <p class="">No team staff yet - click 'Add staff' to get started.</p></div>
-                                                @else
-                                                @foreach($team->staff as $staff)
-                                                    <div class="col-xs-6">
-                                                        @if($staff->image=='')
-                                                            <img src="{!! asset('images/user.jpg') !!}" class="img-responsive">
-                                                            @else
-                                                            <img src="{{asset('images/team/'.$staff->image)}}" class="img-responsive">
-                                                            @endif
-
-                                                        <ul class="list-unstyled">
-                                                            <li>Position: <span>{{$staff->position}}</span></li>
-                                                            <li><span><a href="{{route('seeStaff',[$team->name,$staff->id])}}"> {{$staff->fname.' '.$staff->lname}}</a></span></li>
-                                                        </ul>
-                                                    </div>
-
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <button type="button"  id="vb-button" class="btn btn-primary addManager"><i class="fa fa-plus"></i> Add staff </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
         @include('admin.teams.popup.newPlayer')

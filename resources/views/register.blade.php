@@ -96,15 +96,14 @@
             <input type="hidden" name="teamindex" id="teamindex" value="">
 
             <fieldset id="team-info">
-                <div class="" id="team-logo">
+                <!-- <div class="" id="team-logo">
                     <img src="{!! asset('images/ball.png') !!}" id="show-logo-img">
                     <button type="button" class="top-20">
                         Upload logo
                     </button>
-                    {{--<l class="fa fa-plus"></l>--}}
                     <input type="file" name="logo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                     <p class="error">@if($errors->has('logo')) {{$errors->first('logo')}} @endif</p>
-                </div>
+                </div> -->
                 <div class="form-group top-40">
                     <label>Name of team</label>
                     <input type="text" class="form-control text-capitalize" value="{{old('team-name')}}" name="team-name" id="team-name" placeholder="the bears">
@@ -113,7 +112,7 @@
                 <div id="yellow-separator"></div>
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="text" class="form-control" name="team-contact" value="{{old('team-contact')}}" id="team-contact" placeholder="thebears@gmail.com">
+                    <input type="text" class="form-control" name="team-contact" value="{{old('team-contact')}}" id="team-contact" placeholder="e.g. thebears@gmail.com">
                     <p class="error">@if($errors->has('team-contact')) {{$errors->first('team-contact')}}@endif</p>
                 </div>
                 <div id="yellow-separator"></div>
@@ -129,7 +128,7 @@
                     <p class="error">@if($errors->has('contact-person')) {{$errors->first('contact-person')}}@endif</p>
                 </div>
                 <div id="yellow-separator"></div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Team image</label>
                     <p>
                       <i class="right-5">Upload a group image of your entire team</i>
@@ -138,7 +137,13 @@
                     <input type="file" class="form-control" name="team_image" id="team-img" placeholder="Team image">
                     <p class="error">@if($errors->has('team_image')) {{$errors->first('team_image')}}@endif</p>
                 </div>
-                <div id="yellow-separator"></div>
+                <div id="yellow-separator"></div> -->
+                <div class="form-group">
+                  <label>Description</label>
+                  <p>A brief history/introduction of your team, e.g. when you started, why you love the game, and any other interesting things about your team.</p>
+                  <textarea class="form-control" name="team-description" id="" rows="3" value="{{old('team-description')}}" placeholder=""></textarea>
+                  <div id="yellow-separator"></div>
+                </div>
                 <article>
                     <header><h3>Terms & Conditions</h3></header>
                     <p>You agree that you have the right to post any team information you like, and that such content, or its use by us as contemplated by this text, does not violate this agreement, applicable law, or the intellectual property rights of others.

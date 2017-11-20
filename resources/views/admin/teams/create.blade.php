@@ -33,6 +33,17 @@
                         <input type="text" class="form-control" name="contactPerson" id="contact-person" value="{{old('contactPerson')}}" placeholder="Uwa">
                         <p class="error">@if($errors->has('contactPerson')) {{$errors->first('contactPerson')}}@endif</p>
                     </div>
+
+                    <div id="yellow-separator"></div>
+
+                    <div class="form-group">
+                      <label>Description</label>
+                      <p>A brief history/introduction of this team, e.g. when it started and other interesting things.</p>
+                      <textarea class="form-control" name="teamDescription" id="" rows="3" value="{{old('teamDescription')}}" placeholder=""></textarea>
+                    </div>
+
+                    <div id="yellow-separator"></div>
+
                 </fieldset>
                 <div class="form-group">
                     <div class="col-sm-12">

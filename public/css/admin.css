@@ -526,7 +526,6 @@ section#team-overview div#teamInfo ul li {
 }
 
 section#team-overview div#teamInfo ul li span {
-  text-transform: capitalize;
   color: #636b6f;
 }
 
