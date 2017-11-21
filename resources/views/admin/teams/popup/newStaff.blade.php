@@ -6,8 +6,8 @@
             </div>
             <div class="modal-body">
                 <div id="res"></div>
-                <h4 class="text-center top-40">New Staff</h4>
-                <form method="post" id="member-info" action="" class="playerForm">
+                <h4 class="text-center">New Staff</h4>
+                <form method="post" id="member-info" action="" class="playerForm top-40">
                     <input type="hidden" name="index" id="teamindex" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <fieldset>
@@ -15,8 +15,8 @@
                         <div id="add-player">
 
                             <div id="member-info">
-                                <div class="" id="manager-img">
-                                    <img src="{!! asset('images/user.png') !!}" id="show-img">
+                                <div class="text-center" id="manager-img">
+                                    <img src="{!! asset('images/user.png') !!}" id="show-img" class="center-block img-responsive">
 
                                       <button type="button" class="btn top-20 bottom-20">Upload image</button>
                                     {{--<l class="fa fa-plus"></l>--}}

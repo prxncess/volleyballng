@@ -1,18 +1,18 @@
 <div class="modal fade" role="dialog" aria-labelledby="MyModalLabel" id="add-player" tabindex="1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" id="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-close"></span></button>
+            </div>
             <div class="modal-body">
                 <div class="row"></div>
-                <h4>New Player</h4>
-                <form method="post" id="member-info" action="" class="playerForm">
+                <h4 class="text-center">New Player</h4>
+                <form method="post" id="member-info" action="" class="playerForm top-40">
                     <input type="hidden" name="index" id="index" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-                    <div class="" id="player-img">
-                        <img src="{!! asset('images/user.png') !!}" id="show-player-img">
-                        <button type="button"  class="">
-                            Upload image
-                        </button>
+                    <div class="text-center" id="player-img">
+                        <img src="{!! asset('images/user.png') !!}" id="show-player-img" class="img-responsive center-block">
+                        <button type="button"  class="btn btn-purple top-20">Upload image</button>
 
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error"></p>
@@ -58,13 +58,13 @@
                             <div class="col-sm-6">
                                 <label>Position</label>
                                 <select name="player_position" id="player-position" class="form-control">
-                                    <option value="">select one</option>
-                                    <option value="right side mitter">Rightside mitter</option>
-                                    <option value="outside mitter">Outside mitter</option>
-                                    <option value="middle block">Middle Block</option>
-                                    <option value="sitter">sitter</option>
-                                    <option value="opposite">opposite</option>
-                                    <option value="Middle Block/Libero">Middle Block/Libero</option>
+                                    <option value="">Select one</option>
+                                    <option value="right side hitter">Right side hitter</option>
+                                    <option value="outside hitter">Outside hitter</option>
+                                    <option value="middle block">Middle block</option>
+                                    <option value="sitter">Setter</option>
+                                    <option value="opposite">Opposite</option>
+                                    <option value="Libero">Libero</option>
 
                                 </select>
                                 <p class="error"></p>
