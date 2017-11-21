@@ -5,37 +5,32 @@
     <section id="viewTeam">
         <header id="container">
             <h2>Team</h2>
-            <div id="yellow-separator"></div>
+            <div class="purple-separator"></div>
 
-        <ol class="breadcrumb">
+        <ol class="breadcrumb top-40">
             <li class="breadcrumb-item"><a href="{{route('viewTeams')}}"> Teams</a></li>
             <li class="breadcrumb-item active">{{$team->name}}</li>
         </ol>
         </header>
         <section id="container">
-            <h3 class="text-uppercase text-center">Team profile</h3>
-            <div id="yellow-separator"></div>
-            <div id="team=profile">
+            <h3 class="text-uppercase text-center">Profile</h3>
+            <div id="team-profile" class="top-20">
                 @if($team->team_image==null)
-                    <img  id="team-image"src="images/team_logos/teamImage.jpg" class="img-responsive " >
+                    <img  id="team-image"src="images/team_logos/teamImage.jpg" class="img-responsive center-block" >
                 @else
-                    <img src="{{asset('images/team/group/'.$team->team_image)}}" class="img-responsive center-block">
+                    <img src="{{asset('images/team/group/'.$team->team_image)}}" class="img-responsive center-block" id="team-image">
                 @endif
 
-                <div id="team-data">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.
-                        Ergo hoc quidem apparet, nos ad agendum esse natos. Quid enim de amicitia statueris utilitatis causa expetenda vides. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.
-                        Ergo hoc quidem apparet, nos ad agendum esse natos. Quid enim de amicitia statueris utilitatis causa expetenda vides.
-                    </p>
+                <div id="team-data" class="">
+                    <p>{{$team->description}}</p>
                 </div>
                 <div id="team-staff">
-                    <div class="row" id="container">
+                    <div class="row" id="">
                         <div class="col-xs-12 col-sm-6 col-md-6">
-                            <h3 class="text-uppercase text-center">Coach</h3>
-                            <div id="yellow-separator"></div>
+                            <h3 class="text-uppercase">Coach</h3>
+                            <div class="yellow-separator"></div>
                             @if($teamCoach)
-                            <div class="media">
+                            <div class="media top-20">
                                 <div class="media-left">
                                     @if($teamCoach->image=='')
                                         <img src="{!! asset('images/user.jpg') !!}" class="media-object">
@@ -52,22 +47,21 @@
                                 @endif
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6" id="staffs">
-                            <h3 class="text-uppercase text-center">Staff</h3>
-                            <div id="yellow-separator">
-                                <ul class="list-inline">
-                                    <li><span class="role">Team manager</span>
-                                    <strong>@if($teamManager)){{$teamManager->fname.' '.$teamManager->lname}} @endif</strong>
-                                    {{--</li>
-                                    <li><span class="role">Physiotherapist</span>
-                                        <strong>Agada Johnson</strong>
-                                    </li>--}}
-                                </ul>
-                            </div>
+                            <h3 class="text-uppercase">Staff</h3>
+                            <div class="yellow-separator"></div>
+                            <ul class="list-inline top-20">
+                                <li><span class="role">Team manager</span>
+                                <strong>@if($teamManager)){{$teamManager->fname.' '.$teamManager->lname}} @endif</strong>
+                                </li>
+                                <!-- <li><span class="role">Physiotherapist</span>
+                                    <strong>Agada Johnson</strong>
+                                </li> -->
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="{{route('viewPlayers',$team->name)}}" class="btn btn-primary">View Players</a>
+            <a href="{{route('viewPlayers',$team->name)}}" class="btn btn-primary top-20">View Players</a>
         </section>
     </section>
     @endsection
