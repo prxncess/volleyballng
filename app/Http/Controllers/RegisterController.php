@@ -31,12 +31,12 @@ class RegisterController extends Controller
            // $savedTeamEmail=Team::get('contact');
 
             $messages=[
-                'logo.required'=>'Please upload your team logo',
+               /* 'logo.required'=>'Please upload your team logo',
                 'team_image.required'=>'Please upload a photo of your entire team',
                 'team_image.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
                 'logo.image'=>'File uploaded is not in a supported format (jpeg, jpg, png)',
                 'logo.max'=>'File size should be less than 1mb',
-                'team_image.max'=>'File size should be less than 2mb',
+                'team_image.max'=>'File size should be less than 2mb',*/
                 //team name
                 'team-name.required'=>'A team is required',
                 'team-name.unique'=>'Name already registered',
@@ -50,15 +50,20 @@ class RegisterController extends Controller
                 'team-contact.email'=>'Please enter a valid email address',
                 'team-contact.unique'=>'Email address already registered',
                 //terms
-                'accept.accepted'=>'Please check we agree box'
+                'accept.accepted'=>'Please check we agree box',
+                'team-description.required'=>'Please give a brief description of your team',
+                'team-description.regex'=>'Please use only allowed format',
+                'contact person.required'=>'who can we contact',
+                'contact person.regex'=>'Please enter a valid contact person name',
 
             ];
             Validator::make($request->all(),[
                 'team-name'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'team-contact'=>'required|email|unique:teams,contact',
             'team-phone'=>'required|unique:teams,phone',
-                'logo'=>'mimes:jpeg,png,jpg|max:1024',
-                'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',
+                'team-description'=>'required|regex:%^[A-Za-z0-9\W ]{10,255}$%i',
+                /*'logo'=>'mimes:jpeg,png,jpg|max:1024',
+                'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',*/
                 'accept'=>'accepted',
                 'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i'
             ],$messages)->validate();
@@ -68,7 +73,7 @@ class RegisterController extends Controller
             }*/
             //save logo
         $newImageName='';
-        if($request->file('logo')){
+      /*  if($request->file('logo')){
             $teamLogo=$request->file('logo');
             $newImageName=time().'.'.$teamLogo->getClientOriginalExtension();
             $teamFolder='images/team/'.$newImageName;
@@ -77,19 +82,19 @@ class RegisterController extends Controller
                 $c->aspectRatio();
                 $c->upsize();
             })->orientate()->save($teamFolder);
-        }
+        }*/
 
             //save team group
             //team image
 
-            $teamImage=$request->file('team_image');
+     /*       $teamImage=$request->file('team_image');
             $newTeamName=time().'.'.$teamImage->getClientOriginalExtension();
             $teamFolder='images/team/group/'.$newTeamName;
             //resize and move image
             Image::make($teamImage)->resize(1200,550,function($c){
                 $c->aspectRatio();
                 $c->upsize();
-            })->orientate()->save($teamFolder);
+            })->orientate()->save($teamFolder);*/
             //save detail to data base and return team_id
             //generate password
             $password=str_random(15);
@@ -100,8 +105,8 @@ class RegisterController extends Controller
                'description'=>$request->get('team-description'),
                'active'=>0,
                'phone'=>$request->get('team-phone'),
-               'logo'=>($newImageName==null)?'':$newImageName,
-               'team_image'=>$newTeamName,
+               //'logo'=>($newImageName==null)?'':$newImageName,
+              // 'team_image'=>$newTeamName,
                'password'=>bcrypt($password)
            ]);
             //return response()->json(['status'=>'next']);
@@ -117,9 +122,9 @@ class RegisterController extends Controller
                     $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 });
                 //send mail to admin about new team sign up
-                Mail::send('mails.newteam', ['team'=>$team], function($message) use ($team) {
+                Mail::send('mails.newteam', ['team'=>$team,'password'=>$password], function($message) use ($team) {
                     $message->to('efe@volleyball.ng');
-                    $message->subject('New Signup');
+                    $message->subject('New Signup: volleyball.ng');
                     $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 });
                 return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('contact-person').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
@@ -239,7 +244,8 @@ class RegisterController extends Controller
                 'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
                 'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
                 'player_height'=>'required|regex:/^[0-9]{3}$/i',
-                'player_position'=>'required'
+                'player_position'=>'required',
+                'gender'=>'required'
             ]);
             $errors=$validator->errors();
             if($validator->fails()){

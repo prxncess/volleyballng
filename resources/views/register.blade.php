@@ -142,6 +142,7 @@
                   <label>Description</label>
                   <p>A brief history/introduction of your team, e.g. when you started, why you love the game, and any other interesting things about your team.</p>
                   <textarea class="form-control" name="team-description" id="" rows="3" value="{{old('team-description')}}" placeholder=""></textarea>
+                    <p class="error">@if($errors->has('team-description')) {{$errors->first('team-description')}}@endif</p>
                   <div id="yellow-separator"></div>
                 </div>
                 <article>

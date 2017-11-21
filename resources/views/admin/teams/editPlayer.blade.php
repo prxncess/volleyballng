@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('allTeams')}}"> Teams</a></li>
             <li class="breadcrumb-item"> <a href="{{route('viewTeam',$team->name)}}">{{$team->name}}</a> </li>
-            <li class="breadcrumb-item active">{{$player->fname.''.$player->lname}}</li>
+            <li class="breadcrumb-item active"><span></span>{!!  $player->fname .' '. $player->lname!!}</li>
         </ol>
         <div id="admin-box" class="well well">
             <header>
@@ -20,7 +20,7 @@
                     <h4 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h4>
                     <ul class="list-unstyled">
                         <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
-                        <li><b>Height</b>: <span>{{$player->height}}</span></li>
+                        <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
                         <li><b>Gender</b>: <span>Female</span></li>
                     </ul>
                 </div>
@@ -54,23 +54,24 @@
                         <div id="yellow-separator"></div>
 
                         <div class="form-group">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <div><label>Gender</label></div>
-                              <div class="radio-inline">
-                                <label>
-                                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                                  Female
-                                </label>
-                              </div>
-                              <div class="radio-inline">
-                                <label>
-                                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                  Male
-                                </label>
-                              </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div><label>Gender</label></div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio" name="player_gender" id="player_gender" value="female" {{($player->gender=='female'?' checked':' ')}}>
+                                            Female
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio" name="player_gender" id="player_gender" value="male" {{($player->gender=='male'?' checked':' ')}} >
+                                            Male
+                                        </label>
+                                    </div>
+                                    <p class="error">@if($errors->has('player_gender')) @endif {{$errors->first('player_gender')}}</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
 
                         <div id="yellow-separator"></div>
@@ -94,8 +95,34 @@
                                 </div>
                                 <div class="col-xs-6">
                                     <label>Height</label>
-                                    <input type="text" class="form-control" id="player-height" value="{{$player->height}}" name="player_height" placeholder="height">
-                                    <p class="error">@if($errors->has('player_height')) @endif {{$errors->first('player_height')}}</p>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <select name="player_height_feet" id="player-height-feet" class="form-control">
+                                                <option value="">(feet)</option>
+                                                @foreach($feets as $feet)
+                                                    @if(strtolower($feet)==$player->feet)
+                                                        <option value="{{$player->feet}}" selected>{{$player->feet}}</option>
+                                                    @else
+                                                        <option value="{{$feet}}">{{$feet}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <p class="error"></p>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <select name="player_height_inches" id="player-height-inches" class="form-control">
+                                                <option value="">(inches)</option>
+                                                @foreach($inches as $inch)
+                                                    @if(strtolower($inch)==$player->inches)
+                                                        <option value="{{$player->inches}}" selected>{{$player->inches}}</option>
+                                                    @else
+                                                        <option value="{{$inch}}">{{$inch}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <p class="error"></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

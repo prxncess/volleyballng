@@ -14,8 +14,8 @@
     <p style="text-indent: 40px">Contact person: <b>{{$team->contact_person}}</b></p>
     <p style="text-indent: 40px">Phone number: <b>{{$team->phone}}</b></p>
     <p style="text-indent: 40px">Email: <b>{{$team->contact}}</b></p>
-    <p style="text-indent: 40px">Password: <span style="font-family: 'Fira Mono', monospace; background-color: #e5e5e5; padding: 10px; border-radius: 4px"><b>{!! $team->password !!}</b></span></p>
-    <p style="text-indent: 40px">Password: <span style="font-family: 'Fira Mono', monospace; background-color: #e5e5e5; padding: 10px; border-radius: 4px"><b>{!! $team->password !!}</b></span></p>
+    <p style="text-indent: 40px">Password: <span style="font-family: 'Fira Mono', monospace; background-color: #e5e5e5; padding: 10px; border-radius: 4px"><b>{!! $password !!}</b></span></p>
+
 
     <p>Best regards,<br>
         <b>Efe</b></p>

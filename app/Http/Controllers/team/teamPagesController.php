@@ -54,6 +54,8 @@ class teamPagesController extends Controller
             $message=[
                 'player_height_feet.required'=>'Select player height in feet',
                 'player_height_inches.required'=>'Select player height in inches',
+                'player_gender.required'=>'Select player gender',
+                'player_gender.in'=>'Select player gender'
             ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|max:1024',
@@ -61,7 +63,8 @@ class teamPagesController extends Controller
                 'player_lastName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
                 'player_height_feet'=>'required',
                 'player_height_inches'=>'required',
-                'player_position'=>'required'
+                'player_position'=>'required',
+                'player_gender'=>'required|in:male,female',
             ],$message);
             $errors=$validator->errors();
             if($validator->fails()){
@@ -85,7 +88,9 @@ class teamPagesController extends Controller
                 'position'=>$request->get('player_position'),
                 'feet'=>$request->get('player_height_feet'),
                 'inches'=>$request->get('player_height_inches'),
-                'player_image'=>$newImageName
+                'player_image'=>$newImageName,
+                'gender'=>$request->get('player_gender')
+
             ]);
 
             if($player->save()){
@@ -133,7 +138,7 @@ class teamPagesController extends Controller
             $player= Player::find($id);
             $positions=['right side hitter','outside hitter','middle block','sitter','opposite','libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
@@ -151,14 +156,21 @@ class teamPagesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $validator=Validator::make($request->all(),[
+        $message=[
+            'player_height_feet.required'=>'Select player height in feet',
+            'player_height_inches.required'=>'Select player height in inches',
+            'player_gender.required'=>'Select player gender',
+            'player_gender.in'=>'Select player gender'
+        ];
+        Validator::make($request->all(),[
             'player_image'=>'image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
             'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
             'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
             'player_height_feet'=>'required',
             'player_height_inches'=>'required',
-            'player_position'=>'required'
-        ])->validate();
+            'player_position'=>'required',
+            'player_gender'=>'required|in:male,female',
+        ],$message)->validate();
         //save image
         $player=Player::find($id);
         if($request->file('player_image')){
@@ -189,6 +201,7 @@ class teamPagesController extends Controller
         $player->position=$request->get('player_position');
         $player->feet=$request->get('player_height_feet');
         $player->inches=$request->get('player_height_inches');
+        $player->gender=$request->get('player_gender');
 
 
 

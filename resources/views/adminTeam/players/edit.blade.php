@@ -20,7 +20,7 @@
                     <ul class="list-unstyled">
                         <li><span class="text-capitalize">{{$player->position}}</span></li>
                         <li><span>{{$player->feet.' '.$player->inches}}</span></li>
-                        <li><span>Female</span></li>
+                        <li><span>{{$player->gender}}</span></li>
                     </ul>
                 </div>
                 <div class="col-sm-7">
@@ -56,16 +56,17 @@
                               <div><label>Gender</label></div>
                               <div class="radio-inline">
                                 <label>
-                                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                  <input type="radio" name="player_gender" id="player_gender" value="female" {{($player->gender=='female'?' checked':' ')}}>
                                   Female
                                 </label>
                               </div>
                               <div class="radio-inline">
                                 <label>
-                                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                  <input type="radio" name="player_gender" id="player_gender" value="male" {{($player->gender=='male'?' checked':' ')}} >
                                   Male
                                 </label>
                               </div>
+                                <p class="error">@if($errors->has('player_gender')) @endif {{$errors->first('player_gender')}}</p>
                             </div>
                           </div>
                         </div>

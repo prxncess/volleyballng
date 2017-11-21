@@ -21,8 +21,14 @@
                     <img src="{{asset('images/team/group/'.$team->team_image)}}" class="img-responsive center-block" id="team-image">
                 @endif
 
+
                 <div id="team-data" class="">
                     <p>{{$team->description}}</p>
+
+                <!-- <div id="team-data">
+                    <p>{{$team->description}}
+                    </p> -->
+
                 </div>
                 <div id="team-staff">
                     <div class="row" id="">

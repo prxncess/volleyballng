@@ -149,8 +149,15 @@
                 $('#player-lname').parent().find('p').html(' ');
                 $('#player-position').parent().find('p').html(' ');
                 $('#player-height-feet').parent().find('p').html(' ');
-                $('#player-height-feet').parent().find('p').html(' ');
+                $('#player-height-inches').parent().find('p').html(' ');
                 $('#player-photo').parent().find('p').html(' ');
+                $('#gender').parents('div.col-sm-12').find('p').html(' ');
+                var  gender=$('#gender:checked').val();
+                /*if($('input[name=gender]:checkbox').val()=='male'||'female'){
+
+                }else{
+                    gender='';
+                }*/
                 var playerForm = new FormData();
                 var playerImage=$('div#add-player #member-info div#player-img input[type="file"]')[0].files[0]
                 playerForm.append('player_position',$('#player-position').val())
@@ -158,6 +165,7 @@
                 playerForm.append('player_height_inches',$('#player-height-inches').val())
                 playerForm.append('player_lastName',$('#player-lname').val())
                 playerForm.append('player_firstName',$('#player-fname').val())
+                playerForm.append('player_gender',gender)
                 playerForm.append('player_image',playerImage)
                 playerForm.append('_token',$('#_token').val())
                 playerForm.append('team_id',$('#index').val())
@@ -177,6 +185,7 @@
                             if(message.player_height_inches===undefined?null:$('#player-height-inches').parent().find('p').html(''+message.player_height_inches[0]));
                             if(message.player_position===undefined?null: $('#player-position').parent().find('p').html(''+message.player_position[0]));
                             if(message.player_image===undefined?null:$('#player-photo').parent().find('p').html(''+message.player_image[0]));
+                            if(message.player_gender===undefined?null:$('#gender').parents('div.col-sm-12').find('p').html(''+message.player_gender[0]));
 
 
 
@@ -210,9 +219,14 @@
                 })
             });
             $('button.addManager').on('click',function(){
+                $('#member-info').trigger('reset');
+                $('#member-info input, #member-info select').parent().find('p').html(' ')
                 $('#add-manager').modal('show')
             })
             $('button.vb-add-player').on('click',function(){
+                //reset form
+                $('#member-info').trigger('reset');
+                $('#member-info input, #member-info select').parent().find('p').html(' ')
                 $('#add-player').modal('show')
             })
 
