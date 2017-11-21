@@ -23,10 +23,7 @@
                 @endif
 
                 <div id="team-data">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.
-                        Ergo hoc quidem apparet, nos ad agendum esse natos. Quid enim de amicitia statueris utilitatis causa expetenda vides. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Itaque eos id agere, ut a se dolores, morbos, debilitates repellant.
-                        Ergo hoc quidem apparet, nos ad agendum esse natos. Quid enim de amicitia statueris utilitatis causa expetenda vides.
+                    <p>{{$team->description}}
                     </p>
                 </div>
                 <div id="team-staff">

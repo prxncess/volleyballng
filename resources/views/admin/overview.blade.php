@@ -158,19 +158,23 @@
                     return false;
                 }
             })
-            $('section#team-overview button#register-players').on('click',function(){
-                $('#player_fname').parent().find('p').html(' ')
-                $('#player_lname').parent().find('p').html(' ')
+            $('#add-player button#addPlayers').on('click',function(){
+                $('#player-fname').parent().find('p').html(' ')
+                $('#player-lname').parent().find('p').html(' ')
                 $('#player-position').parent().find('p').html(' ')
-                $('#player_height').parent().find('p').html(' ')
                 $('#player-photo').parent().find('p').html(' ')
+                $('#player-height-inches').parent().find('p').html(' ')
+                $('#player-height-feet').parent().find('p').html(' ')
+                $('#player-gender').parents('div.col-sm-12').find('p').html(' ');
                 var playerForm = new FormData();
                 var playerImage=$('div#add-player #member-info div#player-img input[type="file"]')[0].files[0]
                 playerForm.append('player_position',$('#player-position').val())
-                playerForm.append('player_height',$('#player-height').val())
+                playerForm.append('player_height_inches',$('#player-height-inches').val())
+                playerForm.append('player_height_feet',$('#player-height-feet').val())
                 playerForm.append('player_lastName',$('#player-lname').val())
                 playerForm.append('player_firstName',$('#player-fname').val())
                 playerForm.append('player_image',playerImage)
+                playerForm.append('player_gender',$('#player-gender:checked').val())
                 playerForm.append('_token',$('#_token').val())
                 playerForm.append('team_id',$('#index').val())
                 //send request to ajax
@@ -183,11 +187,13 @@
                     success:function(data){
                         if(data.status=='error'){
                             message= data.errors
-                            $('#player-fname').parent().find('p').html(''+message.player_firstName[0])
-                            $('#player-lname').parent().find('p').html(''+message.player_lastName[0])
-                            $('#player-height').parent().find('p').html(''+message.player_height[0])
-                            $('#player-position').parent().find('p').html(''+message.player_position[0])
-                            $('#player_photo').parent().find('p').html(''+message.player_image[0])
+                            if(message.player_firstName===undefined?null:$('#player-fname').parent().find('p').html(''+message.player_firstName[0]));
+                            if(message.player_lastName===undefined?null:$('#player-lname').parent().find('p').html(''+message.player_lastName[0]));
+                            if(message.player_height_feet===undefined?null:$('#player-height-feet').parent().find('p').html(''+message.player_height_feet[0]));
+                            if(message.player_height_inches===undefined?null:$('#player-height-inches').parent().find('p').html(''+message.player_height_inches[0]));
+                            if(message.player_position===undefined?null: $('#player-position').parent().find('p').html(''+message.player_position[0]));
+                            if(message.player_image===undefined?null:$('#player-photo').parent().find('p').html(''+message.player_image[0]));
+                            if(message.player_gender===undefined?null:$('#player-gender').parents('div.col-sm-12').find('p').html(''+message.player_gender[0]));
 
                         }else if(data.status=='player_saved'){
                             $('form.playerForm input[type=reset]').trigger('click');
@@ -202,7 +208,7 @@
                             $('#vb-player-preview').html('')
                             var player_preview=""
                             for( i in players){
-                                player_preview+='<div class="col-xs-6 col-sm-6"><a href="#"><img src="{{asset('images/team/players')}}/'+players[i].player_image+'" style="width: 160px; height: 140px"> <h5 class="text-center text-capitalize">'+players[i].fname+' '+players[i].lname+'</h5> </a></div>'
+                                player_preview+='<div class="col-xs-6 col-sm-6"><a href="'+data.teamName+'/player/'+players[i].id+'"><img src="{{asset('images/team/players')}}/'+players[i].player_image+'" style="width: 160px; height: 140px"> <h5 class="text-center text-capitalize">'+players[i].fname+' '+players[i].lname+'</h5> </a></div>'
                                // player_preview+='<div class="media" data-pid="'+players[i].team_id+'"> <div class="media-left"><img src="images/team/players/'+players[i].player_image+'" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>'+players[i].fname+' '+players[i].lname+'</span></li> <li><b>Height:</b> <span>'+players[i].height+'</span></li> <li><b>Position:</b> <span>'+players[i].position+'</span></li> <li><a href="#" >remove</a></li> </ul> </div> </div> </div>'
 
                             }
@@ -216,9 +222,15 @@
                 })
             });
             $('button.addManager').on('click',function(){
+                $('add-manager').trigger('reset');
+                $('#add-manager input, #add-manager select').parent().find('p').html(' ')
                 $('#add-manager').modal('show')
             })
+
+
             $('button.vb-add-player').on('click',function(){
+                $('#member-info').trigger('reset');
+                $('#member-info input, #member-info select').parent().find('p').html(' ')
                 $('#add-player').modal('show')
             })
 
@@ -246,11 +258,11 @@
             $('#player-photo').on('change',function(e){
                 showfile(this,'div#player-img img#show-player-img')
             })
-           $('section#team-overview button.addStaff').on('click',function(){
+           $('div#add-manager button.addStaff').on('click',function(){
                $('#manager-fname').parent().find('p').html(' ')
                $('#manager-lname').parent().find('p').html(' ')
                $('#manager-photo').parent().find('p').html(' ')
-               $('#staffPosition').parent().find('p').html(' ')
+               $('#managerPosition').parent().find('p').html(' ')
                $('#staffDescription').parent().find('p').html(' ')
                //send ajax request
                //create form data
@@ -262,7 +274,7 @@
                }
                managerForm.append('staffFirstName',$('#manager-fname').val());
                managerForm.append('staffLastName',$('#manager-lname').val());
-               managerForm.append('staffPosition',$('#staffPosition').val());
+               managerForm.append('staffPosition',$('#managerPosition').val());
                managerForm.append('staffDescription',$('#staffDescription').val());
                managerForm.append('team_index',$('#teamindex').val());
                managerForm.append('staffImage',managerImage);
@@ -295,18 +307,20 @@
 
                        }else if(data.status=='error'){
                            if(data.exist){
-                               $('#team-overview div#add-manager form div#res').html('<div class="alert alert-danger">'+data.exist+'</div>')
+                               $('div#add-manager div#res').html('<div class="alert alert-danger">'+data.exist+'</div>')
                            }else{
                                message=''
                                message=data.errors
                                $('#manager-fname').parent().find('p').html(''+message.staffFirstName[0])//manager first name error
+                               if(message.staffFirstName[0]===undefined?null:$('#manager-fname').parent().find('p').html(''+message.staffFirstName[0]));
+                               if(message.staffLastName[0]===undefined?null:$('#manager-lname').parent().find('p').html(''+message.staffLastName[0]));
+                               if(message.staffPosition[0]===undefined?null:$('#managerPosition').parent().find('p').html(''+message.staffPosition[0]));
+                               if(message.staffDescription==undefined?null:$('#managerDescription').parent().find('p').html(''+message.staffDescription[0]));
+                               if(message.staffImage==undefined?null:$('#manager-photo').parent().find('p').html(''+message.staffImage[0]));
 
-                               $('#manager-lname').parent().find('p').html(''+message.staffLastName[0])// manager last name error
-                               $('#staffPosition').parent().find('p').html(''+message.staffPosition[0])// manager last name error
-                               $('#staffDescription').parent().find('p').html(''+message.staffDescription[0])// manager last name error
-                               if(!empty(message.managerImage[0])){
+                               /*if(!empty(message.managerImage[0])){
                                    $('#manager-photo').parent().find('p').html(''+message.managerImage[0])// manager last name error
-                               }
+                               }*/
                            }
 
 

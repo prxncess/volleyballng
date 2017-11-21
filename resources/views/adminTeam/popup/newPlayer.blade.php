@@ -10,10 +10,10 @@
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="index" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-                    <div class="top-40 text-center" id="player-img">
-                        <img src="{!! asset('images/user.png') !!}" id="show-player-img">
-                        <p><button type="button" class="btn top-20 bottom-20">Upload image</button></p>
 
+                    <div class="" id="player-img">
+                        <img src="{!! asset('images/user.png') !!}" id="show-player-img">
+                        <button type="button" class="btn top-20 bottom-20">Upload image</button>
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error"></p>
                     </div>
@@ -43,16 +43,17 @@
                           <div><label>Gender</label></div>
                           <div class="radio-inline">
                             <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                              <input type="radio" name="gender" id="gender" value="female">
                               Female
                             </label>
                           </div>
                           <div class="radio-inline">
                             <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                              <input type="radio" name="gender" id="gender" value="male">
                               Male
                             </label>
                           </div>
+                            <p class="error"></p>
                         </div>
                       </div>
                     </div>

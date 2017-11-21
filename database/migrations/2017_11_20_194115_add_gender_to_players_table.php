@@ -15,6 +15,7 @@ class AddGenderToPlayersTable extends Migration
     {
         Schema::table('players', function (Blueprint $table) {
             //
+            $table->enum('gender',['male','female'])->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddGenderToPlayersTable extends Migration
     {
         Schema::table('players', function (Blueprint $table) {
             //
+            $table->dropColumn('gender');
         });
     }
 }

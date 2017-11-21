@@ -599,6 +599,7 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide {
 section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-photos, section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -712,6 +713,7 @@ section#our-home div#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
+  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -728,6 +730,7 @@ section#our-home div#event-preview div#preview span i:hover {
 section#our-home div#event-preview div#preview:hover div#more-photos, section#our-home div#event-preview div#preview:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -842,9 +845,8 @@ article#tutorials {
   /*display: flex;*/
   display: -webkit-inline-box;
   display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
 }
 
 article#tutorials div#thumbs {
@@ -890,9 +892,8 @@ article#tutorials div#caption img {
 article#tutorials aside {
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -935,9 +936,8 @@ article#our-events header button:hover {
 article#our-events aside#event-preview {
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -967,6 +967,7 @@ article#our-events aside#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
+  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -1260,6 +1261,7 @@ div#slides div.swiper-wrapper div.swiper-slide {
 div#slides div.swiper-wrapper div.swiper-slide:hover div#more-photos, div#slides div.swiper-wrapper div.swiper-slide:hover section#our-home div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview div#slides div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -1552,8 +1554,8 @@ ul#progressive-bar li.active:before, ul#progressive-bar li.active:after {
 }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
   display: block;
 }
 
@@ -1562,7 +1564,8 @@ div#add-player #member-info div#manager-img button, div#add-player #member-info 
   width: 180px;
   height: 35px;
   position: relative;
-  border-radius: 20;
+  border-radius: 20px;
+  display: block;
   border: none;
 }
 
