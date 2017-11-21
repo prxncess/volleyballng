@@ -22,7 +22,7 @@
                 @endif
 
 
-                <div id="team-data" class="">
+                <div id="team-data" class="text-center">
                     <p>{{$team->description}}</p>
 
                 <!-- <div id="team-data">
