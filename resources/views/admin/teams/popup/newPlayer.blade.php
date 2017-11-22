@@ -61,8 +61,8 @@
                                     <option value="">Select one</option>
                                     <option value="right side hitter">Right side hitter</option>
                                     <option value="outside hitter">Outside hitter</option>
-                                    <option value="middle block">Middle block</option>
-                                    <option value="sitter">Setter</option>
+                                    <option value="middle blocker">Middle blocker</option>
+                                    <option value="setter">Setter</option>
                                     <option value="opposite">Opposite</option>
                                     <option value="Libero">Libero</option>
 
