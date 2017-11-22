@@ -16,9 +16,17 @@
 
     </aside>
     <div id="events-subnav">
-        <a href="{{route('events')}}" >Events</a>
-        <a href="{{route('EventsCal')}}" class="">Calendar</a>
-        <a href="{{route('newEvent')}}" class="active">Register Event</a>
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="{{route('events')}}" >Events</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('EventsCal')}}" class="">Calendar</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('newEvent')}}" class="active">Register Event</a>
+        </div>
+      </div>
     </div>
 
     <section id="vb-event-form">
@@ -31,17 +39,17 @@
             @if(session('status') && session('status')=='success')
                 <div class="alert alert-success">All done! Your event has been created and we'll get in touch as soon as it's approved. </div>
             @endif
-            <h5><i class="fa fa-file-text-o right-10"></i> Event information (all fields required)</h5>
+            <h5 class="top-40"><i class="fa fa-file-text-o right-10"></i> Event information (all fields required)</h5>
             <div id="yellow-separator"></div>
             <div class="form-group">
 
                 <div class="col-sm-12">
                     <label>Event Title</label>
-                    <input type="text" class="form-control" placeholder="event title" value="{{old('event_title')}}" id="event-title" name="event_title">
+                    <input type="text" class="form-control text-capitalize" placeholder="Taraba Tournament" value="{{old('event_title')}}" id="event-title" name="event_title">
                     <p class="error">@if($errors->has('event_title')) {{$errors->first('event_title')}} @endif</p>
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <div class="col-sm-12">
                     <label>Location</label>
                     <select name="event_location" id="event-loaction" class="form-control">
@@ -87,13 +95,13 @@
                     <small><i>Not less than 50 characters</i></small>
                     <p class="error">@if($errors->has('event_description')) {{$errors->first('event_description')}} @endif</p>
                 </div>
-            </div>
-            <h5><i class="fa fa-address-book-o"></i> Organizer's Information</h5>
+            </div> -->
+            <h5 class="top-40"><i class="fa fa-address-book-o"></i> Organizer's Information</h5>
             <div id="yellow-separator"></div>
             <div class="form-group">
                 <div class="col-sm-12">
                     <label>Organizer's Name</label>
-                    <input type="text" class="form-control" placeholder="Event Organizer"  value="{{old('event_organizer')}}" id="event-organizer" name="event_organizer">
+                    <input type="text" class="form-control text-capitalize" placeholder="freda aliyu"  value="{{old('event_organizer')}}" id="event-organizer" name="event_organizer">
                     <p class="error">@if($errors->has('event_organizer')) {{$errors->first('event_organizer')}} @endif</p>
                 </div>
             </div>
@@ -101,12 +109,12 @@
 
                 <div class="col-sm-7">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="Email" id="event_email"  value="{{old('event_email')}}" name="event_email">
+                    <input type="text" class="form-control" placeholder="freda@gmail.com" id="event_email"  value="{{old('event_email')}}" name="event_email">
                     <p class="error">@if($errors->has('event_email')) {{$errors->first('event_email')}} @endif</p>
                 </div>
                 <div class="col-sm-5">
                     <label>Phone</label>
-                    <input type="text" class="form-control" placeholder="phone" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
+                    <input type="number" class="form-control" placeholder="08021234567" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
                     <p class="error">@if($errors->has('event_phone')) {{$errors->first('event_phone')}} @endif</p>
                 </div>
             </div>

@@ -15,31 +15,46 @@
         <div id="players">
 
             <div class="row">
-                @if(!empty($players))
-                    @foreach($players as $player)
+              <div class="col-xs-12">
+                <h4>Men</h4>
+                <div class="row">
+                    @if(!empty($players))
+                        @foreach($players as $player)
 
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
+                                    <ul class="list-unstyled">
+                                        <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
+                                        <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
+
+                                    </ul>
+
+                                </div>
                             </div>
-                            <div class="media-body">
-                                <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
-                                <ul class="list-unstyled">
-                                    <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
-                                    <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
 
-                                </ul>
-
-                            </div>
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
 
-                    @else
-                @endif
-                {{$players->links()}}
+                        @else
+                    @endif
+                    {{$players->links()}}
 
+                </div>
+              </div>
+
+              <div class="col-xs-12">
+                <div class="gray-separator top-20 bottom-20"></div>
+                <h4>Women</h4>
+                <div class="row">
+                  <div class="col-sm-6 col-md-4">
+                  </div>
+                </div>
+              </div>
             </div>
 
         </div>

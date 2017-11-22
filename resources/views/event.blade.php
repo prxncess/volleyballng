@@ -12,16 +12,24 @@
 
     </aside>
     <div id="events-subnav">
-        <a href="{{route('events')}}" class="active">Events</a>
-        <a href="{{route('EventsCal')}}">Calender</a>
-        <a href="{{route('newEvent')}}">Register Event</a>
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="{{route('events')}}" class="active">Events</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('EventsCal')}}" class="">Calendar</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('newEvent')}}" class="">Register Event</a>
+        </div>
+      </div>
     </div>
     <div id="bd-event" >
         <div class="row">
             <div id="event-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                  <div class="row">
                      @if($events->isEmpty())
-                         <h3>We currently have no events open at the moment please do check back</h3>
+                         <h3>No open events at the moment, but please watch this space!</h3>
                          @else
                          @foreach($events as $event)
                              <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
