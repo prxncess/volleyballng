@@ -285,6 +285,10 @@ body .top-20 {
   float: none !important;
 }
 
+.dark-gray {
+  color: #6e6e6e;
+}
+
 .gray-background {
   background-color: #fdfdfd;
 }

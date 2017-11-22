@@ -17,6 +17,8 @@
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error"></p>
                     </div>
+                    <div class="form-group text-center dark-gray"><label><i>Hint: Image size should be less than 1mb. <br> Click <a href="http://tinypng.com" target="_blank">here</a> to compress larger images.</i></label></div>
+
                     <div class="form-group">
                         <label>Name</label>
                         <div class="row">

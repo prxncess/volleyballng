@@ -13,14 +13,14 @@
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <fieldset>
 
-                        <h4> New Staff</h4>
+                        <h4 class="text-center"> New Staff</h4>
                         <div id="res"></div>
 
                         <div id="add-player">
 
                             <div id="member-info">
-                                <div class="" id="manager-img">
-                                    <img src="{!! asset('images/user.jpg') !!}" id="show-img">
+                                <div class="text-center top-40" id="manager-img">
+                                    <img src="{!! asset('images/user.png') !!}" id="show-img" class="center-block responsive">
                                     <button type="button" class="btn top-20 bottom-20">
                                         Upload image
                                     </button>
@@ -28,6 +28,8 @@
                                     <input type="file" name="manager_photo" id="manager-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                                     <p class="error"></p>
                                 </div>
+                                <div class="form-group text-center dark-gray"><label><i>Hint: Image size should be less than 1mb. <br> Click <a href="http://tinypng.com" target="_blank">here</a> to compress larger images</i></label></div>
+
                                 <div class="form-group">
                                     <label>Name</label>
                                     <div class="row">

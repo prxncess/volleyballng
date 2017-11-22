@@ -64,6 +64,9 @@ a{
 @media only screen and (max-width: 767px) {
     float: none !important;
 }
+.dark-gray {
+  color: $dark-gray;
+}
 .gray-background {
   background-color: $whitesmoke
 }
