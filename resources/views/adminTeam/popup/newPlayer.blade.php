@@ -74,7 +74,6 @@
                                     <option value="setter">Setter</option>
                                     <option value="opposite">Opposite hitter</option>
                                     <option value="Libero">Libero</option>
-                                    <option value="substitute">Substitute</option>
                                 </select>
                                 <p class="error"></p>
                             </div>

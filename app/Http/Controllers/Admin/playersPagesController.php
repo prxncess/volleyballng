@@ -125,7 +125,7 @@ class playersPagesController extends Controller
         try{
         $team= Team::whereName($tea)->firstOrFail();
         $player= Player::find($id);
-            $positions=['right side mitter','outside mitter','middle block','sitter','opposite','middle block/libero'];
+            $positions=['Right side hitter','Outside hitter','Middle blocker','Setter','Opposite','Libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
             $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
             return view('admin.teams.editPlayer',compact('team','player','positions','feets','inches'));
