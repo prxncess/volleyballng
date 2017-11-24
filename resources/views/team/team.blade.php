@@ -57,7 +57,7 @@
                             <div class="yellow-separator"></div>
                             <ul class="list-inline top-20">
                                 <li><span class="role">Team manager</span>
-                                <strong>@if($teamManager)){{$teamManager->fname.' '.$teamManager->lname}} @endif</strong>
+                                <strong>@if($teamManager){{$teamManager->fname.' '.$teamManager->lname}} @endif</strong>
                                 </li>
                                 <!-- <li><span class="role">Physiotherapist</span>
                                     <strong>Agada Johnson</strong>

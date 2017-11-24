@@ -694,6 +694,10 @@ a:hover {
   float: right !important;
 }
 
+.purple {
+  color: #4449ca;
+}
+
 .dark-gray {
   color: #6e6e6e;
 }
