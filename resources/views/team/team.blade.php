@@ -55,6 +55,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6" id="staffs">
                             <h3 class="text-uppercase">Manager</h3>
                             <div class="yellow-separator"></div>
+
                            {{-- <ul class="list-inline top-20">--}}
                                {{-- <li><span class="role">Team manager</span>--}}
                                     @if($teamManager)
@@ -75,6 +76,7 @@
                                     </div>
 
                                     @endif
+
 
                                 <!-- <li><span class="role">Physiotherapist</span>
                                     <strong>Agada Johnson</strong>

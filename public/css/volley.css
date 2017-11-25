@@ -289,6 +289,10 @@ body .top-20 {
   color: #6e6e6e;
 }
 
+.purple {
+  color: #4449ca;
+}
+
 .gray-background {
   background-color: #fdfdfd;
 }
@@ -1367,6 +1371,31 @@ div#events-subnav a.active {
   color: #4449ca;
 }
 
+.nav-pills {
+  background-color: #4449ca !important;
+}
+
+.nav-pills > li {
+  display: inline-block;
+  width: 49%;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:active,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  background-color: white !important;
+  border-radius: 0;
+  color: #4449ca;
+  font-weight: 700;
+}
+
+.nav-pills > li > a {
+  background-color: #4449ca !important;
+  border-radius: 0;
+  color: white;
+}
+
 div#league-list div.media {
   margin-bottom: 20px;
 }
@@ -1382,7 +1411,7 @@ div#league-list div.media p {
   margin-top: 0;
 }
 
-#well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, form.add-team, section#team-login form#vb-team-login {
+#well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, .nav-pills, form.add-team, section#team-login form#vb-team-login {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
