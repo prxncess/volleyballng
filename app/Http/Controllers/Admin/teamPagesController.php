@@ -51,25 +51,45 @@ class teamPagesController extends Controller
             'teamName'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'teamContact'=>'required|email|unique:teams,contact',
             'teamPhoneNumber'=>'required|unique:teams,phone',
+            'teamDescription'=>'regex:%^[A-Za-z0-9\W ]+$%i',
             'contactPerson'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
         ])->validate();
         /*$errors= $validator->errors();
         if($validator->fails()){
             return response()->json(['status'=>'error','errors'=>$errors]);
         }*/
+        //generate random password
+        $password=str_random(15);
         //save detail to data base and return team_id
         $team=Team::create([
             'name'=>$request->get('teamName'),
             'contact'=>$request->get('teamContact'),
             'active'=>0,
             'phone'=>$request->get('teamPhoneNumber'),
-            'contact_person'=>$request->get('contactPerson')
+            'contact_person'=>$request->get('contactPerson'),
+            'description'=>$request->get('teamDescription'),
+            'password'=>bcrypt($password)
         ]);
         //return response()->json(['status'=>'next']);
         if($team->save()){
             //saved team id
             $teams=Team::all();
-            return view('admin.teams.index',compact('teams'))->with('res','Team '.$request->get('name').' was successfully created');
+
+            //send mail to contact person and admin
+            $data=array('email'=>$request->get('teamContact'),'name'=>$request->get('teamPerson'),'password'=>$password);
+
+          /*  Mail::send('mails.account', $data, function($message) {
+                $message->to(Input::get('teamContact'));
+                $message->subject('Team Registration');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+            });
+            //send mail to admin about new team sign up
+            Mail::send('mails.newteam', ['team'=>$team,'password'=>$password], function($message) use ($team) {
+                $message->to('efe@volleyball.ng');
+                $message->subject('New Signup: volleyball.ng');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+            });*/
+            return redirect()->route('viewTeam',$team->name)->with('res','Team '.$request->get('name').' was successfully created');
 
         }
         //return response()->json(['status'=>'error','error_message'=>'An error occurred. Please try again']);
@@ -201,7 +221,7 @@ class teamPagesController extends Controller
 
                 $teams=Team::all();
 
-                return view('admin.teams.index',compact('teams'))->with('res','Team '.$name.' has been deleted');
+                return redirect()->route('allTeams')->with('res','Team '.$name.' has been deleted');
             }
 
         }catch (ModelNotFoundException $e){

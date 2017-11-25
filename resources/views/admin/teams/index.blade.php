@@ -7,6 +7,9 @@
             <header>
                 <h3>Teams</h3>
                 <div id="separator"></div>
+                @if(session('res'))
+                    <div class="alert alert-success">{{session('res')}}</div>
+                @endif
                 <a href="{{route('addTeam')}}" class=" btn btn-purple "><i class="fa fa-plus right-5"></i> New team</a>
             </header>
             @if($teams->isNotEmpty())

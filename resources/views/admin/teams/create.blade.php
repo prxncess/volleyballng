@@ -39,7 +39,7 @@
                     <div class="form-group">
                       <label>Description</label>
                       <p>A brief history/introduction of this team, e.g. when it started and other interesting things.</p>
-                      <textarea class="form-control" name="teamDescription" id="" rows="3" value="{{old('teamDescription')}}" placeholder=""></textarea>
+                      <textarea class="form-control" name="teamDescription" id="" rows="3" value="{{old('teamDescription')}}" placeholder="">{{old('teamDescription')}}</textarea>
                     </div>
 
                     <div id="yellow-separator"></div>

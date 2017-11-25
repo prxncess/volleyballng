@@ -61,7 +61,9 @@ class RegisterController extends Controller
                 'team-name'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'team-contact'=>'required|email|unique:teams,contact',
             'team-phone'=>'required|unique:teams,phone',
-                'team-description'=>'required|regex:%^[A-Za-z0-9\W ]+$%i',
+
+                'team-description'=>'regex:%^[A-Za-z0-9\W ]+$%i',
+
                 /*'logo'=>'mimes:jpeg,png,jpg|max:1024',
                 'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',*/
                 'accept'=>'accepted',
