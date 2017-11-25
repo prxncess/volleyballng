@@ -11,14 +11,22 @@
 
     </aside>
     <div id="events-subnav">
-        <a href="{{route('events')}}" >Events</a>
-        <a href="{{route('EventsCal')}}" class="active">Calender</a>
-        <a href="{{route('newEvent')}}">Register Event</a>
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="{{route('events')}}" >Events</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('EventsCal')}}" class="active">Calendar</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="{{route('newEvent')}}" class="">Register Event</a>
+        </div>
+      </div>
     </div>
     <div class="row">
         <div id="vb-calender" class=" col-md-12">
             <div class="">
-                <h3 class="text-center">Calender</h3>
+                <h3 class="text-center">Calendar</h3>
                 <div id="calender">
 
                     {{--<div id="yellow-separator"></div>--}}

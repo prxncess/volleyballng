@@ -64,6 +64,12 @@ a{
 @media only screen and (max-width: 767px) {
     float: none !important;
 }
+.dark-gray {
+  color: $dark-gray;
+}
+.purple {
+  color: $purple;
+}
 .gray-background {
   background-color: $whitesmoke
 }
@@ -74,6 +80,10 @@ a{
 .purple-separator {
   height: 1px;
   background-color: $purple;
+}
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
 }
 
 div#background{
@@ -1216,6 +1226,32 @@ div#events-subnav{
     color: $blue;
   }
 }
+// player tabs
+.nav-pills {
+  background-color: $purple !important;
+  @extend #well;
+}
+.nav-pills > li.active {
+  // display: block;
+}
+.nav-pills > li {
+  display: inline-block;
+  width: 49%;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:active,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover, {
+    background-color: white !important;
+    border-radius: 0;
+    color: $purple;
+    font-weight: 700;
+}
+.nav-pills > li > a, {
+    background-color: $purple !important;
+    border-radius: 0;
+    color: white;
+}
 //league-list
 div#league-list{
   @extend #container;
@@ -1424,8 +1460,8 @@ div#add-player{
 
     div#manager-img,div#player-img{
       img#show-img,img#show-player-img{
-        width: 180px;
-        height: 180px;
+        width: 170px;
+        height: 170px;
         display: block;
       }
       button{
@@ -1433,7 +1469,8 @@ div#add-player{
         width: 180px;
         height: 35px;
         position: relative;
-        border-radius: 20;
+        border-radius: 20px;
+        display: block;
         border: none;
         &:hover {
           background-color: transparent;
@@ -1589,7 +1626,7 @@ section#viewTeam{
   }
   div#staffs{
     ul{
-      width: 250px;
+      // width: 250px;
       @extend #center-block;
       li{
         .role{
@@ -1638,6 +1675,7 @@ section#viewPlayers{
     div.media-left{
       img{
         width: 150px;
+        height: 200px;
       }
     }
   }

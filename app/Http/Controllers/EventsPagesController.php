@@ -31,17 +31,17 @@ class EventsPagesController extends Controller
 
         $message =[
             'event_title.required'=>"Please enter the title of the event",
-            'event_description.required'=>'The description of this event is very important',
-            'event_location.required'=>'Select the location of your event',
-            'event_start.required'=>'When would the event be starting',
-            'event_end.required'=>'When would  the event be ending',
-            'event_organizer.required'=>'Organizers name is required',
+            // 'event_description.required'=>'Please write at least 30 words to describe this event',
+            // 'event_location.required'=>'Select the location of your event',
+            // 'event_start.required'=>'When will the event start?',
+            // 'event_end.required'=>'When will the event end?',
+            'event_organizer.required'=>'Who is the organizer?',
             'event_email.required'=>'Email is required',
             'event_phone.required'=>'Phone number is required',
             'event_terms.accepted'=>'You have to accept our terms and conditions',
-            'event_poser.image'=>'file uploaded in to an image:jpg,png,jpeg,x-png',
-            'event_poser.image'=>'invalid date submitted format(yyyy-mm-dd)',
-            'event_poser.image'=>'invalid date submitted format(yyyy-mm-dd)',
+            // 'event_poser.image'=>'File uploaded into an image:jpg,png,jpeg,x-png',
+            // 'event_poser.image'=>'Invalid date format (yyyy-mm-dd)',
+            // 'event_poser.image'=>'invalid date format (yyyy-mm-dd)',
 
 
             //other messages
@@ -52,11 +52,11 @@ class EventsPagesController extends Controller
         //validate
         Validator::make($request->all(),[
             'event_title'=>'required|regex:/^[\w., ]{3,225}$/i',
-            'event_description'=>"required|regex:/^[A-Za-z0-9?.,#-_ ]{100,225}$/i",
-            'event_location'=>'required',
-            'event_start'=>'required|date',
-            'event_end'=>'required|date',
-            'event_poster'=>'required|image|mimes:jpg,jpeg,png,x-png',
+            // 'event_description'=>"required|regex:/^[A-Za-z0-9?.,#-_ ]{100,225}$/i",
+            // 'event_location'=>'required',
+            // 'event_start'=>'required|date',
+            // 'event_end'=>'required|date',
+            // 'event_poster'=>'required|image|mimes:jpg,jpeg,png,x-png',
             'event_organizer'=>'required|regex:/^[\w., ]{3,80}$/i',
             'event_email'=>'required|email',
             'event_phone'=>'required|regex:/^[0-9]{11}/i',

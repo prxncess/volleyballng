@@ -62,6 +62,12 @@ a {
   float: right !important;
 }
 // End of helper classes
+.purple{
+  color: purple;
+}
+.dark-gray {
+  color: $dark-gray;
+}
 
 .gray-background {
   background-color: $whitesmoke;
@@ -73,6 +79,10 @@ a {
 .purple-separator {
   height: 1px;
   background-color: $purple;
+}
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
 }
 
 // Media queries
@@ -187,7 +197,7 @@ section#team-overview{
         line-height: 2;
         // font-size: 18px;
         span{
-          text-transform: capitalize;
+          // text-transform: capitalize;
           color: $text-color;
         }
         a{
@@ -241,9 +251,9 @@ div#add-player{
 
     div#manager-img,div#player-img{
       img#show-img,img#show-player-img{
-        width: 180px;
-        height: 180px;
-        display: block;
+        width: 150px;
+        height: 150px;
+         display: block;
       }
       // button{
       //   background: $light-blue;
@@ -305,8 +315,8 @@ div#add-player{
       // border: 2px solid $blue;
     }
     label{
-      // color: $blue;
-      font-weight: 100;
+      color: $dark-gray;
+      // font-weight: 100;
     }
 
     button{
@@ -327,10 +337,10 @@ div#tm-players{
 
   }
 }
-.gray-separator {
-  height: 1px;
-  background-color: #e6e6e6;
-}
+// .gray-separator {
+//   height: 1px;
+//   background-color: #e6e6e6;
+// }
 .top-20 {
   margin-top: 20px;
 }

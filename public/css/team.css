@@ -289,6 +289,14 @@ a:hover {
   float: right !important;
 }
 
+.purple {
+  color: purple;
+}
+
+.dark-gray {
+  color: #6e6e6e;
+}
+
 .gray-background {
   background-color: #fdfdfd;
 }
@@ -301,6 +309,11 @@ a:hover {
 .purple-separator {
   height: 1px;
   background-color: #4449ca;
+}
+
+.yellow-separator {
+  height: 1px;
+  background-color: #e8b617;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
@@ -416,7 +429,6 @@ section#team-overview div#teamInfo ul li {
 }
 
 section#team-overview div#teamInfo ul li span {
-  text-transform: capitalize;
   color: #636b6f;
 }
 
@@ -446,8 +458,8 @@ section#team-overview form#editPlayer {
 }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   display: block;
 }
 
@@ -498,7 +510,7 @@ div#add-player #member-info div#coach-img i {
 }
 
 div#add-player #member-info label {
-  font-weight: 100;
+  color: #6e6e6e;
 }
 
 div#add-player #member-info button {
@@ -512,11 +524,6 @@ div#add-player #member-info button {
 div#tm-players img {
   width: 250px;
   height: 200px;
-}
-
-.gray-separator {
-  height: 1px;
-  background-color: #e6e6e6;
 }
 
 .top-20 {

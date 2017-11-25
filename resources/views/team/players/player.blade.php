@@ -21,7 +21,7 @@
                      <span class="media-heading">{{$player->fname.' '.$player->lname}}</span>
                     <ul class="list-unstyled">
                         <li><span class="role">Position: </span> <strong>{{$player->position}}r</strong> </li>
-                        <li><span class="role">Height: </span> <strong>{{$player->height}}</strong> </li>
+                        <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
 
                     </ul>
 

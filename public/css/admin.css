@@ -249,7 +249,6 @@ ul.pagination {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -261,7 +260,6 @@ ul.pagination {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -528,7 +526,6 @@ section#team-overview div#teamInfo ul li {
 }
 
 section#team-overview div#teamInfo ul li span {
-  text-transform: capitalize;
   color: #636b6f;
 }
 
@@ -561,8 +558,9 @@ section#team-overview form#editPlayer {
 }
 
 div#add-player #member-info div#manager-img img#show-img, div#add-player #member-info div#manager-img img#show-player-img, div#add-player #member-info div#player-img img#show-img, div#add-player #member-info div#player-img img#show-player-img {
-  width: 160px;
-  height: 160px;
+  width: 170px;
+  height: 170px;
+  display: block;
 }
 
 div#add-player #member-info div#manager-img input[type='file'], div#add-player #member-info div#player-img input[type='file'] {
@@ -696,6 +694,14 @@ a:hover {
   float: right !important;
 }
 
+.purple {
+  color: #4449ca;
+}
+
+.dark-gray {
+  color: #6e6e6e;
+}
+
 .gray-background {
   background-color: #fdfdfd;
 }
@@ -703,11 +709,18 @@ a:hover {
 .gray-separator {
   height: 1px;
   background-color: #e6e6e6;
+  max-width: 600px;
 }
 
 .purple-separator {
   height: 1px;
   background-color: #4449ca;
+}
+
+.yellow-separator {
+  height: 1px;
+  background-color: #e8b617;
+  max-width: 600px;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

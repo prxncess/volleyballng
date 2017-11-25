@@ -42,14 +42,21 @@ class playersPagesController extends Controller
         //
         if($request->ajax()){
             //validate
-
+            $message=[
+                'player_height_feet.required'=>'Select player height in feet',
+                'player_height_inches.required'=>'Select player height in inches',
+                'player_gender.required'=>'Select player gender',
+                'player_gender.in'=>'Select player gender'
+            ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
                 'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
                 'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-                'player_height'=>'required|regex:/^[0-9]{3}$/i',
-                'player_position'=>'required'
-            ]);
+                'player_height_feet'=>'required',
+                'player_height_inches'=>'required',
+                'player_position'=>'required',
+                'player_gender'=>'required|in:male,female',
+            ],$message);
             $errors=$validator->errors();
             if($validator->fails()){
                 //store errors
@@ -70,15 +77,17 @@ class playersPagesController extends Controller
                 'fname'=>$request->get('player_firstName'),
                 'lname'=>$request->get('player_lastName'),
                 'position'=>$request->get('player_position'),
-                'height'=>$request->get('player_height'),
-                'player_image'=>$newImageName
+                'feet'=>$request->get('player_height_feet'),
+                'inches'=>$request->get('player_height_inches'),
+                'player_image'=>$newImageName,
+                'gender'=>$request->get('player_gender')
             ]);
 
             if($player->save()){
                 //gets all players
                 $team=Team::find($request->get('team_id'));
                 $team->players()->attach($player->id);
-                return response()->json(['status'=>'player_saved','newPlayers'=>$team->players]);
+                return response()->json(['status'=>'player_saved','newPlayers'=>$team->players,'teamName'=>$team->name]);
             }
 
         }else{
@@ -116,8 +125,10 @@ class playersPagesController extends Controller
         try{
         $team= Team::whereName($tea)->firstOrFail();
         $player= Player::find($id);
-            $positions=['right side mitter','outside mitter','middle block','sitter','opposite','middle block/libero'];
-            return view('admin.teams.editPlayer',compact('team','player','positions'));
+            $positions=['Right side hitter','Outside hitter','Middle blocker','Setter','Opposite','Libero'];
+            $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
+            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
+            return view('admin.teams.editPlayer',compact('team','player','positions','feets','inches'));
 
     }catch (ModelNotFoundException $e){
 
@@ -139,12 +150,20 @@ class playersPagesController extends Controller
     public function update(Request $request,$tea, $id)
     {
         //
+        $message=[
+            'player_height_feet.required'=>'Select player height in feet',
+            'player_height_inches.required'=>'Select player height in inches',
+            'player_gender.required'=>'Select player gender',
+            'player_gender.in'=>'Select player gender'
+        ];
         $validator=Validator::make($request->all(),[
             'player_image'=>'image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
             'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
             'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-            'player_height'=>'required|regex:/^[0-9]{3}$/i',
-            'player_position'=>'required'
+            'player_gender'=>'required|in:male,female',
+            'player_height_feet'=>'required',
+            'player_height_inches'=>'required',
+            'player_position'=>'required',
         ])->validate();
         //save image
         $player=Player::find($id);
@@ -174,7 +193,9 @@ class playersPagesController extends Controller
             $player->fname=$request->get('player_firstName');
             $player->lname=$request->get('player_lastName');
             $player->position=$request->get('player_position');
-            $player->height=$request->get('player_height');
+            $player->feet=$request->get('player_height_feet');
+            $player->inches=$request->get('player_height_inches');
+            $player->gender=$request->get('player_gender');
 
 
 

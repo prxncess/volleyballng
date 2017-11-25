@@ -5,11 +5,9 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-close"></span></button>
             </div>
             <div class="modal-body">
-                <div class="res">
-
-                </div>
-                <h4 class="text-center top-40">New Staff</h4>
-                <form method="post" id="member-info" action="" class="playerForm">
+                <div id="res"></div>
+                <h4 class="text-center">New Staff</h4>
+                <form method="post" id="member-info" action="" class="playerForm top-40">
                     <input type="hidden" name="index" id="teamindex" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <fieldset>
@@ -18,14 +16,15 @@
 
                             <div id="member-info">
                                 <div class="text-center" id="manager-img">
-                                    <img src="{!! asset('images/user.png') !!}" id="show-img">
-                                    <p>
+                                    <img src="{!! asset('images/user.png') !!}" id="show-img" class="center-block img-responsive">
+
                                       <button type="button" class="btn top-20 bottom-20">Upload image</button>
-                                    </p>
                                     {{--<l class="fa fa-plus"></l>--}}
                                     <input type="file" name="manager_photo" id="manager-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                                     <p class="error"></p>
                                 </div>
+                                <div class="form-group text-center dark-gray"><label><i>Hint: Image size should be less than 1mb. <br> Click <a href="http://tinypng.com" target="_blank">here</a> to compress larger images.</i></label></div>
+
                                 <div class="form-group">
                                     <label>Name</label>
                                     <div class="row">
@@ -46,7 +45,7 @@
                                     <label>Position</label>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <select class="form-control" id="staffPosition" name="position">
+                                            <select class="form-control" id="managerPosition" name="position">
                                                 <option value="">Select position</option>
                                                 <option value="coach">Coach</option>
                                                 <option value="manager">Manager</option>

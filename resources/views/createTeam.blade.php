@@ -294,11 +294,10 @@
                                       <option value="">Select one</option>
                                       <option value="right side hitter">Right side hitter</option>
                                       <option value="outside hitter">Outside hitter</option>
-                                      <option value="middle block">Middle block</option>
-                                      <option value="sitter">Sitter</option>
+                                      <option value="middle blocker">Middle blocker</option>
+                                      <option value="setter">Setter</option>
                                       <option value="opposite">Opposite</option>
                                       <option value="libero">Libero</option>
-                                      <option value="substitute">Substitute</option>
 
                                     </select>
                                     <p class="error"></p>

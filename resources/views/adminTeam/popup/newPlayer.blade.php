@@ -6,48 +6,74 @@
             </div>
             <div class="modal-body">
                 <div class="row"></div>
-                <h4>New Player</h4>
+                <h4 class="text-center">New Player</h4>
                 <form method="post" id="member-info" action="" class="playerForm">
                     <input type="hidden" name="index" id="index" value="{{$team->id}}">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-                    <div class="" id="player-img">
-                        <img src="{!! asset('images/user.jpg') !!}" id="show-player-img">
-                        <button type="button" class="btn top-20 bottom-20">
-                            Upload image
-                        </button>
 
+                    <div class="text-center top-40" id="player-img">
+                        <img src="{!! asset('images/user.png') !!}" id="show-player-img" class="center-block img-responsive">
+                        <button type="button" class="btn top-20 bottom-20">Upload image</button>
                         <input type="file" name="player_image" id="player-photo" accept="image/x-png,image/png,image/jpg,image/jpeg">
                         <p class="error"></p>
                     </div>
+                    <div class="form-group text-center dark-gray"><label><i>Hint: Image size should be less than 1mb. <br> Click <a href="http://tinypng.com" target="_blank">here</a> to compress larger images.</i></label></div>
+
+
+                    <div class="gray-separator top-20 bottom-20"></div>
+
                     <div class="form-group">
                         <label>Name</label>
                         <div class="row">
 
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="player-fname" name="player_firstName" placeholder="first name">
+                                <input type="text" class="form-control" id="player-fname" name="player_firstName" placeholder="First name">
                                 <p class="error"></p>
                             </div>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="player-lname" name="player_lastName" placeholder="Last name">
+                                <input type="text" class="form-control" id="player-lname" name="player_lastName" placeholder="Surname">
                                 <p class="error"></p>
                             </div>
                         </div>
-
                     </div>
-                    <div id="yellow-separator"></div>
+
+                    <!-- <div class="gray-separator top-20 bottom-20"></div> -->
+
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div><label>Gender</label></div>
+                          <div class="radio-inline">
+                            <label>
+                              <input type="radio" name="gender" id="gender" value="female">
+                              Female
+                            </label>
+                          </div>
+                          <div class="radio-inline">
+                            <label>
+                              <input type="radio" name="gender" id="gender" value="male">
+                              Male
+                            </label>
+                          </div>
+                            <p class="error"></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="gray-separator top-20 bottom-20"></div> -->
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Position</label>
                                 <select name="player_position" id="player-position" class="form-control">
                                     <option value="">Select one</option>
-                                    <option value="right side mitter">Rightside mitter</option>
-                                    <option value="outside mitter">Outside mitter</option>
-                                    <option value="middle block">Middle blocker</option>
-                                    <option value="sitter">Sitter</option>
-                                    <option value="opposite">Opposite</option>
-                                    <option value="Middle Block/Libero">Middle Block/Libero</option>
-
+                                    <option value="right side hitter">Right side hitter</option>
+                                    <option value="outside hitter">Outside hitter</option>
+                                    <option value="middle blocker">Middle blocker</option>
+                                    <option value="setter">Setter</option>
+                                    <option value="opposite">Opposite hitter</option>
+                                    <option value="libero">Libero</option>
                                 </select>
                                 <p class="error"></p>
                             </div>

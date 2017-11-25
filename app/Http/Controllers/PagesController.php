@@ -17,7 +17,7 @@ class PagesController extends Controller
         try{
             $events=Event::whereStatus('open')->get();
             //return dd($events);
-            $teams=Team::all()->take(6)->where('active',1);
+            $teams=Team::all()->where('active',1)->take(6);
             return view('index',compact('events','teams'));
         }catch (ModelNotFoundException $e){
 
@@ -73,7 +73,7 @@ class PagesController extends Controller
             //get the team
             $team=Team::whereName($name)->firstOrFail();
             //fetch player
-            $players=Player::whereTeam_id($team->id)->get();
+            $players=Player::whereTeam_id($team->id)->paginate(9);
            // return $players;
             return view('team.players.players',compact('team','players'));
         }catch (ModelNotFoundException $e){

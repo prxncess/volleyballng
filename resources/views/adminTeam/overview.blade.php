@@ -22,26 +22,27 @@
                     <ul class="list-unstyled">
                         <li><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
-                        <li><span>{{$team->phone}}</span></li>
-                       {{-- <li><a href="#">Team Events</a></li>--}}
-                        <!-- <li><a href="">History</a> </li> -->
+                        <li><span><a href="tel:{{$team->phone}}">{{$team->phone}}</a></span></li>
+                        <li><p><span><b>Contact person</b>: {{$team->contact_person}}</span></p></li>
+                        <!-- <div id="" class="top-20 bottom-20 gray-separator"></div> -->
+                        <li><span><b>Team description</b>: {{$team->description}}</span></li>
 
-                        <li>
-
+                        <li class="top-20">
                             <a href="{{route('teamUpdate')}}" id="editTeam" class="btn btn-purple right-10"><i class="fa fa-edit right-10"></i>Edit</a>
                             <a href="javascript:;" id="team_image" class="btn btn-purple"><i class="fa fa-image right-5"></i>Team image</a>
                         </li>
                         <div id="" class="top-20 bottom-20 gray-separator"></div>
                          <li id="teamStatus"><span>Status:</span>
                          @if($team->active==0)
-                                 <i style="color:#bebebe" class="fa fa-question"></i>
-                                 <span style="color: #bebebe">Inactive</span>
-                             <p style="font-size: 10px" class="">
+                                 <i style="color:#bebebe" class="fa fa-circle"></i>
+                                 <span style="color: #7e7e7e">Inactive</span>
+                             <p style="font-size: 12px" class="">
                                  To be approved and activated, please add at least 6 players, 1 management staff and a team photograph to your profile.
                              </p>
-                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20" >Activate team</a>
+                             <a href="javascript:;" id="reviewTeam" data-name="{{$team->name}}" data-mail="{{$team->contact}}" class="btn btn-purple bottom-20">Request activation</a>
                              @else
-                                 <i class="fa fa-check"></i> Active
+                                 <i style="color:#009B8A"class="fa fa-check"></i>
+                                 <span style="color: #009B8A">Active</span>
                              @endif
                          </li>
                     </ul>
@@ -71,7 +72,7 @@
                                                             <div class="col-xs-6 col-sm-6">
                                                                 <a href="{{route('showPlayer',[$player->id])}}">
                                                                     <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
-                                                                    <h5 class="text-center text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
+                                                                    <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
                                                                 </a>
 
                                                             </div>
@@ -148,8 +149,15 @@
                 $('#player-lname').parent().find('p').html(' ');
                 $('#player-position').parent().find('p').html(' ');
                 $('#player-height-feet').parent().find('p').html(' ');
-                $('#player-height-feet').parent().find('p').html(' ');
+                $('#player-height-inches').parent().find('p').html(' ');
                 $('#player-photo').parent().find('p').html(' ');
+                $('#gender').parents('div.col-sm-12').find('p').html(' ');
+                var  gender=$('#gender:checked').val();
+                /*if($('input[name=gender]:checkbox').val()=='male'||'female'){
+
+                }else{
+                    gender='';
+                }*/
                 var playerForm = new FormData();
                 var playerImage=$('div#add-player #member-info div#player-img input[type="file"]')[0].files[0]
                 playerForm.append('player_position',$('#player-position').val())
@@ -157,6 +165,7 @@
                 playerForm.append('player_height_inches',$('#player-height-inches').val())
                 playerForm.append('player_lastName',$('#player-lname').val())
                 playerForm.append('player_firstName',$('#player-fname').val())
+                playerForm.append('player_gender',gender)
                 playerForm.append('player_image',playerImage)
                 playerForm.append('_token',$('#_token').val())
                 playerForm.append('team_id',$('#index').val())
@@ -176,6 +185,7 @@
                             if(message.player_height_inches===undefined?null:$('#player-height-inches').parent().find('p').html(''+message.player_height_inches[0]));
                             if(message.player_position===undefined?null: $('#player-position').parent().find('p').html(''+message.player_position[0]));
                             if(message.player_image===undefined?null:$('#player-photo').parent().find('p').html(''+message.player_image[0]));
+                            if(message.player_gender===undefined?null:$('#gender').parents('div.col-sm-12').find('p').html(''+message.player_gender[0]));
 
 
 
@@ -209,9 +219,14 @@
                 })
             });
             $('button.addManager').on('click',function(){
+                $('#member-info').trigger('reset');
+                $('#member-info input, #member-info select').parent().find('p').html(' ')
                 $('#add-manager').modal('show')
             })
             $('button.vb-add-player').on('click',function(){
+                //reset form
+                $('#member-info').trigger('reset');
+                $('#member-info input, #member-info select').parent().find('p').html(' ')
                 $('#add-player').modal('show')
             })
 
@@ -292,14 +307,19 @@
                             }else{
                                 message=''
                                 message=data.errors
-                                $('#manager-fname').parent().find('p').html(''+message.staffFirstName[0])//manager first name error
+                                if(message.staffFirstName==undefined?null:$('#manager-fname').parent().find('p').html(''+message.staffFirstName[0]));
+                                if(message.staffLastName==undefined?null:$('#manager-lname').parent().find('p').html(''+message.staffLastName[0]));
+                                if(message.staffPosition==undefined?null:$('#staffPosition').parent().find('p').html(''+message.staffPosition[0]));
+                                if(message.staffDescription==undefined?null:$('#staffDescription').parent().find('p').html(''+message.staffDescription[0]));
+                                if(message.staffImage==undefined?null:$('#manager-photo').parent().find('p').html(''+message.staffImage[0]));
 
+                               /* $('#manager-fname').parent().find('p').html(''+message.staffFirstName[0])//manager first name error
                                 $('#manager-lname').parent().find('p').html(''+message.staffLastName[0])// manager last name error
                                 $('#staffPosition').parent().find('p').html(''+message.staffPosition[0])// manager last name error
                                 $('#staffDescription').parent().find('p').html(''+message.staffDescription[0])// manager last name error
                                 if(!empty(message.managerImage[0])){
                                     $('#manager-photo').parent().find('p').html(''+message.managerImage[0])// manager last name error
-                                }
+                                }*/
                             }
 
 

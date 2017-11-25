@@ -2,14 +2,14 @@
 @section('title','volleyball events');
 @section('content')
 
-    <div id="ad-Events" class="container">
+    <section>
         <ol class="breadcrumb">
             <li class="breadcrumb-item-active">Events</li>
         </ol>
 
         <div class="well well" id="admin-box">
             <header>
-                <h3 class="text-center"><i class="fa fa-paperclip"></i> Event</h3>
+                <h2 class=""><i class="fa fa-paperclip"></i> Events</h2>
                 <div id="" class="purple-separator top-10 bottom-20"></div>
                 <a href="{{route('createEvent')}}" class="float-right btn btn-purple bottom-10"><i class="fa fa-plus"></i> New event</a>
             </header>
@@ -28,14 +28,14 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{$event->title}}</h4>
-                        
+
                     </div>
                     <div class="media-bottom">
-                        <p class="">{{$event->description}}</p>
+                        <p class="top-20">{{$event->description}}</p>
                         <ul class="list-unstyled list-inline">
-                            <li><i class=""></i><strong>Loaction:</strong> <span>{{$event->e_location}}</span> </li>
+                            <li><i class=""></i><strong>Location:</strong> <span>{{$event->e_location}}</span> </li>
                             <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->e_organizer}}</span> </li>
-                            <li><i class=""></i><strong>Contact:</strong> <span>{{$event->e_email}}</span> </li>
+                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->e_email}}</span> </li>
                         </ul>
                         <p>
                             <a href="{{route('showEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
@@ -43,7 +43,7 @@
                         </p>
 
                     </div>
-                    <div id="separator"></div>
+                    <div class="gray-separator top-20 bottom-20"> </div>
                 </div>
 
 
@@ -53,6 +53,6 @@
                 {{$events->links()}}
             </div>
 
-        </div>
+        </section>
     </div>
     @endsection

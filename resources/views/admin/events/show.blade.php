@@ -23,64 +23,71 @@
                 <div id="ad-event-info" class="">
                     <img src="{{asset('images/event/'.$event->image)}}" class="img-responsive">
                     <div class="row">
-                        <div class="col-sm-5"><strong>Title</strong></div>
-                        <div class="col-sm-7">{{$event->title}}</div>
+                        <div class="col-sm-3"><strong>Title</strong></div>
+                        <div class="col-sm-9">{{$event->title}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Description</strong></div>
-                        <div class="col-sm-7">{{$event->description}}</div>
+                        <div class="col-sm-3"><strong>Description</strong></div>
+                        <div class="col-sm-9">{{$event->description}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Starting on:</strong> {{$event->start_date}}</div>
-                        <div class="col-sm-7"><strong>To end on: </strong>{{$event->end_date}}</div>
+                        <div class="col-sm-3"><strong>Start date:</strong> {{$event->start_date}}</div>
+                        <div class="col-sm-9"><strong>End date: </strong> {{$event->end_date}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Location</strong></div>
-                        <div class="col-sm-7">{{$event->e_location}} state</div>
+                        <div class="col-sm-3"><strong>Location</strong></div>
+                        <div class="col-sm-9">{{$event->e_location}} state</div>
                     </div>
-                    <h4><i class="fa fa-user"></i> Organizer information</h4>
+                    <h4 class="top-40"><i class="fa fa-user"></i> Organizer information</h4>
                     <div id="separator"></div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Organizer</strong></div>
-                        <div class="col-sm-7">{{$event->e_organizer}}</div>
+                        <div class="col-sm-3"><strong>Organizer</strong></div>
+                        <div class="col-sm-9">{{$event->e_organizer}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Phone</strong></div>
-                        <div class="col-sm-7">{{$event->e_phone}}</div>
+                        <div class="col-sm-3"><strong>Phone</strong></div>
+                        <div class="col-sm-9">{{$event->e_phone}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-5"><strong>Email</strong></div>
-                        <div class="col-sm-7">{{$event->e_email}}</div>
+                        <div class="col-sm-3"><strong>Email</strong></div>
+                        <div class="col-sm-9">{{$event->e_email}}</div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-5"><strong>status</strong></div>
-                        <div class="col-sm-7">
-                            <form method="post" action="{{route('showEvent',$event->slug)}}">
-                                {{csrf_field()}}
-                                <div class="form-group">
-                                    <div class="col-sm-7">
-                                        <select class="form-control" name="status">
-                                            @foreach($status as $statu)
-                                                @if($statu==$event->status)
-                                                    <option value="{{$event->status}}" selected>{{$event->status}}</option>
-                                                @else
-                                                    <option value="{{$statu}}" >{{$statu}}</option>
-                                                @endif
-                                            @endforeach
-
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </div>
-                                </div>
-
-                            </form>
+                    <!-- <div class="row">
+                        <div class="col-sm-3"><strong>status</strong></div>
+                        <div class="col-sm-9">
                         </div>
+                    </div> -->
+                    <div class="gray-separator top-20 bottom-20"></div>
+                    <h4 class=""><i class="fa fa-clock"></i> Status</h4>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <form method="post" action="{{route('showEvent',$event->slug)}}">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="status">
+                                        @foreach($status as $statu)
+                                            @if($statu==$event->status)
+                                                <option value="{{$event->status}}" selected>{{$event->status}}</option>
+                                            @else
+                                                <option value="{{$statu}}" >{{$statu}}</option>
+                                            @endif
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn vb-button">Update</button>
+                                </div>
+                            </div>
+
+                        </form>
+                      </div>
                     </div>
+
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-danger " id="delete-event">Delete</a>
+                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple top-40" id="delete-event"><i class="fa fa-trash right-5"></i>Delete event</a>
                         </div>
                     </div>
 

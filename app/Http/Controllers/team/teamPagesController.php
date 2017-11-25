@@ -54,14 +54,17 @@ class teamPagesController extends Controller
             $message=[
                 'player_height_feet.required'=>'Select player height in feet',
                 'player_height_inches.required'=>'Select player height in inches',
+                'player_gender.required'=>'Select player gender',
+                'player_gender.in'=>'Select player gender'
             ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|max:1024',
-                'player_firstName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
-                'player_lastName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
+                'player_firstName'=>"required|regex:/^[A-Za-z ]{3,50}$/i",
+                'player_lastName'=>"required|regex:/^[A-Za-z ]{3,50}$/i",
                 'player_height_feet'=>'required',
                 'player_height_inches'=>'required',
-                'player_position'=>'required'
+                'player_position'=>'required',
+                'player_gender'=>'required|in:male,female',
             ],$message);
             $errors=$validator->errors();
             if($validator->fails()){
@@ -85,7 +88,9 @@ class teamPagesController extends Controller
                 'position'=>$request->get('player_position'),
                 'feet'=>$request->get('player_height_feet'),
                 'inches'=>$request->get('player_height_inches'),
-                'player_image'=>$newImageName
+                'player_image'=>$newImageName,
+                'gender'=>$request->get('player_gender')
+
             ]);
 
             if($player->save()){
@@ -131,9 +136,9 @@ class teamPagesController extends Controller
         try{
             $team= auth('team')->user();
             $player= Player::find($id);
-            $positions=['right side hitter','outside hitter','middle block','sitter','opposite','libero'];
+            $positions=['Right side hitter','Outside hitter','Middle blocker','Setter','Opposite','Libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inch','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7  inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
@@ -151,14 +156,21 @@ class teamPagesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $validator=Validator::make($request->all(),[
+        $message=[
+            'player_height_feet.required'=>'Select player height in feet',
+            'player_height_inches.required'=>'Select player height in inches',
+            'player_gender.required'=>'Select player gender',
+            'player_gender.in'=>'Select player gender'
+        ];
+        Validator::make($request->all(),[
             'player_image'=>'image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
-            'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-            'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
+            'player_firstName'=>"required|regex:/^[A-Za-z]{3,50}$/i",
+            'player_lastName'=>"required|regex:/^[A-Za-z]{3,50}$/i",
             'player_height_feet'=>'required',
             'player_height_inches'=>'required',
-            'player_position'=>'required'
-        ])->validate();
+            'player_position'=>'required',
+            'player_gender'=>'required|in:male,female',
+        ],$message)->validate();
         //save image
         $player=Player::find($id);
         if($request->file('player_image')){
@@ -189,6 +201,7 @@ class teamPagesController extends Controller
         $player->position=$request->get('player_position');
         $player->feet=$request->get('player_height_feet');
         $player->inches=$request->get('player_height_inches');
+        $player->gender=$request->get('player_gender');
 
 
 
@@ -243,26 +256,27 @@ class teamPagesController extends Controller
             $team=Team::whereId($logged_team->id)->firstOrFail();;//fetches team data from database
             $messages=[
 
-                'team_img.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'logo.image'=>'file uploaded is not among supported formats(jpeg,png,jpg)',
-                'logo.max'=>'file uploaded exceeds 1mb',
-                'teamContact.email'=>'Invalid email submitted. Format:youname@ggg.com',
+                'team_img.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.max'=>'File uploaded exceeds 1mb',
+                'teamContact.email'=>'Invalid email submitted. Format: youname@ggg.com',
                 'teamContact.unique'=>'Email submitted is already in use',
-                'teamPhone.unique'=>'Phone Number already in use by another team',
-                'teamPhone.digits'=>'Phone Number must be 11 digits',
+                'teamPhone.unique'=>'Phone number already in use by another team',
+                'teamPhone.digits'=>'Phone number must be 11 digits',
             ];//custom messages for errors
 
         //dd($team->name);
           Validator::make($request->all(),[
                'logo'=>'image|max:1024',
                'team_image'=>'image',
+              'contactPerson'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i',
                 'teamContact'=>["email",'required',
                     Rule::unique('teams','contact')->ignore($team->id),
                 ],
                 'teamPhone'=>["digits:11",'required',
                     Rule::unique('teams','phone')->ignore($team->id),
                 ],
-                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]{10,255}$%i",
+                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]+$%i",
                 //'password'=>'confirmed|min:6|max:20',
 
             ],$messages)->validate();
@@ -304,6 +318,7 @@ class teamPagesController extends Controller
         $team->contact=$request->get('teamContact');
         $team->phone=$request->get('teamPhone');
         $team->description=$request->get('teamDescription')?$request->get('teamDescription'):'';
+        $team->contact_person=$request->get('contactPerson');
 
         if($team->save()){
             //redirect  to team over view with response
@@ -344,7 +359,7 @@ class teamPagesController extends Controller
             $data=['name'=>$request->get('name'),'email'=>$request->get('email')];
            $mail= Mail::send('mails.review',$data,function($message){
                 $message->to('eorijesu@gmail.com','Efeoghene Ori-Jesu');
-                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+                $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                 $message->subject('Team Review');
             });
 
