@@ -307,14 +307,19 @@
                             }else{
                                 message=''
                                 message=data.errors
-                                $('#manager-fname').parent().find('p').html(''+message.staffFirstName[0])//manager first name error
+                                if(message.staffFirstName==undefined?null:$('#manager-fname').parent().find('p').html(''+message.staffFirstName[0]));
+                                if(message.staffLastName==undefined?null:$('#manager-lname').parent().find('p').html(''+message.staffLastName[0]));
+                                if(message.staffPosition==undefined?null:$('#staffPosition').parent().find('p').html(''+message.staffPosition[0]));
+                                if(message.staffDescription==undefined?null:$('#staffDescription').parent().find('p').html(''+message.staffDescription[0]));
+                                if(message.staffImage==undefined?null:$('#manager-photo').parent().find('p').html(''+message.staffImage[0]));
 
+                               /* $('#manager-fname').parent().find('p').html(''+message.staffFirstName[0])//manager first name error
                                 $('#manager-lname').parent().find('p').html(''+message.staffLastName[0])// manager last name error
                                 $('#staffPosition').parent().find('p').html(''+message.staffPosition[0])// manager last name error
                                 $('#staffDescription').parent().find('p').html(''+message.staffDescription[0])// manager last name error
                                 if(!empty(message.managerImage[0])){
                                     $('#manager-photo').parent().find('p').html(''+message.managerImage[0])// manager last name error
-                                }
+                                }*/
                             }
 
 

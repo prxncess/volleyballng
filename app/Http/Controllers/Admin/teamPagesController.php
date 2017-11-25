@@ -139,7 +139,7 @@ class teamPagesController extends Controller
                 'teamPhone'=>["required","digits:11",
                     Rule::unique('teams','phone')->ignore($team->id),
                 ],
-                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]{10,255}$%i",
+                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]+$%i",
                 'password'=>'confirmed|min:6|max:20',
 
             ])->validate();

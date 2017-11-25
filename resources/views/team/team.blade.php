@@ -53,16 +53,33 @@
                                 @endif
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6" id="staffs">
-                            <h3 class="text-uppercase">Staff</h3>
+                            <h3 class="text-uppercase">Manager</h3>
                             <div class="yellow-separator"></div>
-                            <ul class="list-inline top-20">
-                                <li><span class="role">Team manager</span>
-                                <strong>@if($teamManager)){{$teamManager->fname.' '.$teamManager->lname}} @endif</strong>
-                                </li>
+                           {{-- <ul class="list-inline top-20">--}}
+                               {{-- <li><span class="role">Team manager</span>--}}
+                                    @if($teamManager)
+                               {{-- <strong>{{$teamManager->fname.' '.$teamManager->lname}}</strong>--}}
+                                    <div class="media top-20">
+                                        <div class="media-left">
+                                            @if($teamManager->image=='')
+                                                <img src="{!! asset('images/user.jpg') !!}" class="media-object">
+                                            @else
+                                                <img src="images/team/{{$teamManager->image}}" class="media-object">
+                                            @endif
+
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{$teamManager->fname.' '.$teamManager->lname}}</h4>
+                                            <p>{{$teamManager->description}}</p>
+                                        </div>
+                                    </div>
+
+                                    @endif
+
                                 <!-- <li><span class="role">Physiotherapist</span>
                                     <strong>Agada Johnson</strong>
                                 </li> -->
-                            </ul>
+                            {{--</ul>--}}
                         </div>
                     </div>
                 </div>
