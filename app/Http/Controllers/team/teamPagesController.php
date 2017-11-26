@@ -241,7 +241,9 @@ class teamPagesController extends Controller
         $logged_team=auth('team')->user();
         try{
             $team=Team::whereName($logged_team->name)->firstOrFail();
-            return view('adminTeam.overview',compact('team'));
+            $malePlayers=$team->players()->whereGender('male')->get();
+            $femalePlayers=$team->players()->whereGender('female')->get();
+            return view('adminTeam.overview',compact('team','malePlayers','femalePlayers'));
 
         }catch (ModelNotFoundException $e){
             return view('404');

@@ -108,7 +108,9 @@ class teamPagesController extends Controller
 
         try{
             $team=Team::whereName($name)->firstOrFail();
-            return view('admin.overview',compact('team'));
+            $malePlayers=$team->players()->whereGender('male')->get();
+            $femalePlayers=$team->players()->whereGender('female')->get();
+            return view('admin.overview',compact('team','malePlayers','femalePlayers'));
 
         }catch (ModelNotFoundException $e){
             return view('404');
@@ -143,10 +145,22 @@ class teamPagesController extends Controller
      */
     public function update(Request $request, $name)
     {
+        //return $request->all();
         //find team to update
         try{
             $team=Team::whereName($name)->firstOrFail();
             //validate request
+            $messages=[
+
+                'team_img.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.image'=>'Please upload a file in a supported format (jpeg,png,jpg)',
+                'logo.max'=>'File uploaded exceeds 1mb',
+                'teamContact.email'=>'Invalid email submitted. Format: youname@ggg.com',
+                'teamContact.unique'=>'Email submitted is already in use',
+                'teamPhone.unique'=>'Phone number already in use by another team',
+                'teamPhone.digits'=>'Phone number must be 11 digits',
+                'contactPerson.required'=>"Contact person field is required",
+            ];//custom messages for errors
 
             Validator::make($request->all(),[
                 'teamName'=>["required","regex:/^[A-Za-z-' ]{3,100}$/i",
@@ -161,8 +175,26 @@ class teamPagesController extends Controller
                 ],
                 'teamDescription'=>"regex:%^[A-Za-z0-9\W ]+$%i",
                 'password'=>'confirmed|min:6|max:20',
+                'teamLogo'=>'image|max:1024',
 
             ])->validate();
+            //check if logo was upload
+            if($request->file('teamLogo')){
+                //logo was uploaded
+                $teamLogo=$request->file('teamLogo');
+                $newImageName=time().'.'.$teamLogo->getClientOriginalExtension();
+                $teamFolder='images/team/'.$newImageName;
+                //resize and move image
+                Image::make($teamLogo)->resize(200,200,function($c){
+                    $c->aspectRatio();
+                    $c->upsize();
+                })->orientate()->save($teamFolder);
+                //fetch old logo so as to unlink it
+                $oldLogo=$team->logo;
+                $team->logo=$newImageName;//save logo name to database
+                if($oldLogo!=''?unlink('images/team/'.$oldLogo):null);//deletes old image from database
+
+            }
             //save the team
             $newpassword=bcrypt($request->get('password'));//new password
             $oldpassword=$team->password;//old password

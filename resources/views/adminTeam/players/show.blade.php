@@ -11,7 +11,7 @@
         </ol>
         <div id="admin-box" class="well well">
             <header>
-                <h2>Player</h2>
+                <h2>Player Overview</h2>
                 <div id="separator"></div>
             </header>
             <div class="row">
@@ -29,7 +29,7 @@
                   </ul>
 
                   <div class="gray-separator top-20 bottom-20"></div>
-
+                    <button class="btn btn-purple bottom-20 right-10"><i class="fa fa-print"></i> Player Slip </button>
                   <a href="{{route('updatePlayer',[$player->id])}}" id="editPlayer" class="btn btn-purple bottom-20 right-10"><i class="fa fa-edit"></i> Edit </a>
                   <a href="{{route('removePlayer',[$player->id])}}" id="removePlayer" class="btn btn-purple bottom-20"><i class="fa fa-remove"></i> Remove</a>
                 </div>
