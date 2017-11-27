@@ -60,38 +60,9 @@
                   </div>
 
                 </div>
-                <div role="tabpanel" class="tab-pane" id="women">
-                  <div role="tabpanel" class="tab-pane active top-40" id="men">
-                    <div class="row">
-                        @if(!empty($players))
-                            @foreach($players as $player)
+                <div role="tabpanel" class="tab-pane top-40" id="women">
+                    
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
-                                        <ul class="list-unstyled">
-                                            <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
-                                            <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
-
-                                        </ul>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            @endforeach
-
-                            @else
-                        @endif
-                        {{$players->links()}}
-
-                    </div>
-
-                  </div>
                 </div>
               </div>
 
