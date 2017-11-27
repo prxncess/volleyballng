@@ -86,7 +86,7 @@
                                     <select name="player_position" id="player-position" class="form-control">
                                         <option value="">Select one</option>
                                         @foreach($positions as $position)
-                                            @if(strtolower($position)==$player->position)
+                                            @if(strtolower($position)==strtolower($player->position))
                                                 <option value="{{$player->position}}" selected>{{$player->position}}</option>
                                             @else
                                                 <option value="{{$position}}">{{$position}}</option>
@@ -109,7 +109,7 @@
                                             <select name="player_height_feet" id="player-height-feet" class="form-control">
                                                 <option value="">(feet)</option>
                                                 @foreach($feets as $feet)
-                                                    @if(strtolower($feet)==$player->feet)
+                                                    @if(strtolower($feet)==strtolower($player->feet))
                                                         <option value="{{$player->feet}}" selected>{{$player->feet}}</option>
                                                     @else
                                                         <option value="{{$feet}}">{{$feet}}</option>
@@ -122,7 +122,7 @@
                                             <select name="player_height_inches" id="player-height-inches" class="form-control">
                                                 <option value="">(inches)</option>
                                                 @foreach($inches as $inch)
-                                                    @if(strtolower($inch)==$player->inches)
+                                                    @if(strtolower($inch)== strtolower($player->inches))
                                                         <option value="{{$player->inches}}" selected>{{$player->inches}}</option>
                                                     @else
                                                         <option value="{{$inch}}">{{$inch}}</option>

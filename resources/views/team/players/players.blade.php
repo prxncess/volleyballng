@@ -18,53 +18,80 @@
 
               <!-- Nav tabs -->
               <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4 text-center">
-                  <ul class="nav nav-pills text-center" role="tablist">
-                    <li role="presentation" class="active"><a href="#men" aria-controls="men" role="tab" data-toggle="tab">Men</a></li>
-                    <li role="presentation"><a href="#women" aria-controls="women" role="tab" data-toggle="tab">Women</a></li>
+
+                <div class=" col-sm-offset-4 col-sm-4 col-sm-offset-4 text-center">
+                  <ul class="nav nav-tabs text-center">
+                    <li  class="active"><a href="#men"   data-toggle="tab">Men</a></li>
+                    <li ><a href="#women"  data-toggle="tab">Women</a></li>
                   </ul>
                 </div>
-                <div class="col-sm-4"></div>
+
               </div>
 
               <!-- Tab panes -->
+                <div class="row">
               <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active top-40" id="men">
-                  <div class="row">
-                      @if(!empty($players))
-                          @foreach($players as $player)
 
-                          <div class="col-sm-6 col-md-4">
-                              <div class="media">
-                                  <div class="media-left">
-                                      <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
-                                  </div>
-                                  <div class="media-body">
-                                      <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
-                                      <ul class="list-unstyled">
-                                          <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
-                                          <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
-                                      </ul>
+                <div class="tab-pane fade in active top-40" id="men">
+                    @if(!empty($malePlayers))
 
+                        @foreach($malePlayers as $player)
+                            <div class="col-sm-6 col-md-4">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
+                                        <ul class="list-unstyled">
+                                            <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
+                                            <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    @else
+
+
+                    @endif
+
+                </div>
+                  <div  class="tab-pane fade top-40" id="women">
+                      @if(!empty($femalePlayers))
+                          @php
+                          $i=0
+                          @endphp
+                          @foreach($femalePlayers as $player)
+                              <div class="col-sm-6 col-md-4">
+                                  <div class="media">
+                                      <div class="media-left">
+                                          <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                                      </div>
+                                      <div class="media-body">
+                                          <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
+                                          <ul class="list-unstyled">
+                                              <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
+                                              <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
+                                          </ul>
+
+                                      </div>
                                   </div>
+
                               </div>
-
-                          </div>
                           @endforeach
 
-                          @else
+                      @else
+
+
                       @endif
-                      {{$players->links()}}
 
                   </div>
-
                 </div>
-                <div role="tabpanel" class="tab-pane top-40" id="women">
-                    
-
                 </div>
-              </div>
 
             </div>
           </div>

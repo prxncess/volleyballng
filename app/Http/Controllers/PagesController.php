@@ -73,9 +73,12 @@ class PagesController extends Controller
             //get the team
             $team=Team::whereName($name)->firstOrFail();
             //fetch player
-            $players=Player::whereTeam_id($team->id)->paginate(9);
+            $malePlayers=Player::whereTeam_id($team->id)->where('gender','male')->get();
+            $femalePlayers=Player::whereTeam_id($team->id)->where('gender','female')->get();
+            //return $femalePlayers;
+            //return $femalePlayers;
            // return $players;
-            return view('team.players.players',compact('team','players'));
+            return view('team.players.players',compact('team','malePlayers','femalePlayers'));
         }catch (ModelNotFoundException $e){
             return view('404');
         }

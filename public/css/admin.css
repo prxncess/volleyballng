@@ -220,7 +220,7 @@ div#wrapper {
   height: 100%;
 }
 
-#well, div#admin-box {
+#well, div#admin-box, ul.nav-tabs {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -629,8 +629,42 @@ section#vb-team-edit form {
   padding: 10px;
 }
 
-section#vb-team-edit form .form-control {
-  max-width: 450px;
+section#vb-team-edit form div#team-logo img#show-logo-img {
+  width: 25%;
+}
+
+section#vb-team-edit form div#team-logo input#logo {
+  display: none;
+}
+
+section#vb-team-edit form div#team-logo button {
+  margin-top: 15px;
+}
+
+ul.nav-tabs {
+  background-color: #4449ca !important;
+  margin-bottom: 20px;
+}
+
+.nav-tabs > li {
+  display: inline-block;
+  width: 49%;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:active,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  background-color: white !important;
+  border-radius: 0;
+  color: #4449ca;
+  font-weight: 700;
+}
+
+.nav-tabs > li > a {
+  background-color: #4449ca !important;
+  border-radius: 0;
+  color: white;
 }
 
 .btn-purple {

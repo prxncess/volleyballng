@@ -59,8 +59,8 @@ class teamPagesController extends Controller
             ];
             $validator=Validator::make($request->all(),[
                 'player_image'=>'required|image|max:1024',
-                'player_firstName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
-                'player_lastName'=>"required|regex:/^[A-Za-z ]{3,15}$/i",
+                'player_firstName'=>"required|regex:/^[A-Za-z ]{3,50}$/i",
+                'player_lastName'=>"required|regex:/^[A-Za-z ]{3,50}$/i",
                 'player_height_feet'=>'required',
                 'player_height_inches'=>'required',
                 'player_position'=>'required',
@@ -164,8 +164,8 @@ class teamPagesController extends Controller
         ];
         Validator::make($request->all(),[
             'player_image'=>'image|mimes:jpeg,jpg,png,bmp,x-png|max:1024',
-            'player_firstName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
-            'player_lastName'=>"required|regex:/^[A-Za-z]{3,15}$/i",
+            'player_firstName'=>"required|regex:/^[A-Za-z]{3,50}$/i",
+            'player_lastName'=>"required|regex:/^[A-Za-z]{3,50}$/i",
             'player_height_feet'=>'required',
             'player_height_inches'=>'required',
             'player_position'=>'required',
@@ -241,7 +241,9 @@ class teamPagesController extends Controller
         $logged_team=auth('team')->user();
         try{
             $team=Team::whereName($logged_team->name)->firstOrFail();
-            return view('adminTeam.overview',compact('team'));
+            $malePlayers=$team->players()->whereGender('male')->get();
+            $femalePlayers=$team->players()->whereGender('female')->get();
+            return view('adminTeam.overview',compact('team','malePlayers','femalePlayers'));
 
         }catch (ModelNotFoundException $e){
             return view('404');
@@ -276,7 +278,7 @@ class teamPagesController extends Controller
                 'teamPhone'=>["digits:11",'required',
                     Rule::unique('teams','phone')->ignore($team->id),
                 ],
-                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]{10,255}$%i",
+                'teamDescription'=>"regex:%^[A-Za-z0-9\W ]+$%i",
                 //'password'=>'confirmed|min:6|max:20',
 
             ],$messages)->validate();

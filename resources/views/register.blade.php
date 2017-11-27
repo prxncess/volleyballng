@@ -141,7 +141,9 @@
                 <div class="form-group">
                   <label>Description</label>
                   <p>A brief history/introduction of your team, e.g. when you started, why you love the game, and any other interesting things about your team.</p>
-                  <textarea class="form-control" name="team-description" id="" rows="3" value="{{old('team-description')}}" placeholder=""></textarea>
+
+                  <textarea class="form-control" name="team-description" id="" rows="3"  placeholder="">{{old('team-description')}}</textarea>
+
                     <p class="error">@if($errors->has('team-description')) {{$errors->first('team-description')}}@endif</p>
                   <div id="yellow-separator"></div>
                 </div>
@@ -269,7 +271,11 @@
 
                         }else if(data.status=='saved'){
 
-                            {{ redirect()->route('teamSignIn')->with('status','Your account has been created, please check your registered email for login details')}}
+<<<<<<< Updated upstream
+
+=======
+                            {{--{{ redirect()->route('teamSignIn')->with('status','Your account has been created, please check your registered email for login details')}}--}}
+>>>>>>> Stashed changes
 
                         }
                     }

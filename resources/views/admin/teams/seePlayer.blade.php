@@ -1,5 +1,8 @@
 @extends('admin.layout')
-@section('title','Team Overview:Player')
+@section('title')
+    {{'Player overview'}}
+    @endsection
+
 @section('content')
 
     <section id="team-overview">
@@ -10,22 +13,33 @@
         </ol>
         <div id="admin-box" class="well well">
             <header>
-                <h2>Team Overview</h2>
+                <h2>Player Overview</h2>
                 <div id="separator"></div>
-                <div class="row">
-                    <div class="col-sm-5">
+                <div class="row" id="prInfo">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+
                         <img src="{{asset('images/team/players/'.$player->player_image)}}" class="img-responsive">
-                        <h4>{{$player->fname.' '.$player->lname}}</h4>
+                        <h4 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h4>
+
+                        <div class="gray-separator top-20 bottom-20"></div>
+
+                        <ul class="list-unstyled">
+                            <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
+                            <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
+                            <li><b>Gender</b>: <span>{{$player->gender}}</span></li>
+                        </ul>
+
+                        <div class="gray-separator top-20 bottom-20"></div>
+                        <button class="btn btn-purple bottom-20 right-10" id="prPlayer"><i class="fa fa-print"></i> Player Slip </button>
+                        <a href="{{route('updatePlayer',[$player->id])}}" id="editPlayer" class="btn btn-purple bottom-20 right-10"><i class="fa fa-edit"></i> Edit </a>
+                        <a href="{{route('removePlayer',[$player->id])}}" id="removePlayer" class="btn btn-purple bottom-20"><i class="fa fa-remove"></i> Remove</a>
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <!-- <div class="col-sm-5">
                     </div>
                     <div class="col-sm-7">
-                        <ul class="list-unstyled">
-                            <li>Position: <span>{{$player->position}}</span></li>
-                            <li>Height: <span>{{$player->feet.' '.$player->inches}}</span></li>
-                            <li><span>{{$player->gender}}</span></li>
-                        </ul>
-                        <a href="{{route('editPlayer',[$team->name,$player->id])}}" id="editPlayer" class="btn btn-warning"><i class="fa fa-edit"></i> Edit </a>
-                        <a href="{{route('deletePlayer',[$team->name,$player->id])}}" id="removePlayer" class="btn btn-danger"><i class="fa fa-remove"></i> Remove</a>
-                    </div>
+                    </div> -->
                 </div>
             </header>
             </div>
@@ -41,6 +55,27 @@
                     return false;
                 }
             })
+            $('#prPlayer').on('click',function(){
+                PrintPlayer('#prInfo')
+            })
+            function PrintPlayer(elem)
+            {
+                var mywindow = window.open('', 'PRINT', 'height=900,width=700');
+
+                mywindow.document.write('<html><head>');
+                mywindow.document.write('</head><body >');
+                mywindow.document.write('<h1> Volleyball.ng' + document.title  + '</h1>');
+                mywindow.document.write(document.querySelector(elem).innerHTML);
+                mywindow.document.write('</body></html>');
+
+                mywindow.document.close(); // necessary for IE >= 10
+                mywindow.focus(); // necessary for IE >= 10*/
+
+                mywindow.print();
+                mywindow.close();
+
+                return true;
+            }
         })
     </script>
     @endsection
