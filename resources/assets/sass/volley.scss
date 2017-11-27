@@ -1227,27 +1227,27 @@ div#events-subnav{
   }
 }
 // player tabs
-ul.nav-tabs {
+ul.nav-pills {
   background-color: $purple !important;
   @extend #well;
 }
-.nav-tabs > li.active {
+.nav-pills > li.active {
   // display: blocks;
 }
-.nav-tabs > li {
-  display: inline-block;
-  width: 49%;
-}
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:active,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
+// .nav-pills > li {
+//   display: inline-block;
+//   width: 49%;
+// }
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:active,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
     background-color: white !important;
     border-radius: 0;
     color: $purple;
     font-weight: 700;
 }
-.nav-tabs > li > a {
+.nav-pills > li > a {
     background-color: $purple !important;
     border-radius: 0;
     color: white;

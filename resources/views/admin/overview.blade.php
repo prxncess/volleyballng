@@ -77,18 +77,18 @@
                                           <div class="row">
                                               <div class=" col-xs-12">
                                                   <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
-                                                      <ul class="nav nav-tabs text-center">
+                                                      <ul class="nav nav-pills nav-justified text-center top-40">
                                                           <li  class="active"><a href="#men"   data-toggle="tab">Men</a></li>
                                                           <li ><a href="#women"  data-toggle="tab">Women</a></li>
                                                       </ul>
                                                   </div>
 
-                                                  <div id="added-member" class="tab-content bottom-20">
+                                                  <div id="added-member" class="tab-content top-40 bottom-20">
 
-                                                      <div class="tab-pane fade in  active " id="men">
+                                                      <div class="tab-pane fade in active " id="men">
                                                           <div class="row" id="vb-male-player-preview">
                                                               @if($malePlayers->isEmpty())
-                                                                  <p>No male players yet - click 'Add player' to get started.</p>
+                                                                  <div class="col-xs-12"><p>No male players yet - click 'Add player' to get started.</p></div>
                                                               @else
                                                                   @foreach($malePlayers as $player)
                                                                       <div class="col-xs-6 col-sm-6">
@@ -105,7 +105,7 @@
                                                       <div class="tab-pane fade top-40" id="women" >
                                                           <div class="row" id="vb-female-player-preview">
                                                           @if($femalePlayers->isEmpty())
-                                                              <p>No female players yet - click 'Add player' to get started.</p>
+                                                              <div class="col-xs-12"><p>No female players yet - click 'Add player' to get started.</p></div>
                                                           @else
 
                                                                   @foreach($femalePlayers as $player)
@@ -411,7 +411,7 @@
                 mywindow.document.write('<body >');
                 mywindow.document.write('<h1> Volleyball.ng' + document.title  + '</h1>');
                 mywindow.document.write('<h2>Team ' + document.querySelector('#prTeam-name').innerHTML  + '</h2>');
-                mywindow.document.write('<h3>' + document.querySelector('.nav.nav-tabs li.active a').innerHTML  + ' Players</h3>');
+                mywindow.document.write('<h3>' + document.querySelector('.nav.nav-pills li.active a').innerHTML  + ' Players</h3>');
                 mywindow.document.write(document.querySelector(elem).innerHTML);
                 mywindow.document.write('</body></html>');
 

@@ -1370,26 +1370,21 @@ div#events-subnav a.active {
   color: #4449ca;
 }
 
-ul.nav-tabs {
+ul.nav-pills {
   background-color: #4449ca !important;
 }
 
-.nav-tabs > li {
-  display: inline-block;
-  width: 49%;
-}
-
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:active,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:active,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
   background-color: white !important;
   border-radius: 0;
   color: #4449ca;
   font-weight: 700;
 }
 
-.nav-tabs > li > a {
+.nav-pills > li > a {
   background-color: #4449ca !important;
   border-radius: 0;
   color: white;
@@ -1410,7 +1405,7 @@ div#league-list div.media p {
   margin-top: 0;
 }
 
-#well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, ul.nav-tabs, form.add-team, section#team-login form#vb-team-login {
+#well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, ul.nav-pills, form.add-team, section#team-login form#vb-team-login {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
