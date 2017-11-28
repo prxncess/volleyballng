@@ -8,27 +8,28 @@
     <section id="team-overview">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('allTeams')}}"> Teams</a></li>
-            <li class="breadcrumb-item"> <a href="{{route('viewTeam',$team->name)}}">{{$team->name}}</a> </li>
+            <li class="breadcrumb-item"> <a id="prTeam" href="{{route('viewTeam',$team->name)}}">{{$team->name}}</a> </li>
             <li class="breadcrumb-item active">{{$player->fname.''.$player->lname}}</li>
         </ol>
         <div id="admin-box" class="well well">
             <header>
                 <h2>Player Overview</h2>
                 <div id="separator"></div>
-                <div class="row" id="prInfo">
+                <div class="row" id="">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-6">
+                        <div id="prInfo">
+                            <img src="{{asset('images/team/players/'.$player->player_image)}}" class="img-responsive">
+                            <h4 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h4>
 
-                        <img src="{{asset('images/team/players/'.$player->player_image)}}" class="img-responsive">
-                        <h4 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h4>
+                            <div class="gray-separator top-20 bottom-20"></div>
 
-                        <div class="gray-separator top-20 bottom-20"></div>
-
-                        <ul class="list-unstyled">
-                            <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
-                            <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
-                            <li><b>Gender</b>: <span>{{$player->gender}}</span></li>
-                        </ul>
+                            <ul class="list-unstyled">
+                                <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
+                                <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
+                                <li><b>Gender</b>: <span>{{$player->gender}}</span></li>
+                            </ul>
+                        </div>
 
                         <div class="gray-separator top-20 bottom-20"></div>
                         <button class="btn btn-purple bottom-20 right-10" id="prPlayer"><i class="fa fa-print"></i> Player Slip </button>
@@ -64,7 +65,7 @@
 
                 mywindow.document.write('<html><head>');
                 mywindow.document.write('</head><body >');
-                mywindow.document.write('<h1> Volleyball.ng' + document.title  + '</h1>');
+                mywindow.document.write('<h1> Volleyball.ng Team ' + document.querySelector('#prTeam').innerHTML  + ' Player Overview</h1>');
                 mywindow.document.write(document.querySelector(elem).innerHTML);
                 mywindow.document.write('</body></html>');
 
