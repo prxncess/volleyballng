@@ -44,7 +44,12 @@
             <div class="swiper-wrapper">
                 @if($events->isEmpty())
                    {{--no open events at the moment display blog post--}}
-                <div class="swiper-slide swiper-slide-active">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12"> <h5>No open events at the moment, but you can read about our past events <a href="http://volleyball.ng/blog">here</a> and <a href="http://facebook.com/volleyball.ng">here</a>!</h5> </div>
+                  </div>
+                </div>
+                <!-- <div class="swiper-slide swiper-slide-active">
                     <div id="box">
                         <a href="{!! route('viewEvent','conferdrations-cup') !!}">
                             <img src="{{asset('images/IMG_20170222_070951.jpg')}}">
@@ -85,7 +90,7 @@
                         <div id="bar"></div>
                         <p><a href="{!! route('viewEvent','conferdrations-cup') !!}"> Open PH. 2017</a></p>
                     </header>
-                </div>
+                </div> -->
                     @else
                     @foreach($events as $event)
                         <div class="swiper-slide swiper-slide-active">

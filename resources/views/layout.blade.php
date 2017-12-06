@@ -55,7 +55,7 @@
             <ul class="list-unstyled">
                 <li><i class="fa fa-instagram"></i></li>
                 <li><i class="fa fa-twitter"></i></li>
-                <li><i class="fa fa-facebook"></i></li>
+                <li><a href="http://facebook.com/volleyball.ng"><i class="fa fa-facebook"></i></a></li>
                 <li><i class="fa fa-youtube-play"></i></li>
             </ul>
         </div>
