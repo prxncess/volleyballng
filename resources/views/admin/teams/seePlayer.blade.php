@@ -57,25 +57,34 @@
                 }
             })
             $('#prPlayer').on('click',function(){
-                PrintPlayer('#prInfo')
+               printContent('prInfo')
             })
             function PrintPlayer(elem)
             {
-                var mywindow = window.open('', 'PRINT', 'height=900,width=700');
-
-                mywindow.document.write('<html><head>');
+                var mywindow = window.open('', 'player slip', 'height=900,width=700');
+                mywindow.document.write('<html><head><title></title>');
+                mywindow.document.write('<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="print"/> ');
+                mywindow.document.write('<link rel="stylesheet" href="css/admin.css" type="text/css" media="print"/> ');
                 mywindow.document.write('</head><body >');
                 mywindow.document.write('<h1> Volleyball.ng Team ' + document.querySelector('#prTeam').innerHTML  + ' Player Overview</h1>');
-                mywindow.document.write(document.querySelector(elem).innerHTML);
+                mywindow.document.write(elem);
                 mywindow.document.write('</body></html>');
 
-                mywindow.document.close(); // necessary for IE >= 10
-                mywindow.focus(); // necessary for IE >= 10*/
+                //mywindow.document.close(); // necessary for IE >= 10
+                setTimeout(function(){mywindow.print();},1000);
+               // mywindow.focus(); // necessary for IE >= 10*/
 
                 mywindow.print();
                 mywindow.close();
 
                 return true;
+            }
+            function printContent(el){
+                var restorepage = document.body.innerHTML;
+                var printcontent = document.getElementById(el).innerHTML;
+                document.body.innerHTML = printcontent;
+                window.print();
+                document.body.innerHTML = restorepage;
             }
         })
     </script>

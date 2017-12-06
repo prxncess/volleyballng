@@ -627,4 +627,10 @@ a {
     float: none !important;
   }
 }
+@media print {
+   button { display: none; }/* Hide everything ... */
+ // div#prInfo { display: block; }/* ... except the reired div */
+
+}
+
 // End of media queries

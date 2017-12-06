@@ -25,7 +25,7 @@
                   <ul class="list-unstyled">
                       <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
                       <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
-                      <li><b>Gender</b>: <span>Female</span></li>
+                      <li><b>Gender</b>: <span>{{$player->gender}}</span></li>
                   </ul>
 
                   <div class="gray-separator top-20 bottom-20"></div>
