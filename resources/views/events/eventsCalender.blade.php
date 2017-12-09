@@ -27,9 +27,9 @@
         <div id="vb-calender" class=" col-md-12">
             <div class="">
                 <h3 class="text-center">Calendar</h3>
-                <div id="calender">
+               {{-- <div id="calender">
 
-                    {{--<div id="yellow-separator"></div>--}}
+                    --}}{{--<div id="yellow-separator"></div>--}}{{--
                     <aside>
                         <div id="calender-box">
                             <header>
@@ -56,12 +56,13 @@
 
                                 <ul class="list-unstyled">
 
-                                    {!! $calender !!}
+
                                 </ul>
                             </div>
                         </div>
                     </aside>
-                </div>
+                </div>--}}
+                {!! $calender !!}
                 <div id="vb-schedules">
                     <header><h3><i class="fa fa-calendar-check-o"></i> Events for {{date(' l F Y')}}</h3>
                         <span id="schedule-count" class="text-info">(3) Events</span>

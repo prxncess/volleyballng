@@ -120,28 +120,54 @@ class PagesController extends Controller
         $boxToDisplay=($totalDaysOfMonthDisplay<=35)?35:42;
         $dayCount=1;
         $calender='';
-        for($i=1;$i<=$boxToDisplay;$i++){
-            if(($i>=$currentFirstdayMonth+1||$currentFirstdayMonth==7)&&($i<=$totalDaysOfMonthDisplay)){
-                $eventDate=date('Y-m-'.$dayCount);
-                $dayEvents=Event::where('status','open')->where('start_date','>',$eventDate)->get();
-                dd($dayEvents);
+        $date_info=getdate(strtotime('first day of',mktime(0,0,0,$month,1,$year)));
 
-                if($dayCount==date('d')){
-                    $calender.=" <li class='active'  id='bd-day'>$dayCount</li>";
-                }elseif($dayEvents->count()>0){
-                    $calender.="<li class='' style='background: yellow' id='bd-day'>$dayCount</li>";
+        $days_of_week=array('sun','mon','tue','wed','thu','fri','sat');//days of the week
+        //date of the week
+        $day_of_week=$date_info['wday'];
+        //dd($date_info);
+       $calender.='<table id="cal" class="table table-striped">';
+       $calender.='<caption id="">'.$date_info['month'].' '.$year.'</caption>';
+        $calender.='<tr>';
 
-                }else{
-                    $calender.=" <li class=''  id='bd-day'>$dayCount</li>";
-                }
+        foreach($days_of_week as $day){
+            $calender.='<th class="header">'.$day.'</th>';
+        }
+        $calender.='</tr><tr>';
+        //check if first day of thr month fall on a sunday
+        //add white space if not
+        if($date_info['wday'] >0){
+            $calender.='<td colspan="'.$day_of_week.'"></td>';
+        }
 
+        //current day
+        $currentDay=1;
+        while($currentDay<=$numberOfDaysInMonth){
+
+            //check if the days of the week is equal to 7
+            if($day_of_week==7){
+                $day_of_week=0;
+                $calender.='</tr><tr>';
+            }
+            //output dates
+            if($currentDay==date('d')){
+                $calender.='<td class="day active">'.$currentDay.'</td>';
             }else{
-                $calender.='<li class="" id=bd-day">&nbsp;</li>';
+                $calender.='<td class="day">'.$currentDay.'</td>';
             }
 
-            $dayCount++;
 
+            //increment of days
+            $currentDay++;
+            $day_of_week++;
         }
+        if($day_of_week!=7){
+            $rem_day=7-$day_of_week;
+            $calender.='<td colspan="'.$rem_day.'"></td>';
+        }
+        //close row and calender
+        $calender.='</tr></table>';
+        //dd($calender);
 
         return view ('events.eventsCalender',compact('calender'));
     }

@@ -630,6 +630,9 @@ a {
 @media print {
    button { display: none; }/* Hide everything ... */
  // div#prInfo { display: block; }/* ... except the reired div */
+  a[href]:after{
+    content: none !important;
+  }
 
 }
 

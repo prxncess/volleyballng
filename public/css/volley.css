@@ -606,6 +606,7 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide {
 section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-photos, section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview article#vb-home-team div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -719,6 +720,7 @@ section#our-home div#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
+  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -735,6 +737,7 @@ section#our-home div#event-preview div#preview span i:hover {
 section#our-home div#event-preview div#preview:hover div#more-photos, section#our-home div#event-preview div#preview:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -849,9 +852,8 @@ article#tutorials {
   /*display: flex;*/
   display: -webkit-inline-box;
   display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
 }
 
 article#tutorials div#thumbs {
@@ -897,9 +899,8 @@ article#tutorials div#caption img {
 article#tutorials aside {
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -942,9 +943,8 @@ article#our-events header button:hover {
 article#our-events aside#event-preview {
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
 
@@ -974,6 +974,7 @@ article#our-events aside#event-preview div#preview span i {
   display: block;
   background: #4449ca;
   color: white;
+  -webkit-transition: opacity 150ms;
   transition: opacity 150ms;
   padding: 0px;
   font-size: 21px;
@@ -1144,82 +1145,33 @@ div#vb-calender h3 {
   max-width: 510px;
 }
 
-div#vb-calender div#calender {
+div#vb-calender table#cal {
   margin-bottom: 30px;
   width: 530px;
 }
 
-div#vb-calender div#calender aside div#calender-box {
-  background: white;
+div#vb-calender table#cal tbody, div#vb-calender table#cal caption {
+  width: inherit;
 }
 
-div#vb-calender div#calender aside div#calender-box header {
-  background: #4449ca;
-  width: 100%;
-  height: 50px;
-  padding: 5px;
-  margin: 0;
-}
-
-div#vb-calender div#calender aside div#calender-box header h4 {
-  color: white;
-}
-
-div#vb-calender div#calender aside div#calender-box header h4 span {
-  font-size: 30px;
-}
-
-div#vb-calender div#calender aside div#calender-box div#bd-calender {
-  width: 500px;
-  /*border-left:1px solid $text-color2;
-          border-bottom: 1px solid $text-color;*/
-}
-
-div#vb-calender div#calender aside div#calender-box div#bd-calender ul {
-  padding: 0;
-  margin: 0;
-}
-
-div#vb-calender div#calender aside div#calender-box div#bd-calender ul li#bd-day {
-  width: 14.28%;
-  height: 45px;
-  font-weight: bold;
-  color: #757575;
-  /*border-top: 1px solid $text-color;
-              border-right: 1px solid $text-color;*/
-  padding: 18px;
-  float: left;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-div#vb-calender div#calender aside div#calender-box div#bd-calender ul #bd-day.active {
-  background: #4449ca;
-  color: white;
-}
-
-div#vb-calender div#calender aside div#calender-box div#calender_section_top {
-  width: 500px;
-}
-
-div#vb-calender div#calender aside div#calender-box div#calender_section_top ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-div#vb-calender div#calender aside div#calender-box div#calender_section_top ul li {
-  width: 14.28%;
-  float: left;
-  margin: 0;
-  padding: 0;
+div#vb-calender table#cal caption {
   text-align: center;
-  display: block;
-  color: #4449ca;
-  font-weight: 600;
 }
 
-div#vb-calender div#calender section {
-  background: yellow;
+div#vb-calender table#cal td, div#vb-calender table#cal th {
+  border: 1px solid #e6e6e6;
+  text-align: center;
+}
+
+div#vb-calender table#cal th.header {
+  background: #4449ca;
+  color: white;
+  text-transform: capitalize;
+}
+
+div#vb-calender table#cal td.active {
+  background: #e8b617;
+  color: white;
 }
 
 div#vb-calender div#vb-schedules {
@@ -1267,6 +1219,7 @@ div#slides div.swiper-wrapper div.swiper-slide {
 div#slides div.swiper-wrapper div.swiper-slide:hover div#more-photos, div#slides div.swiper-wrapper div.swiper-slide:hover section#our-home div#event-preview div#preview div#more-videos, section#our-home div#event-preview div#preview div#slides div.swiper-wrapper div.swiper-slide:hover div#more-videos {
   height: 100%;
   bottom: 0;
+  -webkit-transition: .5s ease;
   transition: .5s ease;
 }
 
@@ -1405,12 +1358,16 @@ div#league-list div.media p {
   margin-top: 0;
 }
 
-#well, section#vb-event-form form#event-form, div#vb-calender div#calender aside div#calender-box, div#events-subnav, ul.nav-pills, form.add-team, section#team-login form#vb-team-login {
+header#masthead {
+  display: none;
+}
+
+#well, section#vb-event-form form#event-form, div#events-subnav, ul.nav-pills, form.add-team, section#team-login form#vb-team-login {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#center-block, div#footer footer div#sponsor-brands ul, div#footer footer div#social-pages ul, div#footer footer aside#copyright ul, section#vb-event-form, section#vb-event-form form#event-form, div#vb-calender h3, div#vb-calender div#calender, div#vb-calender div#calender aside div#calender-box header, form.add-team .form-group, ul#progressive-bar, section#Teams div#vb-teams div#vb-team img, section#viewTeam img#team-image, section#viewTeam div#staffs ul {
+#center-block, div#footer footer div#sponsor-brands ul, div#footer footer div#social-pages ul, div#footer footer aside#copyright ul, section#vb-event-form, section#vb-event-form form#event-form, div#vb-calender h3, div#vb-calender table#cal, form.add-team .form-group, ul#progressive-bar, section#Teams div#vb-teams div#vb-team img, section#viewTeam img#team-image, section#viewTeam div#staffs ul {
   display: block;
   margin-right: auto;
   margin-left: auto;

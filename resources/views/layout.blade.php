@@ -62,7 +62,7 @@
         <hr>
         <aside id="copyright">
             <ul class="list-unstyled list-inline">
-                <li>&copy; 2017 Volleyball.ng</li>
+                <li>&copy; {{date('Y')}} Volleyball.ng</li>
                 <li>|</li>
                 <li>All rights reserved</li>
                 <li>|</li>

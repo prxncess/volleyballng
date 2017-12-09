@@ -249,6 +249,7 @@ ul.pagination {
   right: 0;
   bottom: 0;
   background-color: #ccc;
+  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -260,6 +261,7 @@ ul.pagination {
   left: 4px;
   bottom: 4px;
   background-color: white;
+  -webkit-transition: .4s;
   transition: .4s;
 }
 
@@ -763,6 +765,9 @@ a:hover {
     display: none;
   }
   /* Hide everything ... */
+  a[href]:after {
+    content: none !important;
+  }
 }
 
 /*# sourceMappingURL=admin.css.map */
