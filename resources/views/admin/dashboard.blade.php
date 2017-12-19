@@ -27,7 +27,7 @@
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-body text-center">
-          <h2>4</h2>
+          <h2>{{$teams->count()}}</h2>
           <h5>Registered teams</h5>
         </div>
       </div>
@@ -66,7 +66,9 @@
         </table>
       </div>
       <div role="tabpanel" class="tab-pane" id="upcoming-events">...</div>
-      <div role="tabpanel" class="tab-pane" id="registered-teams">...</div>
+      <div role="tabpanel" class="tab-pane" id="registered-teams">
+        
+      </div>
     </div>
 
   </div>

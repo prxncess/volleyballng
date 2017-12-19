@@ -33,8 +33,8 @@
 
                         <div class="gray-separator top-20 bottom-20"></div>
                         <button class="btn btn-purple bottom-20 right-10" id="prPlayer"><i class="fa fa-print"></i> Player Slip </button>
-                        <a href="{{route('updatePlayer',[$player->id])}}" id="editPlayer" class="btn btn-purple bottom-20 right-10"><i class="fa fa-edit"></i> Edit </a>
-                        <a href="{{route('removePlayer',[$player->id])}}" id="removePlayer" class="btn btn-purple bottom-20"><i class="fa fa-remove"></i> Remove</a>
+                        <a href="{{route('editPlayer',[$team->name,$player->id])}}" id="editPlayer" class="btn btn-purple bottom-20 right-10"><i class="fa fa-edit"></i> Edit </a>
+                        <a href="{{route('deletePlayer',[$team->name,$player->id])}}" id="removePlayer" class="btn btn-purple bottom-20"><i class="fa fa-remove"></i> Remove</a>
                     </div>
                     <div class="col-sm-3"></div>
                     <!-- <div class="col-sm-5">

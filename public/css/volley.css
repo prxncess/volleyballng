@@ -1174,6 +1174,11 @@ div#vb-calender table#cal td.active {
   color: white;
 }
 
+div#vb-calender table#cal td.has-event {
+  background: #4449ca;
+  color: white;
+}
+
 div#vb-calender div#vb-schedules {
   margin-top: 100px;
 }

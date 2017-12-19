@@ -992,8 +992,10 @@ div#vb-calender{
       background: $yellow;
       color: white;
     }
-
-
+    td.has-event{
+      background: $blue;
+      color: white;
+    }
 
 
   }

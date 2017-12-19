@@ -47,6 +47,7 @@ class PagesController extends Controller
     }
     public function teams(){
         $teams =Team::all()->where('active',1);
+
         return view('teams',compact('teams'));
     }
     //page not found
@@ -112,7 +113,8 @@ class PagesController extends Controller
         $month= date('m');
         $year=date('Y');
         $day=date('d');
-
+        //get all events wetin they given month
+        //all get events available within the given date
         $currentFirstdayMonth=date('N',strtotime($year."-".$month."-01"));
         $numberOfDaysInMonth=cal_days_in_month(CAL_GREGORIAN,$month,$year);
         $totalDaysOfMonthDisplay= ($currentFirstdayMonth==7)?($numberOfDaysInMonth):($numberOfDaysInMonth +$currentFirstdayMonth);
@@ -142,8 +144,11 @@ class PagesController extends Controller
 
         //current day
         $currentDay=1;
+        $events='';
         while($currentDay<=$numberOfDaysInMonth){
-
+            $date=strtotime(date($year."-".$month."-".$currentDay));
+            //dd($date);
+            $events=Event::where('start_date','<=',$date)->where('end_date','>=',$date)->get();
             //check if the days of the week is equal to 7
             if($day_of_week==7){
                 $day_of_week=0;
@@ -151,9 +156,15 @@ class PagesController extends Controller
             }
             //output dates
             if($currentDay==date('d')){
-                $calender.='<td class="day active">'.$currentDay.'</td>';
+
+                $calender.='<td class="day active ">'.$currentDay.'</td>';
+
             }else{
-                $calender.='<td class="day">'.$currentDay.'</td>';
+                $calender.='<td class="day ';
+                if($events->count()>0){
+                    $calender.=' has-event';
+                }
+                $calender.=' ">'.$currentDay.'</td>';
             }
 
 
@@ -167,7 +178,7 @@ class PagesController extends Controller
         }
         //close row and calender
         $calender.='</tr></table>';
-        //dd($calender);
+        //dd($events);
 
         return view ('events.eventsCalender',compact('calender'));
     }
