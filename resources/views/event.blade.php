@@ -2,12 +2,36 @@
 @section('title','Events')
 @section('content')
 
-<style type ="text/css">site-header {display: none;}</style>
+<style type ="text/css">site-header {display: none;}
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  /*padding-bottom: 56.25%;*/
+}
+
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  /*padding-bottom: 75%;*/
+}
+
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
 
     <aside id="container">
         <header> <h2 class="text-capitalize">Events</h2><div id="yellow-separator"></div> </header>
         <p>
-            Check out our exciting upcoming events and register your team!. Also create your own event and we'll publish it here.
+            Check out our exciting upcoming events and register your team, or create your own event and we'll publish it here.
 
         </p>
         <p></p>
@@ -26,13 +50,13 @@
         </div>
       </div>
     </div>
-    <div id="bd-event" >
+    <div class="container">
         <div class="row">
-            <div id="event-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="evvent-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="row">
-                <div class="col-xs-12"><h2 class="bottom-40">Upcoming events</h2></div>
+                <div class="col-xs-12"><h2 class="bottom-40">Next events</h2></div>
                    @if($events->isEmpty())
-                      <div class="col-xs-12"> <h5>No open events at the moment, but please watch this space!</h5> </div>
+                      <div class="col-xs-12"> <h5>Coming soon!</h5> </div>
                        @else
                        @foreach($events as $event)
                            <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
@@ -62,6 +86,7 @@
       <h2 class="bottom-40">Past events</h2>
       <div class="row">
         <div class="col-xs-12">
+          <p>Read the <a href="http://volleyball.ng/blog" class="purple" style="text-decoration: underline">recaps</a></p>
           <iframe src="http://volleyball.ng/blog" height="480" width="90%" style="border: 1px solid #f5f5f5">To view this content, you need a browser that can display embedded frames</iframe>
         </div>
         <!-- <div class="col-md-6">
