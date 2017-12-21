@@ -107,8 +107,8 @@ class eventPagesController extends Controller
             'title'=>$request->get('event_title'),
             'slug'=>Str::slug($request->get('event_title'),'-'),
             'image'=>$imageNewName,
-            'start_date'=>$request->get('event_start'),
-            'end_date'=>$request->get('event_end'),
+            'start_date'=>strtotime($request->get('event_start')),
+            'end_date'=>strtotime($request->get('event_end')),
             'description'=>$request->get('event_description'),
             'status'=>$request->get('event_status'),
             'e_organizer'=>$request->get('event_organizer'),
@@ -245,8 +245,8 @@ class eventPagesController extends Controller
             $event->slug=Str::slug($request->get('event_title'),'-');
             //check if image is uploaded
             ($imageNewName)?$event->image=$imageNewName:$event->image=$event->image;
-            $event->start_date=$request->get('event_start');
-            $event->end_date=$request->get('event_end');
+            $event->start_date=strtotime($request->get('event_start'));
+            $event->end_date=strtotime($request->get('event_end'));
             $event->description=$request->get('event_description');
             $event->status=$request->get('event_status');
             $event->e_organizer=$request->get('event_organizer');

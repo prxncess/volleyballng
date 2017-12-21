@@ -94,8 +94,8 @@
                                                                       <div class="col-xs-6 col-sm-6">
                                                                           <a href="{{route('seePlayer',[$team->name,$player->id])}}">
                                                                               <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
-                                                                              <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
                                                                           </a>
+                                                                          <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
 
                                                                       </div>
                                                                   @endforeach
@@ -401,27 +401,16 @@
 
             //print function
             $('.vb-print-player').on('click',function(){
-                PrintElem('.tab-pane.active');
+                //document.querySelector('.tab-pane.active a').removeAttr('href');
+                printContent('.tab-pane.active');
             })
-            function PrintElem(elem)
-            {
-                var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+            function printContent(el){
+                var restorepage = document.body.innerHTML;
+                var printcontent = document.querySelector(el).innerHTML;
+                document.body.innerHTML = printcontent;
 
-                mywindow.document.write('<html><head></head>');
-                mywindow.document.write('<body >');
-                mywindow.document.write('<h1> Volleyball.ng' + document.title  + '</h1>');
-                mywindow.document.write('<h2>Team ' + document.querySelector('#prTeam-name').innerHTML  + '</h2>');
-                mywindow.document.write('<h3>' + document.querySelector('.nav.nav-pills li.active a').innerHTML  + ' Players</h3>');
-                mywindow.document.write(document.querySelector(elem).innerHTML);
-                mywindow.document.write('</body></html>');
-
-                mywindow.document.close(); // necessary for IE >= 10
-                mywindow.focus(); // necessary for IE >= 10*/
-
-                mywindow.print();
-                mywindow.close();
-
-                return true;
+                window.print();
+                document.body.innerHTML = restorepage;
             }
         })
 
