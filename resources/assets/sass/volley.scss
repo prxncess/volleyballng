@@ -976,6 +976,27 @@ div#vb-calender{
     }
     caption{
       text-align: center;
+      //calendar navigation
+      span{
+        i{
+          color: $blue;
+          font-size: 20px;
+
+          &:hover{
+            cursor: hand;
+          }
+
+        }
+
+      }
+      select{
+        padding: 5px;
+        border: 2px solid $blue;
+        option[selected]{
+          color: $blue;
+        }
+      }
+
     }
     td,th{
       border: 1px solid $gray;
@@ -983,7 +1004,7 @@ div#vb-calender{
 
     }
     th.header{
-      background: $blue;
+      background: #c3c4d6;
       color: white;
       text-transform: capitalize;
 
@@ -996,6 +1017,7 @@ div#vb-calender{
       background: $blue;
       color: white;
     }
+
 
 
   }

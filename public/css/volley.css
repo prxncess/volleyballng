@@ -1158,13 +1158,31 @@ div#vb-calender table#cal caption {
   text-align: center;
 }
 
+div#vb-calender table#cal caption span i {
+  color: #4449ca;
+  font-size: 20px;
+}
+
+div#vb-calender table#cal caption span i:hover {
+  cursor: hand;
+}
+
+div#vb-calender table#cal caption select {
+  padding: 5px;
+  border: 2px solid #4449ca;
+}
+
+div#vb-calender table#cal caption select option[selected] {
+  color: #4449ca;
+}
+
 div#vb-calender table#cal td, div#vb-calender table#cal th {
   border: 1px solid #e6e6e6;
   text-align: center;
 }
 
 div#vb-calender table#cal th.header {
-  background: #4449ca;
+  background: #c3c4d6;
   color: white;
   text-transform: capitalize;
 }

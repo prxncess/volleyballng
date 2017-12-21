@@ -38,7 +38,7 @@ class PagesController extends Controller
     public function event($slug){
         //find a given event
         try{
-            $event=Event::where('slug',$slug)->where('status','open')->firstOrFail();
+            $event=Event::where('slug',$slug)/*->where('status','open')*/->firstOrFail();
             return view('events.viewEvent',compact('event'));
         }catch (ModelNotFoundException $e){
             return view(404);
@@ -129,7 +129,19 @@ class PagesController extends Controller
         $day_of_week=$date_info['wday'];
         //dd($date_info);
        $calender.='<table id="cal" class="table table-striped">';
-       $calender.='<caption id="">'.$date_info['month'].' '.$year.'</caption>';
+       $calender.='<caption id=""><span class="pull-left prev-month">
+<i class="fa fa-chevron-left"></i></span><select class="month" name="month">';
+        //get all months of the year
+        for($m=1; $m<=12; ++$m){
+            if(date('F', mktime(0, 0, 0, $m, 1))==$date_info['month']){
+                $calender.='<option value="'.date('F', mktime(0, 0, 0, $m, 1)).'" selected>'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
+            }else{
+                $calender.='<option value="'.date('F', mktime(0, 0, 0, $m, 1)).'">'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
+            }
+
+        }
+
+        $calender.='</select> '.$year.'<span class="pull-right next-month"><i class="fa fa-chevron-right"></i></span></caption>';
         $calender.='<tr>';
 
         foreach($days_of_week as $day){
@@ -178,9 +190,11 @@ class PagesController extends Controller
         }
         //close row and calender
         $calender.='</tr></table>';
-        //dd($events);
+        //get the events of the current day
+        $currentDay=strtotime(date('Y-m-d'));
+        $currentEvents=Event::where('start_date','<=',$currentDay)->where('end_date','>=',$currentDay)->get();
 
-        return view ('events.eventsCalender',compact('calender'));
+        return view ('events.eventsCalender',compact('calender','currentEvents'));
     }
 
 
