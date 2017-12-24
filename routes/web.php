@@ -19,7 +19,8 @@ Route::get('/EventsCalender',['as'=>'EventsCal','uses'=>'PagesController@events_
 Route::get('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@new_event']);
 Route::post('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@save_event']);
 Route::get('/sendMail','EventsPagesController@basic_email');
-
+Route::get('/getCalendarEvents',['as'=>'getEvents','uses'=>'PagesController@getCalendar']);
+Route::get('/DayEvents',['as'=>'getDayEvents','uses'=>'PagesController@dayEvents']);
 
 Route::get('/Event/{name}',['as'=>'viewEvent','uses'=>'PagesController@event']);
 

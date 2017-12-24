@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Event;
 use Google_Client;
+use Validator;
 class PagesController extends Controller
 {
     //
@@ -109,9 +110,9 @@ class PagesController extends Controller
 
         return view('gallery',compact('videoList'));
     }
-    public function events_calender(){
-        $month= date('m');
-        $year=date('Y');
+    public function calendar($y='',$m=''){
+        $month=($m!='')?$m:date('m');
+        $year=($y!='')?$y:date('Y');
         $day=date('d');
         //get all events wetin they given month
         //all get events available within the given date
@@ -128,15 +129,15 @@ class PagesController extends Controller
         //date of the week
         $day_of_week=$date_info['wday'];
         //dd($date_info);
-       $calender.='<table id="cal" class="table table-striped">';
-       $calender.='<caption id=""><span class="pull-left prev-month">
-<i class="fa fa-chevron-left"></i></span><select class="month" name="month">';
+        $calender.='<table id="cal" class="table table-striped">';
+        $calender.='<caption id=""><span class="pull-left prev-month">
+<i class="fa fa-chevron-left"></i></span><select id="month" name="month">';
         //get all months of the year
         for($m=1; $m<=12; ++$m){
             if(date('F', mktime(0, 0, 0, $m, 1))==$date_info['month']){
-                $calender.='<option value="'.date('F', mktime(0, 0, 0, $m, 1)).'" selected>'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
+                $calender.='<option value="'.date('m', mktime(0, 0, 0, $m, 1)).'" selected>'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
             }else{
-                $calender.='<option value="'.date('F', mktime(0, 0, 0, $m, 1)).'">'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
+                $calender.='<option value="'.date('m', mktime(0, 0, 0, $m, 1)).'">'.date('F', mktime(0, 0, 0, $m, 1)).'</option>';
             }
 
         }
@@ -167,7 +168,7 @@ class PagesController extends Controller
                 $calender.='</tr><tr>';
             }
             //output dates
-            if($currentDay==date('d')){
+            if($currentDay==date('d') && $month===date('m')){
 
                 $calender.='<td class="day active ">'.$currentDay.'</td>';
 
@@ -191,10 +192,59 @@ class PagesController extends Controller
         //close row and calender
         $calender.='</tr></table>';
         //get the events of the current day
+       /* $currentDay=strtotime(date('Y-m-d'));
+        $currentEvents=Event::where('start_date','<=',$currentDay)->where('end_date','>=',$currentDay)->get();*/
+        return $calender;
+    }
+    public function events_calender(){
+        $month=date('m');
+        $year=date('Y');
+        $day=date('d');
+        //get calender;
+        $calender=$this->calendar($year,$month);
         $currentDay=strtotime(date('Y-m-d'));
         $currentEvents=Event::where('start_date','<=',$currentDay)->where('end_date','>=',$currentDay)->get();
 
         return view ('events.eventsCalender',compact('calender','currentEvents'));
+    }
+    public function getCalendar(Request $request){
+        if($request->ajax()){
+            //check if request is not empty
+            if($request->get('month')!='' && $request->get('year')!=''){
+                //get the calendar
+               $calendar= $this->calendar($request->get('year'),$request->get('month'));
+                //get the current day
+                $currentDay=strtotime(date('Y-m-d'));
+                //pull all events for the current day
+               // $currentEvents=Event::where('start_date','<=',$currentDay)->where('end_date','>=',$currentDay)->get();
+                return response()->json(['calendar'=>$calendar]);
+            }
+        }
+    }
+    public function dayEvents(Request $request){
+        //pulls all events for a given day
+        //check if request is ajax
+        if($request->ajax()){}
+        //check if values passed are not empty and are valid
+        $validator=Validator::make($request->all(),[
+            'day'=>'required|integer',
+            'month'=>'required|integer'
+        ]);
+        if($validator->fails()){
+            return false;
+        }
+        //convert date to timestamps
+        $date=strtotime(date('Y').'-'.$request->get('month').'-'.$request->get('day')) ;
+        //fetch the events
+        $currentEvents=Event::where('start_date','<=',$date)->where('end_date','>=',$date)->get();
+        if($currentEvents->count()>0){
+            $dateFormat=date('jS F Y',$date);
+            //$eventsCount=$currentEvents->count();
+            return response()->json(['allEvents'=>$currentEvents,'dateFormat'=>$dateFormat]);
+        }
+
+
+
     }
 
 
