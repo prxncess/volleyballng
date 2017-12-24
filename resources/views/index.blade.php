@@ -46,7 +46,7 @@
                    {{--no open events at the moment display blog post--}}
                 <div class="container">
                   <div class="row">
-                    <div class="col-xs-12"> <h5>No open events at the moment, but you can read about our past events <a href="http://volleyball.ng/blog">here</a> and <a href="http://facebook.com/volleyball.ng">here</a>!</h5> </div>
+                    <div class="col-xs-12"> <h5>Coming soon. Read about past events on our <a href="http://volleyball.ng/blog" class= "purple" style="text-decoration: underline">blog</a> and <a href="http://facebook.com/volleyball.ng" class= "purple" style="text-decoration: underline">Facebook page</a>!</h5> </div>
                   </div>
                 </div>
                 <!-- <div class="swiper-slide swiper-slide-active">
