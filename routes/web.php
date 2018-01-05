@@ -137,4 +137,14 @@ Route::get('Email', function(){
     });
 });
 
+//event organizer admin area
+Route::get('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@organizerlogin']);
+Route::post('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@tryLogin']);
+Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
+
+    Route::get('/dashboard',['as'=>'organizerDashboard','uses'=>'Organizer\organizerPagesController@dashboard']);
+    Route::get('/logout',['as'=>'oLogout','uses'=>'Organizer\organizerLoginController@logout']);
+});
+
+
 

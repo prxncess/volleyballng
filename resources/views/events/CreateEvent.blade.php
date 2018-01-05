@@ -17,15 +17,18 @@
     </aside>
     <div id="events-subnav">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('events')}}" >Events</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('EventsCal')}}" class="">Calendar</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('newEvent')}}" class="active">Register Event</a>
         </div>
+          <div class="col-sm-3">
+              <a href="{{route('organizerLogin')}}" class="">Manage Events</a>
+          </div>
       </div>
     </div>
 
@@ -110,7 +113,7 @@
                 <div class="col-sm-7">
                     <label>Email</label>
                     <input type="text" class="form-control" placeholder="freda@gmail.com" id="event_email"  value="{{old('event_email')}}" name="event_email">
-                    <p class="error">@if($errors->has('event_email')) {{$errors->first('event_email')}} @endif</p>
+                    <p class="error">@if($errors->has('event_email')) {!!  $errors->first('event_email')!!} @endif</p>
                 </div>
                 <div class="col-sm-5">
                     <label>Phone</label>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Team;
 use App\Player;
-use App\StaffTeam;
+use App\Organizer;
 use Mail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades;
@@ -28,6 +28,8 @@ class EventsPagesController extends Controller
     }
 
     public function save_event(Request $request){
+        //first create the organizer
+        //then store events title
 
         $message =[
             'event_title.required'=>"Please enter the title of the event",
@@ -48,6 +50,7 @@ class EventsPagesController extends Controller
             'event_phone.regex'=>'Phone number submitted is invalid.',
             'event_organizer.regex'=>'Invalid name submitted.',
             'event_email.email'=>'Invalid email.',
+            'event_email.unique'=>'Email already taken. Please click <a href="organizer/Login">here</a> to login',
         ];
         //validate
         Validator::make($request->all(),[
@@ -58,14 +61,16 @@ class EventsPagesController extends Controller
             // 'event_end'=>'required|date',
             // 'event_poster'=>'required|image|mimes:jpg,jpeg,png,x-png',
             'event_organizer'=>'required|regex:/^[\w., ]{3,80}$/i',
-            'event_email'=>'required|email',
+            'event_email'=>'required|email|unique:organizers,email',
             'event_phone'=>'required|regex:/^[0-9]{11}/i',
             'event_terms'=>'accepted'
 
         ],$message)->validate();
 
+        //first create the organizer
+        //then store events title
         //upload image
-        $image=$request->file('event_poster');
+        /*$image=$request->file('event_poster');
         $imageNewName=time().'.'.$image->getClientOriginalExtension();
 
         $upload_folder='images/event/'.$imageNewName;
@@ -73,26 +78,54 @@ class EventsPagesController extends Controller
         Image::make($image)->resize(820,580,function($c){
           $c->aspectRatio();
             $c->upsize();
-        })->orientate()->save($upload_folder);
+        })->orientate()->save($upload_folder);*/
 
+        //generate a password and mai the user to login
+
+        $password=str_random(10);
         //save event
-        $newEvent=Event::create([
-            'title'=>$request->get('event_title'),
-            'slug'=>Str::slug($request->get('event_title'),'-'),
-            'image'=>$imageNewName,
-            'start_date'=>strtotime($request->get('event_start')),
-            'end_date'=>strtotime($request->get('end_start')),
-            'description'=>$request->get('event_description'),
-            'status'=>'review',
-            'e_organizer'=>$request->get('event_organizer'),
-            'e_email'=>$request->get('event_email'),
-            'e_phone'=>$request->get('event_phone'),
-            'e_location'=>$request->get('event_location'),
-
+        $newOrganizer=Organizer::create([
+            //'image'=>$imageNewName,
+            //'start_date'=>strtotime($request->get('event_start')),
+            //'end_date'=>strtotime($request->get('end_start')),
+            //'description'=>$request->get('event_description'),
+            'organizer'=>$request->get('event_organizer'),
+            'email'=>$request->get('event_email'),
+            'phone'=>$request->get('event_phone'),
+            'password'=>bcrypt($password),
+            //'e_location'=>$request->get('event_location'),
         ]);
-        if($newEvent->save()){
-            //redirect back
-            return redirect()->route('newEvent')->with('status','success');
+
+        if($newOrganizer->save()){
+            //create the event
+            $newEvent=Event::create([
+                'title'=>$request->get('event_title'),
+                'slug'=>Str::slug($request->get('event_title'),'-'),
+            ]);
+            if($newEvent->save()){
+                //add pivot
+                $newOrganizer->events()->attach($newEvent->id);
+                //redirect back
+                //send mail
+
+
+                /*  Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newEvent){
+                      $message->to($newEvent->e_email);
+                      $message->subject('Event Creation: volleyball.ng');
+                      $message->from('volleyballdotngee@gmail.com','volleyball.ng');
+                  });*/
+                //test password:BJw0oDfocd
+
+                return redirect()->route('organizerLogin')->with('status','Congratulations <b>'.$request->get('event_organizer').'</b></br>  Your event was successfully created.<p>An account was also created for you to complete and manage events you create.<br> Please check your registered email for a password to gain access to your account. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
+                ;
+
+            }else{
+                //return an error
+                //organizer account was created by event was no saved
+                return redirect()->route('')->with('res','organizer account was created by event was no saved.<br> Please check your registered email for a password to gain access to your account and create the event');
+            }
+
+
 
         }
 

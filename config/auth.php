@@ -49,6 +49,10 @@ return [
             'driver' => 'session',
             'provider' => 'teams',
         ],
+        'organizer'=>[
+            'driver'=>'session',
+            'provider'=>'organizers'
+        ]
     ],
 
     /*
@@ -78,6 +82,10 @@ return [
              'driver' => 'eloquent',
              'model' => App\Team::class,
          ],
+        'organizers'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Organizer::class,
+        ],
     ],
 
     /*

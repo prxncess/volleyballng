@@ -39,15 +39,18 @@
     </aside>
     <div id="events-subnav">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('events')}}" class="active">Events</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('EventsCal')}}" class="">Calendar</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('newEvent')}}" class="">Register Event</a>
         </div>
+          <div class="col-sm-3">
+              <a href="{{route('organizerLogin')}}" class="">Manage Events</a>
+          </div>
       </div>
     </div>
     <div class="container">
