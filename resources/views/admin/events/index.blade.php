@@ -45,14 +45,14 @@
                     </div>
                     <div class="gray-separator top-20 bottom-20"> </div>
                 </div>
+        </div>
 
-
-                @endforeach
+                    @endforeach
             @endif
             <div class="center-block">
                 {{$events->links()}}
             </div>
 
         </section>
-    </div>
+
     @endsection

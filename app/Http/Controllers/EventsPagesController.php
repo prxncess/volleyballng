@@ -87,7 +87,7 @@ class EventsPagesController extends Controller
         $newOrganizer=Organizer::create([
             //'image'=>$imageNewName,
             //'start_date'=>strtotime($request->get('event_start')),
-            //'end_date'=>strtotime($request->get('end_start')),
+            //'end_date'=>strtotime($request->get('event_end')),
             //'description'=>$request->get('event_description'),
             'organizer'=>$request->get('event_organizer'),
             'email'=>$request->get('event_email'),
@@ -109,8 +109,8 @@ class EventsPagesController extends Controller
                 //send mail
 
 
-                /*  Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newEvent){
-                      $message->to($newEvent->e_email);
+                /*  Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newOrganizer){
+                      $message->to($newOrganizer->email);
                       $message->subject('Event Creation: volleyball.ng');
                       $message->from('volleyballdotngee@gmail.com','volleyball.ng');
                   });*/

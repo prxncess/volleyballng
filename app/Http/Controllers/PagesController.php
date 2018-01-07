@@ -227,11 +227,12 @@ class PagesController extends Controller
         if($request->ajax()){}
         //check if values passed are not empty and are valid
         $validator=Validator::make($request->all(),[
-            'day'=>'required|integer',
-            'month'=>'required|integer'
+            'day'=>'required|numeric',
+            'month'=>'required|numeric'
         ]);
+        $errors=$validator->errors();
         if($validator->fails()){
-            return false;
+            return $errors;
         }
         //convert date to timestamps
         $date=strtotime(date('Y').'-'.$request->get('month').'-'.$request->get('day')) ;

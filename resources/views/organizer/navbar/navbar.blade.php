@@ -114,17 +114,17 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul id="admin-sidebar" class="nav navbar-nav side-nav">
             <li class="active">
-                <a href="{{route('adminDashboard')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <a href="{{route('organizerDashboard')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paper-plane"></i> My Events <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="#">Add Events</a>
+                        <a href="{{route('newEvent')}}">Add Events</a>
                     </li>
                     <li>
-                        <a href="#">view Events</a>
+                        <a href="{{route('myEvents')}}">view Events</a>
                     </li>
                 </ul>
             </li>

@@ -4,6 +4,9 @@
   @section('content')
       <div class="well well" id="admin-box">
           <header>
+              @if(session('res'))
+                  <div class="alert alert-danger">{{session('res')}}</div>
+              @endif
               <h2>Dashboard</h2>
               <div id="separator"></div>
           </header>
@@ -53,11 +56,13 @@
                           <tr>
                               <th>Title</th>
                               <th>Status</th>
+                              <th></th>
                           </tr>
                           @foreach($organizer->events as $event)
                               <tr>
                                   <td><a href="" class=""><b>{{$event->title}}</b></a></td>
                                   <td>{{$event->status}}</td>
+                                  <td><a href="{{route('upEvent',$event->slug)}}"><i class="fa fa-edit"></i></a></td>
                               </tr>
                               @endforeach
                           </tbody>

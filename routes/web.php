@@ -144,6 +144,13 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
 
     Route::get('/dashboard',['as'=>'organizerDashboard','uses'=>'Organizer\organizerPagesController@dashboard']);
     Route::get('/logout',['as'=>'oLogout','uses'=>'Organizer\organizerLoginController@logout']);
+
+    //manage event
+    Route::get('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@edit']);
+    Route::post('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@update']);
+    Route::get('/newEvent',['as'=>'newEvent','uses'=>'Organizer\eventPagesController@create']);
+    Route::post('/newEvent',['as'=>'newEvent','uses'=>'Organizer\eventPagesController@store']);
+    Route::get('/myEvents',['as'=>'myEvents','uses'=>'Organizer\eventPagesController@index']);
 });
 
 
