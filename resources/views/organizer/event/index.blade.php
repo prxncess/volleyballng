@@ -13,7 +13,7 @@
                 <header>
                     <h2 class=""><i class="fa fa-paperclip"></i> My Events</h2>
                     <div id="" class="purple-separator top-10 bottom-20"></div>
-                    <a href="{{route('newEvent')}}" class="float-right btn btn-purple bottom-10"><i class="fa fa-plus"></i> New event</a>
+                    <a href="{{route('ogNewEvent')}}" class="float-right btn btn-purple bottom-10"><i class="fa fa-plus"></i> New event</a>
                 </header>
                 @if(session('res'))
                     <div class="alert alert-danger">{{session('res')}}</div>

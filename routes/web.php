@@ -148,8 +148,8 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
     //manage event
     Route::get('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@edit']);
     Route::post('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@update']);
-    Route::get('/newEvent',['as'=>'newEvent','uses'=>'Organizer\eventPagesController@create']);
-    Route::post('/newEvent',['as'=>'newEvent','uses'=>'Organizer\eventPagesController@store']);
+    Route::get('/ogNewEvent',['as'=>'ogNewEventt','uses'=>'Organizer\eventPagesController@create']);
+    Route::post('/ogNewEvent',['as'=>'ogNewEvent','uses'=>'Organizer\eventPagesController@store']);
     Route::get('/myEvents',['as'=>'myEvents','uses'=>'Organizer\eventPagesController@index']);
 });
 

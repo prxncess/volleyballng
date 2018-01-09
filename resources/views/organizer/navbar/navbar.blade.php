@@ -121,7 +121,7 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paper-plane"></i> My Events <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="{{route('newEvent')}}">Add Events</a>
+                        <a href="{{route('ogNewEvent')}}">Add Events</a>
                     </li>
                     <li>
                         <a href="{{route('myEvents')}}">view Events</a>
