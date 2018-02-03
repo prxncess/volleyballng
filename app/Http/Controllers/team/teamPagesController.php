@@ -238,6 +238,8 @@ class teamPagesController extends Controller
         }
     }
     public function overview(){
+        //
+        //dd(auth('team')->user()->notifications);
         $logged_team=auth('team')->user();
         try{
             $team=Team::whereName($logged_team->name)->firstOrFail();

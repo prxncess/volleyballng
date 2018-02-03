@@ -3,11 +3,11 @@
 
 @section('content')
     <section id="orgEvents">
-        <div class="container">
+
             <ol class="breadcrumb">
                 <li class="breadcrumb-item-active">Events</li>
             </ol>
-        </div>
+
 
             <div class="well well" id="admin-box">
                 <header>
@@ -30,30 +30,27 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">{{$event->title}}</h4>
-
                             </div>
                             <div class="media-bottom">
                                 <p class="top-20">{{$event->description}}</p>
-                                <p>
+
                                     <ul class="list-unstyled list-inline" >
                                     <li><span><b>Location: </b> {{$event->e_location}}</span></li>
-                                    <li><span><b>start date: </b> {{date('jS F Y',$event->start_date)}}-</span></li>
+                                    <li><span><b>start date: </b> {{date('jS F Y',$event->start_date)}}</span></li>
                                     <li><span><b>End Date:</b> {{date('jS F Y',$event->end_date)}}</span></li>
-                                </ul>
+                                    </ul>
 
                                     <a href="" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
                                     <a href="{{route('upEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit right-5"></i>Edit</a>
-                                </p>
+
 
                             </div>
                             <div class="gray-separator top-20 bottom-20"> </div>
                         </div>
-            </div>
+
 
             @endforeach
             @endif
-            <div class="center-block">
-
             </div>
 
     </section>

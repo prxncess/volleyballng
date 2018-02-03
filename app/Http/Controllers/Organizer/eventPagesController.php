@@ -178,23 +178,29 @@ class eventPagesController extends Controller
 
             $message =[
                 'event_title.required'=>"Please enter the title of the event",
-                'event_description.required'=>'Please write at least 30 words to describe this event',
+                'event_description.required'=>'Please write a description this event',
+                'event_description.min'=>'Please write at least 50 characters to describe this event',
+                'event_description.regex'=>'some characters in your description are not allowed',
                 'event_location.required'=>'Select the location of your event',
                 'event_start.required'=>'When will the event start?',
                 'event_end.required'=>'When will the event end?',
                 'event_poster.image'=>'File uploaded into an image:jpg,png,jpeg,x-png',
                 'event_start.date'=>'Invalid date format (yyyy-mm-dd)',
+                'event_start.prevdate'=>'Previous dates can not be selected',
+                'event_end.prevdate'=>'Previous dates can not be selected',
                 'event_end.date'=>'invalid date format (yyyy-mm-dd)',
+                'event_phone.regex'=>'Phone number format not allowed. use 080xxxxxxxx',
+
 
 
                 //other messages
             ];
             Validator::make($request->all(),[
-                'event_title'=>'required|regex:/^[\w., ]{3,225}$/i',
-                'event_description'=>"required|regex:/^[A-Za-z0-9?.,#-_ ]{100,225}$/i",
+                'event_title'=>'required|regex:/^[\w.,\-\' ]{3,225}$/i',
+                'event_description'=>"required|min:50|regex:/^[A-Za-z0-9?.,#-_ ]{50,}$/i",
                 'event_location'=>'required',
-                'event_start'=>'required|date',
-                'event_end'=>'required|date',
+                'event_start'=>'required|date|prevdate',
+                'event_end'=>'required|date|prevdate',
                 'event_poster'=>'required|image',
             ],$message)->validate();
 
@@ -217,9 +223,16 @@ class eventPagesController extends Controller
             $event->start_date=strtotime($request->get('event_start'));
             $event->end_date= strtotime($request->get('event_end'));
             $event->image=$imageNewName;
+            $event->status='review';
 
             if($event->save()){
-                return 'yes';
+                //send mail to admin
+                Mail::send('mail.organizer.newEvent',function($message) use($event){
+                    $message->to('efe@volleyball.ng');
+                    $message->subject('Event Approval');
+                    $message->from('volleyballdotngee@gmail.com','Volleyball.ng');
+                });
+                return redirect()->route('myEvents')->with('status','Your event was updated and is  been reviewed. ');
             }
 
         }catch (ModelNotFoundException $e){
@@ -238,4 +251,5 @@ class eventPagesController extends Controller
     {
         //
     }
+
 }

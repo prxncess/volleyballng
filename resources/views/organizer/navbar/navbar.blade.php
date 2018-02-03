@@ -105,6 +105,7 @@
                 </li>
                 <li class="divider"></li> -->
                 <li>
+                    <a href="{{route('opassword')}}"><i class="fa fa-fw fa-power-off"></i>Change password</a>
                     <a href="{{route('oLogout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                 </li>
             </ul>

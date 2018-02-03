@@ -18,6 +18,7 @@ class pagesController extends Controller
     }
 
     public function home(){
+        //return 'hello';
         return view('adminTeam.dashboard');
     }
 }

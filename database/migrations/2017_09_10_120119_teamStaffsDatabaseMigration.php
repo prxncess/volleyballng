@@ -13,7 +13,7 @@ class TeamStaffsDatabaseMigration extends Migration
      */
     public function up()
     {
-        Schema::create('staffTeams', function (Blueprint $table) {
+        Schema::create('staffs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fname',100);
             $table->string('lname',100);

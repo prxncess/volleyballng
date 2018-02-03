@@ -117,7 +117,8 @@
                 </div>
                 <div class="col-sm-5">
                     <label>Phone</label>
-                    <input type="number" class="form-control" placeholder="08021234567" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
+                    <input type="text" class="form-control" placeholder="08021234567" id="event_phone"  value="{{old('event_phone')}}" name="event_phone">
+                    <small><i>example 08021234567</i></small>
                     <p class="error">@if($errors->has('event_phone')) {{$errors->first('event_phone')}} @endif</p>
                 </div>
             </div>
@@ -145,8 +146,11 @@
 @section('footer-scripts')
     <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript">
+        var date = new Date();
+        date.setDate(date.getDate()-1);
         $('#event-start').datepicker({
             format: 'yyyy-mm-dd',
+            startDate: date,
         });
         $('#event-end').datepicker({
             format: 'yyyy-mm-dd',

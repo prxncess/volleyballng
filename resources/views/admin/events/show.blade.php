@@ -31,8 +31,8 @@
                         <div class="col-sm-9">{{$event->description}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Start date:</strong> {{$event->start_date}}</div>
-                        <div class="col-sm-9"><strong>End date: </strong> {{$event->end_date}}</div>
+                        <div class="col-sm-3"><strong>Start date:</strong> {{date('jS F Y',$event->start_date)}}</div>
+                        <div class="col-sm-9"><strong>End date: </strong> {{date('jS F Y',$event->end_date)}}</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3"><strong>Location</strong></div>
@@ -42,15 +42,15 @@
                     <div id="separator"></div>
                     <div class="row">
                         <div class="col-sm-3"><strong>Organizer</strong></div>
-                        <div class="col-sm-9">{{$event->e_organizer}}</div>
+                        <div class="col-sm-9">{{$event->organizer[0]->organizer}}</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3"><strong>Phone</strong></div>
-                        <div class="col-sm-9">{{$event->e_phone}}</div>
+                        <div class="col-sm-9">{{$event->organizer[0]->phone}}</div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3"><strong>Email</strong></div>
-                        <div class="col-sm-9">{{$event->e_email}}</div>
+                        <div class="col-sm-9">{{$event->organizer[0]->email}}</div>
                     </div>
                     <!-- <div class="row">
                         <div class="col-sm-3"><strong>status</strong></div>
@@ -77,7 +77,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="submit" class="btn vb-button">Update</button>
+                                    <button type="submit" class="btn vb-button top-20">Update</button>
                                 </div>
                             </div>
 
@@ -87,6 +87,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
+                            <a href="" class="btn btn-purple top-40" id="mail-organizer"><i class="fa fa-envelope right-5"></i>Contact organizer</a>
                             <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple top-40" id="delete-event"><i class="fa fa-trash right-5"></i>Delete event</a>
                         </div>
                     </div>
@@ -96,6 +97,7 @@
         </div>
     </div>
     @endsection
+@include('organizer.popup.contact')
 @section('footer-scripts')
     <script type="text/javascript">
         $(document).ready(function(){
@@ -103,10 +105,51 @@
                 if(confirm('Are you sure you to delete this event')==false){
                     return false;
                 }
-                //event.preventDefault();
-
-
             })
+            //show organizer mail
+            $('#mail-organizer').on('click',function (e) {
+                e.preventDefault();
+                $('#contact-organizer').modal('show');
+            })
+            //show mail form to organizer
+            $('#send-mail').on('click',function(){
+                //send ajax request
+                //clear errors if any found
+                $('#mail-subject').parent().find('p').html(' ')
+                $('#mail-body').parent().find('p').html(' ')
+                $('div#contact-organizer div#res').html(' ');
+                //get values from form
+                var mailSubject=$('#mail-subject').val();
+                var mailMessage=$('#mail-body').val();
+                var index=$('#index').val();
+                var token=$('#token').val();
+                $.ajax({
+                    url:'{{route('mailOrganizer')}}',
+                    data:{'subject':mailSubject,'body':mailMessage,'index':index,'_token':token},
+                    success:function (data) {
+                        if(data.res=='error'){
+                            var message=data.errors;
+                            //display errors
+                            if(message.subject===undefined?null:$('#mail-subject').parent().find('p').html(''+message.subject[0]));
+                            if(message.body===undefined?null:$('#mail-body').parent().find('p').html(''+message.body[0]));
+                        }else if(data.res=='success'){
+                            //mail sent
+                            $('div#contact-organizer div#res').html('<div class="alert alert-success">mail sent</div>');
+                            $('div#contact-organizer form input[type=reset]').trigger('click');
+                            //document.getElementById("m").reset();
+                            setTimeout(function () {
+                                $('.modal.in').modal('hide');
+                            },5000)
+
+
+                        }
+
+
+                    }
+                })
+            })
+
+
         })
     </script>
 

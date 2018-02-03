@@ -88,3 +88,18 @@
     </section>
 
     @endsection
+@section('footer-scripts')
+    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+    <script type="text/javascript">
+        var date = new Date();
+        date.setDate(date.getDate()-1);
+        $('#event-start').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: date,
+        });
+        $('#event-end').datepicker({
+            format: 'yyyy-mm-dd',
+        });
+
+    </script>
+@endsection

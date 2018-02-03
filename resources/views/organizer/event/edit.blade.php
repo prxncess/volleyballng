@@ -43,26 +43,26 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Event poster</label>
-                            <input type="file" class="form-control" placeholder="" value="@if(null!==old('event_poster')) {!! old('event_poster') !!} @endif" id="event-poster" name="event_poster">
+                            <input type="file" class="form-control" placeholder="" value="@if(old('event_poster')) {!! old('event_poster') !!} @endif" id="event-poster" name="event_poster">
                             <p class="error">@if($errors->has('event_poster')) {{$errors->first('event_poster')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-6">
                             <label>Start date</label>
-                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-provide="datepicker"  value="{{date('Y-m-d',$event->start_date)}}" id="event-start" name="event_start">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-provide="datepicker"  value="{{$event->start_date?date('Y-m-d',$event->start_date):old('event_start')}}" id="event-start" name="event_start">
                             <p class="error">@if($errors->has('event_start')) {{$errors->first('event_start')}} @endif</p>
                         </div>
                         <div class="col-sm-6">
                             <label>End date</label>
-                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-provide="datepicker" id="event-end"  value="{{date('Y-m-d',$event->end_date)}}" name="event_end">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-provide="datepicker" id="event-end"  value="{{$event->start_date?date('Y-m-d',$event->end_date):old('event_old')}}" name="event_end">
                             <p class="error">@if($errors->has('event_end')) {{$errors->first('event_end')}} @endif</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Event description</label>
-                            <textarea class="form-control" name="event_description"  id="event_info" cols="75" rows="5">{{$event->description}}</textarea>
+                            <textarea class="form-control" name="event_description"  id="event_info" cols="75" rows="5">{{$event->description?$event->description:old('event_description')}}</textarea>
                             <small><i>Not less than 50 characters</i></small>
                             <p class="error">@if($errors->has('event_description')) {{$errors->first('event_description')}} @endif</p>
                         </div>
@@ -80,3 +80,19 @@
 
 
     @endsection
+@section('footer-scripts')
+    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+    <script type="text/javascript">
+        var date = new Date();
+        date.setDate(date.getDate()-1);
+        $('#event-start').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: date,
+        });
+        $('#event-end').datepicker({
+            format: 'yyyy-mm-dd',
+            startDate: date,
+        });
+
+    </script>
+@endsection

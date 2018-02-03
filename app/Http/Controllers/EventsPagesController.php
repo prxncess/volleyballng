@@ -47,7 +47,7 @@ class EventsPagesController extends Controller
 
 
             //other messages
-            'event_phone.regex'=>'Phone number submitted is invalid.',
+            'event_phone.phone'=>'Phone number format not allowed. use 080xxxxxxxx',
             'event_organizer.regex'=>'Invalid name submitted.',
             'event_email.email'=>'Invalid email.',
             'event_email.unique'=>'Email already taken. Please click <a href="organizer/Login">here</a> to login',
@@ -60,9 +60,9 @@ class EventsPagesController extends Controller
             // 'event_start'=>'required|date',
             // 'event_end'=>'required|date',
             // 'event_poster'=>'required|image|mimes:jpg,jpeg,png,x-png',
-            'event_organizer'=>'required|regex:/^[\w., ]{3,80}$/i',
+            'event_organizer'=>'required|regex:/^[\w.,\-\' ]{3,80}$/i',
             'event_email'=>'required|email|unique:organizers,email',
-            'event_phone'=>'required|regex:/^[0-9]{11}/i',
+            'event_phone'=>'required|phone|unique:organizers,phone',//regex:/^[0-9]{11}
             'event_terms'=>'accepted'
 
         ],$message)->validate();
@@ -83,6 +83,7 @@ class EventsPagesController extends Controller
         //generate a password and mai the user to login
 
         $password=str_random(10);
+        $non_digts=[' ','(',')','-',',','+'];
         //save event
         $newOrganizer=Organizer::create([
             //'image'=>$imageNewName,
@@ -91,7 +92,7 @@ class EventsPagesController extends Controller
             //'description'=>$request->get('event_description'),
             'organizer'=>$request->get('event_organizer'),
             'email'=>$request->get('event_email'),
-            'phone'=>$request->get('event_phone'),
+            'phone'=>str_replace($non_digts,'',$request->get('event_phone')),
             'password'=>bcrypt($password),
             //'e_location'=>$request->get('event_location'),
         ]);
@@ -116,7 +117,7 @@ class EventsPagesController extends Controller
                   });*/
                 //test password:BJw0oDfocd
 
-                return redirect()->route('organizerLogin')->with('status','Congratulations <b>'.$request->get('event_organizer').'</b></br>  Your event was successfully created.<p>An account was also created for you to complete and manage events you create.<br> Please check your registered email for a password to gain access to your account. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
+                return redirect()->route('organizerLogin')->with('status','Congratulations <b>'.$request->get('event_organizer').'</b></br>  Your event was successfully created.<p>An account was also created for you to complete and manage events you create.<br>'.$password.' Please check your registered email for a password to gain access to your account. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
                 ;
 
             }else{

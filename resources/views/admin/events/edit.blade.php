@@ -60,12 +60,12 @@
 
                         <div class="col-sm-6">
                             <label>Start date</label>
-                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}}  value="{{$event->start_date}}" id="event-start" name="event_start">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}}  value="{{$event->start_date?date('Y-m-d',$event->start_date):old('event_start')}}" id="event-start" name="event_start">
                             <p class="error">@if($errors->has('event_start')) {{$errors->first('event_start')}} @endif</p>
                         </div>
                         <div class="col-sm-6">
                             <label>End date</label>
-                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}} id="event-end"  value="{{$event->end_date}}" name="event_end">
+                            <input type="text" class="form-control" placeholder="yyyy-mm-dd" {{--data-provide="datepicker"--}} id="event-end"  value="{{$event->end_date?date('Y-m-d',$event->end_date):old('end_start')}}" name="event_end">
                             <p class="error">@if($errors->has('event_end')) {{$errors->first('event_end')}} @endif</p>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Organizer's Name</label>
-                            <input type="text" class="form-control text-capitalize" placeholder="osas bara"  value="{{$event->e_organizer}}" id="event-organizer" name="event_organizer">
+                            <input type="text" class="form-control text-capitalize" placeholder="osas bara"  value="{{$event->organizer[0]->organizer}}" id="event-organizer" name="event_organizer">
                             <p class="error">@if($errors->has('event_organizer')) {{$errors->first('event_organizer')}} @endif</p>
                         </div>
                     </div>
@@ -89,12 +89,12 @@
 
                         <div class="col-sm-7">
                             <label>Email</label>
-                            <input type="text" class="form-control" placeholder="os@volleyball.ng" id="event_email"  value="{{$event->e_email}}" name="event_email">
+                            <input type="text" class="form-control" placeholder="os@volleyball.ng" id="event_email"  value="{{$event->organizer[0]->email}}" name="event_email">
                             <p class="error">@if($errors->has('event_email')) {{$errors->first('event_email')}} @endif</p>
                         </div>
                         <div class="col-sm-5">
                             <label>Phone</label>
-                            <input type="text" class="form-control" placeholder="08021234567" id="event_phone"  value="{{$event->e_phone}}" name="event_phone">
+                            <input type="text" class="form-control" placeholder="08021234567" id="event_phone"  value="{{$event->organizer[0]->phone}}" name="event_phone">
                             <p class="error">@if($errors->has('event_phone')) {{$errors->first('event_phone')}} @endif</p>
                         </div>
                     </div>
@@ -130,11 +130,15 @@
 @section('footer-scripts')
     <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript">
+        var date = new Date();
+        date.setDate(date.getDate()-1);
         $('#event-start').datepicker({
             format: 'yyyy-mm-dd',
+            startDate: date,
         });
         $('#event-end').datepicker({
             format: 'yyyy-mm-dd',
+            startDate: date,
         });
 
     </script>

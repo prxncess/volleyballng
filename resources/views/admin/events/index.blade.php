@@ -34,8 +34,8 @@
                         <p class="top-20">{{$event->description}}</p>
                         <ul class="list-unstyled list-inline">
                             <li><i class=""></i><strong>Location:</strong> <span>{{$event->e_location}}</span> </li>
-                            <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->e_organizer}}</span> </li>
-                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->e_email}}</span> </li>
+                            <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->organizer[0]->organizer}}</span> </li>
+                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->organizer[0]->email}}</span> </li>
                         </ul>
                         <p>
                             <a href="{{route('showEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
@@ -45,14 +45,14 @@
                     </div>
                     <div class="gray-separator top-20 bottom-20"> </div>
                 </div>
-        </div>
+
 
                     @endforeach
             @endif
             <div class="center-block">
                 {{$events->links()}}
             </div>
-
+        </div>
         </section>
 
     @endsection
