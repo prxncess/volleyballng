@@ -1,6 +1,6 @@
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
-        <div class="navbar-brand"> <img src="images/seu2.png"></div>
+        <div class="navbar-brand"> <img src="{{asset('images/seu2.png')}}"></div>
         <button id="toggle-bar" type="button" data-target="#volleymenu">
             <span class="sr-only">toggle navigation</span>
             <span class=""></span>

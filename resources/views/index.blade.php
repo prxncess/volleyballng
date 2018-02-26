@@ -2,7 +2,7 @@
 @section('title','Welcome to Volleyball.ng')
 @section('banner')
     <div id="home-banner">
-        <div id="banners" class="swiper-container swiper-container-horizontal">
+        <!-- <div id="banners" class="swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"  style="background: url('{!! asset('images/banner1.png') !!}'); height: 400px; background-size: 100% 100% "></div>
                 <div class="swiper-slide" style="background: url('{!! asset('images/banner2.png') !!}');height: 400px; background-size: 100% 100%;"></div>
@@ -13,19 +13,29 @@
                 <span class="swiper-pagination-bullet"></span>
                  <span class="swiper-pagination-bullet"></span>>
             </div>
+            <div class="bg-image top-bottom-padding-40 left-right-padding-20">
+              <a href="{{route('register')}}" class="btn btn-primary">Register a team</a>
+            </div>
 
+        </div> -->
+        <div class="bg">
+          <header id="tagline">
+              <h1>PLAY. WATCH. LAUGH</h1>
+              <p>  Welcome to the home of Volleyball in Nigeria</p>
+              <div class="top-40"></div>
+              <a href="{{route('register')}}" class="btn" id="vb-button">Register a team</a>
+          </header>
         </div>
+
     </div>
     @endsection
 @section('content')
 
     <section id="our-home">
-        <header id="tagline">
+        <!-- <header id="tagline">
             <h1 class="text-center">PLAY. WATCH. LAUGH</h1>
             <p>  Welcome to the home of Volleyball in Nigeria</p>
-
-
-        </header>
+        </header> -->
         <article>
             <header><a href="{{route('events')}}"><h2><i class="fa fa-calendar"></i> Events</h2></a>
 

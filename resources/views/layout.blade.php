@@ -27,8 +27,6 @@
         </section>
 
     </div>
-
-
 </div>
 <div id="footer">
     <div id="bar"></div>

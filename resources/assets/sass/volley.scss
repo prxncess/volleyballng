@@ -10,7 +10,11 @@ html,body{
 body{
   height: 100%;
   // background:#e6e6e6 ;
-  font-family:'Questrial',sans-serif;
+  font-family:'Open Sans',sans-serif;
+
+  p {
+    font-size: 16px;
+  }
 
 a{
   text-decoration: none;
@@ -88,9 +92,9 @@ a{
 
 div#background{
   //background: url("../images/banner2.jpg") fixed center center;
-  background-repeat: no-repeat;
-  background: white;
-  background-size: cover;
+  // background-repeat: no-repeat;
+  // background: white;
+  // background-size: cover;
 
   // width: 80%;
   //color: #757575;
@@ -98,7 +102,7 @@ div#background{
   font-weight: 300;
   min-height: 100%;
   line-height: 1.6;
-  font-size: 15px;
+  // font-size: 15px;
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
 }
@@ -282,12 +286,15 @@ header{
       }
     }
   }
-  h1,h2,h3,h4{
+  h1{
+    font-size: 48px;
+  }
+  h2,h3,h4{
     color: $blue;
     text-decoration: none;
   }
   h2,h3,h4{
-    font-weight: 300;
+    // font-weight: 300;
   }
 
 }
@@ -308,7 +315,7 @@ div#wrapper{
 
 }
 section#content{
-  padding: 10px 0;
+  // padding: 10px 0;
   //background: white;
   header{
     h2{
@@ -325,9 +332,9 @@ section#content{
 }
 //homepage
 section#our-home{
-  span.pull-right{
-    font-size: 2rem;
-  }
+  // span.pull-right{
+  //   font-size: 2rem;
+  // }
   header#tagline{
     @extend #container;
 
@@ -1780,3 +1787,17 @@ section#viewPlayer{
 
 }
 @media screen and (max-width: 980px){  }
+
+/* Hero */
+
+.bg{
+  background-image: linear-gradient(rgba(10, 1, 56, 0.8), rgba(10, 1, 56, 0.8)),
+  url("../../public/images/volleyballbg.jpeg");
+  // url("https://images.unsplash.com/photo-1501813354559-db602a6d8077?ixlib=rb-0.3.5&s=e91c24b92490b1f497c6901fdfd100d2&auto=format&fit=crop&w=750&q=80");
+  padding: 28vh 60px;
+  height: 85vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
