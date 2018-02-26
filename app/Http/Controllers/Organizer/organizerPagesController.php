@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use App\Organizer;
 use Validator;
+use App\Team;
 class organizerPagesController extends Controller
 {
     //
@@ -52,6 +53,21 @@ class organizerPagesController extends Controller
             //save and redirect back
             return redirect()->route('opassword')->with('res','password updated');
 
+        }
+    }
+
+    public function checkTeam($team){
+       //find the given
+        //aslo check if team is active
+        //we don't allow to teams who have been deactivated registering for event
+        //pull all information of teams
+
+        try{
+            $team=Team::whereName($team)->firstOrFail();
+            return view('organizer.team.viewTeam',compact('team'));
+
+        }catch (ModelNotFoundException $e){
+            return "Team Not Found";
         }
     }
 }

@@ -11,18 +11,22 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-            <ul class="dropdown-menu message-dropdown">
-                @foreach(auth('team')->user()->notifications as $notification)
+        <li class="dropdown" id="notifyTm">
+            <a href="#"  class="dropdown-toggle" data-toggle="dropdown"><span class="badge">{{count(auth('team')->user()->unreadNotifications)}}</span> <i class="fa fa-envelope"></i> <b class="caret"></b></a>
+
+            <ul  class="dropdown-menu message-dropdown">
+                @if(count(auth('team')->user()->unreadNotifications )>0)
+                @foreach(auth('team')->user()->unreadNotifications as $notification)
                     <li class="message-preview">
                         <a href="{{$notification->data['action']}}">
-                            {{$notification->data['message']}}
+                            {!! $notification->data['message'] !!}
                         </a>
                     </li>
                     @endforeach
 
-
+                @else
+                    <p> no notification at the moment</p>
+                @endif
                 {{--<li class="message-preview">
                     <a href="#">
                         <div class="media">

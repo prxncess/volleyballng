@@ -59,8 +59,8 @@ class newEventOpen extends Notification
         //$url=route()
         return [
             //
-            'message' => 'A event opening.',
-            'action' =>'have a look'
+            'message' =>'New event opening </br>:<b>'.$this->event->title.'</b>',
+            'action' =>route('eventOverview',[$this->event->slug])
         ];
     }
 

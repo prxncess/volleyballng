@@ -129,6 +129,10 @@ Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController
 
      //others
      Route::get('/teamReview',['as'=>'tmReview','uses'=>'team\teamPagesController@teamReview']);
+     //events
+     Route::get('/checkEvent/{slug}',['as'=>'eventOverview','uses'=>'team\eventPagesController@checkEvent']);
+     Route::get('/markAsRead/',['as'=>'TmMarkRead','uses'=>'team\eventPagesController@markEvent']);
+     Route::get('/eventInterest/{slug}',['as'=>'Interested','uses'=>'team\eventPagesController@shownInterest']);
  });
 
 Route::get('Email', function(){
@@ -158,6 +162,9 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
     Route::get('/myEvents',['as'=>'myEvents','uses'=>'Organizer\eventPagesController@index']);
 
     //mail organizer
+
+    //teas
+    Route::get('/viewTeam/{team}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
 
 });
 

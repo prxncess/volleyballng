@@ -11,6 +11,24 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
+        <li class="dropdown" id="notifyOg">
+            <a href="#"  class="dropdown-toggle" data-toggle="dropdown"><span class="badge">{{count(auth('organizer')->user()->unreadNotifications)}}</span> <i class="fa fa-envelope"></i> <b class="caret"></b></a>
+            <ul  class="dropdown-menu message-dropdown">
+                @if(count(auth('organizer')->user()->unreadNotifications )>0)
+                    @foreach(auth('organizer')->user()->unreadNotifications as $notification)
+                        <li class="message-preview">
+                            <a href="{{$notification->data['action']}}">
+                                {!! $notification->data['message'] !!}
+                            </a>
+                        </li>
+                    @endforeach
+
+                @else
+                    <p> no notification at the moment</p>
+                @endif
+
+            </ul>
+        </li>
         <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu message-dropdown">
@@ -91,6 +109,7 @@
                 </li>
             </ul>
         </li> -->
+
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{auth('organizer')->user()->organizer}} <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -111,6 +130,8 @@
             </ul>
         </li>
     </ul>
+
+
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul id="admin-sidebar" class="nav navbar-nav side-nav">

@@ -70,6 +70,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button type="submit" id="vb-button" class="btn btn-primary">Save and request review</button>
+                            <a href="#" class="btn btn-primary" id="vb-button">notify teams</a>
                         </div>
                     </div>
 
