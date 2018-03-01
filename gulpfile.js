@@ -18,4 +18,5 @@ elixir(mix => {
        .webpack('volley.js');
 mix.sass('admin.scss');
 mix.sass('team.scss');
+mix.sass('organizer.scss');
 });

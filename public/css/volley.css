@@ -835,8 +835,6 @@ article#tutorials {
   border-radius: 5px;
   /*display: flex;*/
   display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
 }
 
@@ -879,8 +877,6 @@ article#tutorials div#caption img {
 
 article#tutorials aside {
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
@@ -923,8 +919,6 @@ article#our-events header button:hover {
 
 article#our-events aside#event-preview {
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
   /*justify-content: space-between;*/
 }

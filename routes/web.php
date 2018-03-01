@@ -166,6 +166,9 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
     //teas
     Route::get('/viewTeam/{team}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
 
+    //view player
+    Route::get('/Players/{player}/{playerName}/overview',['as'=>'OgCheckPlayer','uses'=>'Organizer\organizerPagesController@checkPlayer']);
+
 });
 
 

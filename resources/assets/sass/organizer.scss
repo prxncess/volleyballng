@@ -1,0 +1,123 @@
+@import"_variables";
+div#admin-box{
+
+
+}
+section#teamOver{
+  header#teamName{
+    background: black;
+    color: white;
+    padding: 20px;
+    margin-bottom: -10px;
+  }
+  div#teamIn{
+    background: $blue;
+    color: white;
+    padding: 20px;
+    .media{
+      .media-object{
+           width: 100px;
+           height: 100px;
+      }
+    }
+  }
+  div#teamOth{
+    aside{
+      background: $ligthgray;
+      ul.nav.nav-tabs{
+        padding-top: 10px;
+        border-bottom: 0px;
+        width: 300px;
+        li{
+          a{
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            text-transform: capitalize;
+            border: 0px;
+            &:hover{
+              border-radius: 0px;
+              background: $light-blue;
+              color: white;
+            }
+          }
+        }
+        li.active {
+          a {
+            border-bottom: 4px solid $blue;
+            &:hover{
+              background: white;
+              color: black;
+
+            }
+          }
+        }
+      }
+    }
+
+    div.tab-content{
+      //background: $ligthgray;
+      padding: 30px 10px ;
+
+      div#squad{
+         div#player-card{
+           margin-bottom: 20px;
+          // width: 210px;
+           a{
+             text-decoration: none;
+             color: inherit;
+             header{
+               padding: 4px;
+               background: $gray;
+               background-image:url("../images/stats-card.png") ;
+               background-position: 100% 0;
+               background-repeat: no-repeat;
+               position: relative;
+               .media-object{
+                 width: 80px;
+                 height: 80px;
+               }
+               .media-heading{
+                 color: black;
+               }
+             }
+             div#playerInfo{
+               padding: 10px 10px;
+               border: 1px solid $gray;
+               button{
+                 border-radius: 0px;
+                 width: 100%;
+                 background-color: $ligthgray;
+                 color: black;
+                 &:hover{
+                   background: $blue;
+                   color: white;
+                 }
+
+               }
+
+             }
+
+           }
+           /*li{
+             border: 1px solid $gray;
+             width: 200px;
+             padding: 0px;*/
+
+
+         }
+      }
+
+    }
+
+  }
+  footer{
+    background: $gray;
+    padding: 10px;
+    button{
+      border-radius: 0px;
+      margin-left: 10px;
+    }
+  }
+
+}
