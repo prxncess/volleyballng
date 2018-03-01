@@ -26,6 +26,7 @@
     {{--<link href="{{asset('css/ripples.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/bootstrap.material-design.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{asset('css/admin.css')}}" rel="stylesheet" media="all" type="text/css">
+    <link href="{{asset('css/organizer.css')}}" rel="stylesheet" media="all" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

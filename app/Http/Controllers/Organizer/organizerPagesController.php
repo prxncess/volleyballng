@@ -70,4 +70,7 @@ class organizerPagesController extends Controller
             return "Team Not Found";
         }
     }
+    public function checkPlayer($player_id,$playerName){
+
+    }
 }
