@@ -170,15 +170,16 @@ nav#menu{
     margin-top: 12px;
     background: none;
     border: none;
-    span{
-      background-color: white;
-      width: 21px;
-      height: 2px;
-      border-radius: 2px;
-      display: block;
-      margin-bottom: 5px;
-
-    }
+    color: $whitesmoke;
+    // span{
+    //   background-color: white;
+    //   width: 21px;
+    //   height: 2px;
+    //   border-radius: 2px;
+    //   display: block;
+    //   margin-bottom: 5px;
+    //
+    // }
     // &:hover{
     //   background-color: black;
     // }
@@ -304,14 +305,14 @@ header{
 }
 div#wrapper{
   min-height: 100%;
-  //background: white;
-  margin: 61px  0% 10%;//4%
-  div#yellow-separator{
-    height: 1px;
-    background: $yellow;
-    margin-top: 7px;
-    margin-bottom: 25px;
-  }
+  background: white;
+  padding: 7% 0% 7%;//4%
+  // div#yellow-separator{
+  //   height: 1px;
+  //   background: $yellow;
+  //   margin-top: 7px;
+  //   margin-bottom: 25px;
+  // }
 
 }
 section#content{
@@ -324,11 +325,11 @@ section#content{
       &:hover{color:$purple;}
     }
   }
-  aside{
-    padding: 10px;
-    background: white;
-    color:$text-color;
-  }
+  // aside{
+  //   padding: 10px;
+  //   background: white;
+  //   color:$text-color;
+  // }
 }
 //homepage
 section#our-home{
@@ -350,7 +351,7 @@ section#our-home{
   }
   article{
     @extend #container;
-    background: white;
+    // background: white;
     color:$text-color ;
     padding: 10px;
     p{
@@ -731,7 +732,7 @@ article#tutorials{
 }
 article#our-events{
   header{
-    background: $gray;
+    // background: $gray;
     padding: 20px;
     margin-top:40px;
     span{
