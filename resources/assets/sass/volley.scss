@@ -75,7 +75,10 @@ a{
   color: $purple;
 }
 .gray-background {
-  background-color: $whitesmoke
+  background-color: $whitesmoke;
+}
+.purple-background {
+  background-color: transparentize($purple, 0.98);
 }
 .gray-separator {
   height: 1px;

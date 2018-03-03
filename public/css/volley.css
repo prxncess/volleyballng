@@ -300,6 +300,10 @@ body .top-20 {
   background-color: #fdfdfd;
 }
 
+.purple-background {
+  background-color: rgba(68, 73, 202, 0.02);
+}
+
 .gray-separator {
   height: 1px;
   background-color: #e6e6e6;

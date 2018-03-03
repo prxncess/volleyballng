@@ -29,7 +29,7 @@
 </style>
 
     <aside id="container">
-        <header> <h2 class="text-capitalize">Events</h2><div id="yellow-separator"></div> </header>
+        <header> <h2 class="text-capitalize">Events</h2><div class="yellow-separator top-20 bottom-20"></div> </header>
         <p>
             Check out our exciting upcoming events and register your team, or create your own event and we'll publish it here.
 
@@ -57,7 +57,7 @@
         <div class="row">
             <div id="evvent-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="row">
-                <div class="col-xs-12"><h2 class="bottom-40">Next events</h2></div>
+                <div class="col-xs-12"><h3 class="bottom-40">Next events</h3></div>
                    @if($events->isEmpty())
                       <div class="col-xs-12"> <h5>Coming soon!</h5> </div>
                        @else
@@ -86,7 +86,7 @@
 
     <div class="container">
       <div class="gray-separator top-40 bottom-40"></div>
-      <h2 class="bottom-40">Past events</h2>
+      <h3 class="bottom-40">Past events</h3>
       <div class="row">
         <div class="col-xs-12">
           <p>Read the <a href="http://volleyball.ng/blog" class="purple" style="text-decoration: underline">recaps</a></p>

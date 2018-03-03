@@ -84,94 +84,96 @@
         </article>
 
 
-        <article>
-          <header>
-              <a href="{{route('viewTeams')}}"><h2><i class="fa fa-group"></i> Teams</h2></a>
-              <div class="yellow-separator top-20 bottom-20"></div>
-              <div class="row">
-                <div class="col-sm-6"><p>Groups of volleyball <a href="{{route('viewTeams')}}">lovers</a>, players, coaches, etc</p></div>
-                <div class="col-sm-6"><a href="{{route('register')}}" class=" float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
-              </div>
-              <!-- <p>Check out our <a href="{{route('viewTeams')}}">Teams</a> . <a href="{{route('register')}}"><span class="pull-right"><i class="fa fa-plus"></i> Register</span></a></p> -->
-
-          </header>
-        </article>
-        <article id="vb-home-team">
-            <div id="team-slides" class="swiper-container swiper-container-horizontal">
-
-                <div class="swiper-wrapper">
-                    @if($teams->isEmpty())
-
-                    <div class="swiper-slide swiper-slide-active" >
-                        <div id="box">
-                            <a href="javascript:;">
-                                <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
-                                <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3> </div>
-                            </a>
-
-                        </div>
-
-                        <header>
-                            <div id="bar"></div>
-                            <p><a href=""> Bulls</a></p>
-                        </header>
-                    </div>
-                    <div class="swiper-slide" >
-
-                        <div id="box">
-                            <a href="javascript:;">
-                                <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
-                                <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
-
-                        </div>
-                        <header>
-                            <div id="bar"></div>
-                            <p><a href=""> Sharks</a></p>
-                        </header>
-                    </div>
-                    <div class="swiper-slide swiper-slide-active" >
-                        <div id="box">
-                            <a href="javascript:;">
-                                <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
-                                <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div>
-                            </a>
-
-                        </div>
-
-                        <header>
-                            <div id="bar"></div>
-                            <p><a href=""> Shells</a></p>
-                        </header>
-                    </div>
-                        @else
-                        @foreach($teams as $team)
-                            <div class="swiper-slide" >
-
-                                <div id="box">
-                                    <a href="{{route('seeTeam',$team->name)}}">
-                                        @if($team->team_image==null)
-                                            <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
-                                        @else
-                                            <img src="{{asset('images/team/group/'.$team->team_image)}}" >
-                                        @endif
-
-                                        <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
-
-                                </div>
-                                <header>
-                                    <div id="bar"></div>
-                                    <p><a class="text-capitalize
-                                    " href="{{route('seeTeam',$team->name)}}">{{$team->name}}</a></p>
-                                </header>
-                            </div>
-                            @endforeach
-                    @endif
+        <div class="gray-background">
+          <article>
+            <header>
+                <a href="{{route('viewTeams')}}"><h2><i class="fa fa-group"></i> Teams</h2></a>
+                <div class="yellow-separator top-20 bottom-20"></div>
+                <div class="row">
+                  <div class="col-sm-6"><p>Groups of volleyball <a href="{{route('viewTeams')}}">lovers</a>, players, coaches, etc</p></div>
+                  <div class="col-sm-6"><a href="{{route('register')}}" class=" float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
                 </div>
-                <div class="swiper-button-next swiper-button-white"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
-            </div>
-            <div id="overlay"></div>
-        </article>
+                <!-- <p>Check out our <a href="{{route('viewTeams')}}">Teams</a> . <a href="{{route('register')}}"><span class="pull-right"><i class="fa fa-plus"></i> Register</span></a></p> -->
+
+            </header>
+          </article>
+          <article id="vb-home-team">
+              <div id="team-slides" class="swiper-container swiper-container-horizontal">
+
+                  <div class="swiper-wrapper">
+                      @if($teams->isEmpty())
+
+                      <div class="swiper-slide swiper-slide-active" >
+                          <div id="box">
+                              <a href="javascript:;">
+                                  <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
+                                  <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3> </div>
+                              </a>
+
+                          </div>
+
+                          <header>
+                              <div id="bar"></div>
+                              <p><a href=""> Bulls</a></p>
+                          </header>
+                      </div>
+                      <div class="swiper-slide" >
+
+                          <div id="box">
+                              <a href="javascript:;">
+                                  <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
+                                  <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
+
+                          </div>
+                          <header>
+                              <div id="bar"></div>
+                              <p><a href=""> Sharks</a></p>
+                          </header>
+                      </div>
+                      <div class="swiper-slide swiper-slide-active" >
+                          <div id="box">
+                              <a href="javascript:;">
+                                  <img src="{!! asset('images/IMG_20170222_071011.jpg') !!}">
+                                  <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div>
+                              </a>
+
+                          </div>
+
+                          <header>
+                              <div id="bar"></div>
+                              <p><a href=""> Shells</a></p>
+                          </header>
+                      </div>
+                          @else
+                          @foreach($teams as $team)
+                              <div class="swiper-slide" >
+
+                                  <div id="box">
+                                      <a href="{{route('seeTeam',$team->name)}}">
+                                          @if($team->team_image==null)
+                                              <img src="{!! asset('images/IMG_20170222_070951.jpg') !!}">
+                                          @else
+                                              <img src="{{asset('images/team/group/'.$team->team_image)}}" >
+                                          @endif
+
+                                          <div id="more-photos"><i class="fa fa-ellipsis-h"></i><h3>View more</h3></div></a>
+
+                                  </div>
+                                  <header>
+                                      <div id="bar"></div>
+                                      <p><a class="text-capitalize
+                                      " href="{{route('seeTeam',$team->name)}}">{{$team->name}}</a></p>
+                                  </header>
+                              </div>
+                              @endforeach
+                      @endif
+                  </div>
+                  <div class="swiper-button-next swiper-button-white"></div>
+                  <div class="swiper-button-prev swiper-button-white"></div>
+              </div>
+              <div id="overlay"></div>
+          </article>
+        </div>
 
 
         <article id="gallery">

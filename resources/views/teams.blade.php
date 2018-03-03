@@ -5,8 +5,8 @@
     <section id="Teams">
 
         <header id="container">
-            <h3>Teams</h3>
-            <div id="yellow-separator"></div>
+            <h2>Teams</h2>
+            <div class="yellow-separator top-20 bottom-20"></div>
             {{--<a href="{{route('register')}}" id="vb-button" class="btn btn-primary">Team Registration</a>--}}
         </header>
         <div id="events-subnav">
