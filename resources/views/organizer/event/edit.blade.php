@@ -70,7 +70,22 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button type="submit" id="vb-button" class="btn btn-primary">Save and request review</button>
-                            <a href="#" class="btn btn-primary" id="vb-button">notify teams</a>
+                          {{--  <a href="#" class="btn btn-primary" id="vb-button">notify teams</a>--}}
+                            @if($event->status!='review')
+                            <div class="btn-group">
+                                <button type="button" id="vb-button" class="btn btn-primary">Take Action</button>
+                                <button type="button" id="vb-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @if($event->status=='open')
+                                    <li><a href="#">Notify Teams</a></li>
+                                    @endif
+                                    <li><a href="#">Close Event</a></li>
+                                </ul>
+                            </div><small><i> Please note that once you close this event you can no longer edit this event or notify teams</i></small>
+                                @endif
                         </div>
                     </div>
 

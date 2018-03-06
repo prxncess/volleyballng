@@ -13,6 +13,6 @@ class Player extends Model
     public $timestamps= true;
 
     public function team(){
-        return $this->belongsToMany('App\team','team_id','id');
+        return $this->belongsToMany('App\team','player_team','team_id');
     }
 }

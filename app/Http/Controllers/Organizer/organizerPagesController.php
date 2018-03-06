@@ -9,6 +9,7 @@ use App\Event;
 use App\Organizer;
 use Validator;
 use App\Team;
+use App\Player;
 class organizerPagesController extends Controller
 {
     //
@@ -56,7 +57,7 @@ class organizerPagesController extends Controller
         }
     }
 
-    public function checkTeam($team){
+    public function checkTeam($team,$event){
        //find the given
         //aslo check if team is active
         //we don't allow to teams who have been deactivated registering for event
@@ -71,6 +72,23 @@ class organizerPagesController extends Controller
         }
     }
     public function checkPlayer($player_id,$playerName){
+
+        //get the player first.
+        //ensure that player name is also correct
+        try{
+            $player=Player::whereId($player_id)->firstOrFail();
+            //check if found player has the same name as received name
+            if(strtolower($player->lname.'-'.$player->fname==$playerName)){
+                //everything is ok
+                //display player view
+                $team=$player->team;
+               return view('organizer.team.playerCard',compact('team','player'));
+            }else{
+                return 'Your playing with fire. Your are doing something wrong';
+            }
+        }catch (ModelNotFoundException $e){
+            return 'Player not found. Your are doing something wrong';
+        }
 
     }
 }

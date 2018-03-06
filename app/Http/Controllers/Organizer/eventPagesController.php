@@ -149,7 +149,6 @@ class eventPagesController extends Controller
             $event=Event::whereSlug($slug)->firstOrFail();
             //check if event manager created event
             $organizer=Organizer::find(auth('organizer')->user()->id);
-
             if($event->organizer->isEmpty() || ($event->organizer[0]->id!=$organizer->id)){
                 return redirect()->route('organizerDashboard')->with('res','Access Denied');
             }
@@ -227,7 +226,7 @@ class eventPagesController extends Controller
 
             if($event->save()){
                 //send mail to admin
-                Mail::send('mail.organizer.newEvent',function($message) use($event){
+                Mail::send('mails.organizer.newEvent',['event'=>$event],function($message) use($event){
                     $message->to('efe@volleyball.ng');
                     $message->subject('Event Approval');
                     $message->from('volleyballdotngee@gmail.com','Volleyball.ng');

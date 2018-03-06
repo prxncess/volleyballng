@@ -157,14 +157,14 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
     //manage event
     Route::get('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@edit']);
     Route::post('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@update']);
-    Route::get('/ogNewEvent',['as'=>'ogNewEventt','uses'=>'Organizer\eventPagesController@create']);
+    Route::get('/ogNewEvent',['as'=>'ogNewEvent','uses'=>'Organizer\eventPagesController@create']);
     Route::post('/ogNewEvent',['as'=>'ogNewEvent','uses'=>'Organizer\eventPagesController@store']);
     Route::get('/myEvents',['as'=>'myEvents','uses'=>'Organizer\eventPagesController@index']);
 
     //mail organizer
 
     //teas
-    Route::get('/viewTeam/{team}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
+    Route::get('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
 
     //view player
     Route::get('/Players/{player}/{playerName}/overview',['as'=>'OgCheckPlayer','uses'=>'Organizer\organizerPagesController@checkPlayer']);

@@ -67,7 +67,7 @@ class EventInterest extends Notification
         return [
             //
             'message'=>'Hello, team <b>'.$this->team['name'].'</b> has shown interest for '.$this->event->title.' event.',
-            'action'=>route('OgCheckTeam',[$this->team['name']])
+            'action'=>route('OgCheckTeam',[$this->team['name'],$this->event->slug])
         ];
     }
 }

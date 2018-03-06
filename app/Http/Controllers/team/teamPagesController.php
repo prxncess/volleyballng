@@ -363,7 +363,7 @@ class teamPagesController extends Controller
             $data=['name'=>$request->get('name'),'email'=>$request->get('email')];
            $mail= Mail::send('mails.review',$data,function($message){
                 $message->to('eorijesu@gmail.com','Efeoghene Ori-Jesu');
-                $message->from('volleyballsmpt@gmail.com','volleyball.ng');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
                 $message->subject('Team Review');
             });
 
