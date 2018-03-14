@@ -1,43 +1,138 @@
 @import"_variables";
+
+html,body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body{
+  height: 100%;
+  // background:#e6e6e6 ;
+  font-family:$sans-font,sans-serif;
+
+  p {
+    // font-size: 16px;
+  }
+
+a{
+  text-decoration: none;
+  color: $black;
+  &:hover {color:$purple; text-decoration: none};
+}
+
+.btn-purple {
+  color: $purple;
+ // background-color: none;
+  border: 1px solid $purple;
+  border-radius: 20px;
+  &:hover {color: white; background-color: $purple}
+}
+
+// Helper classes
+.right-10 {
+  margin-right: 10px;
+}
+.right-5 {
+  margin-right: 5px;
+}
+.top-bottom-padding-40 {
+  padding: 40px 0;
+}
+.top-bottom-padding-20 {
+  padding: 20px 0;
+}
+.left-right-padding-20 {
+  padding: 0 20px;
+}
+.bottom-40 {
+  margin-bottom: 40px;
+}
+.top-40 {
+  margin-top: 40px;
+}
+.bottom-20 {
+  margin-bottom: 20px;
+}
+.top-20 {
+  margin-top: 20px;
+}
+
+// End of helper classes
+}
+.float-right {
+  float: right !important;
+}
+// Media query
+@media only screen and (max-width: 767px) {
+    float: none !important;
+}
+.dark-gray {
+  color: $dark-gray;
+}
+.purple {
+  color: $purple;
+}
+.gray-background {
+  background-color: $whitesmoke;
+}
+.purple-background {
+  background-color: transparentize($purple, 0.98);
+}
+.gray-separator {
+  height: 1px;
+  background-color: $gray;
+}
+.purple-separator {
+  height: 1px;
+  background-color: $purple;
+}
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
+}
+
+
 div#admin-box{
 
 
 }
 section#teamOver{
   header#teamName{
-    background: black;
-    color: white;
+    background: $lightgray;
+    // color: white;
     padding: 20px;
     margin-bottom: -10px;
   }
   div#teamIn{
-    background: $blue;
-    color: white;
-    padding: 20px;
+    background: $whitesmoke;
+    // color: white;
+    padding: 40px 20px;
     .media{
       .media-object{
            width: 100px;
            height: 100px;
+
+           @media only screen and (max-width: 767px) {
+             width: 50px;
+             height: 50px;
+           }
       }
     }
   }
   div#teamOth{
     aside{
-      background: $ligthgray;
+      background: $lightgray;
       ul.nav.nav-tabs{
         padding-top: 10px;
         border-bottom: 0px;
         width: 300px;
         li{
           a{
-            font-size: 16px;
-            font-weight: bold;
-            color: black;
             text-transform: capitalize;
             border: 0px;
             &:hover{
               border-radius: 0px;
-              background: $light-blue;
+              background: $blue;
               color: white;
             }
           }
@@ -56,7 +151,7 @@ section#teamOver{
     }
 
     div.tab-content{
-      //background: $ligthgray;
+      // background: $whitesmoke;
       padding: 30px 10px ;
 
       div#squad{
@@ -87,7 +182,7 @@ section#teamOver{
                button{
                  border-radius: 0px;
                  width: 100%;
-                 background-color: $ligthgray;
+                 background-color: $whitesmoke;
                  color: black;
                  &:hover{
                    background: $blue;
@@ -111,13 +206,13 @@ section#teamOver{
     }
 
   }
-  footer{
-    background: $gray;
-    padding: 10px;
-    button{
-      border-radius: 0px;
-      margin-left: 10px;
-    }
-  }
+  // footer{
+  //   background: $gray;
+  //   padding: 10px;
+  //   button{
+  //     border-radius: 0px;
+  //     margin-left: 10px;
+  //   }
+  // }
 
 }

@@ -66,18 +66,18 @@
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <select class="form-control" name="status">
-                                        @foreach($status as $statu)
+                                        @foreach($status as $status)
                                             @if($statu==$event->status)
                                                 <option value="{{$event->status}}" selected>{{$event->status}}</option>
                                             @else
-                                                <option value="{{$statu}}" >{{$statu}}</option>
+                                                <option value="{{$status}}" >{{$status}}</option>
                                             @endif
                                         @endforeach
 
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="submit" class="btn vb-button top-20">Update</button>
+                                    <button type="submit" class="btn vb-button">Update</button>
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="" class="btn btn-purple top-40" id="mail-organizer"><i class="fa fa-envelope right-5"></i>Contact organizer</a>
+                            <a href="" class="btn btn-purple top-40 right-10" id="mail-organizer"><i class="fa fa-envelope right-5"></i>Contact organizer</a>
                             <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple top-40" id="delete-event"><i class="fa fa-trash right-5"></i>Delete event</a>
                         </div>
                     </div>
