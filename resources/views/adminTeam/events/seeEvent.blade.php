@@ -54,7 +54,8 @@
 
             </div>
             @if($event->status=='open')
-            <a href="{{route('Interested',[$event->slug])}}" class="btn btn-primary" id="vb-button">show interest</a>
+            <a href="{{route('Interested',[$event->slug])}}" class="btn vb-button top-20">Show interest</a>
+            <p class="dark-gray top-20"><i>Clicking the button above will alert the event organizer, and you'll get an email if your team is selected to participate in this event.</i></p>
                 @else
             <span>Status:</span> {{$event->status}}
             @endif
