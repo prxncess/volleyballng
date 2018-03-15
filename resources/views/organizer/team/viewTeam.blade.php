@@ -4,18 +4,6 @@
     @endsection
 
 @section('content')
-    {{--
-    //think things on purpose
-    1 im in right standing with God
-    2 I will not bow down to fear
-    3 i can do whatever i ever need to do in my life(noting is too much for you do if its the right thing God is calling you to do)
-    # what ever comes up in my life im going to have a positive attitude. i can handle it
-    # i believe something good is going to happen to me today
-    4 i obey God promtly exdous 24 vs 7,
-    # no excuses only results
-    5 i dont make decisions based on my feelings
-
-    --}}
     <div class="" id="">
         <section id="teamOver">
             @if(session('res')=='success')

@@ -39,7 +39,7 @@
                                 <option value="">Select one</option>
                                 @foreach($states as $state)
                                     @if($event->e_location==$state)
-                                    <option value="{{$event->e_location}}" selected="">{{$event->e_location}}</option>
+                                    <option value="{{$event->e_location}}" selected>{{$event->e_location}}</option>
                                     @else
                                         <option value="{{$state}}">{{$state}}</option>
                                     @endif
@@ -102,11 +102,11 @@
 
                         <div class="col-sm-12">
                             <select class="form-control" name="event_status">
-                                @foreach($status as $statu)
-                                    @if($statu==$event->status)
+                                @foreach($status as $stat)
+                                    @if($stat==$event->status)
                                         <option value="{{$event->status}}" selected>{{$event->status}}</option>
                                     @else
-                                        <option value="{{$statu}}" >{{$statu}}</option>
+                                        <option value="{{$stat}}" >{{$stat}}</option>
                                     @endif
                                 @endforeach
 
