@@ -82,6 +82,10 @@
         });*/
         $.material.init()
 
+        $('#notifyOg').on('click',function () {
+           $.get('{{route('OgMarkRead')}}')
+        })
+
     })
 
 </script>

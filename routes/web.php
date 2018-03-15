@@ -146,6 +146,7 @@ Route::get('Email', function(){
 
 //event organizer admin area
 Route::get('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@organizerlogin']);
+Route::get('/organizer',['uses'=>'Organizer\organizerLoginController@organizerlogin']);
 Route::post('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@tryLogin']);
 Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
 
@@ -163,11 +164,15 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
 
     //mail organizer
 
-    //teas
+    //teams
     Route::get('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
+    Route::post('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
+   // Route::get('/acceptTeam/{team}/interestedIn/{event}',['as'=>'OgAcceptTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
 
     //view player
     Route::get('/Players/{player}/{playerName}/overview',['as'=>'OgCheckPlayer','uses'=>'Organizer\organizerPagesController@checkPlayer']);
+    //mark notifcation as read
+    Route::get('/markAsRead/',['as'=>'OgMarkRead','uses'=>'Organizer\organizerPagesController@markEventAs']);
 
 });
 

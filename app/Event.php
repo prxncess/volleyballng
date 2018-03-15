@@ -15,4 +15,11 @@ class Event extends Model
     public function organizer(){
        return $this->belongsToMany('App\Organizer');
     }
+    public function teams(){
+        return $this->belongsToMany('App\Team');
+    }
+    public function hasTeam($team){
+        return $this->teams->contains($team);
+      // return $this->teams->contains($team);
+    }
 }

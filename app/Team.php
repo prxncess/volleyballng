@@ -24,5 +24,8 @@ class Team extends Authenticatable
     {
         return $this->contact;
     }
+    public function event(){
+        return $this->belongsToMany('App\Event');
+    }
 
 }

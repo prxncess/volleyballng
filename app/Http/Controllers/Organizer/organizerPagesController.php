@@ -65,10 +65,21 @@ class organizerPagesController extends Controller
 
         try{
             $team=Team::whereName($team)->firstOrFail();
-            return view('organizer.team.viewTeam',compact('team'));
+            //check if event is also correct
+            try{
+                $eve=Event::whereSlug($event)->firstOrFail();
+                //save the teams and event to session
+                session(['event'=>$eve->id]);
+                session(['team'=>$team->id]);
+
+                return view('organizer.team.viewTeam',compact('team','eve'));
+
+            }catch(ModelNotFoundException $e){
+                return view('404');
+            }
 
         }catch (ModelNotFoundException $e){
-            return "Team Not Found";
+            return view('404');
         }
     }
     public function checkPlayer($player_id,$playerName){
@@ -90,5 +101,48 @@ class organizerPagesController extends Controller
             return 'Player not found. Your are doing something wrong';
         }
 
+    }
+    public function acceptTeam($team,$event){
+        //add team to event
+        //find the team
+        try{
+            $tt=Team::whereName($team)->firstOrFail();
+            try{
+                //find event
+                $ee=Event::whereSlug($event)->firstOrFail();
+
+               //check if team information passed is actually correct
+                if($tt->id==session('team')&& $ee->id==session('event')){
+                    //check if team is already added to events
+                    if($ee->hasTeam($tt->id)){
+                        //team is already added to events
+                        return redirect(route('OgCheckTeam',[$tt->name,$ee->slug]))->with('res','error');
+                    }else{
+                        //include team to events
+                        $ee->teams()->attach([$tt->id]);
+                        return redirect(route('OgCheckTeam',[$tt->name,$ee->slug]))->with('res','success');
+                    }
+                    //$event->attach([$tt->id]);
+                }
+            }catch (ModelNotFoundException $e){
+                return view('404');
+            }
+
+        }catch (ModelNotFoundException $e){
+            return view('404');
+        }
+
+        //check if the team is already added to the team
+
+        //
+
+
+    }
+
+    public function markEventAs(){
+        //marks an notification as read for the organizer
+        if(auth('organizer')){
+            auth('organizer')->user()->unreadNotifications->markAsRead();
+        }
     }
 }

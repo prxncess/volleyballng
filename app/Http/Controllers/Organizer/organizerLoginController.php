@@ -53,6 +53,7 @@ class organizerLoginController extends Controller
             //access denied
             return redirect()->route('organizerLogin')->with(['res'=>'Email and password incorrect']);
         }
+        $request->session()->regenerate();
         //return next action dashboard
         return redirect()->route('organizerDashboard');
     }

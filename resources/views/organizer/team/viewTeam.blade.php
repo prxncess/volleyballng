@@ -18,6 +18,11 @@
     --}}
     <div class="" id="">
         <section id="teamOver">
+            @if(session('res')=='success')
+                <div class="alert-success alert">Team was successfully registered to your event and has been contacted</div>
+            @elseif(session('res')=='error')
+                <div class="alert alert-danger">Sorry!!! Team is already added</div>
+                @endif
             <header id="teamName" class="">
                 <h2 class="text-center">{{$team->name}}</h2>
             </header>
@@ -130,8 +135,13 @@
                 </div>
             </div>
             <footer>
-                <button class="btn btn-success">Accept Team</button>
-                <button class="btn btn-danger">Reject Team</button>
+                <form method="post">
+                    {!! csrf_field() !!}
+                    <input type="hidden" name="xd" value="{{$team->id}}" >
+                    <input type="hidden" name="lx" value="{{$eve->id}}" >
+                    <button type="submit" class="btn btn-success">Accept Team</button>
+                    <button class="btn btn-danger">Reject Team</button>
+                </form>
             </footer>
         </section>
     </div>
