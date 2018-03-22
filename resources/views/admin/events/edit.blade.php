@@ -35,11 +35,13 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Location</label>
-                            <select name="event_location" id="event-loaction" class="form-control">
+                            <select name="event_location" id="event-location" class="form-control">
                                 <option value="">Select one</option>
                                 @foreach($states as $state)
                                     @if($event->e_location==$state)
                                     <option value="{{$event->e_location}}" selected>{{$event->e_location}}</option>
+                                    @elseif(old('event_location'))
+                                        <option value="{{old('event_location')}}">{{old('event_location')}}</option>
                                     @else
                                         <option value="{{$state}}">{{$state}}</option>
                                     @endif

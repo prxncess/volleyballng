@@ -21,7 +21,12 @@
                 <h2>Overview</h2>
                 <div id="separator"></div>
                 <div id="ad-event-info" class="">
-                    <img src="{{asset('images/event/'.$event->image)}}" class="img-responsive">
+                    @if($event->image!='')
+                        <img src="{{asset('images/event/'.$event->image)}}" class="img-responsive">
+                    @else
+                        <img class="img-responsive" src="{{asset('images/seuww.png')}}" style="width: 100px">
+                    @endif
+
                     <div class="row">
                         <div class="col-sm-3"><strong>Title</strong></div>
                         <div class="col-sm-9">{{$event->title}}</div>
@@ -66,11 +71,11 @@
                             <div class="form-group">
                                 <div class="col-sm-4">
                                     <select class="form-control" name="status">
-                                        @foreach($status as $status)
-                                            @if($statu==$event->status)
+                                        @foreach($status as $stat)
+                                            @if($stat==$event->status)
                                                 <option value="{{$event->status}}" selected>{{$event->status}}</option>
                                             @else
-                                                <option value="{{$status}}" >{{$status}}</option>
+                                                <option value="{{$stat}}" >{{$stat}}</option>
                                             @endif
                                         @endforeach
 

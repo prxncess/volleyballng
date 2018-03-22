@@ -24,7 +24,11 @@
 
                 <div class="media">
                     <div class="media-left">
+                        @if($event->image!='')
                         <img class="media-object" src="{{asset('images/event/'.$event->image)}}" style="width: 80px">
+                            @else
+                            <img class="media-object" src="{{asset('images/seuww.png')}}" style="width: 80px">
+                        @endif
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{$event->title}}</h4>

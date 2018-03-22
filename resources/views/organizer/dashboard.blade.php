@@ -60,7 +60,7 @@
                           </tr>
                           @foreach($organizer->events as $event)
                               <tr>
-                                  <td><a href="" class=""><b>{{$event->title}}</b></a></td>
+                                  <td><b>{{$event->title}}</b></td>
                                   <td>{{$event->status}}</td>
                                   <td><a href="{{route('upEvent',$event->slug)}}"><i class="fa fa-edit"></i></a></td>
                               </tr>
