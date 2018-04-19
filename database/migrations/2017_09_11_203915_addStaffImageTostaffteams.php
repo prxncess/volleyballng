@@ -15,7 +15,7 @@ class AddStaffImageTostaffteams extends Migration
     {
         Schema::table('staffteams', function (Blueprint $table) {
             //
-            $table->string('image','150')->nullable();
+           // $table->string('image','150')->nullable();
         });
     }
 

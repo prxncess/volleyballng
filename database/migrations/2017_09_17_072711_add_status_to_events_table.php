@@ -22,7 +22,7 @@ class AddStatusToEventsTable extends Migration
                 });
             }
 
-            $table->enum('status',['review','open','closed','concluded']);
+            $table->enum('status' , array('pending','open','concluded','closed','new','review'))->default('new');
         });
     }
 

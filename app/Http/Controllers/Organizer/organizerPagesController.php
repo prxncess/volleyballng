@@ -145,4 +145,19 @@ class organizerPagesController extends Controller
             auth('organizer')->user()->unreadNotifications->markAsRead();
         }
     }
+    public function showTeam($team){
+        //looks for given team for organizer to view
+        try{
+            $team=Team::whereName($team)->firstOrFail();
+            //check if event is also correct
+
+
+                return view('organizer.team.show',compact('team'));
+
+
+        }catch (ModelNotFoundException $e){
+            return view('404');
+        }
+
+    }
 }

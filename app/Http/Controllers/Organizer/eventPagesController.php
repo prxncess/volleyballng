@@ -131,9 +131,20 @@ class eventPagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
-        //
+        //show a given event
+        try{
+            //find the event
+
+            $event=Event::whereSlug($name)->firstOrfail();
+
+            //event found
+            return view('organizer.event.show',compact('event'));
+
+        }catch (ModelNotFoundException $e){
+            return view('404');
+        }
     }
 
     /**

@@ -20,6 +20,7 @@
             <header>
                 <h2>Overview</h2>
                 <div id="separator"></div>
+            </header>
                 <div id="ad-event-info" class="">
                     @if($event->image!='')
                         <img src="{{asset('images/event/'.$event->image)}}" class="img-responsive">
@@ -98,7 +99,7 @@
                     </div>
 
                 </div>
-            </header>
+
         </div>
     </div>
     @endsection

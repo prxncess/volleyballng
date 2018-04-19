@@ -208,17 +208,126 @@
   float: left;
 }
 
-section#teamOver header#teamName {
-  background: black;
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  font-family: "Open Sans", sans-serif, sans-serif;
+}
+
+body a {
+  text-decoration: none;
+  color: black;
+}
+
+body a:hover {
+  color: #4449ca;
+  text-decoration: none;
+}
+
+body .btn-purple {
+  color: #4449ca;
+  border: 1px solid #4449ca;
+  border-radius: 20px;
+}
+
+body .btn-purple:hover {
   color: white;
+  background-color: #4449ca;
+}
+
+body .right-10 {
+  margin-right: 10px;
+}
+
+body .right-5 {
+  margin-right: 5px;
+}
+
+body .top-bottom-padding-40 {
+  padding: 40px 0;
+}
+
+body .top-bottom-padding-20 {
+  padding: 20px 0;
+}
+
+body .left-right-padding-20 {
+  padding: 0 20px;
+}
+
+body .bottom-40 {
+  margin-bottom: 40px;
+}
+
+body .top-40 {
+  margin-top: 40px;
+}
+
+body .bottom-20 {
+  margin-bottom: 20px;
+}
+
+body .top-20 {
+  margin-top: 20px;
+}
+
+.float-right {
+  float: right !important;
+}
+
+@media only screen and (max-width: 767px) {
+  float: none !important;
+}
+
+.dark-gray {
+  color: #6e6e6e;
+}
+
+.purple {
+  color: #4449ca;
+}
+
+.gray-background {
+  background-color: #fdfdfd;
+}
+
+.purple-background {
+  background-color: rgba(68, 73, 202, 0.02);
+}
+
+.gray-separator {
+  height: 1px;
+  background-color: #e6e6e6;
+}
+
+.purple-separator {
+  height: 1px;
+  background-color: #4449ca;
+}
+
+.yellow-separator {
+  height: 1px;
+  background-color: #e8b617;
+}
+
+div#admin-box div#ad-event-info table {
+  width: 400px;
+}
+
+section#teamOver header#teamName {
+  background: #f3f3f3;
   padding: 20px;
   margin-bottom: -10px;
 }
 
 section#teamOver div#teamIn {
-  background: #4449ca;
-  color: white;
-  padding: 20px;
+  background: #fdfdfd;
+  padding: 40px 20px;
 }
 
 section#teamOver div#teamIn .media .media-object {
@@ -226,8 +335,15 @@ section#teamOver div#teamIn .media .media-object {
   height: 100px;
 }
 
+@media only screen and (max-width: 767px) {
+  section#teamOver div#teamIn .media .media-object {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 section#teamOver div#teamOth aside {
-  background: #e6e6e640;
+  background: #f3f3f3;
 }
 
 section#teamOver div#teamOth aside ul.nav.nav-tabs {
@@ -237,16 +353,13 @@ section#teamOver div#teamOth aside ul.nav.nav-tabs {
 }
 
 section#teamOver div#teamOth aside ul.nav.nav-tabs li a {
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
   text-transform: capitalize;
   border: 0px;
 }
 
 section#teamOver div#teamOth aside ul.nav.nav-tabs li a:hover {
   border-radius: 0px;
-  background: #8788c5;
+  background: #4449ca;
   color: white;
 }
 
@@ -302,23 +415,13 @@ section#teamOver div#teamOth div.tab-content div#squad div#player-card a div#pla
 section#teamOver div#teamOth div.tab-content div#squad div#player-card a div#playerInfo button {
   border-radius: 0px;
   width: 100%;
-  background-color: #e6e6e640;
+  background-color: #fdfdfd;
   color: black;
 }
 
 section#teamOver div#teamOth div.tab-content div#squad div#player-card a div#playerInfo button:hover {
   background: #4449ca;
   color: white;
-}
-
-section#teamOver footer {
-  background: #e6e6e6;
-  padding: 10px;
-}
-
-section#teamOver footer button {
-  border-radius: 0px;
-  margin-left: 10px;
 }
 
 /*# sourceMappingURL=organizer.css.map */

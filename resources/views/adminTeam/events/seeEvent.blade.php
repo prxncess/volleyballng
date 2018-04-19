@@ -54,9 +54,14 @@
 
             </div>
             @if($event->status=='open')
-            <a href="{{route('Interested',[$event->slug])}}" class="btn vb-button top-20">Show interest</a>
-            <p class="dark-gray top-20"><i>Clicking the button above will alert the event organizer, and you'll get an email if your team is selected to participate in this event.</i></p>
+                @if($event->hasTeam( auth('team')->user()->id))
+                    <p>Your team has being registered for this event </p>
                 @else
+                    <a href="{{route('Interested',[$event->slug])}}" class="btn vb-button top-20">Show interest</a>
+                    <p class="dark-gray top-20"><i>Clicking the button above will alert the event organizer, and you'll get an email if your team is selected to participate in this event.</i></p>
+
+                @endif
+               @else
             <span>Status:</span> {{$event->status}}
             @endif
         </div>
@@ -69,6 +74,7 @@
                 //e.preventDefault();
                 //send ajax request
                 $.get({
+
                     url:'{{route('TmMarkRead')}}'
                 })
             })

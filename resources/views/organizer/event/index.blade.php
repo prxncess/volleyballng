@@ -25,8 +25,13 @@
                     @foreach($events as $event)
 
                         <div class="media">
+
                             <div class="media-left">
+                                @if($event->image !='')
                                 <img class="media-object" src="{{asset('images/event/'.$event->image)}}" style="width: 80px">
+                                    @else
+                                    <img class="media-object" src="{{asset('images/seuww.png')}}" style="width: 80px">
+                                @endif
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">{{$event->title}}</h4>
@@ -40,7 +45,7 @@
                                     <li><span><b>End Date:</b> {{date('jS F Y',$event->end_date)}}</span></li>
                                     </ul>
 
-                                    <a href="" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
+                                    <a href="{{route('viewEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
                                     <a href="{{route('upEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit right-5"></i>Edit</a>
 
 

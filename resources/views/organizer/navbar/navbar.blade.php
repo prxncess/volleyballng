@@ -11,7 +11,7 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li class="dropdown" id="notifyOg">
+        <li class="dropdown" id="">
             <a href="#"  class="dropdown-toggle" data-toggle="dropdown"><span class="badge">{{count(auth('organizer')->user()->unreadNotifications)}}</span> <i class="fa fa-envelope"></i> <b class="caret"></b></a>
             <ul  class="dropdown-menu message-dropdown">
                 @if(count(auth('organizer')->user()->unreadNotifications )>0)
@@ -22,7 +22,7 @@
                             </a>
                         </li>
                     @endforeach
-
+                    <div><a href="#" id="notifyOg">Clear all notifications</a> </div>
                 @else
                     <p> no notification at the moment</p>
                 @endif

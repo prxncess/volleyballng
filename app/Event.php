@@ -20,6 +20,6 @@ class Event extends Model
     }
     public function hasTeam($team){
         return $this->teams->contains($team);
-      // return $this->teams->contains($team);
+
     }
 }

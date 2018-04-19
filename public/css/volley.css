@@ -463,9 +463,7 @@ div#footer footer div#social-pages ul li i {
 
 div#footer footer section {
   /*margin-top: 40px;*/
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: justify;
   justify-content: space-between;
 }
 
@@ -615,7 +613,6 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide div#mo
   top: 50%;
   left: 50%;
   font-size: 50px;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   overflow: hidden;
@@ -629,7 +626,6 @@ section#our-home article#vb-home-team div.swiper-wrapper div.swiper-slide div#mo
   overflow: hidden;
   top: 56%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
@@ -740,7 +736,6 @@ section#our-home div#event-preview div#preview div#more-photos i, section#our-ho
   top: 50%;
   left: 50%;
   font-size: 50px;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   overflow: hidden;
@@ -822,20 +817,14 @@ article#tutorials {
   padding: 5px 15px;
   border-radius: 5px;
   /*display: flex;*/
-  display: -webkit-inline-box;
   display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
 }
 
 article#tutorials div#thumbs {
-  display: -webkit-box;
   display: flex;
   max-width: 450px;
   flex-wrap: wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-direction: row;
   margin-top: 25px;
 }
@@ -870,10 +859,7 @@ article#tutorials div#caption img {
 }
 
 article#tutorials aside {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
@@ -914,10 +900,7 @@ article#our-events header button:hover {
 }
 
 article#our-events aside#event-preview {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   flex-flow: row wrap;
   /*justify-content: space-between;*/
 }
@@ -1249,7 +1232,6 @@ div#slides div.swiper-wrapper div.swiper-slide div#more-photos i, div#slides div
   top: 50%;
   left: 50%;
   font-size: 50px;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   overflow: hidden;
@@ -1263,7 +1245,6 @@ div#slides div.swiper-wrapper div.swiper-slide div#more-photos h3, div#slides di
   overflow: hidden;
   top: 56%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
