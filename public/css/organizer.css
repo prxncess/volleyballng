@@ -276,12 +276,24 @@ body .top-20 {
   margin-top: 20px;
 }
 
-.float-right {
-  float: right !important;
+body .top-75 {
+  margin-top: 7.5%;
 }
 
 @media only screen and (max-width: 767px) {
-  float: none !important;
+  body .top-75 {
+    margin-top: 9em;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+@media only screen and (max-width: 767px) {
+  .float-right {
+    float: left;
+  }
 }
 
 .dark-gray {
@@ -313,6 +325,11 @@ body .top-20 {
 .yellow-separator {
   height: 1px;
   background-color: #e8b617;
+}
+
+.vb-navbar {
+  border: none;
+  color: #fdfdfd;
 }
 
 div#admin-box div#ad-event-info table {

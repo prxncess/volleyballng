@@ -37,7 +37,7 @@ class organizerLoginController extends Controller
     public function tryLogin(Request $request){
         $message=[
             'user_name.required'=>'Please enter your  email',
-            'user_name.email'=>'Email entered is invalid',
+            'user_name.email'=>'Please enter a valid email address',
             'password.required'=>'Please enter your password',
         ];
         Validator::make($request->all(),[
@@ -51,7 +51,7 @@ class organizerLoginController extends Controller
         ],false);
         if(!$auth){
             //access denied
-            return redirect()->route('organizerLogin')->with(['res'=>'Email and password incorrect']);
+            return redirect()->route('organizerLogin')->with(['res'=>'Email or password is incorrect, please try again. If you have forgotten your login details, please send an email to efe@volleyball.ng']);
         }
         $request->session()->regenerate();
         //return next action dashboard

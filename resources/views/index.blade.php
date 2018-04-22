@@ -48,6 +48,7 @@
                     See what we have been up to.<a href="{{route('newEvent')}}"><span class="pull-right"><i class="fa fa-plus"></i>Create Event</span></a>
                 </p> -->
             </header>
+            <div class="top-40"></div>
             <div id="slides" class="swiper-container swiper-container-horizontal">
                 <div class="swiper-wrapper">
                     @if($events->isEmpty())
@@ -91,7 +92,7 @@
                 <div class="yellow-separator top-20 bottom-20"></div>
                 <div class="row">
                   <div class="col-sm-6"><p>Groups of volleyball <a href="{{route('viewTeams')}}">lovers</a>, players, coaches, etc</p></div>
-                  <div class="col-sm-6"><a href="{{route('register')}}" class=" float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
+                  <div class="col-sm-6"><a href="{{route('register')}}" class="float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
                 </div>
                 <!-- <p>Check out our <a href="{{route('viewTeams')}}">Teams</a> . <a href="{{route('register')}}"><span class="pull-right"><i class="fa fa-plus"></i> Register</span></a></p> -->
 

@@ -62,12 +62,13 @@ a{
 // End of helper classes
 }
 .float-right {
-  float: right !important;
+  float: right;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      float: left;
+  }
 }
-// Media query
-@media only screen and (max-width: 767px) {
-    float: none !important;
-}
+
 .dark-gray {
   color: $dark-gray;
 }
@@ -291,7 +292,12 @@ header{
     }
   }
   h1{
-    font-size: 48px;
+    font-size: 4em;
+    line-height: 1.5;
+    // Media query
+    @media only screen and (max-width: 767px) {
+        font-size: 2.5em;
+    }
   }
   h2,h3,h4{
     color: $blue;
@@ -1686,7 +1692,7 @@ section#viewPlayer{
 @media only screen  and (max-width: 350px) {
   header#tagline{
     h1{
-      font-size: 28px !important;
+      // font-size: 28px !important;
     }
   }
   //event preview
@@ -1799,7 +1805,7 @@ section#viewPlayer{
   url("../../public/images/volleyballbg.jpeg");
   // url("https://images.unsplash.com/photo-1501813354559-db602a6d8077?ixlib=rb-0.3.5&s=e91c24b92490b1f497c6901fdfd100d2&auto=format&fit=crop&w=750&q=80");
   padding: 28vh 60px;
-  height: 85vh;
+  // height: 85vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

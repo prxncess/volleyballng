@@ -45,7 +45,7 @@
 @include('organizer.navbar.navbar')
     <div id="page-wrapper">
 
-        <div class="container-fluid">
+        <div class="container-fluid top-75">
             @yield('content')
         </div>
 

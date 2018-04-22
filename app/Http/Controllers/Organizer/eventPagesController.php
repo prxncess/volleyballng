@@ -62,7 +62,7 @@ class eventPagesController extends Controller
             $message =[
                 'event_title.required'=>"Please enter the title of the event",
                 'event_title.unique'=>"please choose another title as this is already in use",
-                'event_description.required'=>'Please write at least 30 words to describe this event',
+                'event_description.required'=>'Please write a longer description (at least 30 characters)',
                 'event_location.required'=>'Select the location of your event',
                 'event_start.required'=>'When will the event start?',
                 'event_end.required'=>'When will the event end?',
@@ -112,7 +112,7 @@ class eventPagesController extends Controller
                     $message->subject('New Event Created and Requesting a Review');
                     $message->from('volleyballdotngee@gmail.com','Volleyball.ng');
                 });
-                return redirect()->route('myEvents')->with('status','Your event was successfully created and is currently been reviewed. ');
+                return redirect()->route('myEvents')->with('status','Your event was successfully created and is currently under review.');
             }
 
 
@@ -188,17 +188,17 @@ class eventPagesController extends Controller
 
             $message =[
                 'event_title.required'=>"Please enter the title of the event",
-                'event_description.required'=>'Please write a description this event',
-                'event_description.min'=>'Please write at least 50 characters to describe this event',
-                'event_description.regex'=>'some characters in your description are not allowed',
+                'event_description.required'=>'Please write a description for this event (at least 30 characters)',
+                'event_description.min'=>'Please write a longer description of this event (at least 30 characters)',
+                'event_description.regex'=>'Some characters in your description are not allowed',
                 'event_location.required'=>'Select the location of your event',
                 'event_start.required'=>'When will the event start?',
                 'event_end.required'=>'When will the event end?',
                 'event_poster.image'=>'File uploaded into an image:jpg,png,jpeg,x-png',
-                'event_start.date'=>'Invalid date format (yyyy-mm-dd)',
-                'event_start.prevdate'=>'Previous dates can not be selected',
-                'event_end.prevdate'=>'Previous dates can not be selected',
-                'event_end.date'=>'invalid date format (yyyy-mm-dd)',
+                'event_start.date'=>'Invalid date format (please use yyyy-mm-dd)',
+                'event_start.prevdate'=>'Previous dates cannot be selected',
+                'event_end.prevdate'=>'Previous dates cannot be selected',
+                'event_end.date'=>'Invalid date format (please use yyyy-mm-dd)',
                 'event_phone.regex'=>'Phone number format not allowed. use 080xxxxxxxx',
 
 
@@ -207,7 +207,7 @@ class eventPagesController extends Controller
             ];
             Validator::make($request->all(),[
                 'event_title'=>'required|regex:/^[\w.,\-\' ]{3,225}$/i',
-                'event_description'=>"required|min:50|regex:/^[A-Za-z0-9?.,#-_ ]{50,}$/i",
+                'event_description'=>"required|min:30|regex:/^[A-Za-z0-9?.,#-_ ]{30,}$/i",
                 'event_location'=>'required',
                 'event_start'=>'required|date|prevdate',
                 'event_end'=>'required|date|prevdate',
@@ -242,7 +242,7 @@ class eventPagesController extends Controller
                     $message->subject('Event Approval');
                     $message->from('volleyballdotngee@gmail.com','Volleyball.ng');
                 });
-                return redirect()->route('myEvents')->with('status','Your event was updated and is  been reviewed. ');
+                return redirect()->route('myEvents')->with('status','Your event has been submitted for review.');
             }
 
         }catch (ModelNotFoundException $e){

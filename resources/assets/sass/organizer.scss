@@ -56,16 +56,25 @@ a{
 .top-20 {
   margin-top: 20px;
 }
+.top-75 {
+  margin-top: 7.5%;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      margin-top: 9em;
+  }
+}
+
 
 // End of helper classes
 }
 .float-right {
-  float: right !important;
+  float: right;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      float: left;
+  }
 }
-// Media query
-@media only screen and (max-width: 767px) {
-    float: none !important;
-}
+
 .dark-gray {
   color: $dark-gray;
 }
@@ -91,6 +100,10 @@ a{
   background-color: $yellow;
 }
 
+.vb-navbar {
+  border: none;
+  color: $whitesmoke;
+}
 
 div#admin-box{
 

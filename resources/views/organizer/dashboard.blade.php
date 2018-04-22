@@ -2,7 +2,7 @@
 @section('Organizer Dashboard')
 
   @section('content')
-      <div class="well well" id="admin-box">
+      <div class="well" id="admin-box">
           <header>
               @if(session('res'))
                   <div class="alert alert-danger">{{session('res')}}</div>

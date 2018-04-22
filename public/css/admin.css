@@ -272,6 +272,7 @@ ul.pagination {
 }
 
 .switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
 
@@ -737,7 +738,6 @@ a:hover {
 .gray-separator {
   height: 1px;
   background-color: #e6e6e6;
-  max-width: 600px;
 }
 
 .purple-separator {
@@ -748,7 +748,6 @@ a:hover {
 .yellow-separator {
   height: 1px;
   background-color: #e8b617;
-  max-width: 600px;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

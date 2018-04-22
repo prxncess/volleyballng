@@ -4,12 +4,12 @@
     @endsection
 
 @section('content')
-    <div class="" id="">
+    <div class="">
         <section id="teamOver">
             @if(session('res')=='success')
                 <div class="alert-success alert">Team was successfully registered to your event and has been contacted</div>
             @elseif(session('res')=='error')
-                <div class="alert alert-danger">Sorry!!! Team is already added</div>
+                <div class="alert alert-danger">You have already accepted this team.</div>
                 @endif
             <header id="teamName" class="">
                 <h2 class="text-center">{{$team->name}}</h2>
@@ -26,10 +26,10 @@
                         <h3 class="media-heading">{{$team->name}}</h3>
                         <p>{{wordwrap($team->description,100)}}</p>
                     </div>
-                    
+
                 </div>
             </div>
-            <div id="teamOth">
+            <div id="teamOth" class="bottom-20">
                 <aside>
                     <ul class="nav nav-tabs center-block">
                         <li class="active"><a data-toggle="tab" href="#over">Overview</a></li>
@@ -41,44 +41,47 @@
                 <div class="tab-content">
                     <div id="over" class="tab-pane fade in active ">
                         <header>
-                            <h3>Management Team</h3>
+                            <h3>Management</h3>
                         </header>
-                        <div id="separator"></div>
-                       <div id="ogStaff">
-                           @if($team->staff->isEmpty())
-                               <p>No staff at the moment for this team</p>
-                               @else
-                               @foreach($team->staff as $staff)
-                               <div class="media">
-                                   <div class="media-left">
-                                       <img src="{{asset('images/team/'.$staff->image)}}" width="100px" class="media-object">
-                                   </div>
-                                   <div class="media-body">
-                                       <h4 class="text-capitalize">{{$staff->fname.' '.$staff->lname}}</h4>
-                                       <label class="text-uppercase">{{$staff->position}}</label>
-                                       <p>{{$staff->description}}</p>
-                                       @if($team->staff->count()>1) <div id="separator"></div> @endif
-                                   </div>
-                               </div>
-                               @endforeach
-                           @endif
-                       </div>
-                        <div id="otherInfor">
+                        <div class="gray-separator bottom-20"></div>
+                         <div class="bottom-40">
+                             @if($team->staff->isEmpty())
+                                 <p>This team has not uploaded information about its management staff</p>
+                                 @else
+                                 @foreach($team->staff as $staff)
+                                 <div class="media">
+                                     <div class="media-left">
+                                         <img src="{{asset('images/team/'.$staff->image)}}" width="100px" class="media-object">
+                                     </div>
+                                     <div class="media-body">
+                                         <h4 class="text-capitalize">{{$staff->fname.' '.$staff->lname}}</h4>
+                                         <label class="text-uppercase">{{$staff->position}}</label>
+                                         <p>{{$staff->description}}</p>
+                                         @if($team->staff->count()>1) <div id="separator"></div> @endif
+                                     </div>
+                                 </div>
+                                 @endforeach
+                             @endif
+                         </div>
+                        <div class="bottom-40">
                             <header>
-                                <h3>Competitions Currently Involved </h3>
-                                <div id="separator"></div>
+                                <h3>Competitions</h3>
+                                <div class="gray-separator bottom-20"></div>
                             </header>
                             <div id="involved"></div>
+                          </div>
+
+                          <div class="bottom-40">
 
                             <header>
                                 <h3>Previous Competitions </h3>
-                                <div id="separator"></div>
+                                <div class="gray-separator bottom-20"></div>
                             </header>
                             <div id="prevComp"></div>
                         </div>
                     </div>
                     <div id="squad" class="tab-pane fade ">
-                           <div class="row">
+                           <div class="row bottom-40">
                                @if($team->players->count() >0)
                                    @foreach($team->players as $player)
                                        <div class="col-xs-12 col-sm-6 col-md-4">
@@ -106,7 +109,7 @@
                                        </div>
                                        @endforeach
                                    @else
-                                   <div class="text-center">No players at the moment</div>
+                                   <div class="text-center">This team has not yet listed any players.</div>
                                @endif
 
 
@@ -127,8 +130,10 @@
                     {!! csrf_field() !!}
                     <input type="hidden" name="xd" value="{{$team->id}}" >
                     <input type="hidden" name="lx" value="{{$eve->id}}" >
-                    <button type="submit" class="btn btn-success">Accept Team</button>
-                    <button class="btn btn-danger">Reject Team</button>
+                    <div class="row">
+                      <div class="col-xs-6"><button class="btn btn-purple">Reject Team</button></div>
+                      <div class="col-xs-6"><button type="submit" class="btn vb-button">Accept Team</button></div>
+                    </div>
                 </form>
             </footer>
         </section>

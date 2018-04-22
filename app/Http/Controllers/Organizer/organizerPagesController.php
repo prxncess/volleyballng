@@ -42,7 +42,7 @@ class organizerPagesController extends Controller
         $messages=[
             'password.required'=>'Enter your new password',
             'password.confirmed'=>'Please enter confirmed password',
-            'password.regex'=>'A minimum 6 characters, at least one letter and one number is required',
+            'password.regex'=>'Password should be at least 6 characters, including 1 letter and 1 number',
         ];
         Validator::make($request->all(),[
             'password'=>'required|confirmed|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{6,}/'
@@ -52,7 +52,7 @@ class organizerPagesController extends Controller
         $organizer->password=bcrypt($request->get('password'));
         if($organizer->save()){
             //save and redirect back
-            return redirect()->route('opassword')->with('res','password updated');
+            return redirect()->route('password')->with('res','password updated');
 
         }
     }
@@ -95,10 +95,10 @@ class organizerPagesController extends Controller
                 $team=$player->team;
                return view('organizer.team.playerCard',compact('team','player'));
             }else{
-                return 'Your playing with fire. Your are doing something wrong';
+                return 'You are playing with fire. You are doing something wrong';
             }
         }catch (ModelNotFoundException $e){
-            return 'Player not found. Your are doing something wrong';
+            return 'Player not found. You are doing something wrong';
         }
 
     }
