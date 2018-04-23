@@ -64,7 +64,7 @@
                        @foreach($events as $event)
                            <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
                                <h3><a href="{{route('viewEvent',$event->slug)}}">{!! $event->title !!}</a></h3>
-                               <img src="{{asset('images/event/'.$event->image)}}">
+                               <img class="img-responsive" src="{{asset('images/event/'.$event->image)}}">
                                <header>
                                    <div id="bar"></div>
                                    <p>{!! $event->description !!} <a href="{{route('viewEvent',$event->slug)}}">More</a> </p>

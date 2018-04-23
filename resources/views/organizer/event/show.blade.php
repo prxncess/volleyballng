@@ -7,7 +7,7 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('myEvents')}}">events</a> </li>
-            <li class="breadcrumb-item-active">{{$team->name}}</li>
+            <li class="breadcrumb-item-active">{{$event->title}}</li>
         </ol>
         <header>
             <h2>Overview</h2>
