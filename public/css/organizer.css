@@ -219,69 +219,69 @@ body {
   font-family: "Open Sans", sans-serif, sans-serif;
 }
 
-body a {
+a {
   text-decoration: none;
-  color: black;
+  color: #4449ca;
 }
 
-body a:hover {
+a:hover {
   color: #4449ca;
   text-decoration: none;
 }
 
-body .btn-purple {
+.btn-purple {
   color: #4449ca;
   border: 1px solid #4449ca;
   border-radius: 20px;
 }
 
-body .btn-purple:hover {
+.btn-purple:hover {
   color: white;
   background-color: #4449ca;
 }
 
-body .right-10 {
+.right-10 {
   margin-right: 10px;
 }
 
-body .right-5 {
+.right-5 {
   margin-right: 5px;
 }
 
-body .top-bottom-padding-40 {
+.top-bottom-padding-40 {
   padding: 40px 0;
 }
 
-body .top-bottom-padding-20 {
+.top-bottom-padding-20 {
   padding: 20px 0;
 }
 
-body .left-right-padding-20 {
+.left-right-padding-20 {
   padding: 0 20px;
 }
 
-body .bottom-40 {
+.bottom-40 {
   margin-bottom: 40px;
 }
 
-body .top-40 {
+.top-40 {
   margin-top: 40px;
 }
 
-body .bottom-20 {
+.bottom-20 {
   margin-bottom: 20px;
 }
 
-body .top-20 {
+.top-20 {
   margin-top: 20px;
 }
 
-body .top-75 {
+.top-75 {
   margin-top: 7.5%;
 }
 
 @media only screen and (max-width: 767px) {
-  body .top-75 {
+  .top-75 {
     margin-top: 9em;
   }
 }

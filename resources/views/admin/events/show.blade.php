@@ -19,44 +19,51 @@
             @endif
             <header>
                 <h2>Overview</h2>
-                <div id="separator"></div>
+                <div class="gray-separator bottom-40"></div>
             </header>
-                <div id="ad-event-info" class="">
+                <div id="" class="">
                     @if($event->image!='')
                         <img src="{{asset('images/event/'.$event->image)}}" class="img-responsive">
                     @else
                         <img class="img-responsive" src="{{asset('images/seuww.png')}}" style="width: 100px">
                     @endif
 
+                    <div class="top-40"></div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Title</strong></div>
-                        <div class="col-sm-9">{{$event->title}}</div>
+                        <div class="col-sm-2"><p><strong>Title</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->title}}</p></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Description</strong></div>
-                        <div class="col-sm-9">{{$event->description}}</div>
+                        <div class="col-sm-2"><p><strong>Description</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->description}}</p></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Start date:</strong> {{date('jS F Y',$event->start_date)}}</div>
-                        <div class="col-sm-9"><strong>End date: </strong> {{date('jS F Y',$event->end_date)}}</div>
+                        <div class="col-sm-2"><p><strong>Start date</strong></p></div>
+                        <div class="col-sm-10"><p>{{date('jS F Y',$event->start_date)}}</p></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Location</strong></div>
-                        <div class="col-sm-9">{{$event->e_location}} state</div>
+                        <div class="col-sm-2"><p><strong>End date</strong></p> </div>
+                        <div class="col-sm-10"><p>{{date('jS F Y',$event->end_date)}}</p></div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-2"><p><strong>Location</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->e_location}} state</p></div>
+                    </div>
+
                     <h4 class="top-40"><i class="fa fa-user"></i> Organizer information</h4>
-                    <div id="separator"></div>
+                    <div class="gray-separator bottom-20"></div>
+
                     <div class="row">
-                        <div class="col-sm-3"><strong>Organizer</strong></div>
-                        <div class="col-sm-9">{{$event->organizer[0]->organizer}}</div>
+                        <div class="col-sm-2"><p><strong>Organizer</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->organizer[0]->organizer}}</p></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Phone</strong></div>
-                        <div class="col-sm-9">{{$event->organizer[0]->phone}}</div>
+                        <div class="col-sm-2"><p><strong>Phone</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->organizer[0]->phone}}</p></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3"><strong>Email</strong></div>
-                        <div class="col-sm-9">{{$event->organizer[0]->email}}</div>
+                        <div class="col-sm-2"><p><strong>Email</strong></p></div>
+                        <div class="col-sm-10"><p>{{$event->organizer[0]->email}}</p></div>
                     </div>
                     <!-- <div class="row">
                         <div class="col-sm-3"><strong>status</strong></div>
@@ -92,11 +99,15 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-12">
-                            <a href="" class="btn btn-purple top-40 right-10" id="mail-organizer"><i class="fa fa-envelope right-5"></i>Contact organizer</a>
-                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple top-40" id="delete-event"><i class="fa fa-trash right-5"></i>Delete event</a>
+                        <div class="col-xs-6">
+                            <a href="{{route('deleteEvent',$event->slug)}}" class="btn btn-purple top-40" id="delete-event"><i class="fa fa-trash fa-fw"></i>Delete</a>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <a href="" class="btn btn-purple top-40 right-10" id="mail-organizer"><i class="fa fa-envelope fa-fw"></i>Contact organizer</a>
                         </div>
                     </div>
+
+                    <div class="top-40"></div>
 
                 </div>
 

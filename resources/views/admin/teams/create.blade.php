@@ -6,7 +6,7 @@
         <div class="well well" id="admin-box">
             <header>
                 <h2>Add Team</h2>
-                <div class="" id="separator"></div>
+                <div class="gray-separator bottom-40"></div>
             </header>
             <form method="post" class="form-horizontal" id="add-team">
                 {{csrf_field()}}
@@ -16,25 +16,26 @@
                         <input type="text" class="form-control text-capitalize" name="teamName" value="{{old('teamName')}}" id="team-name" placeholder="Pace setters">
                         <p class="error">@if($errors->has('teamName')) {{$errors->first('teamName')}}@endif </p>
                     </div>
-                    <div id="separator"></div>
+                    <!-- <div id="separator"></div> -->
                     <div class="form-group">
                         <label>Email address</label>
                         <input type="text" class="form-control" name="teamContact" value="{{old('teamContact')}}" id="team-contact" placeholder="e.g. pacesetters@gmail.com">
                         <p class="error">@if($errors->has('teamContact')) {{$errors->first('teamContact')}}@endif</p>
-                    </div><div id="separator"></div>
+                    </div>
+                    <!-- <div id="separator"></div> -->
                     <div class="form-group">
                         <label>Phone number</label>
                         <input type="number" class="form-control" name="teamPhoneNumber" value="{{old('teamPhoneNumber')}}" id="team-phone" placeholder="08021234567">
                         <p class="error">@if($errors->has('teamPhoneNumber')) {{$errors->first('teamPhoneNumber')}}@endif</p>
                     </div>
-                    <div id="yellow-separator"></div>
+                    <!-- <div id="yellow-separator"></div> -->
                     <div class="form-group">
                         <label>Contact person</label>
                         <input type="text" class="form-control" name="contactPerson" id="contact-person" value="{{old('contactPerson')}}" placeholder="Uwa">
                         <p class="error">@if($errors->has('contactPerson')) {{$errors->first('contactPerson')}}@endif</p>
                     </div>
 
-                    <div id="yellow-separator"></div>
+                    <!-- <div id="yellow-separator"></div> -->
 
                     <div class="form-group">
                       <label>Description</label>
@@ -42,7 +43,7 @@
                       <textarea class="form-control" name="teamDescription" id="" rows="3" value="{{old('teamDescription')}}" placeholder="">{{old('teamDescription')}}</textarea>
                     </div>
 
-                    <div id="yellow-separator"></div>
+                    <!-- <div id="yellow-separator"></div> -->
 
                 </fieldset>
                 <div class="form-group">

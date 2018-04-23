@@ -7,7 +7,7 @@
             <div class="well well" id="admin-box">
                 <header>
                     <h3>New event</h3>
-                    <div id="separator"></div>
+                    <div class="gray-separator bottom-40"></div>
                 </header>
                 <form method="post" class="form-horizontal" enctype="multipart/form-data" id="event-form">
                     {{csrf_field()}}
@@ -17,8 +17,8 @@
                     @if(session('status') && session('status')=='success')
                         <div class="alert alert-success"> Event was successfully created </div>
                     @endif
-                    <h5><i class="fa fa-file-text-o"></i> Event information</h5>
-                    <div id="separator"></div>
+                    <!-- <h5><i class="fa fa-file-text-o"></i> Event information</h5>
+                    <div id="separator"></div> -->
                     <div class="form-group">
 
                         <div class="col-sm-12">
@@ -67,8 +67,11 @@
                             <p class="error">@if($errors->has('event_description')) {{$errors->first('event_description')}} @endif</p>
                         </div>
                     </div>
+
+                    <div class="top-40"></div>
+
                     <h5><i class="fa fa-address-book-o"></i> Organizer's Information</h5>
-                    <div id="separator"></div>
+                    <div class="gray-separator bottom-40"></div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Organizer's Name</label>

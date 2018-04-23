@@ -9,6 +9,7 @@ body{
   height: 100%;
   // background:#e6e6e6 ;
   font-family:$sans-font,sans-serif;
+}
 
   p {
     // font-size: 16px;
@@ -16,7 +17,7 @@ body{
 
 a{
   text-decoration: none;
-  color: $black;
+  color: $purple;
   &:hover {color:$purple; text-decoration: none};
 }
 
@@ -66,7 +67,6 @@ a{
 
 
 // End of helper classes
-}
 .float-right {
   float: right;
   // Media query

@@ -12,14 +12,14 @@
             <div class="well well" id="admin-box">
                 <header>
                     <h2 class=""><i class="fa fa-paperclip"></i> My Events</h2>
-                    <div id="" class="purple-separator top-10 bottom-20"></div>
+                    <div id="" class="gray-separator top-10 bottom-40"></div>
                     <a href="{{route('ogNewEvent')}}" class="float-right btn btn-purple bottom-10"><i class="fa fa-plus"></i> New event</a>
                 </header>
                 @if(session('res'))
                     <div class="alert alert-danger">{{session('res')}}</div>
                 @endif
                 @if($events->isEmpty())
-                    <div class="alert alert-warning">you have not events at. Watch this space, or create an event!</div>
+                    <div class="alert alert-warning">You have not created any events yet. Click the button above to create a new one!</div>
                 @else
                     {{--show events--}}
                     @foreach($events as $event)
@@ -39,15 +39,16 @@
                             <div class="media-bottom">
                                 <p class="top-20">{{$event->description}}</p>
 
-                                    <ul class="list-unstyled list-inline" >
-                                    <li><span><b>Location: </b> {{$event->e_location}}</span></li>
-                                    <li><span><b>start date: </b> {{date('jS F Y',$event->start_date)}}</span></li>
-                                    <li><span><b>End Date:</b> {{date('jS F Y',$event->end_date)}}</span></li>
-                                    </ul>
+                                <ul class="list-unstyled top-20">
+                                  <li class=""><p><b>Location: </b> {{$event->e_location}}</p></li>
+                                  <li class=""><p><b>Start date: </b> {{date('jS F Y',$event->start_date)}}</p></li>
+                                  <li class=""><p><b>End date:</b> {{date('jS F Y',$event->end_date)}}</p></li>
+                                </ul>
 
-                                    <a href="{{route('viewEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
-                                    <a href="{{route('upEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit right-5"></i>Edit</a>
+                                <div class="top-20"></div>
 
+                                <a href="{{route('upEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit fa-fw"></i><b>Edit</b></a>
+                                <a href="{{route('viewEvent',$event->slug)}}" class="right-10"><i class="fa fa-chevron-circle-right fa-fw"></i> <b>Open</b></a>
 
                             </div>
                             <div class="gray-separator top-20 bottom-20"> </div>

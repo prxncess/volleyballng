@@ -8,22 +8,14 @@
                   <div class="alert alert-danger">{{session('res')}}</div>
               @endif
               <h2>Dashboard</h2>
-              <div id="separator"></div>
+              <div class="gray-separator bottom-40"></div>
           </header>
           <div class="row dark-gray">
               <div class="col-sm-4">
                   <div class="panel panel-default">
                       <div class="panel-body text-center">
                           <h2>{{$organizer->events()->count()}}</h2>
-                          <h5>My Events</h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-4">
-                  <div class="panel panel-default">
-                      <div class="panel-body text-center">
-                          <h2>0</h2>
-                          <h5>Upcoming event</h5>
+                          <h5>Events</h5>
                       </div>
                   </div>
               </div>
@@ -31,7 +23,15 @@
                   <div class="panel panel-default">
                       <div class="panel-body text-center">
                           <h2>2</h2>
-                          <h5>Pending Events</h5>
+                          <h5>Pending approval</h5>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="panel panel-default">
+                      <div class="panel-body text-center">
+                          <h2>1</h2>
+                          <h5>Interested teams</h5>
                       </div>
                   </div>
               </div>
@@ -44,20 +44,23 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active"><a href="#approval-requests" aria-controls="approval-requests" role="tab" data-toggle="tab">Events</a></li>
-                  <li role="presentation"><a href="#upcoming-events" aria-controls="upcoming-events" role="tab" data-toggle="tab">My upcoming events</a></li>
-                  <li role="presentation"><a href="#registered-teams" aria-controls="registered-teams" role="tab" data-toggle="tab">Team Request approval</a></li>
+                  <li role="presentation"><a href="#upcoming-events" aria-controls="upcoming-events" role="tab" data-toggle="tab">Pending approval</a></li>
+                  <li role="presentation"><a href="#registered-teams" aria-controls="registered-teams" role="tab" data-toggle="tab">Interested teams</a></li>
               </ul>
 
               <!-- Tab panes -->
               <div class="tab-content top-20 dark-gray">
                   <div role="tabpanel" class="tab-pane active" id="approval-requests">
                       <table class="table table-responsive">
+                          <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                          </thead>
                           <tbody>
-                          <tr>
-                              <th>Title</th>
-                              <th>Status</th>
-                              <th></th>
-                          </tr>
+
                           @foreach($organizer->events as $event)
                               <tr>
                                   <td><b>{{$event->title}}</b></td>
@@ -70,12 +73,14 @@
                   </div>
                   <div role="tabpanel" class="tab-pane" id="upcoming-events">
                       <table class="table table-responsive">
+                          <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Start date</th>
+                                <th>End date</th>
+                            </tr>
+                          </thead>
                           <tbody>
-                          <tr>
-                              <th>Title</th>
-                              <th>Start date</th>
-                              <th>End date</th>
-                          </tr>
                           <tr>
                               <td><a href="" class=""><b>Shell copa 2018</b></a></td>
                               <td>2017-4-10</td>
@@ -91,11 +96,13 @@
                   </div>
                   <div role="tabpanel" class="tab-pane" id="registered-teams">
                       <table class="table table-responsive">
+                          <thead>
+                            <tr>
+                                <th>Team name</th>
+                                <th>Request date</th>
+                            </tr>
+                          </thead>
                           <tbody>
-                          <tr>
-                              <th>Team name</th>
-                              <th>Request date</th>
-                          </tr>
 
                           <tr>
                               <td><a href="" class=""><b>Shell spikers</b></a></td>
