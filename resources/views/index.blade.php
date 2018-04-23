@@ -2,7 +2,7 @@
 @section('title','Welcome to Volleyball.ng')
 @section('banner')
     <div id="home-banner">
-        <div id="banners" class="swiper-container swiper-container-horizontal">
+        <!-- <div id="banners" class="swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"  style="background: url('{!! asset('images/banner1.png') !!}'); height: 400px; background-size: 100% 100% "></div>
                 <div class="swiper-slide" style="background: url('{!! asset('images/banner2.png') !!}');height: 400px; background-size: 100% 100%;"></div>
@@ -13,111 +13,86 @@
                 <span class="swiper-pagination-bullet"></span>
                  <span class="swiper-pagination-bullet"></span>>
             </div>
+            <div class="bg-image top-bottom-padding-40 left-right-padding-20">
+              <a href="{{route('register')}}" class="btn btn-primary">Register a team</a>
+            </div>
 
+        </div> -->
+        <div class="bg">
+          <header id="tagline">
+              <h1>PLAY. WATCH. LAUGH</h1>
+              <p>  Welcome to the home of Volleyball in Nigeria</p>
+              <div class="top-40"></div>
+              <a href="{{route('register')}}" class="btn" id="vb-button">Register a team</a>
+          </header>
         </div>
+
     </div>
     @endsection
 @section('content')
 
     <section id="our-home">
-        <header id="tagline">
+        <!-- <header id="tagline">
             <h1 class="text-center">PLAY. WATCH. LAUGH</h1>
             <p>  Welcome to the home of Volleyball in Nigeria</p>
-
-
-        </header>
+        </header> -->
         <article>
             <header><a href="{{route('events')}}"><h2><i class="fa fa-calendar"></i> Events</h2></a>
 
-                <div id="yellow-separator"></div>
+                <div class="yellow-separator top-20 bottom-20"></div>
                 <div class="row">
-                  <div class = "col-sm-6"><p>Coming up next...</p></div>
+                  <div class = "col-sm-6"><p>Next games...</p></div>
                   <div class = "col-sm-6"><a href="{{route('newEvent')}}" class=" float-right btn btn-purple"><i class="fa fa-plus right-5"></i>Create Event</a></div>
                 </div>
                 <!-- <p>
                     See what we have been up to.<a href="{{route('newEvent')}}"><span class="pull-right"><i class="fa fa-plus"></i>Create Event</span></a>
                 </p> -->
             </header>
-
-        </article>
-        <div id="slides" class="swiper-container swiper-container-horizontal">
-            <div class="swiper-wrapper">
-                @if($events->isEmpty())
-                   {{--no open events at the moment display blog post--}}
-                <div class="swiper-slide swiper-slide-active">
-                    <div id="box">
-                        <a href="{!! route('viewEvent','conferdrations-cup') !!}">
-                            <img src="{{asset('images/IMG_20170222_070951.jpg')}}">
-                            <div id="more-photos"> <i class="fa fa-info-circle"></i><h3>More info</h3></div>
-                        </a>
-
+            <div class="top-40"></div>
+            <div id="slides" class="swiper-container swiper-container-horizontal">
+                <div class="swiper-wrapper">
+                    @if($events->isEmpty())
+                       {{--no open events at the moment display blog post--}}
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-xs-12"> <h5>Coming soon. Read about past events on our <a href="http://volleyball.ng/blog" class= "purple" style="text-decoration: underline">blog</a> and <a href="http://facebook.com/volleyball.ng" class= "purple" style="text-decoration: underline">Facebook page</a>!</h5> </div>
+                      </div>
                     </div>
+                        @else
+                        @foreach($events as $event)
+                            <div class="swiper-slide swiper-slide-active">
+                                <div id="box">
+                                    <a href="{!! route('viewEvent',$event->slug) !!}">
+                                        <img src="{{asset('images/event/'.$event->image)}}">
+                                        <div id="more-photos"> <i class="fa fa-info-circle"></i><h3>More info</h3></div>
+                                    </a>
 
-                    <header>
-                        <div id="bar"></div>
-                        <p> <a href="{!! route('viewEvent','conferdrations-cup') !!}"> Lagos Cup. 2016</a></p>
-                    </header>
-                </div>
-                <div class="swiper-slide">
-                    <div id="box">
-                        <a href="{!! route('viewEvent','conferdrations-cup') !!}">
-                            <img src="{{asset('images/IMG_20170222_070926.jpg')}}">
-                            <div id="more-photos"> <i class="fa fa-info-circle"></i><h3>More info</h3></div>
-                        </a>
+                                </div>
 
-                    </div>
-
-                    <header>
-                        <div id="bar"></div>
-                        <p><a href="{!! route('viewEvent','conferdrations-cup') !!}"> Lagos trial. 2017</a></p>
-                    </header>
-                </div>
-                <div class="swiper-slide">
-                    <div id="box">
-                        <a href="{!! route('viewEvent','conferdrations-cup') !!}">
-                            <img src="{{asset('images/IMG_20170222_070958.jpg')}}">
-                            <div id="more-photos"> <i class="fa fa-info-circle"></i><h3>More info</h3></div>
-                        </a>
-
-                    </div>
-
-                    <header>
-                        <div id="bar"></div>
-                        <p><a href="{!! route('viewEvent','conferdrations-cup') !!}"> Open PH. 2017</a></p>
-                    </header>
-                </div>
-                    @else
-                    @foreach($events as $event)
-                        <div class="swiper-slide swiper-slide-active">
-                            <div id="box">
-                                <a href="{!! route('viewEvent',$event->slug) !!}">
-                                    <img src="{{asset('images/event/'.$event->image)}}">
-                                    <div id="more-photos"> <i class="fa fa-info-circle"></i><h3>More info</h3></div>
-                                </a>
-
+                                <header>
+                                    <div id="bar"></div>
+                                    <p> <a href="{!! route('viewEvent',$event->slug) !!}">{{$event->title}}</a></p>
+                                </header>
                             </div>
+                        @endforeach
 
-                            <header>
-                                <div id="bar"></div>
-                                <p> <a href="{!! route('viewEvent',$event->slug) !!}">{{$event->title}}</a></p>
-                            </header>
-                        </div>
-                    @endforeach
-
-                @endif
+                    @endif
+                </div>
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
             </div>
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-button-prev swiper-button-white"></div>
-        </div>
+            <div class="top-40"></div>
+        </article>
 
-        <div class="gray-background top-bottom-padding-40">
+
+        <div class="gray-background">
           <article>
             <header>
                 <a href="{{route('viewTeams')}}"><h2><i class="fa fa-group"></i> Teams</h2></a>
-                <div id="yellow-separator"></div>
+                <div class="yellow-separator top-20 bottom-20"></div>
                 <div class="row">
                   <div class="col-sm-6"><p>Groups of volleyball <a href="{{route('viewTeams')}}">lovers</a>, players, coaches, etc</p></div>
-                  <div class="col-sm-6"><a href="{{route('register')}}" class=" float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
+                  <div class="col-sm-6"><a href="{{route('register')}}" class="float-right btn btn-purple"><i class="fa fa-plus right-5"></i> Register a team</a></div>
                 </div>
                 <!-- <p>Check out our <a href="{{route('viewTeams')}}">Teams</a> . <a href="{{route('register')}}"><span class="pull-right"><i class="fa fa-plus"></i> Register</span></a></p> -->
 
@@ -210,7 +185,7 @@
                 </a>
 
             </header>
-            <div id="yellow-separator"></div>
+            <div class="yellow-separator top-20 bottom-20"></div>
             <p>
                 Memories of past events...
             </p>

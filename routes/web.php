@@ -19,7 +19,8 @@ Route::get('/EventsCalender',['as'=>'EventsCal','uses'=>'PagesController@events_
 Route::get('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@new_event']);
 Route::post('/CreateEvent',['as'=>'newEvent','uses'=>'EventsPagesController@save_event']);
 Route::get('/sendMail','EventsPagesController@basic_email');
-
+Route::get('/getCalendarEvents',['as'=>'getEvents','uses'=>'PagesController@getCalendar']);
+Route::get('/DayEvents',['as'=>'getDayEvents','uses'=>'PagesController@dayEvents']);
 
 Route::get('/Event/{name}',['as'=>'viewEvent','uses'=>'PagesController@event']);
 
@@ -38,6 +39,7 @@ Route::get('/team/players/{id}',['as'=>'viewPlayer', 'uses'=>'PagesController@pl
 
 
 Route::get('/team/Register',['as'=>'register','uses'=>'PagesController@register']);
+Route::get('/team/register',['as'=>'register','uses'=>'PagesController@register']);
 Route::post('/team/Register',['as'=>'register','uses'=>'RegisterController@teamInfo']);
 Route::post('/RegistrationComplete',['as'=>'teamCompleted','uses'=>'RegisterController@teamComplete']);
 Route::get('/RegistrationComplete',['as'=>'teamCompleted','uses'=>'RegisterController@teamComplete']);
@@ -46,6 +48,7 @@ Route::get('/RegistrationComplete',['as'=>'teamCompleted','uses'=>'RegisterContr
 Route::get('/masterLogin',['as'=>'MasterLogin','uses'=>'Admin\loginController@tryLogin']);//login
 Route::get('/admin',['as'=>'MasterLogin','uses'=>'Admin\loginController@tryLogin']);//login
 Route::post('/masterLogin',['as'=>'MasterLogin','uses'=>'Admin\loginController@postLogin']);//login
+//administrator routes
 
 Route::group(['middleware'=>'master','prefix'=>'admin'],function(){
 
@@ -87,6 +90,7 @@ Route::group(['middleware'=>'master','prefix'=>'admin'],function(){
 
     //others
     Route::get('UpdateStatus',['as'=>'upStatus','uses'=>'Admin\teamPagesController@teamStatus']);
+    Route::get('/sendMail',['as'=>'mailOrganizer','uses'=>'Admin\eventPagesController@contactOrganizer']);
 });
 
 //team profile routes
@@ -125,6 +129,10 @@ Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController
 
      //others
      Route::get('/teamReview',['as'=>'tmReview','uses'=>'team\teamPagesController@teamReview']);
+     //events
+     Route::get('/checkEvent/{slug}',['as'=>'eventOverview','uses'=>'team\eventPagesController@checkEvent']);
+     Route::get('/markAsRead/',['as'=>'TmMarkRead','uses'=>'team\eventPagesController@markEvent']);
+     Route::get('/eventInterest/{slug}',['as'=>'Interested','uses'=>'team\eventPagesController@shownInterest']);
  });
 
 Route::get('Email', function(){
@@ -135,5 +143,40 @@ Route::get('Email', function(){
         $message->to('kulblog66@gmail.com');
     });
 });
+
+//event organizer admin area
+Route::get('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@organizerlogin']);
+Route::get('/organizer',['uses'=>'Organizer\organizerLoginController@organizerlogin']);
+Route::post('/organizer/Login',['as'=>'organizerLogin','uses'=>'Organizer\organizerLoginController@tryLogin']);
+Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
+
+    Route::get('/dashboard',['as'=>'organizerDashboard','uses'=>'Organizer\organizerPagesController@dashboard']);
+    Route::get('/logout',['as'=>'oLogout','uses'=>'Organizer\organizerLoginController@logout']);
+    Route::get('/updatePassword',['as'=>'opassword','uses'=>'Organizer\organizerPagesController@password']);
+    Route::post('/updatePassword',['as'=>'opassword','uses'=>'Organizer\organizerPagesController@savePassword']);
+
+    //manage event
+    Route::get('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@edit']);
+    Route::post('/editEvent/{name}',['as'=>'upEvent','uses'=>'Organizer\eventPagesController@update']);
+    Route::get('/ogNewEvent',['as'=>'ogNewEvent','uses'=>'Organizer\eventPagesController@create']);
+    Route::post('/ogNewEvent',['as'=>'ogNewEvent','uses'=>'Organizer\eventPagesController@store']);
+    Route::get('/myEvents',['as'=>'myEvents','uses'=>'Organizer\eventPagesController@index']);
+    Route::get('/viewEvent/{name}',['as'=>'viewEvent','uses'=>'Organizer\eventPagesController@show']);
+
+    //mail organizer
+
+    //teams
+    Route::get('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
+    Route::post('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
+    Route::get('/seeTeam/{team}',['as'=>'ogSeeTeam','uses'=>'Organizer\organizerPagesController@showTeam']);
+   // Route::get('/acceptTeam/{team}/interestedIn/{event}',['as'=>'OgAcceptTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
+
+    //view player
+    Route::get('/Players/{player}/{playerName}/overview',['as'=>'OgCheckPlayer','uses'=>'Organizer\organizerPagesController@checkPlayer']);
+    //mark notifcation as read
+    Route::get('/markAsRead/',['as'=>'OgMarkRead','uses'=>'Organizer\organizerPagesController@markEventAs']);
+
+});
+
 
 

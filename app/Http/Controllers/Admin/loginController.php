@@ -28,6 +28,7 @@ class loginController extends Controller
             'password'=>$request->get('passkey')
         ]);
         if($auth){
+            $request->session()->regenerate();
             return redirect()->route('adminDashboard');
         }
 

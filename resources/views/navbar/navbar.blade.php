@@ -1,11 +1,13 @@
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
-        <div class="navbar-brand"> <img src="images/seu2.png"></div>
+        <div class="navbar-brand"> <img src="{{asset('images/seu2.png')}}"></div>
         <button id="toggle-bar" type="button" data-target="#volleymenu">
-            <span class="sr-only">toggle navigation</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
+            <!-- <span class="sr-only">toggle navigation</span>
+            <span></span>
+            <span></span>
+            <span></span> -->
+            <i class="fa fa-bars fa-2x fa-fw"><span class="sr-only">toggle navigation</span></i>
+            <span>MENU</span>
         </button>
     </div>
     <div  id="volleymenu">

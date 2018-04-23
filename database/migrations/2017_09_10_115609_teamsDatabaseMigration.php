@@ -17,7 +17,7 @@ class TeamsDatabaseMigration extends Migration
             $table->increments('id');
             $table->string('name',100);
             $table->string('logo','150')->nullable();
-            $table->string('description','200')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('active')->default('1');
             $table->timestamps();
         });

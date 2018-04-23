@@ -2,10 +2,36 @@
 @section('title','Events')
 @section('content')
 
+<style type ="text/css">site-header {display: none;}
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  /*padding-bottom: 56.25%;*/
+}
+
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  /*padding-bottom: 75%;*/
+}
+
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
     <aside id="container">
-        <header> <h2 class="text-capitalize">Events</h2><div id="yellow-separator"></div> </header>
+        <header> <h2 class="text-capitalize">Events</h2><div class="yellow-separator top-20 bottom-20"></div> </header>
         <p>
-            Check out our exciting upcoming events and register your team!. Also create your own event and we'll publish it here.
+            Check out our exciting upcoming events and register your team, or create your own event and we'll publish it here.
 
         </p>
         <p></p>
@@ -13,44 +39,65 @@
     </aside>
     <div id="events-subnav">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('events')}}" class="active">Events</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('EventsCal')}}" class="">Calendar</a>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <a href="{{route('newEvent')}}" class="">Register Event</a>
         </div>
+          <div class="col-sm-3">
+              <a href="{{route('organizerLogin')}}" class="">Manage Events</a>
+          </div>
       </div>
     </div>
-    <div id="bd-event" >
+    <div class="container">
         <div class="row">
-            <div id="event-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                 <div class="row">
-                     @if($events->isEmpty())
-                         <h3>No open events at the moment, but please watch this space!</h3>
-                         @else
-                         @foreach($events as $event)
-                             <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
-                                 <h3><a href="{{route('viewEvent',$event->slug)}}">{!! $event->title !!}</a></h3>
-                                 <img src="{{asset('images/event/'.$event->image)}}">
-                                 <header>
-                                     <div id="bar"></div>
-                                     <p>{!! $event->description !!} <a href="{{route('viewEvent',$event->slug)}}">More</a> </p>
-                                 </header>
-                             </div>
-                         @endforeach
-                         @endif
-                 </div>
+            <div id="evvent-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12"><h3 class="bottom-40">Next events</h3></div>
+                   @if($events->isEmpty())
+                      <div class="col-xs-12"> <h5>Coming soon!</h5> </div>
+                       @else
+                       @foreach($events as $event)
+                           <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
+                               <h3><a href="{{route('viewEvent',$event->slug)}}">{!! $event->title !!}</a></h3>
+                               <img src="{{asset('images/event/'.$event->image)}}">
+                               <header>
+                                   <div id="bar"></div>
+                                   <p>{!! $event->description !!} <a href="{{route('viewEvent',$event->slug)}}">More</a> </p>
+                               </header>
+                           </div>
+                       @endforeach
+                       @endif
+               </div>
+
             </div>
 
         </div>
+
         <div class="center-block">
             {{--{{$events->links()}}--}}
         </div>
 
     </div>
+
+    <div class="container">
+      <div class="gray-separator top-40 bottom-40"></div>
+      <h3 class="bottom-40">Past events</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Read the <a href="http://volleyball.ng/blog" class="purple" style="text-decoration: underline">recaps</a></p>
+          <iframe src="http://volleyball.ng/blog" height="480" width="90%" style="border: 1px solid #f5f5f5">To view this content, you need a browser that can display embedded frames</iframe>
+        </div>
+        <!-- <div class="col-md-6">
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fvolleyball.ng&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId" width="90%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div> -->
+      </div>
+    </div>
+
 {{--    <div id="access" class=" list-inline list-unstyled">
         <aside class="" >
             <form class="" method="post"action="">

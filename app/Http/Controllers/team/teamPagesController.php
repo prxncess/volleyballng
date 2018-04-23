@@ -138,7 +138,7 @@ class teamPagesController extends Controller
             $player= Player::find($id);
             $positions=['Right side hitter','Outside hitter','Middle blocker','Setter','Opposite','Libero'];
             $feets=['3 feet','4 feet','5 feet','6 feet','7 feet','8 feet',];
-            $inches=['0 inches','1 inch','2 inches','3 inches','3 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
+            $inches=['0 inches','1 inch','2 inches','3 inches','4 inches','5 inches','6 inches','7 inches','8 inches','9 inches','10 inches','11 inches',];
             return view('adminTeam.players.edit',compact('team','player','positions','inches','feets'));
 
         }catch (ModelNotFoundException $e){
@@ -238,10 +238,14 @@ class teamPagesController extends Controller
         }
     }
     public function overview(){
+        //
+        //dd(auth('team')->user()->notifications);
         $logged_team=auth('team')->user();
         try{
             $team=Team::whereName($logged_team->name)->firstOrFail();
-            return view('adminTeam.overview',compact('team'));
+            $malePlayers=$team->players()->whereGender('male')->get();
+            $femalePlayers=$team->players()->whereGender('female')->get();
+            return view('adminTeam.overview',compact('team','malePlayers','femalePlayers'));
 
         }catch (ModelNotFoundException $e){
             return view('404');
@@ -359,7 +363,7 @@ class teamPagesController extends Controller
             $data=['name'=>$request->get('name'),'email'=>$request->get('email')];
            $mail= Mail::send('mails.review',$data,function($message){
                 $message->to('eorijesu@gmail.com','Efeoghene Ori-Jesu');
-                $message->from('volleyballsmpt@gmail.com','volleyball.ng');
+                $message->from('volleyballdotngee@gmail.com','volleyball.ng');
                 $message->subject('Team Review');
             });
 

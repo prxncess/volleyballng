@@ -24,7 +24,11 @@
 
                 <div class="media">
                     <div class="media-left">
+                        @if($event->image!='')
                         <img class="media-object" src="{{asset('images/event/'.$event->image)}}" style="width: 80px">
+                            @else
+                            <img class="media-object" src="{{asset('images/seuww.png')}}" style="width: 80px">
+                        @endif
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{$event->title}}</h4>
@@ -34,8 +38,8 @@
                         <p class="top-20">{{$event->description}}</p>
                         <ul class="list-unstyled list-inline">
                             <li><i class=""></i><strong>Location:</strong> <span>{{$event->e_location}}</span> </li>
-                            <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->e_organizer}}</span> </li>
-                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->e_email}}</span> </li>
+                            <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->organizer[0]->organizer}}</span> </li>
+                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->organizer[0]->email}}</span> </li>
                         </ul>
                         <p>
                             <a href="{{route('showEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
@@ -47,12 +51,12 @@
                 </div>
 
 
-                @endforeach
+                    @endforeach
             @endif
             <div class="center-block">
                 {{$events->links()}}
             </div>
-
+        </div>
         </section>
-    </div>
+
     @endsection

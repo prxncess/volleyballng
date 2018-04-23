@@ -13,7 +13,7 @@
             Approved and Active.
             .</p>
         @elseif($team->active==0)
-        <p>Your team registered on <a href="http://volleyball.ng" style="color: #4449ca; text-decoration: none"><b>volleyball.ng</b></a> has been  reviewed and is still not approved  as your team information did meet our requirements for approval.</p>
+        <p>Sorry, your team registered on <a href="http://volleyball.ng" style="color: #4449ca; text-decoration: none"><b>volleyball.ng</b></a> has been  reviewed and is still not approved  as your team information has not met our requirements for approval.</p>
         <p>To be approved, a team should have:
           <ul>
               <li>at least 6 players</li>

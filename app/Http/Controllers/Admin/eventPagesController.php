@@ -1,17 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Team;
+use App\Organizer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Notifications\Notifiable;
+use Notification;
 use Illuminate\Support\Str;
 use Validator;
 use Image;
 use App\Event;
-
+use Mail;
+use App\Notifications\newEventOpen;
 class eventPagesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -107,8 +112,8 @@ class eventPagesController extends Controller
             'title'=>$request->get('event_title'),
             'slug'=>Str::slug($request->get('event_title'),'-'),
             'image'=>$imageNewName,
-            'start_date'=>$request->get('event_start'),
-            'end_date'=>$request->get('event_end'),
+            'start_date'=>strtotime($request->get('event_start')),
+            'end_date'=>strtotime($request->get('event_end')),
             'description'=>$request->get('event_description'),
             'status'=>$request->get('event_status'),
             'e_organizer'=>$request->get('event_organizer'),
@@ -159,6 +164,23 @@ class eventPagesController extends Controller
             //change status
             $Event->status=$request->get('status');
             if($Event->save()){
+                $teams=Team::all();
+                //send notification to teams
+                switch ($Event->status){
+                    case'open':
+                        Notification::send($teams,new newEventOpen($Event));//email
+                        //database notification
+
+                        break;
+
+                    case 'closed':
+                        '';
+                        break;
+
+                    case 'concluded':
+                        '';
+                        break;
+                }
                 return redirect()->route('showEvent',$Event->slug)->with('status','updated');
             }
         }catch (ModelNotFoundException $e){
@@ -205,6 +227,10 @@ class eventPagesController extends Controller
                 'event_poser.image'=>'file uploaded into an image: jpg,png,jpeg,x-png',
                 'event_start.date'=>'invalid date format (please use yyyy-mm-dd)',
                 'event_end.date'=>'invalid date format (please use yyyy-mm-dd)',
+                'event_start.prevdate'=>'Previous dates can not be selected',
+                'event_end.prevdate'=>'Previous dates can not be selected',
+                'event_phone.phone'=>'Phone number format not allowed. use 080xxxxxxxx',
+
 
 
 
@@ -218,12 +244,12 @@ class eventPagesController extends Controller
                 'event_title'=>'required|regex:/^[\w., ]{3,225}$/i',
                 'event_description'=>"required|regex:/^[\w?.,#-_' ]{10,225}$/i",
                 'event_location'=>'required',
-                'event_start'=>'required|date',
-                'event_end'=>'required|date',
+                'event_start'=>'required|date|prevdate',
+                'event_end'=>'required|date|prevdate',
                 'event_poster'=>'image|mimes:jpg,jpeg,png,x-png',
-                'event_organizer'=>'required|regex:/^[\w., ]{3,80}$/i',
+                'event_organizer'=>'required|regex:/^[\w.,\-\' ]{3,80}$/i',
                 'event_email'=>'required|email',
-                'event_phone'=>'required|regex:/^[0-9]{11}/i',
+                'event_phone'=>'required|phone|regex:/^[0-9]{11}/i',
                 'event_status'=>'required'
 
             ],$message)->validate();
@@ -245,22 +271,56 @@ class eventPagesController extends Controller
             $event->slug=Str::slug($request->get('event_title'),'-');
             //check if image is uploaded
             ($imageNewName)?$event->image=$imageNewName:$event->image=$event->image;
-            $event->start_date=$request->get('event_start');
-            $event->end_date=$request->get('event_end');
+            $event->start_date=strtotime($request->get('event_start'));
+            $event->end_date=strtotime($request->get('event_end'));
             $event->description=$request->get('event_description');
             $event->status=$request->get('event_status');
-            $event->e_organizer=$request->get('event_organizer');
+           /* $event->e_organizer=$request->get('event_organizer');
             $event->e_email=$request->get('event_email');
-            $event->e_phone=$request->get('event_phone');
+            $event->e_phone=$request->get('event_phone');*/
             $event->e_location=$request->get('event_location');
 
             //update the poster
             if($event->save()){
-                //delete old image
-
+                //delete old image//
                 ($imageNewName)?unlink($oldImage):null;
-                //redirect back
-                return redirect()->route('editEvent',$event->slug)->with('status','updated');
+                //update the organizer
+                $organizer=Organizer::find($event->organizer[0]->id);
+                $organizer->organizer=$request->get('event_organizer');
+                $organizer->email=$request->get('event_email');
+                $organizer->phone=$request->get('event_phone');
+                //
+                if($organizer->save()){
+                    //redirect back
+                    //notify teams about status of event
+                    //get all team
+                    $teams=Team::all();
+
+                    //check if status is update to either open,closed or concluded.
+
+                    $teams=Team::all();
+                   //send notification to teams
+                    switch ($event->status){
+                        case'open':
+                            Notification::send($teams,new newEventOpen($event));
+                            break;
+
+                        case 'closed':
+                            '';
+                            break;
+
+                        case 'concluded':
+                            '';
+                            break;
+                    }
+                }
+
+
+
+                    return redirect()->route('editEvent',$event->slug)->with('status','updated');
+
+
+
 
             }
 
@@ -295,5 +355,39 @@ class eventPagesController extends Controller
         }catch (ModelNotFoundException $e){
 
         }
+    }
+    //contact organizer
+    public function contactOrganizer(Request $request){
+      //validate request
+        $message=[
+            'subject.required'=>'enter mail subject',
+            'subject.min'=>'Subject should have a minimum of 3 characters and no special characters',
+            'body.required'=>'the message field is empty',
+            'body.regex'=>'The message field should have a minimum of 6 characters',
+
+        ];
+        $validation=Validator::make($request->all(),[
+            'subject'=>'required|min:3',
+            'body'=>'required'
+        ],$message);
+
+        if($validation->fails()){
+            //if errors where found
+            $errors=$validation->errors();
+            return response()->json(['errors'=>$errors,'res'=>'error']);
+        }
+        //send mail to organizer if mail is sent
+
+        //find the organizer
+
+        $organizer=Organizer::find($request->get('index'));
+       /* Mail::send('mails.organizer.contact',[''],function ($msg) use($organizer,$request){
+            $msg->to('kulblog66@gmail.com');
+            $msg->subject($request->subject);
+            $msg->from('efe@volleyball.ng','Volleyball.ng');
+
+        });*/
+        //mail sent
+        return response()->json(['res'=>'success']);
     }
 }

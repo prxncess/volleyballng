@@ -20,7 +20,7 @@
                             <img src="{{asset('images/team/'.$staff->image)}}" class="img-responsive">
                         @endif
                         <h4>{{$staff->fname.' '.$staff->lname}}</h4>
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled top-20">
                                 <li>Position: <span>{{$staff->position}}</span></li>
                                 <li> {{$staff->description?$staff->description:''}}</li>
                             </ul>

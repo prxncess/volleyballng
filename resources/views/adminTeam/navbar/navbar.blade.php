@@ -11,25 +11,24 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-            <ul class="dropdown-menu message-dropdown">
-                <li class="message-preview">
-                    <a href="#">
-                        <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                            <div class="media-body">
-                                <h5 class="media-heading"><strong>John Smith</strong>
-                                </h5>
-                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="message-preview">
+        <li class="dropdown" id="">
+            <a href="#"  class="dropdown-toggle" data-toggle="dropdown"><span class="badge">{{count(auth('team')->user()->unreadNotifications)}}</span> <i class="fa fa-envelope"></i> <b class="caret"></b></a>
+
+            <ul  class="dropdown-menu message-dropdown">
+                @if(count(auth('team')->user()->unreadNotifications )>0)
+                @foreach(auth('team')->user()->unreadNotifications as $notification)
+                    <li class="message-preview">
+                        <a href="{{$notification->data['action']}}">
+                            {!! $notification->data['message'] !!}
+                        </a>
+                    </li>
+                    @endforeach
+                    <div><a href="" id="notifyTm">Clear all notifications</a> </div>
+
+                @else
+                    <p> no notification at the moment</p>
+                @endif
+                {{--<li class="message-preview">
                     <a href="#">
                         <div class="media">
                                     <span class="pull-left">
@@ -61,7 +60,7 @@
                 </li>
                 <li class="message-footer">
                     <a href="#">Read All New Messages</a>
-                </li>
+                </li>--}}
             </ul>
         </li>
        {{-- <li class="dropdown">

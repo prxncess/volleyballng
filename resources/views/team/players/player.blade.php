@@ -20,7 +20,7 @@
                 <div class=" col-xs-12 col-sm-4  {{--col-md-2 col-md-offset-8--}}" id="player_info">
                      <span class="media-heading">{{$player->fname.' '.$player->lname}}</span>
                     <ul class="list-unstyled">
-                        <li><span class="role">Position: </span> <strong>{{$player->position}}r</strong> </li>
+                        <li><span class="role">Position: </span> <strong>{{$player->position}}</strong> </li>
                         <li><span class="role">Height: </span> <strong>{{$player->feet.' '.$player->inches}}</strong> </li>
 
                     </ul>

@@ -21,7 +21,7 @@
                     <ul class="list-unstyled">
                         <li><b>Position</b>: <span class="text-capitalize">{{$player->position}}</span></li>
                         <li><b>Height</b>: <span>{{$player->feet.' '.$player->inches}}</span></li>
-                        <li><b>Gender</b>: <span>Female</span></li>
+                        <li><b>Gender</b>: <span>{{$player->gender}}</span></li>
                     </ul>
                 </div>
                 <div class="col-sm-7">
@@ -83,7 +83,7 @@
                                     <select name="player_position" id="player-position" class="form-control">
                                         <option value="">Select one</option>
                                         @foreach($positions as $position)
-                                            @if(strtolower($position)==$player->position)
+                                            @if(strtolower($position)==strtolower($player->position))
                                                 <option value="{{$player->position}}" selected>{{$player->position}}</option>
                                                 @else
                                                 <option value="{{$position}}">{{$position}}</option>

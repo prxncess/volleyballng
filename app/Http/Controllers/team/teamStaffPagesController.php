@@ -50,7 +50,7 @@ class teamStaffPagesController extends Controller
                 'staffFirstName'=>'required|regex:/^[A-Za-z]{3,50}$/i',
                 'staffLastName'=>'required|regex:/^[A-Za-z]{3,50}$/i',
                 'staffImage'=>'sometimes|mimes:png,jpg,jpeg,x-PNG,bmp|max:1024',
-                'staffDescription'=>'regex:/^[A-Za-z0-9,-_?#. ]{3,255}$/i',
+                'staffDescription'=>'regex:/^[A-Za-z0-9\W ]+$/i',
                 'staffPosition'=>'required'
             ]);
             $errors= $validator->errors();//store errors
@@ -159,7 +159,7 @@ class teamStaffPagesController extends Controller
             'staff_firstName'=>'required|regex:/^[A-Za-z]{3,50}$/i',
             'staff_lastName'=>'required|regex:/^[A-Za-z]{3,50}$/i',
             'staff_image'=>'sometimes|mimes:png,jpg,jpeg,x-PNG,bmp|max:1024',
-            'staff_description'=>'regex:/^[A-Za-z0-9,-_?#. ]{3,255}$/i',
+            'staff_description'=>'regex:/^[A-Za-z0-9,-_?\W ]+$/i',
             'staff_position'=>'required'
         ])->validate();
 

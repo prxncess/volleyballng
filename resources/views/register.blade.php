@@ -91,7 +91,7 @@
         </header>
 
         </ul>
-        <form method="post" id="proForm"  class=" center-block add-team" enctype="multipart/form-data">
+        <form method="post" id="proForm" action="{{route('register')}}"  class=" center-block add-team" enctype="multipart/form-data">
             <input type="hidden" id="token" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="teamindex" id="teamindex" value="">
 

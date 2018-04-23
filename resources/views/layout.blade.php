@@ -27,8 +27,6 @@
         </section>
 
     </div>
-
-
 </div>
 <div id="footer">
     <div id="bar"></div>
@@ -55,14 +53,14 @@
             <ul class="list-unstyled">
                 <li><i class="fa fa-instagram"></i></li>
                 <li><i class="fa fa-twitter"></i></li>
-                <li><i class="fa fa-facebook"></i></li>
+                <li><a href="http://facebook.com/volleyball.ng"><i class="fa fa-facebook"></i></a></li>
                 <li><i class="fa fa-youtube-play"></i></li>
             </ul>
         </div>
         <hr>
         <aside id="copyright">
             <ul class="list-unstyled list-inline">
-                <li>&copy; 2017 Volleyball.ng</li>
+                <li>&copy; {{date('Y')}} Volleyball.ng</li>
                 <li>|</li>
                 <li>All rights reserved</li>
                 <li>|</li>

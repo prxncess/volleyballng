@@ -15,7 +15,14 @@ class AddStatusToEventsTable extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             //
-            $table->enum('status',['review','open','closed','concluded']);
+            if(Schema::hasColumn('events','status')){
+                Schema::table('events', function (Blueprint $table) {
+                    //
+                    $table->dropColumn('status');
+                });
+            }
+
+            $table->enum('status' , array('pending','open','concluded','closed','new','review'))->default('new');
         });
     }
 
@@ -26,8 +33,12 @@ class AddStatusToEventsTable extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
-            //
-        });
+        if(Schema::hasColumn('events','status')){
+            Schema::table('events', function (Blueprint $table) {
+                //
+                $table->dropColumn('status');
+            });
+        }
+
     }
 }

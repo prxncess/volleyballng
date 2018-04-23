@@ -44,6 +44,7 @@ class RegisterController extends Controller
                 //team phone
                 'team-phone.required'=>'Please enter your phone number',
                 'team-phone.unique'=>'Phone number already registered',
+                'team-phone.phone'=>'Please enter a valid phone number in this format 080xxxxxxxx',
 
                 //team email
                 'team-contact.required'=>'Please enter your email address',
@@ -60,14 +61,13 @@ class RegisterController extends Controller
             Validator::make($request->all(),[
                 'team-name'=>"required|regex:/^[A-Za-z-' ]{3,100}$/i|unique:teams,name",
             'team-contact'=>'required|email|unique:teams,contact',
-            'team-phone'=>'required|unique:teams,phone',
-
+            'team-phone'=>'required|phone|unique:teams,phone',
                 'team-description'=>'regex:%^[A-Za-z0-9\W ]+$%i',
 
                 /*'logo'=>'mimes:jpeg,png,jpg|max:1024',
                 'team_image'=>'required|mimes:jpeg,png,jpg|max:2024',*/
                 'accept'=>'accepted',
-                'contact-person'=>'required|regex:/^[A-Za-z-\' ]{3,80}$/i'
+                'contact-person'=>'required|regex:/^[A-Za-z\-\' ]{3,80}$/i'
             ],$messages)->validate();
             /*$errors= $validator->errors();
             if($validator->fails()){
@@ -114,6 +114,7 @@ class RegisterController extends Controller
             //return response()->json(['status'=>'next']);
             if($team->save()){
                 //saved team id
+                //dd($password);
                 $this->team_id=$team->id;
                 //send a mail ater registeration
                 $data=array('email'=>$request->get('team-contact'),'name'=>$request->get('contact-person'),'password'=>$password);
@@ -127,7 +128,7 @@ class RegisterController extends Controller
                 Mail::send('mails.newteam', ['team'=>$team,'password'=>$password], function($message) use ($team) {
                     $message->to('efe@volleyball.ng');
                     $message->subject('New Signup: volleyball.ng');
-                    $message->from('volleyballsmpt@gmail.com','volleyball.ng');
+                    $message->from('volleyballdotngee@gmail.com','volleyball.ng');
                 });
                 return redirect()->route('teamSignIn')->with('res','Congratulations <b>'.$request->get('contact-person').'</b></br> Your team was successfully created.<p>Please check your registered email for a password to gain access to your team area. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
             }

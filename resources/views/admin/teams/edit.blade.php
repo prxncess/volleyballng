@@ -17,9 +17,22 @@
                 @if(session('res')) <div class="alert alert-success alert-dismissable">{{session('res')}}</div> @endif
             </header>
 
-            <form class="form-horizontal" method="post" >
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" >
                 {{csrf_field()}}
                 <div class="">
+                    <div class="text-center top-20" id="team-logo">
+                        @if($team->logo ==null)
+                            <img src="{{asset('images/ball.png')}}" id="show-logo-img">
+                        @else
+                            <img src="{{asset('images/team/'.$team->logo)}}" id="show-logo-img">
+                        @endif
+                        <p><button type="button" class="btn btn-purple" >
+                                Update logo
+                            </button><p>
+                            {{--<l class="fa fa-plus"></l>--}}
+                            <input type="file" name="teamLogo" id="logo" accept="image/x-png,image/png,image/jpg,image/jpeg">
+                        <p class="error">@if($errors->has('teamLogo')) {{$errors->first('teamLogo')}} @endif</p>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>Name</label>
@@ -83,3 +96,27 @@
 
 
     @endsection
+@section('footer-scripts')
+    <script type="text/javascript">
+        //team logo
+        $('div#team-logo button').on('click',function(){
+            $('#logo').click();
+        })
+        // tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#logo').on('change',function(e){
+            showfile(this,'div#team-logo img#show-logo-img')
+        })
+        function showfile(fileInput,img,showName){
+            if(fileInput.files[0]){
+                var reader=new FileReader();
+                reader.onload=function(e){
+                    $(img).attr('src',e.target.result);
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+                $(showName).text(fileInput.files[0].name);
+            }
+        }
+    </script>
+    @endsection
+

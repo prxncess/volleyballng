@@ -10,7 +10,11 @@ html,body{
 body{
   height: 100%;
   // background:#e6e6e6 ;
-  font-family:'Questrial',sans-serif;
+  font-family:'Open Sans',sans-serif;
+
+  p {
+    font-size: 16px;
+  }
 
 a{
   text-decoration: none;
@@ -20,7 +24,7 @@ a{
 
 .btn-purple {
   color: $purple;
-  background-color: none;
+ // background-color: none;
   border: 1px solid $purple;
   border-radius: 20px;
   &:hover {color: white; background-color: $purple}
@@ -58,12 +62,13 @@ a{
 // End of helper classes
 }
 .float-right {
-  float: right !important;
+  float: right;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      float: left;
+  }
 }
-// Media query
-@media only screen and (max-width: 767px) {
-    float: none !important;
-}
+
 .dark-gray {
   color: $dark-gray;
 }
@@ -71,7 +76,10 @@ a{
   color: $purple;
 }
 .gray-background {
-  background-color: $whitesmoke
+  background-color: $whitesmoke;
+}
+.purple-background {
+  background-color: transparentize($purple, 0.98);
 }
 .gray-separator {
   height: 1px;
@@ -88,9 +96,9 @@ a{
 
 div#background{
   //background: url("../images/banner2.jpg") fixed center center;
-  background-repeat: no-repeat;
-  background: white;
-  background-size: cover;
+  // background-repeat: no-repeat;
+  // background: white;
+  // background-size: cover;
 
   // width: 80%;
   //color: #757575;
@@ -98,7 +106,7 @@ div#background{
   font-weight: 300;
   min-height: 100%;
   line-height: 1.6;
-  font-size: 15px;
+  // font-size: 15px;
   padding: 30px 0;
   //box-shadow: 0px 1px 9px 0px black;
 }
@@ -166,15 +174,16 @@ nav#menu{
     margin-top: 12px;
     background: none;
     border: none;
-    span{
-      background-color: white;
-      width: 21px;
-      height: 2px;
-      border-radius: 2px;
-      display: block;
-      margin-bottom: 5px;
-
-    }
+    color: $whitesmoke;
+    // span{
+    //   background-color: white;
+    //   width: 21px;
+    //   height: 2px;
+    //   border-radius: 2px;
+    //   display: block;
+    //   margin-bottom: 5px;
+    //
+    // }
     // &:hover{
     //   background-color: black;
     // }
@@ -282,12 +291,20 @@ header{
       }
     }
   }
-  h1,h2,h3,h4{
+  h1{
+    font-size: 4em;
+    line-height: 1.5;
+    // Media query
+    @media only screen and (max-width: 767px) {
+        font-size: 2.5em;
+    }
+  }
+  h2,h3,h4{
     color: $blue;
     text-decoration: none;
   }
   h2,h3,h4{
-    font-weight: 300;
+    // font-weight: 300;
   }
 
 }
@@ -297,18 +314,18 @@ header{
 }
 div#wrapper{
   min-height: 100%;
-  //background: white;
-  margin: 61px  0% 10%;//4%
-  div#yellow-separator{
-    height: 1px;
-    background: $yellow;
-    margin-top: 7px;
-    margin-bottom: 25px;
-  }
+  background: white;
+  padding: 7% 0% 7%;//4%
+  // div#yellow-separator{
+  //   height: 1px;
+  //   background: $yellow;
+  //   margin-top: 7px;
+  //   margin-bottom: 25px;
+  // }
 
 }
 section#content{
-  padding: 10px 0;
+  // padding: 10px 0;
   //background: white;
   header{
     h2{
@@ -317,17 +334,17 @@ section#content{
       &:hover{color:$purple;}
     }
   }
-  aside{
-    padding: 10px;
-    background: white;
-    color:$text-color;
-  }
+  // aside{
+  //   padding: 10px;
+  //   background: white;
+  //   color:$text-color;
+  // }
 }
 //homepage
 section#our-home{
-  span.pull-right{
-    font-size: 2rem;
-  }
+  // span.pull-right{
+  //   font-size: 2rem;
+  // }
   header#tagline{
     @extend #container;
 
@@ -343,7 +360,7 @@ section#our-home{
   }
   article{
     @extend #container;
-    background: white;
+    // background: white;
     color:$text-color ;
     padding: 10px;
     p{
@@ -724,7 +741,7 @@ article#tutorials{
 }
 article#our-events{
   header{
-    background: $gray;
+    // background: $gray;
     padding: 20px;
     margin-top:40px;
     span{
@@ -966,96 +983,59 @@ div#vb-calender{
 
     @extend #center-block;
   }
-  div#calender{
+  table#cal{
     margin-bottom: 30px;
-    //@extend #container;
-    //@extend #center-block;
     @extend #center-block;
     //width: 336px; responsive
     width: 530px;
+    tbody,caption{
+      width: inherit;
+    }
+    caption{
+      text-align: center;
+      //calendar navigation
+      span{
+        i{
+          color: $blue;
+          font-size: 20px;
 
-    aside{
-      //header
-      div#calender-box{
-        background: white;
-        @extend #well;
-
-        header{
-          background: $blue;
-          width: 100%;
-          height: 50px;
-          padding: 5px;
-          margin: 0;
-          @extend #center-block;
-          h4{
-            color: white;
-            span{
-              font-size: 30px;
-            }
+          &:hover{
+            cursor: hand;
           }
+
         }
 
-        div#bd-calender{
-          width: 500px;
-         // width: 300px; //responsive
-          //margin-bottom: 50px;
-          /*border-left:1px solid $text-color2;
-          border-bottom: 1px solid $text-color;*/
-          ul{
-            padding: 0;
-            margin: 0;
-            li#bd-day{
-              width: 14.28%;
-              height: 45px;
-              font-weight: bold;
-              color: $text-color2;
-              //border: 1px solid $black;
-              //background: #e4e4e4;
-              /*border-top: 1px solid $text-color;
-              border-right: 1px solid $text-color;*/
-              padding: 18px;
-              float: left;
-              font-size: 11px;
-              cursor: pointer;
-
-
-            }
-            #bd-day.active{
-              background: $blue;
-              color: white;
-            }
-          }
-
-
-        }
-        div#calender_section_top{
-          //width: 300px; responsive
-          width: 500px;
-          ul{
-            list-style-type: none;
-            padding: 0;
-            li{
-              width: 14.28%;
-              float: left;
-              margin: 0;
-              padding: 0;
-              text-align: center;
-              display: block;
-              color: $blue;
-              font-weight: 600;
-            }
-          }
-
-
+      }
+      select{
+        padding: 5px;
+        border: 2px solid $blue;
+        option[selected]{
+          color: $blue;
         }
       }
 
+    }
+    td,th{
+      border: 1px solid $gray;
+      text-align: center;
 
     }
-    section{
-      background: yellow;
+    th.header{
+      background: #c3c4d6;
+      color: white;
+      text-transform: capitalize;
 
     }
+    td.active{
+      background: $yellow;
+      color: white;
+    }
+    td.has-event{
+      background: $blue;
+      color: white;
+    }
+
+
 
   }
   div#vb-schedules{
@@ -1227,27 +1207,27 @@ div#events-subnav{
   }
 }
 // player tabs
-.nav-pills {
+ul.nav-pills {
   background-color: $purple !important;
   @extend #well;
 }
 .nav-pills > li.active {
-  // display: block;
+  // display: blocks;
 }
-.nav-pills > li {
-  display: inline-block;
-  width: 49%;
-}
+// .nav-pills > li {
+//   display: inline-block;
+//   width: 49%;
+// }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:active,
 .nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover, {
+.nav-pills > li.active > a:hover {
     background-color: white !important;
     border-radius: 0;
     color: $purple;
     font-weight: 700;
 }
-.nav-pills > li > a, {
+.nav-pills > li > a {
     background-color: $purple !important;
     border-radius: 0;
     color: white;
@@ -1268,6 +1248,11 @@ div#league-list{
     }
   }
 }
+//hide volleyball.ng/blog logo
+header#masthead{
+  display: none;
+}
+
 #well{
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
   -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
@@ -1707,7 +1692,7 @@ section#viewPlayer{
 @media only screen  and (max-width: 350px) {
   header#tagline{
     h1{
-      font-size: 28px !important;
+      // font-size: 28px !important;
     }
   }
   //event preview
@@ -1812,3 +1797,17 @@ section#viewPlayer{
 
 }
 @media screen and (max-width: 980px){  }
+
+/* Hero */
+
+.bg{
+  background-image: linear-gradient(rgba(10, 1, 56, 0.8), rgba(10, 1, 56, 0.8)),
+  url("../../public/images/volleyballbg.jpeg");
+  // url("https://images.unsplash.com/photo-1501813354559-db602a6d8077?ixlib=rb-0.3.5&s=e91c24b92490b1f497c6901fdfd100d2&auto=format&fit=crop&w=750&q=80");
+  padding: 28vh 60px;
+  // height: 85vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}

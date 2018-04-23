@@ -24,7 +24,7 @@
                     </div>
 
                     <ul class="list-unstyled top-40">
-                        <li><span>{{$team->name}}</span></li>
+                        <li id="prTeam-name"><span>{{$team->name}}</span></li>
                         <li><span><a href="mailto:{{$team->contact}}">{{$team->contact}}</a></span></li>
                         <li><span>{{$team->phone}}</span></li>
                         <li><a href="3">Team Events</a></li>
@@ -74,26 +74,62 @@
                                   </div>
                                   <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                       <div class="panel-body">
-                                          <div class=" col-xs-12"> <div id="added-member">
-                                                  <div class="row" id="vb-player-preview">
-                                                      @if($team->players->isEmpty())
-                                                      <p>No players yet - click 'Add player' to get started.</p>
-                                                          @else
-                                                          @foreach($team->players as $player)
-                                                              <div class="col-xs-6 col-sm-6">
-                                                                  <a href="{{route('seePlayer',[$team->name,$player->id])}}">
-                                                                      <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
-                                                                      <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
-                                                                  </a>
-
-                                                              </div>
-                                                              @endforeach
-                                                      @endif
+                                          <div class="row">
+                                              <div class=" col-xs-12">
+                                                  <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+                                                      <ul class="nav nav-pills nav-justified text-center top-40">
+                                                          <li  class="active"><a href="#men"   data-toggle="tab">Men</a></li>
+                                                          <li ><a href="#women"  data-toggle="tab">Women</a></li>
+                                                      </ul>
                                                   </div>
-                                              </div></div>
+
+                                                  <div id="added-member" class="tab-content top-40 bottom-20">
+
+                                                      <div class="tab-pane fade in active " id="men">
+                                                          <div class="row" id="vb-male-player-preview">
+                                                              @if($malePlayers->isEmpty())
+                                                                  <div class="col-xs-12"><p>No male players yet - click 'Add player' to get started.</p></div>
+                                                              @else
+                                                                  @foreach($malePlayers as $player)
+                                                                      <div class="col-xs-6 col-sm-6">
+                                                                          <a href="{{route('seePlayer',[$team->name,$player->id])}}">
+                                                                              <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
+                                                                          </a>
+                                                                          <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
+
+                                                                      </div>
+                                                                  @endforeach
+                                                              @endif
+                                                          </div>
+                                                      </div>
+                                                      <div class="tab-pane fade top-40" id="women" >
+                                                          <div class="row" id="vb-female-player-preview">
+                                                          @if($femalePlayers->isEmpty())
+                                                              <div class="col-xs-12"><p>No female players yet - click 'Add player' to get started.</p></div>
+                                                          @else
+
+                                                                  @foreach($femalePlayers as $player)
+                                                                      <div class="col-xs-6 col-sm-6">
+                                                                          <a href="{{route('seePlayer',[$team->name,$player->id])}}">
+                                                                              <img src="{{asset('images/team/players/'.$player->player_image)}}" style="width: 160px; height: 140px">
+                                                                              <h5 class="text-capitalize">{{$player->fname.' '.$player->lname}}</h5>
+                                                                          </a>
+
+                                                                      </div>
+                                                                  @endforeach
+
+                                                          @endif
+                                                          </div>
+                                                      </div>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+
                                       </div>
                                       <div class="panel-footer">
                                           <button id="vb-button" class="btn btn-primary vb-add-player"><i class="fa fa-plus"></i> Add player </button>
+                                          <button id="vb-button" class="btn btn-primary vb-print-player"><i class="fa fa-print"></i> Print Players  </button>
 
                                       </div>
                                   </div>
@@ -205,16 +241,25 @@
                             //load all players added
                             //loops player array
                             var players=data.newPlayers;
-                            $('#vb-player-preview').html('')
-                            var player_preview=""
+                            $('#vb-male-player-preview').html('')
+                            $('#vb-female-player-preview').html('')
+                            var female_player_preview="";
+                            var male_player_preview="";
                             for( i in players){
-                                player_preview+='<div class="col-xs-6 col-sm-6"><a href="'+data.teamName+'/player/'+players[i].id+'"><img src="{{asset('images/team/players')}}/'+players[i].player_image+'" style="width: 160px; height: 140px"> <h5 class="text-center text-capitalize">'+players[i].fname+' '+players[i].lname+'</h5> </a></div>'
+                                if(players[i].gender=='male'){
+                                    male_player_preview+='<div class="col-xs-6 col-sm-6"><a href="'+data.teamName+'/player/'+players[i].id+'"><img src="{{asset('images/team/players')}}/'+players[i].player_image+'" style="width: 160px; height: 140px"> <h5 class="text-center text-capitalize">'+players[i].fname+' '+players[i].lname+'</h5> </a></div>'
+
+                                }else if(players[i].gender=='female'){
+                                    female_player_preview+='<div class="col-xs-6 col-sm-6"><a href="'+data.teamName+'/player/'+players[i].id+'"><img src="{{asset('images/team/players')}}/'+players[i].player_image+'" style="width: 160px; height: 140px"> <h5 class="text-center text-capitalize">'+players[i].fname+' '+players[i].lname+'</h5> </a></div>'
+
+                                }
                                // player_preview+='<div class="media" data-pid="'+players[i].team_id+'"> <div class="media-left"><img src="images/team/players/'+players[i].player_image+'" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>'+players[i].fname+' '+players[i].lname+'</span></li> <li><b>Height:</b> <span>'+players[i].height+'</span></li> <li><b>Position:</b> <span>'+players[i].position+'</span></li> <li><a href="#" >remove</a></li> </ul> </div> </div> </div>'
 
                             }
                             //add_player='<div class="media" data-pid=""> <div class="media-left"><img src="" style="width: 60px;" class="media-object"> </div> <div class="media-body"> <ul class="list-unstyled"> <li><b>Name:</b> <span>John don</span></li> <li><b>Height:</b> <span>200cm</span></li> <li><b>Position:</b> <span>Middle blocker</span></li> <li><a href="#" >remove</a></li> </ul> </div> </div> </div>'
 
-                            $('#vb-player-preview').html(player_preview);
+                            $('#vb-male-player-preview').html(male_player_preview);
+                            $('#vb-female-player-preview').html(female_player_preview);
                             $('#show-player-img').attr('src','{{asset('images')}}/user.jpg')
 
                         }
@@ -353,6 +398,20 @@
                 })
 
             })
+
+            //print function
+            $('.vb-print-player').on('click',function(){
+                //document.querySelector('.tab-pane.active a').removeAttr('href');
+                printContent('.tab-pane.active');
+            })
+            function printContent(el){
+                var restorepage = document.body.innerHTML;
+                var printcontent = document.querySelector(el).innerHTML;
+                document.body.innerHTML = printcontent;
+
+                window.print();
+                document.body.innerHTML = restorepage;
+            }
         })
 
     </script>

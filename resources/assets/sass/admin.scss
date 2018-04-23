@@ -328,6 +328,7 @@ form#add-team{
     color: $blue;
   }
 
+
   button[type='button']{
     background: $blue;
     color: white;
@@ -497,14 +498,56 @@ div#add-player{
   }
 }
 section#vb-team-edit{
+
   form{
+    div#team-logo{
+      img#show-logo-img{
+        width: 25%;
+        // height: 180px;
+        // display: block;
+
+      }
+      input#logo{
+        display: none;
+      }
+      button{
+        // margin-left: 41px;
+        margin-top: 15px;
+        // padding: 5px;
+      }
+    }
     padding: 10px;
     .form-control{
       // border: 2px solid $blue;
-      max-width: 450px;
     }
 
   }
+}
+ul.nav-pills {
+  background-color: $purple !important;
+  @extend #well;
+  margin-bottom:20px;
+}
+.nav-pills > li.active {
+  // display: blocks;
+}
+// .nav-pills > li {
+//   display: inline-block;
+//   width: 49%;
+// }
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:active,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+  background-color: white !important;
+  border-radius: 0;
+  color: $purple;
+  font-weight: 700;
+}
+.nav-pills > li > a {
+  background-color: $purple !important;
+  border-radius: 0;
+  color: white;
 }
 
 .btn-purple {
@@ -566,7 +609,7 @@ a {
 .gray-separator {
   height: 1px;
   background-color: $gray;
-  max-width: 600px;
+  // max-width: 600px;
 }
 .purple-separator {
   height: 1px;
@@ -575,7 +618,7 @@ a {
 .yellow-separator {
   height: 1px;
   background-color: $yellow;
-  max-width: 600px;
+  // max-width: 600px;
 }
 
 // Media queries
@@ -584,4 +627,13 @@ a {
     float: none !important;
   }
 }
+@media print {
+   button { display: none; }/* Hide everything ... */
+ // div#prInfo { display: block; }/* ... except the reired div */
+  a[href]:after{
+    content: none !important;
+  }
+
+}
+
 // End of media queries

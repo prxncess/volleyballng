@@ -1,0 +1,235 @@
+@import"_variables";
+
+html,body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body{
+  height: 100%;
+  // background:#e6e6e6 ;
+  font-family:$sans-font,sans-serif;
+
+  p {
+    // font-size: 16px;
+  }
+
+a{
+  text-decoration: none;
+  color: $black;
+  &:hover {color:$purple; text-decoration: none};
+}
+
+.btn-purple {
+  color: $purple;
+ // background-color: none;
+  border: 1px solid $purple;
+  border-radius: 20px;
+  &:hover {color: white; background-color: $purple}
+}
+
+// Helper classes
+.right-10 {
+  margin-right: 10px;
+}
+.right-5 {
+  margin-right: 5px;
+}
+.top-bottom-padding-40 {
+  padding: 40px 0;
+}
+.top-bottom-padding-20 {
+  padding: 20px 0;
+}
+.left-right-padding-20 {
+  padding: 0 20px;
+}
+.bottom-40 {
+  margin-bottom: 40px;
+}
+.top-40 {
+  margin-top: 40px;
+}
+.bottom-20 {
+  margin-bottom: 20px;
+}
+.top-20 {
+  margin-top: 20px;
+}
+.top-75 {
+  margin-top: 7.5%;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      margin-top: 9em;
+  }
+}
+
+
+// End of helper classes
+}
+.float-right {
+  float: right;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      float: left;
+  }
+}
+
+.dark-gray {
+  color: $dark-gray;
+}
+.purple {
+  color: $purple;
+}
+.gray-background {
+  background-color: $whitesmoke;
+}
+.purple-background {
+  background-color: transparentize($purple, 0.98);
+}
+.gray-separator {
+  height: 1px;
+  background-color: $gray;
+}
+.purple-separator {
+  height: 1px;
+  background-color: $purple;
+}
+.yellow-separator {
+  height: 1px;
+  background-color: $yellow;
+}
+
+.vb-navbar {
+  border: none;
+  color: $whitesmoke;
+}
+
+div#admin-box{
+
+div#ad-event-info{
+  table{
+    width: 400px;
+  }
+}
+}
+section#teamOver{
+  header#teamName{
+    background: $lightgray;
+    // color: white;
+    padding: 20px;
+    margin-bottom: -10px;
+  }
+  div#teamIn{
+    background: $whitesmoke;
+    // color: white;
+    padding: 40px 20px;
+    .media{
+      .media-object{
+           width: 100px;
+           height: 100px;
+
+           @media only screen and (max-width: 767px) {
+             width: 50px;
+             height: 50px;
+           }
+      }
+    }
+  }
+  div#teamOth{
+    aside{
+      background: $lightgray;
+      ul.nav.nav-tabs{
+        padding-top: 10px;
+        border-bottom: 0px;
+        width: 300px;
+        li{
+          a{
+            text-transform: capitalize;
+            border: 0px;
+            &:hover{
+              border-radius: 0px;
+              background: $blue;
+              color: white;
+            }
+          }
+        }
+        li.active {
+          a {
+            border-bottom: 4px solid $blue;
+            &:hover{
+              background: white;
+              color: black;
+
+            }
+          }
+        }
+      }
+    }
+
+    div.tab-content{
+      // background: $whitesmoke;
+      padding: 30px 10px ;
+
+      div#squad{
+         div#player-card{
+           margin-bottom: 20px;
+          // width: 210px;
+           a{
+             text-decoration: none;
+             color: inherit;
+             header{
+               padding: 4px;
+               background: $gray;
+               background-image:url("../images/stats-card.png") ;
+               background-position: 100% 0;
+               background-repeat: no-repeat;
+               position: relative;
+               .media-object{
+                 width: 80px;
+                 height: 80px;
+               }
+               .media-heading{
+                 color: black;
+               }
+             }
+             div#playerInfo{
+               padding: 10px 10px;
+               border: 1px solid $gray;
+               button{
+                 border-radius: 0px;
+                 width: 100%;
+                 background-color: $whitesmoke;
+                 color: black;
+                 &:hover{
+                   background: $blue;
+                   color: white;
+                 }
+
+               }
+
+             }
+
+           }
+           /*li{
+             border: 1px solid $gray;
+             width: 200px;
+             padding: 0px;*/
+
+
+         }
+      }
+
+    }
+
+  }
+  // footer{
+  //   background: $gray;
+  //   padding: 10px;
+  //   button{
+  //     border-radius: 0px;
+  //     margin-left: 10px;
+  //   }
+  // }
+
+}

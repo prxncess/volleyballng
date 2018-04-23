@@ -14,7 +14,7 @@ class AddStatusToEventTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->enum('status','review','open','closed','concluded');
+           // $table->enum('status','review','open','closed','concluded');
         });
     }
 
