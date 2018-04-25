@@ -8,7 +8,7 @@
 <h4 style="color: #333333; font-weight: 700">Hi <b>Admin,</b></h4>
 
 <div>
-    <p> A new team has just signed up and below is a summary of their details</p>
+    <p> A new team has just signed up and here's a summary of their details:</p>
     <p>Brief team summary </p>
     <p style="text-indent: 40px">Team name: <b>{{$team->name}}</b></p>
     <p style="text-indent: 40px">Contact person: <b>{{$team->contact_person}}</b></p>

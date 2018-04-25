@@ -16,7 +16,7 @@
     <p><span style="font-family: 'Fira Mono', monospace; background-color: #e5e5e5; padding: 10px; border-radius: 4px"><b>{{$password}}</b></span></p>
     <p><i>This password can be changed from your organizer account once you log in.</i></p>
 
-    <p>For enquires and other issues with your account, please email <b><a href="mailto:hello@volleyball.ng?subject=Enquiry%20or%20issue%20with%20volleyball%20team%20account" style="color: #4449ca; text-decoration: none">hello@volleyball.ng</a></b>.</p>
+    <p>For enquiries and other issues with your account, please email <b><a href="mailto:hello@volleyball.ng?subject=Enquiry%20or%20issue%20with%20volleyball%20team%20account" style="color: #4449ca; text-decoration: none">hello@volleyball.ng</a></b>.</p>
 
     <p>Best regards,<br>
         <b>Efe</b></p>
