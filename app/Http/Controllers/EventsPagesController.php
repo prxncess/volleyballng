@@ -118,13 +118,13 @@ class EventsPagesController extends Controller
                   });*/
                 //test password:BJw0oDfocd
 
-                return redirect()->route('organizerLogin')->with('status','Congratulations <b>'.$request->get('event_organizer').'</b></br>  Your event was successfully created.<p>An account was also created for you to complete and manage events you create.<br>'.$password.' Please check your registered email for a password to gain access to your account. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
+                return redirect()->route('organizerLogin')->with('status','Your event has been saved, and an account has been created for you to complete + manage this event (& future ones).<br>'.$password.' Please check your registered email for your password. <br> If you cannot see the email, check your spam/junk folder.') ;
                 ;
 
             }else{
                 //return an error
                 //organizer account was created by event was no saved
-                return redirect()->route('')->with('res','organizer account was created by event was no saved.<br> Please check your registered email for a password to gain access to your account and create the event');
+                return redirect()->route('')->with('res','Organizer account was created but event was not saved.<br> Please check your registered email for a password to gain access to your account and create the event');
             }
 
 
