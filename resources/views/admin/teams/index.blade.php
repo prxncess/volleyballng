@@ -6,11 +6,12 @@
         <div class="well well" id="admin-box">
             <header>
                 <h3>Teams</h3>
-                <div id="separator"></div>
+                <div class="gray-separator bottom-40"></div>
                 @if(session('res'))
                     <div class="alert alert-success">{{session('res')}}</div>
                 @endif
-                <a href="{{route('addTeam')}}" class=" btn btn-purple "><i class="fa fa-plus right-5"></i> New team</a>
+                <div><a href="{{route('addTeam')}}" class=" btn btn-purple"><i class="fa fa-plus right-5"></i> New team</a></div>
+                <!-- <div class="bottom-40"></div> -->
             </header>
 
             @if($teams->isNotEmpty())

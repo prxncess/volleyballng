@@ -9,7 +9,7 @@
         <div class="well well" id="admin-box">
             <header>
                 <h3>Create Event</h3>
-                <div id="separator"></div>
+                <div class="gray-separator bottom-40"></div>
             </header>
 
             <form method="post" class="form-horizontal" enctype="multipart/form-data" id="event-form">
@@ -20,8 +20,8 @@
                {{-- @if(session('status') && session('status')=='updated')
                     <div class="alert alert-success"> Event successfully created </div>
                 @endif--}}
-                <h5><i class="fa fa-file-text-o"></i> Event information</h5>
-                <div id="separator"></div>
+                <!-- <h5><i class="fa fa-file-text-o"></i> Event information</h5>
+                <div class="gray-separator bottom-20"></div> -->
                 <div class="form-group">
 
                     <div class="col-sm-12">

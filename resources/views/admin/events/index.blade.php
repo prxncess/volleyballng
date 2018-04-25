@@ -10,7 +10,7 @@
         <div class="well well" id="admin-box">
             <header>
                 <h2 class=""><i class="fa fa-paperclip"></i> Events</h2>
-                <div id="" class="purple-separator top-10 bottom-20"></div>
+                <div id="" class="gray-separator top-10 bottom-40"></div>
                 <a href="{{route('createEvent')}}" class="float-right btn btn-purple bottom-10"><i class="fa fa-plus"></i> New event</a>
             </header>
             @if(session('res'))
@@ -36,14 +36,17 @@
                     </div>
                     <div class="media-bottom">
                         <p class="top-20">{{$event->description}}</p>
-                        <ul class="list-unstyled list-inline">
-                            <li><i class=""></i><strong>Location:</strong> <span>{{$event->e_location}}</span> </li>
-                            <li><i class=""></i><strong>Organizer:</strong> <span>{{$event->organizer[0]->organizer}}</span> </li>
-                            <li><i class=""></i><strong>Email:</strong> <span>{{$event->organizer[0]->email}}</span> </li>
+                        <ul class="list-unstyled top-20">
+                            <li><i class=""></i><p><strong>Location:</strong> {{$event->e_location}}</p> </li>
+                            <li><i class=""></i><p><strong>Organizer:</strong> {{$event->organizer[0]->organizer}}</p> </li>
+                            <li><i class=""></i><p><strong>Email:</strong> {{$event->organizer[0]->email}}</p> </li>
                         </ul>
+
+                        <div class="top-20"></div>
+
                         <p>
-                            <a href="{{route('showEvent',$event->slug)}}" class="right-10"><i class="fa fa-ellipsis-h right-5"></i> More</a>
-                            <a href="{{route('editEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit right-5"></i>Edit</a>
+                          <a href="{{route('editEvent',$event->slug)}}" class="right-10"><i class="fa fa-edit fa-fw"></i><b>Edit</b></a>
+                          <a href="{{route('showEvent',$event->slug)}}" class="right-10"><i class="fa fa-chevron-circle-right fa-fw"></i> <b>More</b></a>
                         </p>
 
                     </div>

@@ -422,7 +422,6 @@ form#add-team {
   min-height: 250px;
   border-radius: 2px;
   border: 0;
-  background: white;
   padding: 40px;
 }
 
@@ -719,8 +718,24 @@ a:hover {
   margin-top: 10px;
 }
 
+.top-75 {
+  margin-top: 7.5%;
+}
+
+@media only screen and (max-width: 767px) {
+  .top-75 {
+    margin-top: 9em;
+  }
+}
+
 .float-right {
-  float: right !important;
+  float: right;
+}
+
+@media only screen and (max-width: 767px) {
+  .float-right {
+    float: left;
+  }
 }
 
 .purple {

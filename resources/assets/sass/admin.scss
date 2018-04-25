@@ -240,7 +240,7 @@ form#add-team{
   min-height: 250px;
   border-radius: 2px;
   border: 0;
-  background: white;
+  // background: white;
   //fieldset
 
 
@@ -592,8 +592,19 @@ a {
 .top-10 {
   margin-top: 10px;
 }
+.top-75 {
+  margin-top: 7.5%;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      margin-top: 9em;
+  }
+}
 .float-right {
-  float: right !important;
+  float: right;
+  // Media query
+  @media only screen and (max-width: 767px) {
+      float: left;
+  }
 }
 // End of helper classes
 .purple {
