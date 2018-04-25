@@ -95,6 +95,7 @@ class organizerPagesController extends Controller
                 $team=$player->team;
                return view('organizer.team.playerCard',compact('team','player'));
             }else{
+
                 return 'You are playing with fire. You are doing something wrong';
             }
         }catch (ModelNotFoundException $e){
@@ -157,7 +158,10 @@ class organizerPagesController extends Controller
 
         }catch (ModelNotFoundException $e){
             return view('404');
-        }
+
+                return 'Your playing with fire. Your are doing something wrong';
+            }
+
 
     }
 }

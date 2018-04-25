@@ -40,6 +40,7 @@
 
                 <div class="tab-content">
                     <div id="over" class="tab-pane fade in active ">
+<<<<<<< Updated upstream
                         <header>
                             <h3>Management</h3>
                         </header>
@@ -82,6 +83,20 @@
                     </div>
                     <div id="squad" class="tab-pane fade ">
                            <div class="row bottom-40">
+=======
+                        <h3>Staff</h3>
+                        <hr>
+                       <div id="ogStaff">
+                           @if($team->staff->isEmpty())
+                               <p>No staff at the moment for this team</p>
+                               @else
+
+                           @endif
+                       </div>
+                    </div>
+                    <div id="squad" class="tab-pane fade ">
+                           <div class="row">
+>>>>>>> Stashed changes
                                @if($team->players->count() >0)
                                    @foreach($team->players as $player)
                                        <div class="col-xs-12 col-sm-6 col-md-4">

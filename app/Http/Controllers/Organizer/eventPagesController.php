@@ -238,12 +238,14 @@ class eventPagesController extends Controller
 
             if($event->save()){
                 //send mail to admin
+
                 Mail::send('mails.organizer.newEvent',['event'=>$event],function($message) use($event){
                     $message->to('efe@volleyball.ng');
                     $message->subject('Event Approval');
                     $message->from('volleyballdotngee@gmail.com','Volleyball.ng');
                 });
                 return redirect()->route('myEvents')->with('status','Your event has been submitted for review.');
+
             }
 
         }catch (ModelNotFoundException $e){

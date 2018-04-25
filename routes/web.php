@@ -165,11 +165,16 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
 
     //mail organizer
 
+
     //teams
     Route::get('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
     Route::post('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
     Route::get('/seeTeam/{team}',['as'=>'ogSeeTeam','uses'=>'Organizer\organizerPagesController@showTeam']);
    // Route::get('/acceptTeam/{team}/interestedIn/{event}',['as'=>'OgAcceptTeam','uses'=>'Organizer\organizerPagesController@acceptTeam']);
+
+    //teas
+    Route::get('/viewTeam/{team}/interestedIn/{event}',['as'=>'OgCheckTeam','uses'=>'Organizer\organizerPagesController@checkTeam']);
+
 
     //view player
     Route::get('/Players/{player}/{playerName}/overview',['as'=>'OgCheckPlayer','uses'=>'Organizer\organizerPagesController@checkPlayer']);

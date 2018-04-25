@@ -111,11 +111,11 @@ class EventsPagesController extends Controller
                 //send mail
 
 
-                /*  Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newOrganizer){
+                  Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newOrganizer){
                       $message->to($newOrganizer->email);
                       $message->subject('Event Creation: volleyball.ng');
-                      $message->from('volleyballdotngee@gmail.com','volleyball.ng');
-                  });*/
+                      $message->from('vollyballdotngee@gmail.com','volleyball.ng');
+                  });
                 //test password:BJw0oDfocd
 
                 return redirect()->route('organizerLogin')->with('status','Congratulations <b>'.$request->get('event_organizer').'</b></br>  Your event was successfully created.<p>An account was also created for you to complete and manage events you create.<br>'.$password.' Please check your registered email for a password to gain access to your account. <br> If you have not received an email after a few minutes, check your spam/junk folder.</p>') ;
