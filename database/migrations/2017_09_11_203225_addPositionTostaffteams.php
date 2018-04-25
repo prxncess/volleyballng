@@ -13,9 +13,11 @@ class AddPositionTostaffteams extends Migration
      */
     public function up()
     {
-        Schema::table('staffteams', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             //
-           // $table->enum('position',['coach','manager']);
+
+          //  $table->string('image','150')->nullable();
+          //  $table->enum('position',['coach','manager']);
         });
     }
 

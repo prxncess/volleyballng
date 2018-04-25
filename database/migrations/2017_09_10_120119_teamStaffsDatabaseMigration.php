@@ -19,6 +19,8 @@ class TeamStaffsDatabaseMigration extends Migration
             $table->string('lname',100);
             $table->text('description')->nullable();
             $table->string('team_id');
+            $table->string('image','150')->nullable();
+            $table->enum('position',['coach','manager']);
             $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();
         });

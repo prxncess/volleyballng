@@ -61,6 +61,7 @@ class eventPagesController extends Controller
 
             $message =[
                 'event_title.required'=>"Please enter the title of the event",
+                'event_title.unique'=>"event title is already taken",
                 'event_title.unique'=>"please choose another title as this is already in use",
                 'event_description.required'=>'Please write a longer description (at least 30 characters)',
                 'event_location.required'=>'Select the location of your event',
@@ -74,7 +75,7 @@ class eventPagesController extends Controller
                 //other messages
             ];
             Validator::make($request->all(),[
-                'event_title'=>'required|regex:/^[\w., ]{3,225}$/i|unique:events,title',
+                'event_title'=>'required|unique:events,title|regex:/^[\w., ]{3,225}$/i|unique:events,title',
                 'event_description'=>"required|regex:/^[A-Za-z0-9?.,#-_ ]{100,225}$/i",
                 'event_location'=>'required',
                 'event_start'=>'required|date',

@@ -52,7 +52,7 @@ class organizerPagesController extends Controller
         $organizer->password=bcrypt($request->get('password'));
         if($organizer->save()){
             //save and redirect back
-            return redirect()->route('password')->with('res','password updated');
+            return redirect()->route('opassword')->with('res','password updated');
 
         }
     }

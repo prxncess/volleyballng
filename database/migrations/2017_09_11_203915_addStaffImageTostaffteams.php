@@ -13,7 +13,7 @@ class AddStaffImageTostaffteams extends Migration
      */
     public function up()
     {
-        Schema::table('staffteams', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             //
            // $table->string('image','150')->nullable();
         });
