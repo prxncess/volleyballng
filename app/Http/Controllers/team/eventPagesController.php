@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\team;
 
 use App\Notifications\EventInterest;
+use App\Notifications\RejectTeamInterest;
+use App\Notifications\teamInterest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Team;
@@ -14,7 +16,6 @@ use Illuminate\Support\Str;
 use Validator;
 use Image;
 use App\Event;
-//use App\Organizer;
 use Mail;
 
 class eventPagesController extends Controller
@@ -57,11 +58,15 @@ class eventPagesController extends Controller
                 //check if team is approved
                 if(auth('team')->user()->active==0){
                     //not approved
+                    //send team a notification
+                    $team->notify(new RejectTeamInterest($team));
                     return redirect(route('eventOverview',[$slug]))->with('error','Sorry but you can show interest for an event unless you complete your team profile and request for an approval');
 
                 }elseif(auth('team')->user()->active==1) {
                     //sent interest of approval to event organizer
                     $organizer->notify(new EventInterest($event,$team));
+                    //congratulate team
+                    $team->notify(new teamInterest($team,$event));
                     return redirect(route('eventOverview',$event->slug))->with('res','Thank you for showing your interest to this event. The event organizer would get back to you with a response soon.thanks');
 
 

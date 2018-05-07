@@ -12,6 +12,7 @@ use Illuminate\Support\Facades;
 use App\Event;
 use Image;
 use Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 class EventsPagesController extends Controller
 {
@@ -110,15 +111,14 @@ class EventsPagesController extends Controller
                 //redirect back
                 //send mail
 
-
                   Mail::send('mails.newEvent',['name'=>$request->get('event_organizer'),'password'=>$password],function($message) use ($newOrganizer){
-                      $message->to($newOrganizer->email);
+                      $message->to(Input::get('event_email'));
                       $message->subject('Event Creation: volleyball.ng');
-                      $message->from('vollyballdotngee@gmail.com','volleyball.ng');
+                      $message->from('volleyballsmpt@gmail.com','volleyball.ng');
                   });
                 //test password:BJw0oDfocd
 
-                return redirect()->route('organizerLogin')->with('status','Your event has been saved, and an account has been created for you to complete + manage this event (& future ones).<br>'.$password.' Please check your registered email for your password. <br> If you cannot see the email, check your spam/junk folder.') ;
+                return redirect()->route('organizerLogin')->with('status','Your event has been saved, and an account has been created for you to complete + manage this event (& future ones).<br> Please check your registered email for your password. <br> If you cannot see the email, check your spam/junk folder.') ;
                 ;
 
             }else{

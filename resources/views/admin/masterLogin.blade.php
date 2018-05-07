@@ -11,6 +11,9 @@
     <section id="team-login">
       <form id="vb-team-login" class="form-horizontal" action="{{route('MasterLogin')}}" method="post">
           <header><h2 class="text-center"><i class="fa fa-lock"></i></h2> </header>
+          @if(session('res'))
+              <p class="error text-center">{{session('res')}}</p>
+          @endif
           {{csrf_field()}}
           <div class="row">
               <div class="col-xs-12 bottom-20 text-center error">

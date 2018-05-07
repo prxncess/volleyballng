@@ -17,4 +17,5 @@ class Organizer extends Authenticatable
     public function events(){
        return $this->belongsToMany('App\Event');
     }
+
 }
