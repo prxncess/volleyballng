@@ -39,7 +39,7 @@
                               <div class="col-sm-6 col-md-4">
                                   <div class="media">
                                       <div class="media-left">
-                                          <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                                          <a href="{{route('viewPlayer',$player->id)}}"> <img src="{!!asset('images/team/players/'.$player->player_image)!!}" class="media-object"></a>
                                       </div>
                                       <div class="media-body">
                                           <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>
@@ -69,7 +69,7 @@
                                 <div class="col-sm-6 col-md-4">
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="{{route('viewPlayer',$player->id)}}"> <img src="images/team/players/{{$player->player_image}}" class="media-object"></a>
+                                            <a href="{{route('viewPlayer',$player->id)}}"> <img src="{!! asset('images/team/players/'.$player->player_image) !!}" class="media-object"></a>
                                         </div>
                                         <div class="media-body">
                                             <a href="{{route('viewPlayer',$player->id)}}"> <h4 class="media-heading">{{$player->fname.' '.$player->lname}}</h4></a>

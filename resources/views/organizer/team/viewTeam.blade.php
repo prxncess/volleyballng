@@ -40,7 +40,7 @@
 
                 <div class="tab-content">
                     <div id="over" class="tab-pane fade in active ">
-<<<<<<< Updated upstream
+
                         <header>
                             <h3>Management</h3>
                         </header>
@@ -83,7 +83,7 @@
                     </div>
                     <div id="squad" class="tab-pane fade ">
                            <div class="row bottom-40">
-=======
+
                         <h3>Staff</h3>
                         <hr>
                        <div id="ogStaff">
@@ -96,7 +96,7 @@
                     </div>
                     <div id="squad" class="tab-pane fade ">
                            <div class="row">
->>>>>>> Stashed changes
+
                                @if($team->players->count() >0)
                                    @foreach($team->players as $player)
                                        <div class="col-xs-12 col-sm-6 col-md-4">
@@ -146,8 +146,22 @@
                     <input type="hidden" name="xd" value="{{$team->id}}" >
                     <input type="hidden" name="lx" value="{{$eve->id}}" >
                     <div class="row">
-                      <div class="col-xs-6"><button class="btn btn-purple">Reject Team</button></div>
-                      <div class="col-xs-6"><button type="submit" class="btn vb-button">Accept Team</button></div>
+                      <div class="col-xs-6">
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reject Team<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Max number of teams have been met</a></li>
+                                <li><a href="#">Registration is closed</a></li>
+                                <li><a href="#"> Competition requirements not met </a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Others</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                        <div class="col-xs-6"><button type="submit" class="btn vb-button">Accept Team</button></div>
                     </div>
                 </form>
             </footer>

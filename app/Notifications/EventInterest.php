@@ -33,7 +33,7 @@ class EventInterest extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','mail'];
     }
 
     /**
@@ -45,9 +45,10 @@ class EventInterest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', 'https://laravel.com')
-                    ->line('Thank you for using our application!');
+                    ->line('Hello'.$this->event->organizer[0]->organizer .', Team '.$this->team['name'])
+                    ->line(' has shown interest for '.$this->event->title.' event.')
+                    ->action('Please login to manage this request', route('organizerLogin'))
+                    ->line('Thank you');
     }
 
     /**

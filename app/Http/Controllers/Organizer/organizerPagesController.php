@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Organizer;
 
+use App\Notifications\InterestAccepted;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -121,6 +122,8 @@ class organizerPagesController extends Controller
                     }else{
                         //include team to events
                         $ee->teams()->attach([$tt->id]);
+                        //send team a congratulatory message
+                        $tt->notify(new InterestAccepted($tt->name,$event->title));
                         return redirect(route('OgCheckTeam',[$tt->name,$ee->slug]))->with('res','success');
                     }
                     //$event->attach([$tt->id]);
