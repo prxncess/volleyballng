@@ -70,9 +70,9 @@ class eventPagesController extends Controller
             'event_email.required'=>'Please enter a valid email address',
             'event_phone.required'=>'Please enter a valid phone number',
             'event_terms.accepted'=>'You have not accepted our terms and conditions',
-            'event_poser.image'=>'file uploaded into an image: jpg,png,jpeg,x-png',
-            'event_start.date'=>'invalid date format (please use yyyy-mm-dd)',
-            'event_end.date'=>'invalid date format (please use yyyy-mm-dd)',
+            'event_poser.image'=>'File uploaded into an image: jpg,png,jpeg,x-png',
+            'event_start.date'=>'Invalid date format (please use yyyy-mm-dd)',
+            'event_end.date'=>'Invalid date format (please use yyyy-mm-dd)',
 
 
 
@@ -215,29 +215,29 @@ class eventPagesController extends Controller
             $event=Event::whereSlug($slug)->firstOrFail();
 
             $message =[
-                'event_title.required'=>"Please enter the title of the event",
-                'event_description.required'=>'Please enter a longer description (at least 30 characters)',
+                'event_title.required'=>"Your event needs a title. Please do not use special characters like ' or * or -",
+                'event_description.required'=>'Enter a longer description (at least 30 characters)',
                 'event_location.required'=>'Select a location for this event',
                 'event_start.required'=>'What day does this event begin?',
                 'event_end.required'=>'What day does this event end?',
                 'event_organizer.required'=>'The name of the event organizer is required',
-                'event_email.required'=>'Please enter a valid email address',
-                'event_phone.required'=>'Please enter a valid phone number',
+                'event_email.required'=>'Enter a valid email address in this format: name@domain.tld',
+                'event_phone.required'=>'Enter an 11 digit phone number in this format: 080xxxxxxxx',
                 'event_terms.accepted'=>'You have not accepted our terms and conditions',
-                'event_poser.image'=>'file uploaded into an image: jpg,png,jpeg,x-png',
-                'event_start.date'=>'invalid date format (please use yyyy-mm-dd)',
-                'event_end.date'=>'invalid date format (please use yyyy-mm-dd)',
-                'event_start.prevdate'=>'Previous dates can not be selected',
-                'event_end.prevdate'=>'Previous dates can not be selected',
-                'event_phone.phone'=>'Phone number format not allowed. use 080xxxxxxxx',
+                'event_poser.image'=>'File uploaded into an image: jpg,png,jpeg,x-png',
+                'event_start.date'=>'Use the datepicker or enter the date in this format: yyyy-mm-dd',
+                'event_end.date'=>'Use the datepicker or enter the date in this format: yyyy-mm-dd',
+                'event_start.prevdate'=>'Dates in the past cannot be selected',
+                'event_end.prevdate'=>'Dates in the past cannot be selected',
+                'event_phone.phone'=>'Enter an 11 digit phone number in this format: 080xxxxxxxx',
 
 
 
 
                 //other messages
-                'event_phone.regex'=>'Phone number submitted is invalid.',
-                'event_organizer.regex'=>'Invalid name submitted.',
-                'event_email.email'=>'Invalid email.',
+                'event_phone.regex'=>'Enter an 11 digit phone number in this format: 080xxxxxxxx',
+                'event_organizer.regex'=>'The organizer\'s name must contain at least 3 letters, and must not contain any special characters like * or -',
+                'event_email.email'=>'Enter an email address in this format: name@domain.tld',
             ];
             //validate
             Validator::make($request->all(),[

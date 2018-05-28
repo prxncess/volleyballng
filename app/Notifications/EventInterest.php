@@ -45,8 +45,8 @@ class EventInterest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Hello'.$this->event->organizer[0]->organizer .', Team '.$this->team['name'])
-                    ->line(' has shown interest for '.$this->event->title.' event.')
+                    ->line('Hello '.$this->event->organizer[0]->organizer .', Team '.$this->team['name'])
+                    ->line(' has shown interest in '.$this->event->title.' event.')
                     ->action('Please login to manage this request', route('organizerLogin'))
                     ->line('Thank you');
     }
@@ -67,7 +67,7 @@ class EventInterest extends Notification
     {
         return [
             //
-            'message'=>'Hello, team <b>'.$this->team['name'].'</b> has shown interest for '.$this->event->title.' event.',
+            'message'=>'Hello, team <b>'.$this->team['name'].'</b> has shown interest in '.$this->event->title.' event.',
             'action'=>route('OgCheckTeam',[$this->team['name'],$this->event->slug])
         ];
     }

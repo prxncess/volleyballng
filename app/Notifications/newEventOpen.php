@@ -45,10 +45,9 @@ class newEventOpen extends Notification
         $url='http://volleyball.ng/event/'.$this->event->slug;
         return (new MailMessage)
             ->subject('New Event opening')
-                    ->line('Hi, Team Admin , a new event title: <b>'.$this->event->title.'</b>, is now open for registration' )
-            ->line('Please click the button below to register your team')
+                    ->line('Hello, we found an event you might want to participate in: <b>'.$this->event->title.'</b>' )
+            ->line('If interested, click the button below')
                     ->action('Notification Action', $url)
-                    ->line('Pleas ignore this email if you don\'t to register for this event')
                     ->line('<p>Best regards,<br><b>'.$this->event->organizer[0]->organizer.'</b></p>');
 
     }

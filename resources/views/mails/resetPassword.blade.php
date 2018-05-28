@@ -16,7 +16,7 @@
       <p style="text-indent: 40px">Password: <span style="font-family: 'Fira Mono', monospace; background-color: #e5e5e5; padding: 10px; border-radius: 4px"><b>{!! $password==null?'still your old password': '<b>'.$password.'</b>' !!}</b></span></p>
       <p>Click <a href="http://volleyball.ng/team/signIn" style="color: #4449ca; text-decoration: none"><b>here</b></a> to log in.</p>
 
-      <p>For enquires and other issues with your account, please email <b><a href="mailto:eorijesu@gmail.com?subject=Enquiry or issue with volleyball team account" style="color: #4449ca; text-decoration: none">eorijesu@gmail.com</a></b>.</p>
+      <p>If you have questions or issues with your account, please email <b><a href="mailto:hello@volleyball.ng?subject=Enquiry%20or%20issue%20with%20volleyball%20team%20account" style="color: #4449ca; text-decoration: none">hello@volleyball.ng</a></b>.</p>
 
       <p>Best regards,<br>
       <b>Volleyball.ng</b></p>

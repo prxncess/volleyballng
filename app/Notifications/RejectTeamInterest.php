@@ -45,12 +45,12 @@ class RejectTeamInterest extends Notification
         return (new MailMessage)
             ->error()
             ->subject('request Declined')
-                    ->line('Dear team'.$this->team['name'])
-                    ->line('sorry but you can\'t register fot this event unless you do the following')
-                    ->line('<ul><li>at least 6 players</li><li>1 staff member</li><li>a photo of the entire team</li></ul>.')
-                    ->line('Then request for a team approval by login')
-                    ->action('Here', route('teamSignIn'))
-            ->line('If you have met all the requirements and still haven\'t gotten approved, please email <b><a href="mailto:eorijesu@gmail.com?subject=Enquiry or issue with volleyball team account" style="color: #4449ca; text-decoration: none">eorijesu@gmail.com</a></b>')
+                    ->line('Dear'.$this->team['name'])
+                    ->line('To register for this event, please update your account with the following information')
+                    ->line('<ul><li>add at least 6 players</li><li>1 staff member</li><li>a photo of the entire team</li></ul>.')
+                    ->line('After that, please click the button at the bottom of your dashboard to request approval')
+                    ->action('Login here to update your account', route('teamSignIn'))
+            ->line('If you have met all the requirements and still do not have approval, please email <b><a href="mailto:hello@volleyball.ng?subject=Enquiry%20or%20issue%20with%20volleyball%20team%20account" style="color: #4449ca; text-decoration: none">hello@volleyball.ng</a></b>')
                     ->line('<p>Best regards,<br><b>Volleyball.ng</b></p>');
     }
 
@@ -64,7 +64,7 @@ class RejectTeamInterest extends Notification
     {
         return [
             //
-            'message'=>'Sorry request was declined as your team is not yet approved. An email was sent to you for further details.',
+            'message'=>'Sorry, but this request was declined as your team is not yet approved. See your email for further details. If you do not receive an email after a few minutes, please check your spam/junk folder or email hello@volleyball.ng'
             'action'=>route('teamDashboard')
         ];
     }

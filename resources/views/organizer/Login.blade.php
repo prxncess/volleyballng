@@ -18,7 +18,7 @@
           {{csrf_field()}}
           <div class="row">
               <div class="col-xs-12 bottom-20 text-center">
-                  <input type="text" class="form-control" name="user_name" placeholder="Username" autofocus>
+                  <input type="email" class="form-control" name="user_name" placeholder="Email address" autofocus>
                   <p class="error">@if($errors->has('user_name')) {{$errors->first('user_name')}}@endif </p>
               </div>
               <div class="col-xs-12 bottom-20 text-center">
@@ -37,5 +37,3 @@
     </section>
 </div>
 @endsection
-
-

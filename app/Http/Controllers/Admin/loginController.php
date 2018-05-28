@@ -32,7 +32,7 @@ class loginController extends Controller
             return redirect()->route('adminDashboard');
         }
 
-        return redirect()->route('MasterLogin')->with('res','Email or Password entered are incorrect');
+        return redirect()->route('MasterLogin')->with('res','Username or password is incorrect');
     }
 
     public function logout(){

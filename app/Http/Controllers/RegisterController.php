@@ -38,23 +38,23 @@ class RegisterController extends Controller
                 'logo.max'=>'File size should be less than 1mb',
                 'team_image.max'=>'File size should be less than 2mb',*/
                 //team name
-                'team-name.required'=>'A team is required',
-                'team-name.unique'=>'Name already registered',
-                'team-name.regex'=>'Please enter a valid name',
+                'team-name.required'=>'What is the name of your team?',
+                'team-name.unique'=>'This team name is already taken',
+                'team-name.regex'=>'Your team name must contain at least 3 letters, and special characters are not allowed',
                 //team phone
-                'team-phone.required'=>'Please enter your phone number',
+                'team-phone.required'=>'Phone number is required',
                 'team-phone.unique'=>'Phone number already registered',
-                'team-phone.phone'=>'Please enter a valid phone number in this format 080xxxxxxxx',
+                'team-phone.phone'=>'Enter an 11 digit phone number in this format 080xxxxxxxx',
 
                 //team email
-                'team-contact.required'=>'Please enter your email address',
-                'team-contact.email'=>'Please enter a valid email address',
+                'team-contact.required'=>'We need an email address to send you login details',
+                'team-contact.email'=>'Enter a valid email address in this format: name@domain.tld',
                 'team-contact.unique'=>'Email address already registered',
                 //terms
-                'accept.accepted'=>'Please check we agree box',
-                'team-description.required'=>'Please give a brief description of your team',
-                'team-description.regex'=>'Please use only allowed format',
-                'contact person.required'=>'who can we contact',
+                'accept.accepted'=>'Please tick the box to agree with our terms & conditions',
+                'team-description.required'=>'Please tell us a little about your team',
+                'team-description.regex'=>'Write at least 10 words to describe your team. Please avoid using special characters',
+                'contact person.required'=>'Who is the contact person for your team?',
                 'contact person.regex'=>'Please enter a valid contact person name',
 
             ];

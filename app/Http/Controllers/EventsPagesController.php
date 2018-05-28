@@ -33,25 +33,25 @@ class EventsPagesController extends Controller
         //then store events title
 
         $message =[
-            'event_title.required'=>"Please enter the title of the event",
-            'event_title.unique'=>"event title is already taken",
+            'event_title.required'=>"Enter the title of the event",
+            'event_title.unique'=>"This event title is already taken",
             // 'event_description.required'=>'Please write at least 30 words to describe this event',
             // 'event_location.required'=>'Select the location of your event',
             // 'event_start.required'=>'When will the event start?',
             // 'event_end.required'=>'When will the event end?',
-            'event_organizer.required'=>'Who is the organizer?',
-            'event_email.required'=>'Email is required',
+            'event_organizer.required'=>'What is the name of the event organizer?',
+            'event_email.required'=>'Email address is required',
             'event_phone.required'=>'Phone number is required',
-            'event_terms.accepted'=>'You have to accept our terms and conditions',
+            'event_terms.accepted'=>'You have to tick the box to accept our terms and conditions before you proceed',
             // 'event_poser.image'=>'File uploaded into an image:jpg,png,jpeg,x-png',
             // 'event_poser.image'=>'Invalid date format (yyyy-mm-dd)',
             // 'event_poser.image'=>'invalid date format (yyyy-mm-dd)',
 
 
             //other messages
-            'event_phone.phone'=>'Phone number format not allowed. use 080xxxxxxxx',
+            'event_phone.phone'=>'Enter an 11 digit phone number in this format: 080xxxxxxxx',
             'event_organizer.regex'=>'Invalid name submitted.',
-            'event_email.email'=>'Invalid email.',
+            'event_email.email'=>'Enter a valid email address in this format: name@domain.tld',
             'event_email.unique'=>'Email already taken. Please click <a href="organizer/Login">here</a> to login',
         ];
         //validate
@@ -118,13 +118,13 @@ class EventsPagesController extends Controller
                   });
                 //test password:BJw0oDfocd
 
-                return redirect()->route('organizerLogin')->with('status','Your event has been saved, and an account has been created for you to complete + manage this event (& future ones).<br> Please check your registered email for your password. <br> If you cannot see the email, check your spam/junk folder.') ;
+                return redirect()->route('organizerLogin')->with('status','Saved! <br> Check your email for a password to login and complete the details of this event. <br> Look in the spam/junk folder if you don\'t see the email after a few minutes.') ;
                 ;
 
             }else{
                 //return an error
                 //organizer account was created by event was no saved
-                return redirect()->route('')->with('res','Organizer account was created but event was not saved.<br> Please check your registered email for a password to gain access to your account and create the event');
+                return redirect()->route('')->with('res','Organizer account was created but event was not saved.<br> Please check your email for a password to login and create the event');
             }
 
 

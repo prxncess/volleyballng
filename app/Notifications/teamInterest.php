@@ -46,9 +46,9 @@ class teamInterest extends Notification
     {
         return (new MailMessage)
             ->subject('Event Interest')
-                    ->line('Hi Team '.$this->team['name'])
-            ->line('Thanks for indicating interest to this event: <b>'.$this->event->title.'</b>.')
-            ->line('You\'ll be informed if the event organizer selects you to participate for this event')
+                    ->line('Hi '.$this->team['name'])
+            ->line('Thanks for indicating interest in <b>'.$this->event->title.'</b>.')
+            ->line('You\'ll be informed if the organizer selects you to participate in this event')
                     ->line('<p>Best regards,<br><b>Volleyball.ng</b></p>');
     }
 

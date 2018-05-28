@@ -1059,39 +1059,36 @@ div#access div.dropdown ul.dropdown-menu .divider {
 }
 
 div#event-list {
-  padding: 5% 10px 10px 8%;
+  padding: 5% 0;
 }
 
 div#event-list div#event-thumb {
   /*border: 2px solid $yellow;*/
-  min-height: 300px;
-  width: 300px;
-  padding: 0;
-  margin: 10px 5% 75px 10px;
+  width: 30%;
 }
 
-div#event-list div#event-thumb h3 a {
+div#event-list div#event-thumb h4 a {
   color: #4449ca;
   margin-top: 10px;
   line-height: 2;
   text-decoration: none;
 }
 
-div#event-list div#event-thumb h3 a:hover {
+div#event-list div#event-thumb h4 a:hover {
   color: black;
 }
 
 div#event-list div#event-thumb img {
-  width: inherit;
+  width: auto;
   /*border-top-left-radius: 15px;
       border-top-right-radius: 15px;*/
   max-height: 255px;
+  height: 70%;
 }
 
 div#event-list div#event-thumb header {
-  box-shadow: 0px 2px 9px 0px black;
   background: white;
-  padding: 10px;
+  padding: 10px 0;
   height: 120px;
   /* border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;*/

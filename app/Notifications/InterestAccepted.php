@@ -46,9 +46,9 @@ class InterestAccepted extends Notification
     {
         return (new MailMessage)
             ->subject('Request Accepted')
-                    ->line('Congratulation Team '.$this->team)
-                    ->action('You request to participate  in <b>'.$this->event.'</b> event was accepted.' )
-                    ->line('The event organizer for this event would get in touch with about the logistics of this event')
+                    ->line('Congratulations '.$this->team)
+                    ->action('Your request to participate in <b>'.$this->event.'</b> event was accepted.' )
+                    ->line('The event organizer will be in touch with information about logistics and related matters.')
                     ->line('Thank you');
     }
 

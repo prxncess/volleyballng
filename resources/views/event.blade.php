@@ -55,7 +55,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div id="evvent-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="event-list" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="row">
                 <div class="col-xs-12"><h3 class="bottom-40">Next events</h3></div>
                    @if($events->isEmpty())
@@ -63,7 +63,7 @@
                        @else
                        @foreach($events as $event)
                            <div id="event-thumb" class="col-md-3  col-sm-4  col-xs-12">
-                               <h3><a href="{{route('viewEvent',$event->slug)}}">{!! $event->title !!}</a></h3>
+                               <h4><a href="{{route('viewEvent',$event->slug)}}">{!! $event->title !!}</a></h4>
                                <img class="img-responsive" src="{{asset('images/event/'.$event->image)}}">
                                <header>
                                    <div id="bar"></div>
