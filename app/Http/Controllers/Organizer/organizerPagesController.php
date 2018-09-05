@@ -123,7 +123,7 @@ class organizerPagesController extends Controller
                         //include team to events
                         $ee->teams()->attach([$tt->id]);
                         //send team a congratulatory message
-                        $tt->notify(new InterestAccepted($tt->name,$event->title));
+                        $tt->notify(new InterestAccepted($tt->name,$ee->title));
                         return redirect(route('OgCheckTeam',[$tt->name,$ee->slug]))->with('res','success');
                     }
                     //$event->attach([$tt->id]);

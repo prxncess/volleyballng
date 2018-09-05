@@ -15,7 +15,7 @@
         <aside>
             <div class="row">
                 <div class="col-xs-12 col-sm-4  " id="player_image">
-                     <img src="images/team/players/{{$player->player_image}}" class="media-object">
+                     <img src="{!! asset('images/team/players/'.$player->player_image) !!}" class="media-object">
                 </div>
                 <div class=" col-xs-12 col-sm-4  {{--col-md-2 col-md-offset-8--}}" id="player_info">
                      <span class="media-heading">{{$player->fname.' '.$player->lname}}</span>

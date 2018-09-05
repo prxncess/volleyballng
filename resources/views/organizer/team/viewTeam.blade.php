@@ -161,7 +161,9 @@
                             </ul>
                         </div>
                     </div>
+                        @if(!$eve->hasTeam($team->id))
                         <div class="col-xs-6"><button type="submit" class="btn vb-button">Accept Team</button></div>
+                            @endif
                     </div>
                 </form>
             </footer>
