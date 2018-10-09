@@ -64,7 +64,7 @@ class RejectTeamInterest extends Notification
     {
         return [
             //
-            'message'=>'Sorry, but this request was declined as your team is not yet approved. See your email for further details. If you do not receive an email after a few minutes, please check your spam/junk folder or email hello@volleyball.ng'
+            'message'=>'Sorry, but this request was declined as your team is not yet approved. See your email for further details. If you do not receive an email after a few minutes, please check your spam/junk folder or email hello@volleyball.ng',
             'action'=>route('teamDashboard')
         ];
     }

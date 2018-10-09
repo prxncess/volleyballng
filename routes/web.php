@@ -97,6 +97,10 @@ Route::group(['middleware'=>'master','prefix'=>'admin'],function(){
 //Route::get('/profile',['as'=>'teamSignIn'])
 Route::get('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@teamLogin']);
 Route::post('/team/signIn',['as'=>'teamSignIn','uses'=>'team\teamLoginController@teamTryLogin']);
+Route::get('/team/forgotpassword',['as'=>'forgotPassword','uses'=>'team\ForgotPasswordController@lostpassword']);
+Route::post('/team/forgotpassword',['as'=>'forgotPassword','uses'=>'team\ForgotPasswordController@sendResetLinkEmail']);
+Route::get('team/Resetpassword/{token}',['as'=>'resetPassword','uses'=>'team\resetPasswordController@showResetForm']);
+Route::post('team/Resetpassword/{token}',['as'=>'resetPassword','uses'=>'team\resetPasswordController@reset']);
 
  Route::group(['middleware'=>'team','prefix'=>'teamAdmin'],function(){
      Route::get('/dashboard',['as'=>'teamDashboard','uses'=>'team\teamPagesController@overview']);
@@ -185,3 +189,6 @@ Route::group(['middleware'=>'organizer','prefix'=>'organizer'],function(){
 
 
 
+
+
+Route::get('/home', 'HomeController@index')->name('home');

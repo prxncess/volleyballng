@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Team;
 use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
 class teamLoginController extends Controller
 {
     //
@@ -76,4 +77,8 @@ class teamLoginController extends Controller
 
         }
     }
+
+
+
+
 }

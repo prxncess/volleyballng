@@ -18,6 +18,7 @@
           <div class="col-sm-4">
             <a href="{{route('teamSignIn')}}" class="active top-bottom-padding-20">Team Login</a>
           </div>
+
         </div>
     </div>
     
@@ -51,12 +52,13 @@
                         <p class="error">@if($errors->has('password')) {{$errors->first('password')}} @endif</p>
                     </div>
                 </div>
+                <a href="{{route('forgotPassword')}}"><small>Forgot your password?</small></a>
                 <div class="form-group">
                     <div class="col-sm-12">
                        <button type="submit" id="vb-button" class="btn btn-primary">Login</button>
                 </div>
             </div>
-
+            </div>
         </form>
     </section>
 

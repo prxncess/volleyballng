@@ -109,6 +109,18 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'teams'=>[
+            'provider' => 'teams',
+            'table' => 'team_reset_password',
+            'expire' => 60,
+        ],
+        'organizers'=>[
+            'provider' => 'organizers',
+            'table' => 'event_reset_password',
+
+            'expire' => 60,
+        ],
     ],
+
 
 ];

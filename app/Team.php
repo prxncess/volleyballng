@@ -2,13 +2,14 @@
 
 namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-
+use \Illuminate\Notifications\RoutesNotifications;
+use App\Notifications\teamResetPassword;
 class Team extends Authenticatable
 {
     //
     use Notifiable;
+
     protected $table='teams';
     protected $primaryKey='id';
     protected $guarded=['id'];
@@ -24,8 +25,17 @@ class Team extends Authenticatable
     {
         return $this->contact;
     }
+
     public function event(){
         return $this->belongsToMany('App\Event');
     }
+    public function sendPasswordResetNotification($token){
+        $this->notify( new teamResetPassword($token));
+    }
+    public function getEmailForPasswordReset()
+    {
+        return $this->contact;
+    }
+
 
 }
